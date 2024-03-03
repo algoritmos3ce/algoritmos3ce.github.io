@@ -1,10 +1,15 @@
 ---
 title: "Tutorial: JavaFX en IntelliJ IDEA"
+parent: Entorno de desarrollo
+nav_order: 3
 ---
+
+# Tutorial: JavaFX en IntelliJ IDEA
 
 ## Opción 1: Crear un proyecto desde cero
 
-1. New Project
+1. **New Project**
+
     - A la izquierda seleccionar **Maven archetype**
     - Catalog: **Maven Central**
     - Archetype: `org.openjfx:javafx-archetype-simple` (o
@@ -54,12 +59,11 @@ title: "Tutorial: JavaFX en IntelliJ IDEA"
     </dependency>
     ```
 
-    <aside markdown="1">
-    ℹ️ Según sea necesario, se pueden agregar las dependencias opcionales:
-
-    - `javafx-media` si se desea reproducir audio o video.
-    - `javafx-fxml` si se desea utilizar archivos FXML.
-    </aside>
+    {: .nota }
+    > Según sea necesario, se pueden agregar las dependencias opcionales:
+    >
+    > - `javafx-media` si se desea reproducir audio o video.
+    > - `javafx-fxml` si se desea utilizar archivos FXML.
 
 2. Click derecho en `pom.xml` → **Maven** → **Reload project**
 
@@ -106,9 +110,10 @@ title: "Tutorial: JavaFX en IntelliJ IDEA"
 
     ![](./maven.png)
 
-    <aside markdown="1">
-    ℹ️ Notar que en la esquina superior derecha de la pantalla se puede seleccionar `javafx:run`  para que se ejecute por defecto esta opción al presionar el botón “play” (⏵).
-
-    ![](./run.png)
-    </aside>
+    {: .nota }
+    > En la esquina superior derecha de la pantalla se puede
+    > seleccionar `javafx:run`  para que se ejecute por defecto esta opción al
+    > presionar el botón “play” (⏵).
+    >
+    > ![](./run.png)
 

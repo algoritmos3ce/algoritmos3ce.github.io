@@ -1,5 +1,7 @@
 ---
 title: "Tutorial: Hola Mundo en IntelliJ IDEA"
+parent: Entorno de desarrollo
+nav_order: 2
 ---
 
 # Tutorial: Hola mundo en IntelliJ IDEA

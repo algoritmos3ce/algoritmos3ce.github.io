@@ -1,6 +1,10 @@
 ---
 title: "Uso de Maven"
+parent: Entorno de desarrollo
+nav_order: 1
 ---
+
+# Uso de Maven
 
 Para el desarrollo de los TPs se permite usar cualquier IDE o editor de texto.
 Pero en cualquier caso, es **obligatorio** el uso de **Maven**, ya que esto

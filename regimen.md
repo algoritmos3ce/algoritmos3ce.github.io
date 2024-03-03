@@ -1,7 +1,9 @@
 ---
 title: Régimen de cursada
-short_title: Régimen
+nav_order: 2
 ---
+
+# Régimen de cursada
 
 Para aprobar la **materia** es necesario:
 

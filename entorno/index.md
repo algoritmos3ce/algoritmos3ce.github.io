@@ -1,7 +1,11 @@
 ---
 title: Entorno de desarrollo
-short_title: Entorno
+nav_order: 4
+has_children: true
+has_toc: false
 ---
+
+# Entorno de desarrollo
 
 A lo largo del curso usaremos el lenguaje **Java (versión ≥ 9)**.
 
@@ -21,20 +25,20 @@ Edition**, que es gratuito y de código abierto.
 
 ### IntelliJ IDEA Community Edition
 
-[Tutorial: instalación de IntelliJ IDEA](./tutorial-instalacion)
+* [Tutorial: instalación de IntelliJ IDEA](./tutorial-instalacion)
 
-[Tutorial: Hola mundo en IntelliJ IDEA](./tutorial-hola-mundo)
+* [Tutorial: Hola mundo en IntelliJ IDEA](./tutorial-hola-mundo)
 
-[Tutorial: JavaFX en IntelliJ IDEA](./tutorial-javafx)
+* [Tutorial: JavaFX en IntelliJ IDEA](./tutorial-javafx)
 
 <!-- TODO
-[Tutorial: Clojure en IntelliJ IDEA](./tutorial-clojure)
+* [Tutorial: Clojure en IntelliJ IDEA](./tutorial-clojure)
 -->
 
 ### Para los trabajos prácticos
 
-[Uso de Git y Github](./git-y-github)
+* [Uso de Git y Github](./git-y-github)
 
-[Uso de Maven](./maven)
+* [Uso de Maven](./maven)
 
-[Tutorial: crear un JAR](./tutorial-jar)
+* [Tutorial: crear un JAR](./tutorial-jar)

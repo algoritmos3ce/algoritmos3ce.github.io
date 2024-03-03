@@ -1,10 +1,13 @@
 ---
 title: "Tutorial: Crear un JAR"
+parent: Entorno de desarrollo
+nav_order: 5
 ---
 
-<aside markdown="1">
-ℹ️ Este proceso NO es necesario para la entrega del TP.
-</aside>
+# Tutorial: Crear un JAR
+
+{: .nota }
+Este proceso NO es necesario para la entrega del TP.
 
 Para poder compartir un programa hecho en Java de forma tal que pueda ser
 ejecutado en otra computadora, los pasos en general son:
@@ -18,11 +21,10 @@ ejecutado en otra computadora, los pasos en general son:
 
 ## Pasos para crear el JAR
 
-<aside markdown="1">
-ℹ️ Nota: con este método es probable que el JAR funcione únicamente en el mismo
+{: .nota }
+Con este método es probable que el JAR funcione únicamente en el mismo
 sistema operativo en el que fue creado (por ejemplo, si lo creaste en Windows,
 solo se puede ejecutar en computadoras con Windows).
-</aside>
 
 1. Agregar a la clase `Main` (la que extiende `Application`) una función `main`
    con:

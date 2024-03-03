@@ -1,7 +1,9 @@
 ---
 title: Links útiles
-short_title: Links
+nav_order: 8
 ---
+
+# Links útiles
 
 ## Java
 

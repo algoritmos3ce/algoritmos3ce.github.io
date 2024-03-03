@@ -1,6 +1,9 @@
 ---
 title: Bibliografía
+nav_order: 7
 ---
+
+# Bibliografía
 
 -  **Head First Java: A Learner’s Guide to Real-World Programming, 3ra. ed. (2022)**
    <br>Kathy Sierra, Bert Bates, Trisha Gee

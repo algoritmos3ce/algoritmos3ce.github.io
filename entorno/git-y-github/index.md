@@ -1,6 +1,10 @@
 ---
 title: "Uso de Git y Github"
+parent: Entorno de desarrollo
+nav_order: 4
 ---
+
+# Uso de Git y Github
 
 Para los TPs es obligatorio usar Github (y consecuentemente Git).
 

@@ -4,18 +4,32 @@ description: >-
 domain: algoritmos3ce.github.io
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://algoritmos3ce.github.io"
-theme: minima
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: page
-header_pages:
-  - calendario.md
-  - entorno/index.md
-  - material.md
-  - tps.md
-  - links.md
+theme: just-the-docs
 liquid:
   error_mode: strict
 strict_front_matter: true
+
+aux_links:
+  Editar en Github: https://github.com/algoritmos3ce/algoritmos3ce.github.io
+
+nav_external_links:
+  - title: Ejercicios
+    url: https://github.com/algoritmos3ce/Ejercicios
+  - title: FIUBA
+    url: https://fi.uba.ar
+
+search: true
+enable_copy_code_button: true
+
+favicon_ico: "/assets/favicon.ico"
+
+callouts:
+  nota:
+    title: Nota
+    color: blue
+  advertencia:
+    title: Advertencia
+    color: yellow
+  cuidado:
+    title: Cuidado
+    color: red
