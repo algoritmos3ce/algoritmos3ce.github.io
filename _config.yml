@@ -12,8 +12,9 @@ defaults:
       layout: page
 header_pages:
   - calendario.md
-  - entorno.md
+  - entorno/index.md
   - material.md
+  - tps.md
   - links.md
 liquid:
   error_mode: strict

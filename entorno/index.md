@@ -21,18 +21,20 @@ Edition**, que es gratuito y de código abierto.
 
 ### IntelliJ IDEA Community Edition
 
-[Tutorial: instalación de IntelliJ IDEA](#)
+[Tutorial: instalación de IntelliJ IDEA](./tutorial-instalacion)
 
-[Tutorial: Hola mundo en IntelliJ IDEA](#)
+[Tutorial: Hola mundo en IntelliJ IDEA](./tutorial-hola-mundo)
 
-[Tutorial: JavaFX en IntelliJ IDEA](#)
+[Tutorial: JavaFX en IntelliJ IDEA](./tutorial-javafx)
 
-[Tutorial: Clojure en IntelliJ IDEA](#)
+<!-- TODO
+[Tutorial: Clojure en IntelliJ IDEA](./tutorial-clojure)
+-->
 
 ### Para los trabajos prácticos
 
-[Uso de Git y Github](#)
+[Uso de Git y Github](./git-y-github)
 
-[Uso de Maven](#)
+[Uso de Maven](./maven)
 
-[Tutorial: crear un JAR](#)
+[Tutorial: crear un JAR](./tutorial-jar)
