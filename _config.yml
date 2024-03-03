@@ -3,8 +3,18 @@ description: >-
   Sitio web del curso TB021 Paradigmas de Programación - Corsi / Essaya - FIUBA.
 domain: algoritmos3ce.github.io
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://algoritmos3ce.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-
+url: "https://algoritmos3ce.github.io"
 theme: minima
-plugins:
-  - jekyll-feed
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+header_pages:
+  - calendario.md
+  - entorno.md
+  - material.md
+  - links.md
+liquid:
+  error_mode: strict
+strict_front_matter: true
