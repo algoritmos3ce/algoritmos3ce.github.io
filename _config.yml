@@ -15,8 +15,6 @@ aux_links:
 nav_external_links:
   - title: Ejercicios
     url: https://github.com/algoritmos3ce/Ejercicios
-  - title: FIUBA
-    url: https://fi.uba.ar
 
 search: true
 enable_copy_code_button: true
