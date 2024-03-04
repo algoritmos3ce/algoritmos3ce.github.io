@@ -1,5 +1,6 @@
 ---
 title: "Tutorial: instalación de IntelliJ IDEA"
+layout: default
 parent: Entorno de desarrollo
 nav_order: 1
 ---

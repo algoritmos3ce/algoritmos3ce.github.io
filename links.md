@@ -1,5 +1,6 @@
 ---
 title: Links útiles
+layout: default
 nav_order: 8
 ---
 

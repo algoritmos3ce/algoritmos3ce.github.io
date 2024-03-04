@@ -1,5 +1,6 @@
 ---
 title: "Tutorial: Crear un JAR"
+layout: default
 parent: Entorno de desarrollo
 nav_order: 5
 ---

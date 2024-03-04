@@ -1,5 +1,6 @@
 ---
 title: "Uso de Git y Github"
+layout: default
 parent: Entorno de desarrollo
 nav_order: 4
 ---

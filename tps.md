@@ -1,5 +1,6 @@
 ---
 title: Trabajos prácticos
+layout: default
 nav_order: 6
 ---
 

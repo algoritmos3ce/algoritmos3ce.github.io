@@ -1,5 +1,6 @@
 ---
 title: Bibliografía
+layout: default
 nav_order: 7
 ---
 

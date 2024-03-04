@@ -1,5 +1,6 @@
 ---
 title: "Uso de Maven"
+layout: default
 parent: Entorno de desarrollo
 nav_order: 1
 ---

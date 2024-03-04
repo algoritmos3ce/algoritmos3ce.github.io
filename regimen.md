@@ -1,5 +1,6 @@
 ---
 title: Régimen de cursada
+layout: default
 nav_order: 2
 ---
 
