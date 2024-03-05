@@ -10,7 +10,7 @@ Para ejecutar en un entorno local:
 * Instalar Ruby (>= 2.5.0), RubyGems, gcc y make. (ver la [documentación de
   Jekyll](https://jekyllrb.com/docs/installation/)).
 
-* `gem install jekyll bundler`
+* `gem install bundler`
 
 * `bundle install`
 
