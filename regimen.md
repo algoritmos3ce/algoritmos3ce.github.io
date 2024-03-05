@@ -10,13 +10,13 @@ Para aprobar la **materia** es necesario:
 
 - Aprobar la **cursada**, cuyos requisitos son:
     - Aprobar los **2 parciales**
-    - Aprobar el **trabajo práctico**
+    - Aprobar todos los **trabajos prácticos**
 - Aprobar el examen **final**, o **promocionar** la materia.
     - Para **rendir el examen final**:
         - Es necesario tener la **cursada aprobada**.
     - Para **promocionar** la materia:
         - Es necesario tener la **cursada aprobada**
-        - La nota del **TP** debe ser **al menos 8**
+        - El **promedio** de notas de los **trabajos prácticos** debe ser **al menos 8**
         - Ambos **parciales** deben estar aprobados con nota **7 o superior**.
         - Ambos parciales deben estar aprobados en la primera instancia o en el primer recuperatorio.
 
