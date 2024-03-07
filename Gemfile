@@ -10,7 +10,7 @@
 source "https://rubygems.org"
 
 gem "jekyll", "~> 4.3.3"
-gem "just-the-docs", "0.8.0"
+gem "just-the-docs", "0.8.1"
 
 # https://github.com/jekyll/jekyll/issues/9545
 gem "json"
