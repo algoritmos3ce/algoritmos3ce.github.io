@@ -61,3 +61,9 @@ nav_order: 8
 * [Lambda Reducer](https://www.math.cmu.edu/~wgunther/lamred.html)
 
 * [Lambda Viewer](http://projectultimatum.org/cgi-bin/lambda)
+
+## CLojure
+
+* [clojure.org](https://clojure.org/)
+
+* [ClojureScript REPL](https://clojurescript.io/)
