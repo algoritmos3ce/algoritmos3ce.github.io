@@ -69,3 +69,5 @@ nav_order: 8
 * [Clojure cheatsheet](https://clojure.org/api/cheatsheet)
 
 * [ClojureScript REPL](https://clojurescript.io/)
+
+* [ClojureDocs](https://clojuredocs.org/)
