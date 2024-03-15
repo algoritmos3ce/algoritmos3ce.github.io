@@ -12,10 +12,6 @@ strict_front_matter: true
 aux_links:
   Editar en Github: https://github.com/algoritmos3ce/algoritmos3ce.github.io
 
-nav_external_links:
-  - title: Ejercicios
-    url: https://github.com/algoritmos3ce/Ejercicios
-
 search: true
 enable_copy_code_button: true
 
