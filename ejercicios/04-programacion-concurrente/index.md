@@ -1,11 +1,11 @@
 ---
-title: "4. Programación lógica"
+title: "4. Programación concurrente"
 layout: default
 parent: Ejercicios
 nav_order: 4
 ---
 
-# Programación lógica
+# Programación concurrente
 {: .no_toc }
 
 <!--

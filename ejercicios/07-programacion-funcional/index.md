@@ -1,11 +1,11 @@
 ---
-title: "6. Cálculo Lambda"
+title: "7. Programación funcional"
 layout: default
 parent: Ejercicios
-nav_order: 6
+nav_order: 7
 ---
 
-# Cálculo Lambda
+# Programación funcional
 {: .no_toc }
 
 <!--

@@ -1,11 +1,11 @@
 ---
-title: "7. Programación funcional"
+title: "5. Programación lógica"
 layout: default
 parent: Ejercicios
-nav_order: 7
+nav_order: 5
 ---
 
-# Programación funcional
+# Programación lógica
 {: .no_toc }
 
 <!--

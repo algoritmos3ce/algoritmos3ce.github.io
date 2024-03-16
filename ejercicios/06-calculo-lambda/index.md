@@ -1,11 +1,11 @@
 ---
-title: "5. Programación concurrente"
+title: "6. Cálculo Lambda"
 layout: default
 parent: Ejercicios
-nav_order: 5
+nav_order: 6
 ---
 
-# Programación concurrente
+# Cálculo Lambda
 {: .no_toc }
 
 <!--
