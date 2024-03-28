@@ -35,7 +35,8 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
 * El jugador dispone de una cantidad limitada de usos de teletransportación
   segura. Al comenzar cada nivel se le otorga un uso adicional.
 * En cada turno, el jugador puede:
-  * Moverse a una celda vecina, en cualquiera de las 8 direcciones posibles (movimiento horizontal y diagonal).
+  * Moverse a una celda vecina, en cualquiera de las 8 direcciones posibles
+    (movimiento horizontal, vertical y diagonal).
   * Teletransportarse a una celda aleatoria (que puede o no estar ocupada por un
     robot).
   * Si tiene usos disponibles de teletransportación segura, teletransportarse a
@@ -71,7 +72,7 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
     - Ver [Uso de Maven](/entorno/maven/)
 
 * Deben estar bien separadas las clases relacionadas con la **lógica** y la
-  **interfaz gráfica**, en al menos 2 capas de abstracción.
+  **interfaz gráfica**, en 2 capas de abstracción.
 
 * Se debe utilizar **polimorfismo** para implementar los comportamientos de los
   distintos robots y las celdas incendiadas.
