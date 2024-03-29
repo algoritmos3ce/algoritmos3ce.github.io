@@ -104,8 +104,9 @@ Objetos Simples):
   * crear nuevas cuentas de usuario
   * cerrar el sistema
 
-
+<!-- no hay solucion aun
 [Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/HerenciaYPolimorfismo/Cartelera2/Solucion)
+-->
 
 {: .ejercicio }
 ## Ajedrez
