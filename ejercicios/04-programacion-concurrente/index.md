@@ -14,6 +14,7 @@ nav_order: 4
 1. Índice
 {:toc}
 
+{: .ejercicio }
 ## Creación de hilos básicos
 
 1. Escribir un programa que cree un hilo extendiendo la clase `Thread` y otro
@@ -28,6 +29,7 @@ nav_order: 4
    Observar el comportamiento. Agregar bloques `synchronized` donde corresponda
    para asegurar que el comportamiento es correcto.
 
+{: .ejercicio }
 ## Pares e impares
 
 Escribir un programa que utiliza 2 threads, uno imprimiendo números pares y el
@@ -35,6 +37,7 @@ otro números impares, alternándose desde 1 hasta un número dado. Implementar
 sincronización utilizando Locks y Conditions para asegurar que los números se
 imprimen en el orden correcto.
 
+{: .ejercicio }
 ## Cuenta bancaria
 
 Sean las clases `CuentaBancaria` y `Transaccion`. ¿Es la implementación
@@ -63,6 +66,7 @@ public class Transaccion {
 }
 ```
 
+{: .ejercicio }
 ## Lectores y escritores
 
 Modificar la implementación del ejercicio anterior para asegurar que varios
@@ -70,12 +74,14 @@ lectores pueden acceder concurrentemente a `verSaldo`, pero solo un escritor
 puede acceder a `depositar` o `extraer`, y ningún lector puede acceder mientras
 un escritor está escribiendo.
 
+{: .ejercicio }
 ## Sistema de reservas de asientos en un cine
 
 Diseñar un sistema donde múltiples usuarios pueden reservar asientos en
 un cine, en forma concurrente. Sincronizar correctamente para garantizar
 que dos usuarios no reserven el mismo asiento al mismo tiempo.
 
+{: .ejercicio }
 ## Cola sincronizada
 
 Implementar una clase `ColaSincronizada`, que recibe como parámetro un número
@@ -84,6 +90,7 @@ entero N indicando su capacidad máxima. Si la cola está llena, el método
 satisfactoriamente. Si la cola está vacía, `desencolar` debe bloquear hasta que
 haya un elemento para desencolar.
 
+{: .ejercicio }
 ## Suma en paralelo
 
 Crea un programa en Java que calcule la suma de un gran
@@ -91,6 +98,7 @@ arreglo de números en paralelo utilizando varios hilos. Dividir el arreglo en
 partes iguales y asignar cada parte a un hilo para que calcule su suma.
 Luego, sumar los resultados parciales para obtener el resultado final.
 
+{: .ejercicio }
 ## Productor-Consumidor
 
 Implementar el ejercicio anterior utilizando un modelo de productor-consumidor,
@@ -102,6 +110,7 @@ utilizando dos colas sincronizadas Q1 y Q2:
    Encolar en Q2 el resultado.
 3. En 1 thread: Desencolar todos los resultados parciales de Q2 y sumarlos.
 
+{: .ejercicio }
 ## Problema de los filósofos cenando
 
 Implementar una solución al problema de los [filósofos

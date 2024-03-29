@@ -1,0 +1,10 @@
+ol.partes > li:before {
+    content: counter(step-counter, lower-alpha);
+}
+main {
+    counter-reset: ejercicio;
+}
+h2.ejercicio:before {
+    content: counter(ejercicio) ".";
+    counter-increment: ejercicio;
+}

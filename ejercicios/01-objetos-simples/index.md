@@ -14,6 +14,7 @@ nav_order: 1
 1. Índice
 {:toc}
 
+{: .ejercicio }
 ## FIUBA
 
 Diseñar e implementar un sistema que permita contabilizar las materias
@@ -34,6 +35,7 @@ sus carreras.
 
 [Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/ObjetosSimples/FIUBA/Solucion)
 
+{: .ejercicio }
 ## Chat
 
 Diseñar e implementar un modelo de objetos para una aplicación de chat similar
@@ -43,6 +45,7 @@ conversación con cualquier otro usuario.
 
 [Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/ObjetosSimples/Chat/Solucion)
 
+{: .ejercicio }
 ## Cartelera
 
 Se desea informatizar la cartelera ubicada en el hall de entrada de un hostel
@@ -69,6 +72,7 @@ Implementar el sistema en Java.
 
 [Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/ObjetosSimples/Cartelera/Solucion)
 
+{: .ejercicio }
 ## Biblioteca
 
 Diseñar e implementar un sistema de gestión para una biblioteca.
@@ -85,6 +89,7 @@ libros prestados y consultar los libros prestados a cada cliente.
 
 [Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/ObjetosSimples/Biblioteca/Solucion)
 
+{: .ejercicio }
 ## Caja de ahorro
 
 Diseñar e implementar una caja de ahorro, donde el usuario pueda ingresar su
@@ -96,6 +101,7 @@ diferentes cuentas puedan ser creadas, interactuar y transferirse dinero.
 
 [Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/ObjetosSimples/Cuenta/Solucion)
 
+{: .ejercicio }
 ## Fecha
 
 Crear una clase `Fecha` con las siguientes capacidades:

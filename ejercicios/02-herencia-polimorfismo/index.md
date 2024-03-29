@@ -14,6 +14,7 @@ nav_order: 2
 1. Índice
 {:toc}
 
+{: .ejercicio }
 ## Figuras
 
 Sea el siguiente código:
@@ -47,6 +48,7 @@ public class Main {
 
 [Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/HerenciaYPolimorfosmo/AreaTotal/Solucion)
 
+{: .ejercicio }
 ## Lista duplicante
 
 Se desea implementar una clase `ListaDuplicante<T>`, que tenga los métodos:
@@ -63,6 +65,7 @@ Basándose en la clase `java.util.ArrayList<T>`, implementar `ListaDuplicante<T>
 
 [Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/HerenciaYPolimorfosmo/ListaDuplicante/Solucion)
 
+{: .ejercicio }
 ## FIUBA 2
 
 Diseñar el modelo de objetos e implementar un sistema que funcione como un
@@ -82,6 +85,7 @@ El sistema debe permitir: cargar un nuevo integrante, listar todos los alumnos
 
 [Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/HerenciaYPolimorfosmo/FIUBA2/Solucion)
 
+{: .ejercicio }
 ## Cartelera 2
 
 Se proponen algunas mejoras al sistema de cartelera del hostel (de la guía de
@@ -103,6 +107,7 @@ Objetos Simples):
 
 [Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/HerenciaYPolimorfismo/Cartelera2/Solucion)
 
+{: .ejercicio }
 ## Ajedrez
 
 {: .label }

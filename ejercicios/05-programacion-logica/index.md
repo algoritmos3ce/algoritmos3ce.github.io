@@ -14,6 +14,7 @@ nav_order: 5
 1. Índice
 {:toc}
 
+{: .ejercicio }
 ## Magos
 
 Sea la siguiente base de datos:
@@ -38,6 +39,7 @@ mago(Y).
 bruja(Y).
 ```
 
+{: .ejercicio }
 ## Oraciones
 
 Sea la siguiente base de datos:
@@ -61,6 +63,7 @@ oracion(Palabra1,Palabra2,Palabra3,Palabra4,Palabra5):-
 ¿Qué consulta hay que hacer para averiguar todas las oraciones posibles?
 Listar los resultados que generará Prolog en el orden esperado.
 
+{: .ejercicio }
 ## Crucigrama
 
 Sean las palabras en italiano:
@@ -75,6 +78,7 @@ Se desea aplicarlas en el siguiente crucigrama:
 
 Escribir una base de datos y una consulta que encuentre una solución al problema.
 
+{: .ejercicio }
 ## Trenes
 
 Sean las siguientes cláusulas que describen algunas localidades que están
@@ -94,6 +98,7 @@ Escribir un predicado `viajar/2` que permita averiguar si es posible o no viajar
 localidad a otra, ya sea en uno o más tramos de tren. Por ejemplo,
 `viajar(nancy,saarbruecken)` debe dar verdadero.
 
+{: .ejercicio }
 ## Árbol binario
 
 Sea la siguiente representación de un árbol binario:
@@ -108,6 +113,7 @@ binario. Por ejemplo:
 T = arbol(hoja(4), arbol(hoja(2), hoja(1))).
 ```
 
+{: .ejercicio }
 ## Traducir
 
 Sea la siguiente base de datos:
@@ -134,17 +140,20 @@ X = [uno,nueve,dos].
 X = [eins,sieben,sechs,zwei].
 ```
 
+{: .ejercicio }
 ## Lista duplicada
 
 Una lista es duplicada si está compuesta por dos bloques consecutivos de
 los mismos elementos. Por ejemplo `[a,b,c,a,b,c]` es duplicada. Escribir un
 predicado `duplicada(Lista)` que determine si la lista es duplicada o no.
 
+{: .ejercicio }
 ## Palíndromo
 
 Escribir el predicado `palindromo(Lista)` que determine si la lista es
 palindrómica. Por ejemplo: `palindromo([n,e,u,q,u,e,n])` debe dar verdadero.
 
+{: .ejercicio }
 ## Acertijo
 
 {: .label }
