@@ -17,7 +17,7 @@ nav_order: 3
 {: .ejercicio }
 ## Hola, `<nombre>`
 
-Implementar una aplicación en JavaFX que muestre un cuadro de texto para que el
+Implementar una aplicación en JavaFX que muestre un cuadro de texto, para que el
 usuario ingrese su nombre, y un botón.
 Al clickear el botón se debe saludar al usuario mediante un `Alert`.
 
