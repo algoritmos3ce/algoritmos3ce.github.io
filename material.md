@@ -26,3 +26,5 @@ nav_order: 5
 ## Clase 3 - Programación orientada a eventos - Interfaces Gráficas
 
 * [Presentación](https://drive.google.com/file/d/1K-QEQskm0c-5kalQo8-26YOsXanVGBle/view?usp=sharing)
+* [Programa monolítico con GUI desarrollada en JavaFX](https://github.com/dcorsi/algo3/tree/main/demo1)
+* [Programa con GUI desarrollada en JavaFX siguiendo MVC](https://github.com/dcorsi/algo3/tree/main/demo2)
