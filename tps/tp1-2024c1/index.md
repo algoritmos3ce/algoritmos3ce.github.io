@@ -3,7 +3,6 @@ title: "TP1"
 layout: default
 parent: "Trabajos prácticos"
 nav_order: 1
-nav_exclude: true
 ---
 
 # TP1: Robots
@@ -59,6 +58,7 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
 ## Interfaz gráfica
 
 * Se debe implementar una interfaz gráfica para el juego, con JavaFX.
+    - Ver [JavaFX en IntelliJ IDEA](/entorno/tutorial-javafx/)
 * Debe ser posible jugar con el mouse o con el teclado.
 * Se puede usar cualquier set de imágenes para representar los elementos del
   juego, por ejemplo [las de Gnome Robots](./robots.png).
