@@ -53,7 +53,7 @@ list*). El usuario debe poder:
 
 * Agregar tareas (ingresando un título en un cuadro de texto),
 * Ver un listado de tareas
-* Marcar tareas como hechas (mediante un `ToggleButton`)
+* Marcar tareas como hechas (mediante un `CheckBox`)
 * Eliminar tareas
 
 {: .ejercicio }

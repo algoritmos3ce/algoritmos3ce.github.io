@@ -71,3 +71,5 @@ nav_order: 9
 * [ClojureScript REPL](https://clojurescript.io/)
 
 * [ClojureDocs](https://clojuredocs.org/)
+
+* [Clojure Koans](http://clojurekoans.com/)
