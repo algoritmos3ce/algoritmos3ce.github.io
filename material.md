@@ -33,3 +33,7 @@ nav_order: 5
 ## Clase 4 - Programación orientada a eventos
 
 * [Presentación](https://drive.google.com/file/d/1tWh7M-YaeiX3EOo8OAtKa9Jsk27vTOzb/view?usp=sharing)
+
+## Clase 5 - Programación concurrente
+
+* [Presentación](https://drive.google.com/file/d/1AchsMne_rpO3_GkD0jLxbaYb6dOp7_HW/view?usp=sharing)
