@@ -1,5 +1,5 @@
 ol.partes > li:before {
-    content: counter(step-counter, lower-alpha);
+    content: counter(step-counter, lower-alpha) ")";
 }
 main {
     counter-reset: ejercicio;

@@ -17,6 +17,7 @@ nav_order: 4
 {: .ejercicio }
 ## Creación de hilos básicos
 
+{: .partes}
 1. Escribir un programa que cree un hilo extendiendo la clase `Thread` y otro
     hilo implementando la interfaz `Runnable`. Ambos hilos deben imprimir
     mensajes en la consola en un ciclo infinito. Observar el orden en que se

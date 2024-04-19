@@ -106,6 +106,7 @@ diferentes cuentas puedan ser creadas, interactuar y transferirse dinero.
 
 Crear una clase `Fecha` con las siguientes capacidades:
 
+{: .partes}
 1. Imprimir la fecha en varios formatos, como:
 
    * `MM/DD/AAAA`

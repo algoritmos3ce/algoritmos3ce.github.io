@@ -39,6 +39,7 @@ public class Main {
 }
 ```
 
+{: .partes}
 1. Pensar cuáles son las relaciones entre `Figura`, `Circulo`, `Cuadrado` y
    `Rectangulo`. ¿Figura debe ser una clase, una clase abstracta o una
    interfaz?
@@ -58,6 +59,7 @@ Se desea implementar una clase `ListaDuplicante<T>`, que tenga los métodos:
 
 Basándose en la clase `java.util.ArrayList<T>`, implementar `ListaDuplicante<T>`:
 
+{: .partes}
 1. Usando composición
 1. Usando herencia
 
@@ -120,6 +122,7 @@ un tablero de ajedrez y efectuar movimientos básicos.
 El tablero es de 8x8 casilleros (que pueden ser numerados a1 ... h8). En cada
 casillero puede haber (o no) una ficha, que puede ser blanca o negra, y una de:
 
+{: .partes}
 1. peón (P)
 1. torre (R)
 1. caballo (N)
