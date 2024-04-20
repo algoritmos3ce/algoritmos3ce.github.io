@@ -62,7 +62,7 @@ nav_order: 9
 
 * [Lambda Viewer](http://projectultimatum.org/cgi-bin/lambda)
 
-## CLojure
+## Clojure
 
 * [clojure.org](https://clojure.org/)
 
