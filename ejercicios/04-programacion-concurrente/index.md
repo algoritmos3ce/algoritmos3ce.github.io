@@ -38,6 +38,8 @@ otro números impares, alternándose desde 1 hasta un número dado. Implementar
 sincronización utilizando Locks y Conditions para asegurar que los números se
 imprimen en el orden correcto.
 
+[Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/Concurrencia/ParesImpares/Numerador.java)
+
 {: .ejercicio }
 ## Cuenta bancaria
 
