@@ -34,3 +34,8 @@ nav_order: 5
 ## Clase 5 - Programación concurrente
 
 * [Presentación](https://drive.google.com/file/d/1AchsMne_rpO3_GkD0jLxbaYb6dOp7_HW/view?usp=sharing)
+
+## Clase 6 - Programación lógica
+
+* [Presentación](https://drive.google.com/file/d/1lXE783umlguTgPgFgP06KVdWjQiVfyOW/view?usp=sharing)
+
