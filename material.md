@@ -23,7 +23,7 @@ nav_order: 5
 * [Presentación](https://drive.google.com/file/d/1MyW7iMGjv5ckcsUPXVaebPlGcmOLwVBl/view?usp=sharing)
 * [Apunte](https://drive.google.com/file/d/1HIvOpkntijYvR20UfPSte1UrRG69zwOd/view?usp=sharing)
 
-## Clase 3 - Interfaces Gráficas
+## Clase 3 - Interfaces gráficas
 
 * [Presentación](https://drive.google.com/file/d/1K-QEQskm0c-5kalQo8-26YOsXanVGBle/view?usp=sharing)
 
