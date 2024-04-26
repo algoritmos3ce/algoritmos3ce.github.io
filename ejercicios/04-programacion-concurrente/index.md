@@ -73,7 +73,7 @@ public class Transaccion {
 ## Lectores y escritores
 
 Modificar la implementación del ejercicio anterior para asegurar que varios
-lectores pueden acceder concurrentemente a `verSaldo`, pero solo un escritor
+lectores pueden acceder en paralelo a `verSaldo`, pero solo un escritor
 puede acceder a `depositar` o `extraer`, y ningún lector puede acceder mientras
 un escritor está escribiendo.
 
