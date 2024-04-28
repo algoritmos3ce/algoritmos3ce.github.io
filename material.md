@@ -35,6 +35,10 @@ nav_order: 5
 
 * [Presentación](https://drive.google.com/file/d/1AchsMne_rpO3_GkD0jLxbaYb6dOp7_HW/view?usp=sharing)
 
+## Pre-parcial 1
+
+* [Ejercicios tipo parcial 1](/ejercicios-tipo/parcial1)
+
 ## Clase 6 - Programación lógica
 
 * [Presentación](https://drive.google.com/file/d/1lXE783umlguTgPgFgP06KVdWjQiVfyOW/view?usp=sharing)
