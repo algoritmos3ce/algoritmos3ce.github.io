@@ -73,3 +73,10 @@ nav_order: 6
    estrategia Call-by-name.
 
 8. Reducir `YO` y confirmar que se haya traducido al inglés.
+
+----
+
+<details>
+  <summary>Soluciones</summary>
+  <a href="https://drive.google.com/file/d/1UPJF22SgJuIGdnYhveXQCrup9R4cKLgM/view?usp=sharing)">Ver</a>
+</details>
