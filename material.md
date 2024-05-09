@@ -43,3 +43,6 @@ nav_order: 5
 
 * [Presentación](https://drive.google.com/file/d/1lXE783umlguTgPgFgP06KVdWjQiVfyOW/view?usp=sharing)
 
+## Clase 7 - Cálculo Lambda
+
+* [Presentación](https://drive.google.com/file/d/1uGF-x1OjKyusgihN8bevHG6eApaHJAdE/view?usp=sharing)
