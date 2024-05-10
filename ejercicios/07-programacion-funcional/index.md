@@ -16,4 +16,46 @@ nav_order: 7
 {:toc}
 -->
 
-**En construcción**.
+1. Definir la función `segundos` que reciba los cuatro valores (días, horas, minutos y
+   segundos) del tiempo que dura un evento y devuelva el valor de ese tiempo expresado
+   solamente en segundos.
+
+1. Definir la función `capicua?` que reciba un número entero no negativo de hasta 5
+   dígitos y devuelva true si el número es capicúa; si no, false.
+
+1. Definir la función `aprox-pi` que reciba la cantidad de términos a considerar entre los
+   paréntesis de la expresión `4 · (1 - 1/3 + 1/5 - 1/7 + ... + 1/n)` y devuelva la
+   correspondiente aproximación de π.
+
+1. Definir la función `nth-fibo` que reciba un número entero no negativo y devuelva el
+   correspondiente término de la sucesión de Fibonacci.
+
+1. Definir la función `qsort` que recibe una secuencia y la ordena usando el
+   algoritmo Quicksort.
+
+1. Definir la función `slice` que reciba una cadena `s` y un número `n` y devuelva una
+   lista con todas las subcadenas contiguas de `s` cuyo tamaño sea `n`. Por ejemplo:
+
+   ```
+   (slice "abcde" 3) → ("abc" "bcd" "cde")
+   ```
+
+1. Definir una función que devuelva `true` si una frase es un pangrama (es decir, si
+   contiene todas las letras del alfabeto); si no, `false`. Por ejemplo:
+
+   ```
+   (pangrama? "Fabio me exige, sin tapujos, que añada cerveza al whisky") → true
+   ```
+
+1. Definir una función que calcule la profundidad de una lista recursiva. Por ejemplo:
+
+   ```
+   (profundidad '((2 3)(3 ((7))) 5)) → 4
+   ```
+
+----
+
+<details>
+  <summary>Soluciones</summary>
+  <a href="https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/clojure">Ver</a>
+</details>

@@ -170,3 +170,10 @@ diferente. Aquí hay algunos hechos conocidos:
 
 ¿Quién tiene una cebra? Escribir un predicado `cebra/1` que indique la
 nacionalidad de los dueños de la cebra.
+
+----
+
+<details>
+  <summary>Soluciones</summary>
+  <a href="https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/prolog">Ver</a>
+</details>
