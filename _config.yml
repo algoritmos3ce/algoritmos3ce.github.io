@@ -21,6 +21,9 @@ callouts:
   nota:
     title: Nota
     color: blue
+  importante:
+    title: Importante
+    color: yellow
   advertencia:
     title: Advertencia
     color: yellow

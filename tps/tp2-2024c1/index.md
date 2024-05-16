@@ -101,7 +101,7 @@ Un sistema-L está formado por:
   consiste de una cadena predecesora y una cadena sucesora.
 
 {: .nota }
-**Nota:** En nuestra implementación solo vamos a soportar cadenas predecesoras
+En nuestra implementación solo vamos a soportar cadenas predecesoras
 formadas por un único caracter.
 
 Por ejemplo:
@@ -318,6 +318,10 @@ Utilizar los [sistemas-L de
 ejemplo](./tp3-2019-c1-lsystems.zip)
 provistos en la sección _Material_ para verificar que el programa funciona
 correctamente.
+
+{: .importante }
+No se permite utilizar ninguna función que produzca efectos secundarios,
+excepto aquellas necesarias para leer y escribir archivos.
 
 ## ¡Extras!
 
