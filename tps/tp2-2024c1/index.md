@@ -1,8 +1,8 @@
 ---
 title: "TP2"
 layout: default
+parent: "Trabajos prácticos"
 nav_order: 2
-nav_exclude: true
 ---
 
 <img src="./banner.png" style="width: 100%">
