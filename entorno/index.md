@@ -32,7 +32,7 @@ Edition**, que es gratuito y de código abierto.
 
 * [Tutorial: JavaFX en IntelliJ IDEA](./tutorial-javafx)
 
-* [Tutorial: Clojure en IntelliJ IDEA](./tutorial-clojure)
+* [Tutorial: Clojure](./tutorial-clojure)
 
 ### Para los trabajos prácticos
 
