@@ -73,3 +73,8 @@ nav_order: 9
 * [ClojureDocs](https://clojuredocs.org/)
 
 * [Clojure Koans](http://clojurekoans.com/)
+
+## Ejercicios extra
+
+* [Project Euler](https://projecteuler.net/archives)
+* [Rosalind](https://rosalind.info/problems/list-view/?location=algorithmic-heights)
