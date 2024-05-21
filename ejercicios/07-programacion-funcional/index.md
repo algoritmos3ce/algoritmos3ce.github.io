@@ -53,6 +53,19 @@ nav_order: 7
    (profundidad '((2 3)(3 ((7))) 5)) → 4
    ```
 
+1. Comenzando desde la esquina superior izquierda de una grilla de 2x2, y solo
+   pudiendo moverse hacia la derecha (`d`) y abajo (`a`), hay exactamente 6
+   rutas a la esquina inferior derecha:
+
+   ![](./0015.png)
+
+   Definir la función `rutas` que reciba las dimensiones de la grilla y
+   devuelva una colección con todas las rutas posibles. Por ejemplo:
+
+   ```
+   (rutas 2 2) → ("ddaa" "dada" "daad" "adda" "adad" "aadd")
+   ```
+
 ----
 
 <details>
