@@ -74,6 +74,8 @@ nav_order: 9
 
 * [Clojure Koans](http://clojurekoans.com/)
 
+* [Clojure style guide](https://github.com/bbatsov/clojure-style-guide)
+
 ## Ejercicios extra
 
 * [Project Euler](https://projecteuler.net/archives)
