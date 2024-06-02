@@ -55,3 +55,7 @@ nav_order: 5
 ## Clase 10 - Programación Funcional - Mónadas
 
 * [Apunte](https://drive.google.com/file/d/1lNTJcozUAkhsPaL0CkKBTUV5RwbIDWRQ/view?usp=sharing)
+
+## Pre-parcial 2
+
+* [Ejercicios tipo parcial 2](/ejercicios-tipo/parcial2)
