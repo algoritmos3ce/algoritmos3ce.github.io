@@ -59,3 +59,10 @@ nav_order: 5
 ## Pre-parcial 2
 
 * [Ejercicios tipo parcial 2](/ejercicios-tipo/parcial2)
+
+
+# Material anterior a 2024
+
+* [Presentación: Pruebas de software]https://drive.google.com/file/d/14RFxBWoVTBjTLCL0A7b8kWW7l7lLBJ6j/view?usp=sharing
+* 
+
