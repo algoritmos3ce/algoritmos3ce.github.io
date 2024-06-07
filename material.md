@@ -63,6 +63,15 @@ nav_order: 5
 
 # Material anterior a 2024
 
-* [Presentación: Pruebas de software]https://drive.google.com/file/d/14RFxBWoVTBjTLCL0A7b8kWW7l7lLBJ6j/view?usp=sharing
-* 
+## Pruebas de software
+* [Presentación](https://drive.google.com/file/d/14RFxBWoVTBjTLCL0A7b8kWW7l7lLBJ6j/view?usp=sharing).
 
+## Principios de diseño
+* [Presentación](https://drive.google.com/file/d/15M8jX00SfVuJlzpKzTJZFqmJN4t1_5qH/view?usp=drive_link).
+
+## Patrones de diseño
+* [Presentación](https://drive.google.com/file/d/1ezo24GJF6wAp-G9X0J3VR4_lhPO2Nr_t/view?usp=sharing).
+* [Minicatálogo](https://drive.google.com/file/d/1oECFsp0c3XRtlmNuTz4hQJMWy0TPq6N_/view?usp=sharing).
+
+## Excepciones y persistencia básica
+* [Presentación](https://drive.google.com/file/d/1I9dTOaqFvKgbsX2hWmNl_kD_dthli-8x/view?usp=sharing).
