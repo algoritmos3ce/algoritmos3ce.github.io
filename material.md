@@ -6,12 +6,14 @@ nav_order: 5
 
 # Material
 
-[Grabaciones de las clases en YouTube](https://www.youtube.com/playlist?list=PLR0NFKZIjBcAwCQjRBMkbh_taSYbOcwcl)
+[Grabaciones de las clases en YouTube](https://www.youtube.com/playlist?list=PLR0NFKZIjBcDm3bEeNSyDeEIY1fYHp8i1)
 
 <!--
     Los archivos están subidos en la carpeta de drive del curso:
     https://drive.google.com/drive/folders/1-sBhVb2DKF5OCUpH2EepX7p870APkWxe?usp=drive_link
 -->
+
+<!--
 
 ## Clase 1 - Programación orientada a objetos
 
@@ -75,3 +77,5 @@ nav_order: 5
 
 ## Excepciones y persistencia básica
 * [Presentación](https://drive.google.com/file/d/1I9dTOaqFvKgbsX2hWmNl_kD_dthli-8x/view?usp=sharing).
+
+-->

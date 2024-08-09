@@ -8,7 +8,7 @@ nav_order: 1
 Este es el sitio del curso **TB025 Paradigmas de Programación**, curso
 Corsi-Essaya, de la [Facultad de Ingeniería de la Universidad de Buenos Aires
 (FIUBA)](https://fi.uba.ar). La información que se presenta corresponde al
-**1er cuatrimestre 2024**.
+**2do cuatrimestre 2024**.
 
 Este curso corresponde a las materias:
 
@@ -24,9 +24,11 @@ Este curso corresponde a las materias:
 - Alberto Carmona
 - Dante Finci
 - José Ignacio Castro Martínez
-- María Macarena Vita Sanchez
 - Lihuén Carranza
 - Luca Salluzzi
+- María Macarena Vita Sanchez
+- Martín Fernandez Lahore
+- Yaco Santamarina
 
 ## Días y horarios
 
@@ -35,7 +37,7 @@ Este curso corresponde a las materias:
 - Lunes 14-17 hs - práctica
 - Jueves 14-17 hs - teórica
 
-Las clases son en modalodad **virtual**. Los exámenes parciales y finales son
+Las clases son en modalidad **virtual**. Los exámenes parciales y finales son
 **presenciales**.
 
 ## Programa sintético
@@ -50,13 +52,14 @@ Las clases son en modalodad **virtual**. Los exámenes parciales y finales son
     - Abstracción. Clases y métodos abstractos
     - Encapsulamiento
     - Polimorfismo
-- Programación Orientada a Eventos
+- Principios de diseño en el paradigma de objetos
+- Programación orientada a eventos
 - Interfaces gráficas
-- Programación Lógica
-- Programación Concurrente
+- Programación lógica
 - Nociones de Cálculo Lambda
 - Programación funcional
     - Conceptos básicos: Funciones puras. Inmutabilidad
     - Funciones de primera clase. Funciones de orden superior
     - Composición de funciones
     - Recursión
+- Programación concurrente
