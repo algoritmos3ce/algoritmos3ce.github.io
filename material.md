@@ -13,7 +13,7 @@ nav_order: 5
     https://drive.google.com/drive/folders/1-sBhVb2DKF5OCUpH2EepX7p870APkWxe?usp=drive_link
 -->
  * Clase 1 - Programación orientada a objetos
-      [[Presentación]] (https://drive.google.com/file/d/1sJRMQvZdSzRf-E_7_rqc5-m_-HPXKhVX/view?usp=drive_link)
+      [[Presentación]](https://drive.google.com/file/d/1sJRMQvZdSzRf-E_7_rqc5-m_-HPXKhVX/view?usp=drive_link)
       [[Apunte]](https://drive.google.com/file/d/16Ns8j6c-1i6EsnIInhpw5WGtCJb_4LkB/view?usp=sharing)
 
 <hr/>
