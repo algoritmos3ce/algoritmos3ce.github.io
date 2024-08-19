@@ -24,6 +24,8 @@ Este curso corresponde a las materias:
 - Alberto Carmona
 - Dante Finci
 - José Ignacio Castro Martínez
+- Lautaro Trabado
+- Leticia Figueroa
 - Lihuén Carranza
 - Luca Salluzzi
 - María Macarena Vita Sanchez
