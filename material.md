@@ -15,7 +15,7 @@ nav_order: 5
  * Clase 1 - Programación orientada a objetos
       [[Presentación]](https://drive.google.com/file/d/1sJRMQvZdSzRf-E_7_rqc5-m_-HPXKhVX/view?usp=drive_link)
       [[Apunte]](https://drive.google.com/file/d/16Ns8j6c-1i6EsnIInhpw5WGtCJb_4LkB/view?usp=sharing)
-
+      [[Presentación repaso práctica]](https://docs.google.com/presentation/d/1DfgDeJCAoMXov6CLfXfvVAcphlKo6Aq7/edit?usp=drive_link&ouid=114882499087956113949&rtpof=true&sd=true)
 <hr/>
 
 <details markdown="block">
