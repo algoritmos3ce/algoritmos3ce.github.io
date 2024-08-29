@@ -16,6 +16,9 @@ nav_order: 5
       [[Presentación]](https://drive.google.com/file/d/1sJRMQvZdSzRf-E_7_rqc5-m_-HPXKhVX/view?usp=drive_link)
       [[Apunte]](https://drive.google.com/file/d/16Ns8j6c-1i6EsnIInhpw5WGtCJb_4LkB/view?usp=sharing)
       [[Presentación repaso práctica]](https://docs.google.com/presentation/d/1DfgDeJCAoMXov6CLfXfvVAcphlKo6Aq7/edit?usp=drive_link&ouid=114882499087956113949&rtpof=true&sd=true)
+    * Clase 2 - Abstracción, encapsulamiento, herencia y polimorfismo
+      [[Presentación]](https://drive.google.com/file/d/1MyW7iMGjv5ckcsUPXVaebPlGcmOLwVBl/view?usp=sharing)
+      [[Apunte]](https://drive.google.com/file/d/1HIvOpkntijYvR20UfPSte1UrRG69zwOd/view?usp=sharing)
 <hr/>
 
 <details markdown="block">
