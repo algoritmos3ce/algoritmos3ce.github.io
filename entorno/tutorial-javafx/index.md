@@ -15,7 +15,7 @@ nav_order: 3
     - Catalog: **Maven Central**
     - Archetype: `org.openjfx:javafx-archetype-simple` (o
       `org.openjfx:javafx-archetype-fxml`).
-    - `javafx-version`: `20` (o la última disponible, revisar en
+    - `javafx-version`: `22` (o la última disponible, revisar en
       [https://gluonhq.com/products/javafx/](https://gluonhq.com/products/javafx/))
     - Click en **Create**
 
@@ -41,11 +41,11 @@ nav_order: 3
 
     [Uso de Maven](/entorno/maven)
 
-    En el `pom.xml`: click derecho → **Generate** → **Add dependency…**
+    En el `pom.xml`: click derecho → **Generate** → **Dependency**
 
     En el cuadro de búsqueda ingresar `openjfx:javafx`.
 
-    Seleccionar `javafx-controls` versión `20` (o la última disponible, revisar en
+    Seleccionar `javafx-controls` versión `22` (o la última disponible, revisar en
     [https://gluonhq.com/products/javafx/](https://gluonhq.com/products/javafx/)).
     Click en **Add**.
 
@@ -55,7 +55,7 @@ nav_order: 3
     <dependency>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-controls</artifactId>
-        <version>20</version>
+        <version>22</version>
         <scope>compile</scope>
     </dependency>
     ```
