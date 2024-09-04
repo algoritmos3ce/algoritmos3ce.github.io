@@ -19,6 +19,9 @@ nav_order: 5
  * Clase 2 - Abstracción, encapsulamiento, herencia y polimorfismo
       [[Presentación]](https://drive.google.com/file/d/1MyW7iMGjv5ckcsUPXVaebPlGcmOLwVBl/view?usp=sharing)
       [[Apunte]](https://drive.google.com/file/d/1HIvOpkntijYvR20UfPSte1UrRG69zwOd/view?usp=sharing)
+ * Clase 3 - Principios de diseño
+      [[Presentación]](https://drive.google.com/file/d/1ffeqPpfE3wM8TRpEFOM98ed6G67_dqCA/view?usp=sharing))
+   
 <hr/>
 
 <details markdown="block">
