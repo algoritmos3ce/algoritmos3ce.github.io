@@ -1,8 +1,8 @@
 ---
-title: "5. Programación lógica"
+title: "6. Programación lógica"
 layout: default
 parent: Ejercicios
-nav_order: 5
+nav_order: 6
 ---
 
 # Programación lógica

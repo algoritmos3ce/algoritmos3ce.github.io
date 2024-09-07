@@ -1,8 +1,8 @@
 ---
-title: "3. Interfaces gráficas"
+title: "4. Interfaces gráficas"
 layout: default
 parent: Ejercicios
-nav_order: 3
+nav_order: 4
 ---
 
 # Interfaces gráficas
