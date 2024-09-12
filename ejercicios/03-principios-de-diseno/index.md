@@ -5,7 +5,7 @@ parent: Ejercicios
 nav_order: 3
 ---
 
-# Interfaces gráficas
+# Principios de diseño
 {: .no_toc }
 
 ## Índice
