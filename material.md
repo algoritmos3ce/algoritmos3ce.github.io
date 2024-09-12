@@ -21,6 +21,11 @@ nav_order: 5
       [[Apunte]](https://drive.google.com/file/d/1HIvOpkntijYvR20UfPSte1UrRG69zwOd/view?usp=sharing)
  * Clase 3 - Principios de diseño
       [[Presentación]](https://drive.google.com/file/d/1ffeqPpfE3wM8TRpEFOM98ed6G67_dqCA/view?usp=sharing))
+ * Clase 4 - Programación orientada a eventos
+      [[Presentación]](https://drive.google.com/file/d/1FWaI2S8euIqEn84ImFZ0asFdswLNB-Tm/view?usp=sharing)
+ * Clase 5 - Interfaces gráficas
+      [[Presentación]](https://drive.google.com/file/d/1ISQiStcwnMe78LULVvUTRok-3JlxuhtT/view?usp=sharing)
+
    
 <hr/>
 
