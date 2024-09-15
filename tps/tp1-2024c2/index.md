@@ -3,7 +3,6 @@ title: "TP1"
 layout: default
 parent: "Trabajos prácticos"
 nav_order: 1
-nav_exclude: true
 ---
 
 # TP1: Lasers
@@ -120,7 +119,9 @@ la izquierda está en (1, 1) y el de la celda de abajo a la derecha está en (7,
 
 * Se debe implementar una interfaz gráfica para el juego, con JavaFX.
     - Ver [JavaFX en IntelliJ IDEA](/entorno/tutorial-javafx/)
-* Debe ser posible jugar con el mouse, arrastrando los bloques (_drag & drop_).
+* Debe ser posible jugar con el mouse, ya sea arrastrando los bloques
+  ([_drag & drop_](https://openjfx.io/javadoc/22/javafx.graphics/javafx/scene/Node.html#setOnDragDetected(javafx.event.EventHandler)))
+  o haciendo clicks.
 * Al completar un nivel se debe mostrar una indicación y no se debe permitir
   mover ningún bloque hasta que el jugador elige otro nivel.
 * No se evalúa el diseño gráfico.
