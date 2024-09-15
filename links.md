@@ -19,6 +19,11 @@ nav_order: 9
 * [DZone JavaFX 8 refcard](https://enos.itcollege.ee/~jpoial/java/naited/refcard-javafx.pdf)
   <br>Resumen de los conceptos más importantes de JavaFX
 
+## Programación orientada a eventos
+
+* [JavaFX: Handling Events](https://docs.oracle.com/javase/8/javafx/events-tutorial/events.htm)
+  <br>Tutorial que describe cómo se procesan los eventos en JavaFX
+
 ## UML
 
 * [PlantUML](https://plantuml.com/)
