@@ -25,7 +25,8 @@ nav_order: 5
       [[Presentación]](https://drive.google.com/file/d/1FWaI2S8euIqEn84ImFZ0asFdswLNB-Tm/view?usp=sharing)
  * Clase 5 - Interfaces gráficas
       [[Presentación]](https://drive.google.com/file/d/1ISQiStcwnMe78LULVvUTRok-3JlxuhtT/view?usp=sharing)
-
+ * Clase 6 - Programación lógica
+      [[Presentación]](https://drive.google.com/file/d/1lXE783umlguTgPgFgP06KVdWjQiVfyOW/view?usp=sharing)
    
 <hr/>
 
