@@ -154,7 +154,10 @@ la izquierda está en (1, 1) y el de la celda de abajo a la derecha está en (7,
 
 **Fecha límite para aprobar:** 28 de octubre 2024
 
-* El código debe estar alojado en un repositorio **privado** de Github.
-    - Ver [Uso de Git y Github](/entorno/git-y-github/)
-    - Agregar al repositorio un archivo `README.md` con el nombre y padrón de los integrantes del grupo.
-    - Dar acceso al usuario `dessaya`.
+El código debe estar alojado en un repositorio **privado** de Github.
+* Ver [Uso de Git y Github](/entorno/git-y-github/)
+* Agregar al repositorio un archivo `README.md` con el nombre y padrón de los integrantes del grupo.
+* Dar acceso al usuario `dessaya`.
+* Posteriormente se asignará un corrector o correctora para el grupo. Dar
+  acceso al repositorio a la cuenta de usuario correspondiente.
+* Para efectuar la entrega, abrir un _issue_ o _pull request_ y asignarlo al corrector o correctora.
