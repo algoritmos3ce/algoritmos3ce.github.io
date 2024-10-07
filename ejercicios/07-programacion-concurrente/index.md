@@ -1,8 +1,8 @@
 ---
-title: "5. Programación concurrente"
+title: "7. Programación concurrente"
 layout: default
 parent: Ejercicios
-nav_order: 5
+nav_order: 7
 ---
 
 # Programación concurrente

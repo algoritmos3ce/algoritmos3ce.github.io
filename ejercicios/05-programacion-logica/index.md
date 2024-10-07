@@ -1,8 +1,8 @@
 ---
-title: "6. Programación lógica"
+title: "5. Programación lógica"
 layout: default
 parent: Ejercicios
-nav_order: 6
+nav_order: 5
 ---
 
 # Programación lógica
@@ -133,7 +133,7 @@ traduccion(neun,nueve).
 Escribir el predicado `traduccionLista(A,E)` que produzca la traducción de una
 lista de números etre alemán y español. Por ejemplo,
 
-``` prolog
+```prolog
 ?- traduccionLista([eins,neun,zwei], X).
 X = [uno,nueve,dos].
 ?- traduccionLista(X, [uno,siete,seis,dos]).
