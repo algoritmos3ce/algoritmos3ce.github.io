@@ -1,20 +1,12 @@
 ---
-title: "6. Programación funcional"
+title: "7. Programación funcional"
 layout: default
 parent: Ejercicios
-nav_order: 6
+nav_order: 7
 ---
 
 # Programación funcional
 {: .no_toc }
-
-<!--
-## Índice
-{: .no_toc .text-delta }
-
-1. Índice
-{:toc}
--->
 
 1. Definir la función `segundos` que reciba los cuatro valores (días, horas, minutos y
    segundos) del tiempo que dura un evento y devuelva el valor de ese tiempo expresado
