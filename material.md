@@ -27,6 +27,13 @@ nav_order: 5
       [[Presentación]](https://drive.google.com/file/d/1ISQiStcwnMe78LULVvUTRok-3JlxuhtT/view?usp=sharing)
  * Clase 6 - Programación lógica
       [[Presentación]](https://drive.google.com/file/d/1lXE783umlguTgPgFgP06KVdWjQiVfyOW/view?usp=sharing)
+ * Clase 7 - Cálculo Lambda
+      [[Apunte]](https://drive.google.com/file/d/1uGF-x1OjKyusgihN8bevHG6eApaHJAdE/view?usp=sharing)
+ * Clase 8 - Programación funcional - Java y Clojure
+      [[Presentación]](https://drive.google.com/file/d/1SfMGaRY8id3tLCw-FHtklfBtzLtINR47/view?usp=sharing)
+      [[Apunte]](https://drive.google.com/file/d/1pAjjK04vpL5PIWxEYZoLckeL34rQBvEt/view?usp=sharing)
+ * Clase 9 - Programación concurrente en Java
+      [[Presentación]](https://drive.google.com/file/d/1mW3deWgmzdSk12Xh5m5OOQrIOoncwS_4/view?usp=sharing)
    
 <hr/>
 
