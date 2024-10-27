@@ -58,6 +58,10 @@ nav_order: 7
    (rutas 2 2) → ("ddaa" "dada" "daad" "adda" "adad" "aadd")
    ```
 
+1. Implementar un programa que permita simular el [Juego de la
+   vida](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), mostrando en
+   la consola una generación cada vez que el usuario presiona la tecla `Enter`.
+
 ----
 
 <details>
