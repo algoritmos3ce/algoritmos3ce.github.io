@@ -1,11 +1,11 @@
 ---
-title: "1. Programación Orientada a Objetos: Objetos simples"
+title: "1. Programación orientada a objetos: Objetos simples"
 layout: default
 parent: Ejercicios
 nav_order: 1
 ---
 
-# Programación Orientada a Objetos: Objetos simples
+# Programación orientada a objetos: Objetos simples
 {: .no_toc }
 
 ## Índice
