@@ -1,11 +1,11 @@
 ---
-title: "4. Programación Orientada a Eventos: Interfaces gráficas"
+title: "4. Programación orientada a eventos: Interfaces gráficas"
 layout: default
 parent: Ejercicios
 nav_order: 4
 ---
 
-# Programación Orientada a Eventos: Interfaces gráficas
+# Programación orientada a eventos: Interfaces gráficas
 {: .no_toc }
 
 ## Índice
