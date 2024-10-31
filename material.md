@@ -34,7 +34,8 @@ nav_order: 5
       [[Apunte]](https://drive.google.com/file/d/1pAjjK04vpL5PIWxEYZoLckeL34rQBvEt/view?usp=sharing)
  * Clase 9 - Programación concurrente en Java
       [[Presentación]](https://drive.google.com/file/d/1mW3deWgmzdSk12Xh5m5OOQrIOoncwS_4/view?usp=sharing)
-   
+ * Clase 10 - Programación concurrente en Clojure
+      [[Presentación]](https://drive.google.com/file/d/1WdtuN8XOW1UPUj9oG8USF0XAq7kcne8Y/view?usp=sharing)
 <hr/>
 
 <details markdown="block">
