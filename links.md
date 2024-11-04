@@ -11,6 +11,17 @@ nav_order: 9
 * [Java® Platform, Standard Edition & Java Development Kit - Version 21 API Specification](https://docs.oracle.com/en/java/javase/21/docs/api/index.html)
   <br>Documentación / referencia de la API de Java 21
 
+## UML
+
+* [PlantUML](https://plantuml.com/)
+  <br>Herramienta para generar diagramas UML, definidos mediante un sencillo lenguaje
+
+* [PlantText](https://www.planttext.com/)
+  <br>Editor UML con sintaxis PlantUML
+
+* [diagrams.net](https://www.diagrams.net/index.html)
+  <br>Editor UML del tipo WYSIWYG
+
 ## JavaFX
 
 * [JavaFX](https://openjfx.io/)
@@ -23,22 +34,6 @@ nav_order: 9
 
 * [JavaFX: Handling Events](https://docs.oracle.com/javase/8/javafx/events-tutorial/events.htm)
   <br>Tutorial que describe cómo se procesan los eventos en JavaFX
-
-## UML
-
-* [PlantUML](https://plantuml.com/)
-  <br>Herramienta para generar diagramas UML, definidos mediante un sencillo lenguaje
-
-* [PlantText](https://www.planttext.com/)
-  <br>Editor UML con sintaxis PlantUML
-
-* [diagrams.net](https://www.diagrams.net/index.html)
-  <br>Editor UML del tipo WYSIWYG
-
-## Programación Concurrente
-
-* [The Java™ Tutorials - Lesson: Concurrency](https://docs.oracle.com/javase/tutorial/essential/concurrency/index.html)
-  <br>Tutorial oficial de Oracle sobre de programación concurrente
 
 ## Programación Lógica
 
@@ -80,6 +75,14 @@ nav_order: 9
 * [Clojure Koans](http://clojurekoans.com/)
 
 * [Clojure style guide](https://github.com/bbatsov/clojure-style-guide)
+
+## Programación Concurrente
+
+* [The Java™ Tutorials - Lesson: Concurrency](https://docs.oracle.com/javase/tutorial/essential/concurrency/index.html)
+
+* [Clojure Guides: Concurrency and Parallelism](https://clojure-doc.org/articles/language/concurrency_and_parallelism/)
+
+* [Clojure Concurrency Tutorial](https://ericnormand.me/guide/clojure-concurrency)
 
 ## Ejercicios extra
 
