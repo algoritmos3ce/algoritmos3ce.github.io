@@ -260,11 +260,13 @@ El comando `g` examina el contenido del campo de juego. Desapila una coordenada
 encuentra en `(x, y)`. Desde el punto de vista del texto del programa, `x`
 determina la columna e `y` determina la fila; `(0, 0)` se refiere a la primera
 columna (izquierda) y la primera fila (superior) del código del programa.
+Si las coordenadas `(x, y)` están fuera de rango del toroide, entonces se apila
+un 0.
 
 El comando `p` modifica el contenido del campo de juego. Se desapila una
 coordenada `y`, luego `x`, y a continuación un valor. Se coloca
 el valor (interpretado como el valor ASCII de uun
-caracter) en el toro en `(x, y)`.
+caracter) en el toroide en `(x, y)`.
 
 ### Apéndice A. Resumen de comandos
 
