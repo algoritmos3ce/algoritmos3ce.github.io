@@ -4,14 +4,15 @@ layout: default
 nav_order: 5
 ---
 
-# Material
-
-* [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcDm3bEeNSyDeEIY1fYHp8i1)
-
 <!--
     Los archivos están subidos en la carpeta de drive del curso:
     https://drive.google.com/drive/folders/1-sBhVb2DKF5OCUpH2EepX7p870APkWxe?usp=drive_link
 -->
+
+# Material
+
+* [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcCdO6vn0ZI-ltAWf4zb_3uL)
+
  * Clase 1 - Programación orientada a objetos
       [[Presentación]](https://drive.google.com/file/d/1sJRMQvZdSzRf-E_7_rqc5-m_-HPXKhVX/view?usp=drive_link)
       [[Apunte]](https://drive.google.com/file/d/16Ns8j6c-1i6EsnIInhpw5WGtCJb_4LkB/view?usp=sharing)
@@ -20,7 +21,7 @@ nav_order: 5
       [[Presentación]](https://drive.google.com/file/d/1MyW7iMGjv5ckcsUPXVaebPlGcmOLwVBl/view?usp=sharing)
       [[Apunte]](https://drive.google.com/file/d/1HIvOpkntijYvR20UfPSte1UrRG69zwOd/view?usp=sharing)
  * Clase 3 - Principios de diseño
-      [[Presentación]](https://drive.google.com/file/d/1ffeqPpfE3wM8TRpEFOM98ed6G67_dqCA/view?usp=sharing))
+      [[Presentación]](https://drive.google.com/file/d/1ffeqPpfE3wM8TRpEFOM98ed6G67_dqCA/view?usp=sharing)
  * Clase 4 - Programación orientada a eventos
       [[Presentación]](https://drive.google.com/file/d/1FWaI2S8euIqEn84ImFZ0asFdswLNB-Tm/view?usp=sharing)
  * Clase 5 - Interfaces gráficas
@@ -40,6 +41,9 @@ nav_order: 5
 
 <details markdown="block">
   <summary><b>Material de cuatrimestres anteriores</b></summary>
+
+* 2025c1
+    * [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcDm3bEeNSyDeEIY1fYHp8i1)
 
 * 2024c1
     * [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcAwCQjRBMkbh_taSYbOcwcl)

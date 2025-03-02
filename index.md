@@ -6,7 +6,7 @@ nav_order: 1
 ---
 
 Este es el sitio del curso **TB025 Paradigmas de Programación**, curso
-Corsi-Essaya, de la [Facultad de Ingeniería de la Universidad de Buenos Aires
+Essaya, de la [Facultad de Ingeniería de la Universidad de Buenos Aires
 (FIUBA)](https://fi.uba.ar). La información que se presenta corresponde al
 **2do cuatrimestre 2024**.
 
@@ -17,12 +17,12 @@ Este curso corresponde a las materias:
 
 ## Docentes
 
-- Diego Corsi
 - Diego Essaya
 - Santiago Maraggi
 - Cristian Ciarallo
 - Alberto Carmona
 - Dante Finci
+- Federico Nicolás Pagnotta Lemes
 - José Ignacio Castro Martínez
 - Lautaro Trabado
 - Leticia Figueroa
@@ -30,14 +30,15 @@ Este curso corresponde a las materias:
 - Luca Salluzzi
 - María Macarena Vita Sanchez
 - Martín Fernandez Lahore
+- Matías Rea
 - Yaco Santamarina
 
 ## Días y horarios
 
 6 hs semanales
 
-- Lunes 14-17 hs - práctica
-- Jueves 14-17 hs - teórica
+- Lunes 14-17 hs - teórica
+- Jueves 14-17 hs - práctica
 
 Las clases son en modalidad **virtual**. Los exámenes parciales y finales son
 **presenciales**.
