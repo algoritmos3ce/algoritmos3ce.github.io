@@ -19,7 +19,6 @@ Este curso corresponde a las materias:
 
 - Diego Essaya
 - Santiago Maraggi
-- Cristian Ciarallo
 - Alberto Carmona
 - Dante Finci
 - Federico Nicolás Pagnotta Lemes
