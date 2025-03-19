@@ -8,8 +8,8 @@ nav_order: 9
 
 ## Java
 
-* [Java® Platform, Standard Edition & Java Development Kit - Version 23 API Specification](https://docs.oracle.com/en/java/javase/23/docs/api/index.html)
-  <br>Documentación / referencia de la API de Java 23
+* [Java® Platform, Standard Edition & Java Development Kit - Version 24 API Specification](https://docs.oracle.com/en/java/javase/24/docs/api/index.html)
+  <br>Documentación / referencia de la API de Java 24
   <br>[Otras versiones](https://docs.oracle.com/en/java/javase/)
 
 ## UML
