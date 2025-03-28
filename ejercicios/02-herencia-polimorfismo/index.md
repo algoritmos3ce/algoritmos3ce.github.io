@@ -47,7 +47,7 @@ public class Main {
 3. Dibujar el diagrama de clases.
 4. Implementar.
 
-[Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/HerenciaYPolimorfosmo/AreaTotal/Solucion)
+[Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/HerenciaYPolimorfismo/AreaTotal/Solucion)
 
 {: .ejercicio }
 ## Lista duplicante
@@ -65,7 +65,7 @@ Basándose en la clase `java.util.ArrayList<T>`, implementar `ListaDuplicante<T>
 
 ¿Qué ventajas y desventajas tiene cada una de las implementaciones?
 
-[Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/HerenciaYPolimorfosmo/ListaDuplicante/Solucion)
+[Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/HerenciaYPolimorfismo/ListaDuplicante/Solucion)
 
 {: .ejercicio }
 ## FIUBA 2
@@ -85,7 +85,7 @@ alumnos). No puede haber dos docentes con el mismo número de legajo.
 El sistema debe permitir: cargar un nuevo integrante, listar todos los alumnos
 (con todos sus datos), listar todos los docentes (con todos sus datos).
 
-[Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/HerenciaYPolimorfosmo/FIUBA2/Solucion)
+[Solución](https://github.com/algoritmos3ce/Ejercicios/tree/main/src/main/java/HerenciaYPolimorfismo/FIUBA2/Solucion)
 
 {: .ejercicio }
 ## Cartelera 2
