@@ -72,6 +72,8 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
   (./robots_con_diamante.png) o editar el archivo fuente .xcf.
 * Se debe permitir configurar el tamaño de la grilla (cantidad de filas y
   columnas).
+* En algún lugar se debe indicar la cantidad de recursos pendientes de recolección
+  del nivel actual.
 * Luego de perder una partida, se debe permitir comenzar de nuevo.
 
 ## Requerimientos adicionales
