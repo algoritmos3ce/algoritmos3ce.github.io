@@ -52,8 +52,14 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
   nivel.
 * Si el jugador toca una celda incendiada, termina el juego.
 * Si un robot toca una celda incendiada, el robot es destruido.
-* Si al finalizar el turno, todos los robots están destruidos, el jugador pasa
-  al siguiente nivel.
+* En cada escenario habrá 4 recursos recolectables, por ejemplo "diamantes", ubicados en 
+  celdas aleatorias y distintas entre sí.
+* Los casilleros con recursos recolectables NO son transitables para los robots, pero pero 
+  sí para el jugador. 
+* Cuando un jugador pisa una celda con un recurso recolectable, el recurso se considera
+  "recolectado" y desaparece del tablero. La celda pasa a ser transitable para robots.
+* Si al finalizar el turno, todos los robots están destruidos o se han recolectado todos
+  los recursos, el jugador pasa al siguiente nivel.
 
 ## Interfaz gráfica
 
@@ -62,6 +68,8 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
 * Debe ser posible jugar con el mouse o con el teclado.
 * Se puede usar cualquier set de imágenes para representar los elementos del
   juego, por ejemplo [las de Gnome Robots](./robots.png).
+* También se puede usar el modelo con un recurso de diamante agregado al anterior
+  (./robots_con_diamante.png) o editar el archivo fuente .xcf.
 * Se debe permitir configurar el tamaño de la grilla (cantidad de filas y
   columnas).
 * Luego de perder una partida, se debe permitir comenzar de nuevo.
