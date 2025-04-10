@@ -22,7 +22,7 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
 
 * Lasers es un juego de estilo _puzzle_, que se desarrolla por turnos hasta que
   el jugador encuentra la solución del problema.
-* En cualquier momentom el usuario puede elegir un nivel cualquiera de una
+* En cualquier momento el usuario puede elegir un nivel cualquiera de una
   lista de niveles disponibles.
 * El juego se desarrolla en una grilla bidimensional.
 * Según la configuración de cada nivel, en la grilla se disponen los siguientes
