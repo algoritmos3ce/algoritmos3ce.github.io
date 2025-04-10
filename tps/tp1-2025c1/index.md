@@ -67,7 +67,8 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
     - Ver [JavaFX en IntelliJ IDEA](/entorno/tutorial-javafx/)
 * Debe ser posible jugar con el mouse o con el teclado.
 * Se puede usar cualquier set de imágenes para representar los elementos del
-  juego, por ejemplo [las de Gnome Robots](./robots.png).
+  juego. Se provee una imagen que pueden usar, en formato
+  [PNG](./robots_con_diamante.png) y [xcf (Gimp)](./robots.xcf).
 * También se puede usar el modelo con un recurso de diamante agregado al anterior
   (./robots_con_diamante.png) o editar el archivo fuente .xcf.
 * Se debe permitir configurar el tamaño de la grilla (cantidad de filas y
