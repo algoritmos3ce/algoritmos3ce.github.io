@@ -52,8 +52,8 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
   nivel.
 * Si el jugador toca una celda incendiada, termina el juego.
 * Si un robot toca una celda incendiada, el robot es destruido.
-* En cada escenario habrá 4 recursos recolectables, por ejemplo "diamantes", ubicados en 
-  celdas aleatorias y distintas entre sí.
+* En cada escenario habrá 4 recursos recolectables, por ejemplo “diamantes”, ubicados en 
+  celdas aleatorias y distintas y a al menos 3 celdas de distancia entre sí.
 * Los casilleros con recursos recolectables NO son transitables para los robots, pero pero 
   sí para el jugador. 
 * Cuando un jugador pisa una celda con un recurso recolectable, el recurso se considera
