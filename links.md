@@ -26,7 +26,10 @@ nav_order: 9
 ## JavaFX
 
 * [JavaFX](https://openjfx.io/)
-  <br>Documentación / referencia de la API de JavaFX
+  <br>Sitio web oficial, con enlaces a la documentación y referencia de la API
+
+* [Documentación Oracle](https://docs.oracle.com/javase/8/javase-clienttechnologies.htm)
+  <br>Artículos explicativos y tutoriales de la versión 8 (es una versión antigua pero la mayoría de los conceptos siguen siendo vigentes).
 
 * [DZone JavaFX 8 refcard](https://enos.itcollege.ee/~jpoial/java/naited/refcard-javafx.pdf)
   <br>Resumen de los conceptos más importantes de JavaFX
