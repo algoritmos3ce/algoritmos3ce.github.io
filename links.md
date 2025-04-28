@@ -36,6 +36,9 @@ nav_order: 9
 
 ## Programación orientada a eventos
 
+* [Patrón Observer](https://refactoring.guru/design-patterns/observer)
+  <br>Patrón de diseño comunmente utilizado para implementar sistemas de eventos
+
 * [JavaFX: Handling Events](https://docs.oracle.com/javase/8/javafx/events-tutorial/events.htm)
   <br>Tutorial que describe cómo se procesan los eventos en JavaFX
 
