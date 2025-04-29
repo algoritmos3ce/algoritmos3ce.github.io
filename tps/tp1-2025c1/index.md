@@ -54,8 +54,8 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
 * Si un robot toca una celda incendiada, el robot es destruido.
 * En cada escenario habrá 4 recursos recolectables, por ejemplo “diamantes”, ubicados en 
   celdas aleatorias y distintas y a al menos 3 celdas de distancia entre sí.
-* Los casilleros con recursos recolectables NO son transitables para los robots, pero pero 
-  sí para el jugador. 
+* Los casilleros con recursos recolectables NO son transitables para los robots, pero sí
+  para el jugador. 
 * Cuando un jugador pisa una celda con un recurso recolectable, el recurso se considera
   "recolectado" y desaparece del tablero. La celda pasa a ser transitable para robots.
 * Si al finalizar el turno, todos los robots están destruidos o se han recolectado todos
@@ -70,7 +70,7 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
   juego. Se provee una imagen que pueden usar, en formato
   [PNG](./robots_con_diamante.png) y [xcf (Gimp)](./robots.xcf).
 * También se puede usar el modelo con un recurso de diamante agregado al anterior
-  (./robots_con_diamante.png) o editar el archivo fuente .xcf.
+  (`./robots_con_diamante.png`) o editar el archivo fuente `.xcf`.
 * Se debe permitir configurar el tamaño de la grilla (cantidad de filas y
   columnas).
 * En algún lugar se debe indicar la cantidad de recursos pendientes de recolección
@@ -79,8 +79,7 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
 
 ## Requerimientos adicionales
 
-* El proyecto debe utilizar Maven.
-    - Ver [Uso de Maven](/entorno/maven/)
+* El proyecto debe utilizar Maven. Ver [uso de Maven](/entorno/maven/).
 
 * Deben estar bien separadas las clases relacionadas con la **lógica** y la
   **interfaz gráfica**, en 2 capas de abstracción.
@@ -102,6 +101,6 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
 
 **Fecha límite para aprobar:** 22 de mayo 2025
 
-* El código debe estar alojado en un repositorio **privado** de Github dentro de el Github Classroom de la catedra:
-- Para eso deberan entrar a este link https://classroom.github.com/a/UoY0NL5F y crear un grupo junto con su compañero de TP.
-- Agregar en el Readme el padron y nombre de los integrantes
+* El código debe estar alojado en un repositorio **privado** de GitHub dentro de el GitHub Classroom de la cátedra:
+- Para eso deberán entrar a [este _link_](https://classroom.github.com/a/UoY0NL5F)  y crear un grupo junto con su compañero de TP.
+- Agregar en el `README.md` el padrón y nombre de los integrantes.
