@@ -69,8 +69,6 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
 * Se puede usar cualquier set de imágenes para representar los elementos del
   juego. Se provee una imagen que pueden usar, en formato
   [PNG](./robots_con_diamante.png) y [xcf (Gimp)](./robots.xcf).
-* También se puede usar el modelo con un recurso de diamante agregado al anterior
-  (./robots_con_diamante.png) o editar el archivo fuente .xcf.
 * Se debe permitir configurar el tamaño de la grilla (cantidad de filas y
   columnas).
 * En algún lugar se debe indicar la cantidad de recursos pendientes de recolección
