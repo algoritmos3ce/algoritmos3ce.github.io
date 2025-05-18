@@ -17,7 +17,7 @@ nav_order: 3
 *  Lunes 28 de julio, 17:30 a 20:30 hs, aula a determinar
 
 {: .importante }
-> Recordá inscribirte en el SIU Guaraní. Te podés inscribir hasta 72 hs hábiles > antes de la fecha del final.
+> Recordá inscribirte en el SIU Guaraní. Te podés inscribir hasta 72 hs hábiles antes de la fecha del final.
 >
 > Si curaste en 2025c1, la promoción es automática. Inscribite en alguna fecha de final (preferentemente la primera) para que podamos asentar la materia aprobada. No es necesario que asistas al examen.
 >
