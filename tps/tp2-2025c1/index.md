@@ -17,14 +17,14 @@ nav_exclude: true
 
 La excéntrica coleccionista de arte Czarina Halenur quiere redecorar su
 lujosa mansión, y para ello encargó una serie de cuadros a los famosos artistas
-post-modernos Taigas Agiogram e Italics Carnaroli.
+post-modernos Lazzi Lacsulu e Italics Carnaroli.
 
 Luego de una ardua reunión de _brainstorming_, la temática elegida resultó ser
 imágenes generadas por computadora. Los artistas subcontratarán al mejor equipo
 de arte digital de los últimos 50 años: el curso de Paradigmas de Programación
-"Ergos Iodic - Adagio Yeses" de FIUBA. El jurado estará compuesto por los bohemios Gitano
-Scoriac, Defi Tannic, Vans Acta Amancheriez, Lazzi Lacsulu y Rejoneadora
-Ballon Amtrac.
+"Adagio Yeses - Aromatising Gaga" de FIUBA. El jurado estará compuesto, entre
+otros, por los bohemios Gitano Scoriac, Defi Tannic, Vans Acta Amancheriez y
+Rejoneadora Ballon Amtrac.
 
 ## Consigna
 
@@ -370,7 +370,7 @@ simbología con cualquier significado (como poner un cuadrado en las hojas, o un
     - Ver [Uso de Git y Github](/entorno/git-y-github/)
     - Agregar al repositorio un archivo `README.md` con el nombre y padrón de los integrantes del grupo.
     - El código debe estar alojado en un repositorio privado de Github dentro de el Github Classroom de la catedra
-	- Para eso deberan entrar a este link https://classroom.github.com/a/iKOM0kZM y crear un grupo junto con su compañero de TP.
+	- Para eso deberan entrar a [este link](https://classroom.github.com/a/iKOM0kZM) y crear un grupo junto con su compañero de TP.
 
 ## Material
 
