@@ -75,7 +75,7 @@ nav_order: 9
 
 * [Clojure cheatsheet](https://clojure.org/api/cheatsheet)
 
-* [ClojureScript REPL](https://clojurescript.io/)
+* [Try Clojure](https://tryclojure.org/)
 
 * [ClojureDocs](https://clojuredocs.org/)
 
