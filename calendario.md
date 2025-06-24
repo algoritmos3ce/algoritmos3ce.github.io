@@ -10,11 +10,11 @@ nav_order: 3
 
 # Fechas de final 2025c1 (junio - agosto 2025)
 
-*  Lunes 30 de junio, 17:30 a 20:30 hs, aula a determinar
-*  Lunes 7 de julio, 17:30 a 20:30 hs, aula a determinar
-*  Lunes 14 de julio, 17:30 a 20:30 hs, aula a determinar
-*  Lunes 21 de julio, 17:30 a 20:30 hs, aula a determinar
-*  Lunes 28 de julio, 17:30 a 20:30 hs, aula a determinar
+*  Lunes 30 de junio, 17:30 a 20:30 hs, aula 422
+*  Lunes 7 de julio, 17:30 a 20:30 hs, aula 422
+*  Lunes 14 de julio, 17:30 a 20:30 hs, aula 422
+*  Lunes 21 de julio, 17:30 a 20:30 hs, aula 422
+*  Lunes 28 de julio, 17:30 a 20:30 hs, aula 422
 
 {: .importante }
 > Recordá inscribirte en el SIU Guaraní. Te podés inscribir hasta 72 hs hábiles antes de la fecha del final.
