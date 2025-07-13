@@ -2,34 +2,13 @@
 #import "@preview/cetz:0.4.0"
 #import "@preview/prequery:0.1.0"
 
-#set page(paper: "presentation-16-9", margin: 1cm)
-#set text(size: 16pt, font: "DejaVu Sans")
-#set list(tight: false)
-#set terms(separator: [*:* ])
-#show raw.where(block: true): it => block(fill: rgb("#f0f0f0"), inset: 1em, it)
-#show raw.where(block: false): it => box(fill: rgb("#f0f0f0"), inset: (x: 3pt, y: 0pt), outset: (y: 3pt), it)
+#import "../defs.typ": *
 
-#let azul = rgb("#0088CC")
-#show heading: set text(azul)
-#show heading: set block(below: 1em)
-#show link: it => {
-  set text(azul)
-  underline(it)
-}
+#show: default-style
 
-#slide[
-  #set page(margin: (left: 2cm), background: place(top + left, box(fill: azul, width: 1cm, height: 100%)))
-  #grid(
-    rows: (auto, 1fr, auto, 1fr, auto),
-    [#h(1fr) #box(image("fiuba-logo.png", width: 8cm))],
-    [],
-    [
-      #set text(size: 30pt)
-      = Programación Orientada a Objetos
-    ],
-    [],
-    [TB025 - Paradigmas de Programación #h(1fr) Curso Essaya],
-  )
+#caratula[
+  #set text(size: 30pt)
+  = Programación Orientada a Objetos
 ]
 
 #slide[
@@ -285,7 +264,7 @@
     },
     {
       set text(size: 11pt)
-      let src = read("ejemplos/adivina/src/main/java/tb025/JuegoApp.java").split("\n").slice(17).join("\n")
+      let src = read("ejemplos/adivina/src/main/java/tb025/JuegoApp.java").split("\n").slice(16).join("\n")
       raw(src, lang: "java", block: true)
     },
   )
@@ -373,26 +352,24 @@
 #slide[
   = Tipos de datos
 
-  #set text(size: 14pt)
+  #set text(size: 15pt)
 
   - Dos categorías: #link("https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html")[\[\#\]]
     - *Primitivos*: `int`, `double`, `boolean`, `char`, etc. (valor por defecto: `0`)
     - *Referencias*: apuntan a un objeto en memoria (ej: `Punto`, valor por defecto: `null`)
 
   - Arreglos: #link("https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html")[\[\#\]]
-    - Declaración: `int[] numeros = new int[10];`
-    - Inicialización: `int[] numeros = {1, 2, 3};`
-    - Acceso: `numeros[0]`, `numeros.length`
-    - Son instancias de la clase `Array`
+    - Declaración: `int[] numeros;`
+    - Inicialización: `numeros = new int[10];` #h(1em) `numeros = {1, 2, 3};`
+    - Acceso: `numeros[0]` #h(1em) `numeros.length`
     - El tamaño de un arreglo es fijo una vez creado
-    - Es la única estructura de datos provista por el lenguaje
 
-  - Colecciones: #link("https://docs.oracle.com/javase/tutorial/collections/TOC.html")[\[\#\]]
-    - Clases disponibles en la biblioteca estándar
-    - `ArrayList`, `HashSet`, `HashMap`, etc.
-
-  - String: #link("https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/String.html")[\[\#\]]
+  - Strings: #link("https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/String.html")[\[\#\]]
     - Son instancias de la clase `String`
     - `"..."` es azúcar sintáctica para `new String(...)`
     - Inmutables
+
+  - Colecciones dinámicas: #link("https://docs.oracle.com/javase/tutorial/collections/TOC.html")[\[\#\]]
+    - Clases disponibles en la biblioteca estándar
+    - `ArrayList`, `HashSet`, `HashMap`, etc.
 ]

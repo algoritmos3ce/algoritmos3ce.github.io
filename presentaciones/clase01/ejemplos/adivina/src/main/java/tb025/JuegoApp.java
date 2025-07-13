@@ -3,7 +3,6 @@ package tb025;
 import java.util.Scanner;
 
 public class JuegoApp {
-
     public static final int MAX_NUMERO = 100;
     public static final int MAX_INTENTOS = 5;
 
@@ -12,7 +11,7 @@ public class JuegoApp {
 
     public JuegoApp(Scanner scanner) {
         this.scanner = scanner;
-        Juego juego = new Juego(MAX_NUMERO, MAX_INTENTOS);
+        this.juego = new Juego(MAX_NUMERO, MAX_INTENTOS);
     }
 
     public void jugar() {
