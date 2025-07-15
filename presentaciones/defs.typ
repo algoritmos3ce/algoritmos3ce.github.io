@@ -1,6 +1,6 @@
 #import "@preview/polylux:0.4.0": *
 
-#let azul = rgb("#0088CC")
+#let azul = rgb("#0088cc")
 
 #let default-style(it) = {
   import "defs.typ": *
@@ -22,17 +22,35 @@
   it
 }
 
-#let caratula(it) = {
-  set page(margin: (left: 2cm), background: place(top + left, box(fill: azul, width: 1cm, height: 100%)))
+#let titulo(it) = {
+  set page(
+    margin: (left: 2cm, right: 2cm),
+    background: {
+      place(top + left, image("barra-lateral.png", height: 100%))
+      place(top + right, image("barra-lateral.png", height: 100%))
+    },
+  )
 
   slide[
-    #grid(
-      rows: (auto, 1fr, auto, 1fr, auto),
-      [#h(1fr) #box(image("./fiuba-logo.png", width: 8cm))],
-      [],
-      it,
-      [],
-      [TB025 - Paradigmas de Programación #h(1fr) Curso Essaya],
-    )
+    #it
+  ]
+}
+
+#let caratula(it) = {
+  titulo[
+    #align(right)[ #box(image("./fiuba-logo.png", width: 8cm)) ]
+    #v(1fr)
+    #{
+      set text(size: 26pt)
+      it
+    }
+    #v(1fr)
+    TB025 - Paradigmas de Programación #h(1fr) Curso Essaya
+  ]
+}
+
+#let fin() = {
+  titulo[
+    #place(center + horizon, image("redes.png", width: 70%))
   ]
 }

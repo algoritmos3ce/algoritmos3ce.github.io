@@ -7,7 +7,6 @@
 #show: default-style
 
 #caratula[
-  #set text(size: 30pt)
   = Programación Orientada a Objetos
 ]
 
@@ -373,3 +372,5 @@
     - Clases disponibles en la biblioteca estándar
     - `ArrayList`, `HashSet`, `HashMap`, etc.
 ]
+
+#fin()

@@ -7,7 +7,6 @@
 #show: default-style
 
 #caratula[
-  #set text(size: 30pt)
   = Abstracción, encapsulamiento, herencia y polimorfismo
 ]
 
@@ -829,3 +828,5 @@
     #link("https://github.com/dcorsi/algo3/tree/main/comunicaciones")[Fuente]
   ]
 ]
+
+#fin()
