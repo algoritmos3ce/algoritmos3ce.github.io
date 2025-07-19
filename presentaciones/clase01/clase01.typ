@@ -25,6 +25,8 @@
 
   Los lenguajes más utilizados (por ejemplo, Java) son *multiparadigma*. Cabe a los
   programadores usar el estilo de programación más adecuado para cada trabajo.
+
+  #fuente("https://en.wikipedia.org/wiki/Programming_paradigm")
 ]
 
 #slide[
@@ -33,7 +35,7 @@
     align: (auto, horizon + center),
     gutter: 1cm,
     [
-      = Historia
+      = OOP: Historia
 
       / 1950s: La idea de "objetos" surge del grupo de IA del MIT
 
@@ -53,6 +55,8 @@
       width: 100%,
     ),
   )
+
+  #fuente("https://en.wikipedia.org/wiki/Object-oriented_programming")
 ]
 
 #slide[
@@ -61,7 +65,7 @@
     align: (auto, horizon + center),
     gutter: 1cm,
     [
-      = Historia (cont.)
+      = OOP: Historia (cont.)
 
       / 1990s-2000s: OOP es mainstream
         - Java (James Gosling $->$ Sun Microsystems $->$ Oracle)
@@ -226,10 +230,7 @@
 #slide[
   = Ejemplo: Número secreto
 
-  #place(bottom + right)[
-    #set text(size: 10pt)
-    #link("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase01/ejemplos/adivina")[Fuente]
-  ]
+  #fuente("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase01/ejemplos/adivina")
 
   #grid(
     columns: (auto, auto),
@@ -250,10 +251,7 @@
 #slide[
   = Ejemplo: Número secreto (cont.)
 
-  #place(bottom + right)[
-    #set text(size: 10pt)
-    #link("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase01/ejemplos/adivina")[Fuente]
-  ]
+  #fuente("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase01/ejemplos/adivina")
 
   #grid(columns: 2, gutter: 1cm,
     {
@@ -287,6 +285,8 @@
       #prequery.image("https://upload.wikimedia.org/wikipedia/commons/d/d5/UML_logo.svg", "umllogo.svg", width: 5cm)
     ],
   )
+
+  #fuente("https://en.wikipedia.org/wiki/Unified_Modeling_Language")
 ]
 
 #slide[
@@ -296,10 +296,7 @@
     #prequery.image("https://uml.planttext.com/plantuml/svg/PL8zRy8m4DtpAsuCfQ3E31Me4nqwD6FLmJYdO1hVeVEvGaNzxpLn314TBClluvxlx7LG8nfzN-rTYs2Ts1whyENeQCHuy4nizy8UGILE6TkR43QgudPHSMkP6lU3y3IH24TgBGkX9BmQ7D1OGnVWN07CmP42uKctfFMi-YsYruWT3nA0HHP5Zy8DMa7b2PuMad8Oe7asrXV2czFRu7c4yRWTfRDHUu4xr0BN1N_747irBO_5ZGm5QNA_c-GycdRCFHe232yiWdQyv1oQD27gm2C5Sy3xYFg_x_7ESZ-MpV5uJIr0NQOQybvQ-MRNmY5sgOK2fGTNPpFZZQCwftryWf4k367N65wKvrgLoZVoOP7ZLoaWRPc0vVBvrbsrHchJv_e3", "clases.svg", width: 80%)
   ]
 
-  #place(bottom + right)[
-    #set text(size: 10pt)
-    #link("https://www.planttext.com/?text=PL8zRy8m4DtpAsuCfQ3E31Me4nqwD6FLmJYdO1hVeVEvGaNzxpLn314TBClluvxlx7LG8nfzN-rTYs2Ts1whyENeQCHuy4nizy8UGILE6TkR43QgudPHSMkP6lU3y3IH24TgBGkX9BmQ7D1OGnVWN07CmP42uKctfFMi-YsYruWT3nA0HHP5Zy8DMa7b2PuMad8Oe7asrXV2czFRu7c4yRWTfRDHUu4xr0BN1N_747irBO_5ZGm5QNA_c-GycdRCFHe232yiWdQyv1oQD27gm2C5Sy3xYFg_x_7ESZ-MpV5uJIr0NQOQybvQ-MRNmY5sgOK2fGTNPpFZZQCwftryWf4k367N65wKvrgLoZVoOP7ZLoaWRPc0vVBvrbsrHchJv_e3")[Fuente]
-  ]
+  #fuente("https://www.planttext.com/?text=PL8zRy8m4DtpAsuCfQ3E31Me4nqwD6FLmJYdO1hVeVEvGaNzxpLn314TBClluvxlx7LG8nfzN-rTYs2Ts1whyENeQCHuy4nizy8UGILE6TkR43QgudPHSMkP6lU3y3IH24TgBGkX9BmQ7D1OGnVWN07CmP42uKctfFMi-YsYruWT3nA0HHP5Zy8DMa7b2PuMad8Oe7asrXV2czFRu7c4yRWTfRDHUu4xr0BN1N_747irBO_5ZGm5QNA_c-GycdRCFHe232yiWdQyv1oQD27gm2C5Sy3xYFg_x_7ESZ-MpV5uJIr0NQOQybvQ-MRNmY5sgOK2fGTNPpFZZQCwftryWf4k367N65wKvrgLoZVoOP7ZLoaWRPc0vVBvrbsrHchJv_e3")
 ]
 
 #slide[
@@ -319,10 +316,7 @@
     #prequery.image("https://uml.planttext.com/plantuml/svg/dLF1JiCm3BtdAtpS3Y3EQAh64IHE4wUTGcjL6MbSEIuVnvKVmstNT4t798WKHN7USvvVd7qKoz8rthIwkjArDWYyT5ZJKzkkWyQMGWnliRFio9YIqGhEX2FT5Ma7Zx3RZOYYw9dkSm5Ui4rYJHbkqKVq9RH2GMvSi0pX-wj19eYeR4dOfRBJaAR2B6yU67IQOywjBM-srqgwhEBiaX9UAGghiWP3j2S45zHLwutnH2qq3eCUnr7JVOto74H353TRAE31W8vhzYoG0ogh9X7pwjsPDY1M9kJthGkP-C2e7QIRCTCDve6yrYppyoprJXtL1oTIfZdaObCN_kRFg5AVAlpD7Isgys8h-gyzSuBnNYzp2312ISoeFsauxSUxjlb7sc6epBJsysfNxlL4F-uF", "secuencia.svg", height: 95%)
   ]
 
-  #place(bottom + right)[
-    #set text(size: 10pt)
-    #link("https://www.planttext.com/?text=dLF1JiCm3BtdAtpS3Y3EQAh64IHE4wUTGcjL6MbSEIuVnvKVmstNT4t798WKHN7USvvVd7qKoz8rthIwkjArDWYyT5ZJKzkkWyQMGWnliRFio9YIqGhEX2FT5Ma7Zx3RZOYYw9dkSm5Ui4rYJHbkqKVq9RH2GMvSi0pX-wj19eYeR4dOfRBJaAR2B6yU67IQOywjBM-srqgwhEBiaX9UAGghiWP3j2S45zHLwutnH2qq3eCUnr7JVOto74H353TRAE31W8vhzYoG0ogh9X7pwjsPDY1M9kJthGkP-C2e7QIRCTCDve6yrYppyoprJXtL1oTIfZdaObCN_kRFg5AVAlpD7Isgys8h-gyzSuBnNYzp2312ISoeFsauxSUxjlb7sc6epBJsysfNxlL4F-uF")[Fuente]
-  ]
+  #fuente("https://www.planttext.com/?text=dLF1JiCm3BtdAtpS3Y3EQAh64IHE4wUTGcjL6MbSEIuVnvKVmstNT4t798WKHN7USvvVd7qKoz8rthIwkjArDWYyT5ZJKzkkWyQMGWnliRFio9YIqGhEX2FT5Ma7Zx3RZOYYw9dkSm5Ui4rYJHbkqKVq9RH2GMvSi0pX-wj19eYeR4dOfRBJaAR2B6yU67IQOywjBM-srqgwhEBiaX9UAGghiWP3j2S45zHLwutnH2qq3eCUnr7JVOto74H353TRAE31W8vhzYoG0ogh9X7pwjsPDY1M9kJthGkP-C2e7QIRCTCDve6yrYppyoprJXtL1oTIfZdaObCN_kRFg5AVAlpD7Isgys8h-gyzSuBnNYzp2312ISoeFsauxSUxjlb7sc6epBJsysfNxlL4F-uF")
 ]
 
 #slide[
@@ -346,6 +340,8 @@
   - El modificador `final` indica que una variable o atributo es inmutable.
 
   - El modificador `static` indica que un atributo o método pertenece a la clase en sí, y no a una instancia específica.
+
+  #fuente("https://docs.oracle.com/javase/tutorial/java/nutsandbolts/index.html")
 ]
 
 #slide[

@@ -1,6 +1,8 @@
 #import "@preview/polylux:0.4.0": *
 
 #let azul = rgb("#0088cc")
+#let rojo = rgb("#cc2200")
+#let verde = rgb("#228800")
 
 #let default-style(it) = {
   import "defs.typ": *
@@ -11,6 +13,10 @@
   set terms(separator: [*:* ])
   show raw.where(block: true): it => block(fill: rgb("#f0f0f0"), inset: 1em, it)
   show raw.where(block: false): it => box(fill: rgb("#f0f0f0"), inset: (x: 3pt, y: 0pt), outset: (y: 3pt), it)
+
+  set quote(block: true)
+  show quote: set pad(x: 5em)
+  show quote: emph
 
   show heading: set text(azul)
   show heading: set block(below: 1em)
@@ -54,3 +60,13 @@
     #place(center + horizon, image("redes.png", width: 70%))
   ]
 }
+
+#let fuente(url) = {
+  place(bottom + right)[
+    #set text(size: 10pt)
+    #box(fill: white, inset: 0.5em)[#link(url)[Fuente]]
+  ]
+}
+
+#let malo(body) = text(rojo)[ #sym.crossmark.heavy #body ]
+#let bueno(body) = text(verde)[ #sym.checkmark.heavy #body ]

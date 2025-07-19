@@ -58,33 +58,63 @@
       ```
     ],
   )
+
+  #fuente("https://en.wikipedia.org/wiki/Abstraction_(computer_science)")
 ]
 
 #slide[
   = Abstracción: interfaces
 
+  En el paradigma de objetos, una manera de abstraer objetos es mediante la
+  definición de *interfaces*.
+
+  #set align(center)
+  #set text(size: 12pt)
+  #v(1fr)
+  ```java
+  public interface Lista {
+      void agregar(Object element);
+      Object obtener(int index);
+      int size();
+  }
+  ```
+  #v(1fr)
+  ```java
+  public void armarListaSupermercado(Lista lista) {
+      lista.agregar("mate");
+      lista.agregar("café");
+      lista.agregar("azúcar");
+      lista.agregar("palmitos");
+  }
+  ```
+  #v(1fr)
+]
+
+#slide[
+  = Abstracción: composición y agregación
+
   #grid(columns: 2, gutter: 1cm,
     [
-      En el paradigma de objetos, una manera de abstraer objetos es mediante la
-      definición de *interfaces*.
+      Otra forma de lograr la abstracción es mediante la
+      *composición* y *agregación* de objetos.
 
       #set align(center)
       #set text(size: 12pt)
       #v(1fr)
       ```java
       public interface Lista {
-        void agregar(Object element);
-        Object obtener(int index);
-        int size();
+          void agregar(Object element);
+          Object obtener(int index);
+          int size();
       }
       ```
       #v(1fr)
       ```java
       public void armarListaSupermercado(Lista lista) {
-        lista.agregar("mate");
-        lista.agregar("café");
-        lista.agregar("azúcar");
-        lista.agregar("palmitos");
+          lista.agregar("mate");
+          lista.agregar("café");
+          lista.agregar("azúcar");
+          lista.agregar("palmitos");
       }
       ```
       #v(1fr)
@@ -117,7 +147,12 @@
           import cetz.draw: *
           content((0, 0), box([_Lista_], inset: 0.3cm, stroke: black), name: "lista")
           content((rel: (0, -2)), box([VectorDinamico], inset: 0.3cm, stroke: black), name: "vd")
+          content((rel: (5, 0)), box([Object], inset: 0.3cm, stroke: black), name: "o")
+
           line("vd.north", "lista.south", mark: (end: (symbol: ">", scale: 2)), stroke: (dash: "dashed"))
+          line("vd.east", "o.west", mark: (start: (symbol: "diamond", scale: 2)), name: "elems")
+          content((rel: (.2, .25), to: "elems.start"), anchor: "south-west", [1])
+          content((rel: (-.2, .25), to: "elems.end"), anchor: "south-east", [\*])
         })
       }
       #v(1fr)
@@ -126,86 +161,62 @@
 ]
 
 #slide[
-  = Abstracción: composición y agregación
+  = Abstracción: composición y agregación (cont.)
 
-  Otra forma de lograr la abstracción es mediante la
-  *composición* y *agregación* de objetos.
+  #set text(size: 12pt)
+  #set align(center+horizon)
+  #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
+    ```java
+    public interface Lista { ... }
 
-  #grid(columns: 2, gutter: 1cm,
-    [
-      #set align(center)
-      #set text(size: 12pt)
-      #v(1fr)
-      ```java
-      public class CarroDeCompras {
-          private Lista lista;
+    public class ListaEnlazada implements Lista {
+        // composición: la ListaEnlazada es dueña del Nodo
+        // y sus tiempos de vida están ligados.
+        private Nodo primero;
 
-          public CarroDeCompras() {
-              // composición: la lista pertenece al CarroDeCompras
-              // y sus tiempos de vida están ligados.
-              this.lista = new VectorDinamico();
-          }
+        // ...
+    }
 
-          public void agregarProducto(Object producto) {
-              lista.agregar(producto);
-          }
-      }
-      ```
-      #v(1fr)
-      ```java
-      CarroDeCompras carro = new CarroDeCompras();
-      carro.agregarProducto("pan");
-      ```
-      #v(1fr)
-      // UML: composición CarroDeCompras <>- Lista
-      #{
-        set text(font: "DejaVu Sans Mono")
-        cetz.canvas({
-          import cetz.draw: *
-          content((0, 0), box([CarroDeCompras], inset: 0.3cm, stroke: black), name: "carro")
-          content((rel: (5, 0)), box([_Lista_], inset: 0.3cm, stroke: black), name: "lista")
-          line("carro.east", "lista.west", mark: (start: (symbol: "diamond", fill: black, scale: 2)))
-        })
-      }
-      #v(1fr)
-    ],
-    [
-      #set align(center)
-      #set text(size: 12pt)
-      #v(1fr)
-      ```java
-      public class Caja {
-          private CarroDeCompras carro;
+    class Nodo {
+        // agregación: el Nodo tiene una referencia a
+        // otro Nodo, pero no es responsable de
+        // su creación o destrucción.
+        private Nodo siguiente;
 
-          public Caja(carro) {
-              // agregación: los tiempos de vida
-              // no están ligados
-              this.carro = carro;
-          }
+        // agregación: el Nodo tiene una referencia a la
+        // instancia de Object, pero no es responsable de
+        // su creación o destrucción.
+        private Object dato;
 
-          public double calcularImpuestos() {  ... }
-          public double aplicarPromociones() {  ... }
-      }
-      ```
-      #v(1fr)
-      ```java
-      Caja caja = new Caja(carro);
-      double impuestos = caja.calcularImpuestos();
-      ```
-      #v(1fr)
-      // UML: agregación Caja <>- CarroDeCompras
-      #{
-        set text(font: "DejaVu Sans Mono")
-        cetz.canvas({
-          import cetz.draw: *
-          content((0, 0), box([Caja], inset: 0.3cm, stroke: black), name: "caja")
-          content((rel: (5, 0)), box([CarroDeCompras], inset: 0.3cm, stroke: black), name: "carro")
-          line("caja.east", "carro.west", mark: (start: (symbol: "diamond", scale: 2)))
-        })
-      }
-      #v(1fr)
-    ],
-  )
+        // ...
+    }
+    ```
+  ][][
+    #set text(font: "DejaVu Sans Mono")
+    #cetz.canvas({
+      import cetz.draw: *
+      content((0, 0), box([_Lista_], inset: 0.3cm, stroke: black), name: "lista")
+      content((rel: (0, -2), to: "lista"), box([ListaEnlazada], inset: 0.3cm, stroke: black), name: "le")
+      content((rel: (0, -2), to: "le"), box([Nodo], inset: 0.3cm, stroke: black), name: "nodo")
+      content((rel: (0, -2), to: "nodo"), box([Object], inset: 0.3cm, stroke: black), name: "obj")
+
+      line("le.north", "lista.south", mark: (end: (symbol: ">", scale: 2)), stroke: (dash: "dashed"))
+      line("le.south", "nodo.north", mark: (start: (symbol: "diamond", scale: 2, fill: black)), name: "primero")
+      line("nodo.south", "obj.north", mark: (start: (symbol: "diamond", scale: 2)), name: "dato")
+      line(
+        ("nodo.north-east", 25%, "nodo.south-east"),
+        (rel: (1, 0)),
+        (rel: (1, 0), to: ("nodo.north-east", 75%, "nodo.south-east")),
+        ("nodo.north-east", 75%, "nodo.south-east"),
+        mark: (start: (symbol: "diamond", scale: 2)),
+        name: "siguiente",
+      )
+
+      content((rel: (2, 0), to: "nodo"), anchor: "west", [siguiente])
+      content((rel: (0.2, -0.2), to: "dato.start"), anchor: "north-west", [dato])
+      content((rel: (0.2, -0.2), to: "primero.start"), anchor: "north-west", [primero])
+    })
+  ][]
 ]
 
 #slide[
@@ -256,6 +267,52 @@
       #v(1fr)
     ],
   )
+
+  #fuente("https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)")
+]
+
+#slide[
+  #toolbox.side-by-side(columns: (1fr, auto))[
+    = Encapsulamiento: getters y setters
+
+    Una práctica común es definir *métodos de acceso* (getters) y *métodos de
+    modificación* (setters) para acceder y modificar los atributos de una clase.
+
+    Los setters permiten entre otras cosas validar que no se violen la
+    *invariantes* del objeto.
+  ][
+    #set text(size: 12pt)
+    ```java
+    public class Persona {
+        private String nombre; // invariante: no es vacío
+        private int edad; // invariante: edad >= 0
+
+        public Persona(String nombre, int edad) { ... }
+
+        public String getNombre() {
+            return nombre;
+        }
+
+        public void setNombre(String nombre) {
+            if (nombre == null || nombre.isEmpty()) {
+                throw new IllegalArgumentException("...");
+            }
+            this.nombre = nombre;
+        }
+
+        public int getEdad() {
+            return edad;
+        }
+
+        public void setEdad(int edad) {
+            if (edad < 0) {
+                throw new IllegalArgumentException("...");
+            }
+            this.edad = edad;
+        }
+    }
+    ```
+  ]
 ]
 
 #slide[
@@ -279,6 +336,8 @@
     ilimitado de tipos relacionados entre sí.
     - *Polimorfismo paramétrico*
     - *Polimorfismo por inclusión*
+
+  #fuente("https://en.wikipedia.org/wiki/Polymorphism_(computer_science)")
 ]
 
 #slide[
@@ -445,7 +504,6 @@
         })
       }
       #v(1fr)
-
     ],
     [
         #set text(size: 12pt)
@@ -478,6 +536,8 @@
         ```
     ],
   )
+
+  #fuente("https://en.wikipedia.org/wiki/Inheritance_(object-oriented_programming)")
 ]
 
 #slide[
@@ -791,6 +851,8 @@
       ```
     ],
   )
+
+  #fuente("https://en.wikipedia.org/wiki/Multiple_inheritance")
 ]
 
 #slide[
@@ -823,10 +885,7 @@
   De esta manera se evita el problema del diamante, ya que en todos los casos
   hay una única implementación del método `enviar`.
 
-  #place(bottom + right)[
-    #set text(size: 10pt)
-    #link("https://github.com/dcorsi/algo3/tree/main/comunicaciones")[Fuente]
-  ]
+  #fuente("https://github.com/dcorsi/algo3/tree/main/comunicaciones")
 ]
 
 #fin()
