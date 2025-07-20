@@ -6,13 +6,25 @@
 
 #show: default-style
 
-#let nosi(body1, body2) = [
-  #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
-    #malo[ No ]
-    #body1
+#let withlabel(label, content, alignment: top+right) = box[
+  #content
+  #place(alignment)[
+    #box(
+      inset: 0.25em,
+      box(
+        inset: 0.25em,
+        fill: white.transparentize(25%),
+        label,
+      ),
+    )
+  ]
+]
+
+#let nosi(body1, body2, alignment: top+right, ..args) = [
+  #grid(columns: (1fr, auto, 1fr, auto, 1fr), ..args)[][
+    #withlabel(alignment: alignment)[ #malo[ No ] ][ #body1 ]
   ][][
-    #bueno[ Sí ]
-    #body2
+    #withlabel(alignment: alignment)[ #bueno[ Sí ] ][ #body2 ]
   ][]
 ]
 
@@ -47,6 +59,52 @@
 
 #slide[
   #layout(size => [
+    = Principios de diseño
+
+    #toolbox.side-by-side(columns: (1fr, auto))[
+      - YAGNI (You Ain’t Gonna Need It) // done
+      - KISS (Keep It Simple, Stupid!) // done
+      - DRY (Don’t Repeat Yourself) // done
+      - PoLA (Principle of Least Astonishment) // done
+      - KOP (Knuth's Optimization Principle) // done
+      - SoC (Separation of Concerns Principle) // done
+      - Alta cohesión, bajo acoplamiento // done
+
+      OOP:
+
+      - TDA (Tell, Don’t Ask!) // done
+      - PoLK (Principle of Least Knowledge) // done
+      - EDP (Explicit Dependencies Principle) // done
+      - SOLID (SRP, OCP, LSP, ISP, DIP)
+      - Composition over inheritance
+    ][
+      #image("wtfs.png", height: size.height * 0.8)
+    ]
+  ])
+
+  #fuente("https://en.wikipedia.org/wiki/Category:Programming_principles")
+]
+
+#slide[
+  = Una advertencia...
+
+  #toolbox.side-by-side(columns: (1fr, auto))[
+    Ojo: los principios de diseño *no son dogmas*.
+
+    No se deben aplicar ciegamente, sino que deben ser considerados
+    como guías para mejorar la calidad del código y la arquitectura del
+    software.
+
+    Muchos de estos principios pueden entrar en conflicto entre sí, y
+    es importante evaluar cada situación y decidir cuál es el más adecuado
+    para el contexto.
+  ][
+    #image("pare.png", width: 8cm)
+  ]
+]
+
+#slide[
+  #layout(size => [
     = No solo es acerca del código
 
     #toolbox.side-by-side(columns: (1fr, auto))[
@@ -64,34 +122,6 @@
       #image("linus.jpg", height: size.height * 0.8)
     ]
   ])
-]
-
-#slide[
-  #layout(size => [
-    = Principios de diseño
-
-    #toolbox.side-by-side(columns: (1fr, auto))[
-      - YAGNI (You Ain’t Gonna Need It) // done
-      - KISS (Keep It Simple, Stupid!) // done
-      - DRY (Don’t Repeat Yourself) // done
-      - PoLA (Principle of Least Astonishment) // done
-      - KOP (Knuth's Optimization Principle) // done
-      - SoC (Separation of Concerns Principle) // done
-      - Alta cohesión, bajo acoplamiento // done
-
-      OOP:
-
-      - TDA (Tell, Don’t Ask!) // done
-      - PoLK (Principle of Least Knowledge) // done
-      - EDP (Explicit Dependencies Principle)
-      - SOLID (SRP, OCP, LSP, ISP, DIP)
-      - Composition over inheritance
-    ][
-      #image("wtfs.png", height: size.height * 0.8)
-    ]
-  ])
-
-  #fuente("https://en.wikipedia.org/wiki/Category:Programming_principles")
 ]
 
 #slide[
@@ -671,6 +701,351 @@
     }
     ```
   ]
+]
+
+#slide[
+  = OCP: Open/Closed Principle
+
+  *Principio abierto/cerrado:* Las clases deben estar abiertas para su extensión,
+  pero cerradas para su modificación.
+
+  Es decir, debe ser posible agregar nuevas funcionalidades a una clase
+  sin modificar su código existente.
+
+  #set text(size: 14pt)
+  #withlabel[ #malo[ No ] ][
+    ```java
+    public class Calculadora {
+        public int calcular(String op, int a, int b) {
+            switch (op) {
+                case "+": return a + b;
+                case "-": return a - b;
+            }
+        }
+
+        public boolean esConmutativo(String op) {
+            switch (op) {
+                case "+": return true;
+                case "-": return false;
+            }
+        }
+    }
+    ```
+  ]
+]
+
+#slide[
+  = OCP: Open/Closed Principle (cont.)
+
+  #set text(size: 12pt)
+
+  #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
+    #bueno[ Sí: ]
+
+    ```java
+    public interface Operacion {
+        String simbolo();
+        int calcular(int a, int b);
+        boolean esConmutativo();
+    }
+    ```
+
+    ```java
+    public class Suma implements Operacion {
+        public String simbolo() { return "+"; }
+        public int calcular(int a, int b) { return a + b; }
+        public boolean esConmutativo() { return true; }
+    }
+    ```
+
+    ```java
+    public class Resta implements Operacion {
+        public String simbolo() { return "-"; }
+        public int calcular(int a, int b) { return a - b; }
+        public boolean esConmutativo() { return false; }
+    }
+    ```
+  ][][
+    ```java
+    public class Calculadora {
+        private Map<String, Operacion> operaciones = new HashMap<>();
+
+        public void registrarOperacion(Operacion operacion) {
+            operaciones.put(operacion.simbolo(), operacion);
+        }
+
+        public String mostrar(String op, int a, int b) {
+            int r = calcular(op, a, b);
+            return "%d %s %d = %c".formatted(a, op, b, r);
+        }
+
+        public int calcular(String op, int a, int b) {
+            Operacion operacion = operaciones.get(op);
+            return operacion.calcular(a, b);
+        }
+    }
+    ```
+
+    ```java
+    Calculadora calc = new Calculadora();
+    calc.registrarOperacion(new Suma());
+    calc.registrarOperacion(new Resta());
+
+    System.out.println(calc.calcular("+", 5, 3));
+    ```
+  ][]
+]
+
+#slide[
+  #toolbox.side-by-side(columns: (1fr, auto))[
+    = LSP: Liskov Substitution Principle
+
+    *Principio de sustitución de Liskov:* Una instancia de una clase
+    debe poder ser sustituida por una instancia de una clase derivada sin "romper"
+    el comportamiento del programa.
+  ][
+    #image("liskov.jpg", height: 5cm)
+  ]
+
+  #set text(size: 12pt)
+  #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
+    #withlabel[ #malo[ No ] ][
+      ```java
+      public class Naipe {
+          private String palo;
+          private int numero;
+
+          public Naipe(String palo, int numero) {
+              this.palo = palo;
+              this.numero = numero;
+          }
+
+          public String getPalo() { return palo; }
+
+          public int getNumero() { return numero; }
+
+          public String mostrar() {
+              return "%s de %d".formatted(numero, palo);
+          }
+      }
+      ```
+    ]
+  ][][
+    ```java
+    public class Comodin extends Naipe {
+        public Comodin() {
+            super("Comodín", 0);
+        }
+
+        @Override public String getPalo() {
+            throw new UnsupportedOperationException("Un comodín no tiene palo");
+        }
+
+        @Override public int getNumero() {
+            throw new UnsupportedOperationException("Un comodín no tiene número");
+        }
+
+        public String mostrar() {
+            return "Comodín";
+        }
+    }
+    ```
+  ][]
+]
+
+#slide[
+  = LSP: Liskov Substitution Principle (cont.)
+
+  #set text(size: 12pt)
+  #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
+    #bueno[ Sí: ]
+
+    ```java
+    public interface Naipe {
+        public String mostrar();
+    }
+    ```
+  ][][
+    ```java
+    public class NaipeComun implements Naipe {
+        private String palo;
+        private int numero;
+
+        public NaipeComun(String palo, int numero) {
+            this.palo = palo;
+            this.numero = numero;
+        }
+
+        public String getPalo() { return palo; }
+
+        public int getNumero() { return numero; }
+
+        public String mostrar() {
+            return "%s de %d".formatted(numero, palo);
+        }
+    }
+
+    public class Comodin extends Naipe {
+        public String mostrar() {
+            return "Comodín";
+        }
+    }
+    ```
+  ][]
+]
+
+#slide[
+  = DIP: Dependency Inversion Principle
+
+  *Principio de inversión de dependencias:*
+
+  - Las clases de alto nivel no deben
+    depender de clases de bajo nivel; ambas deben depender de abstracciones.
+  - Las abstracciones no deben depender de detalles; los detalles deben
+    depender de las abstracciones.
+
+    #set text(size: 14pt)
+    #nosi[
+      ```java
+      class Auto {
+          public void conducir() { ... }
+      }
+
+      class Valet {
+          public void estacionar(Auto auto) {
+              auto.conducir();
+          }
+      }
+      ```
+    ][
+      ```java
+      interface Conducible {
+          void conducir();
+      }
+
+      class Auto implements Conducible { ... }
+
+      class Valet {
+          public void estacionar(Conducible c) { ... }
+      }
+      ```
+    ]
+]
+
+#slide[
+  = ISP: Interface Segregation Principle
+
+  *Principio de segregación de interfaces:* Una clase no debe depender de
+  métodos de otras clases que no utiliza.
+
+  #set text(size: 12pt)
+  #nosi[
+    ```java
+    class Auto {
+        public void llenarTanque() { ... }
+        public void inflarRuedas() { ... }
+        public void verMotor() { ... }
+        public void usarRadio() { ... }
+        public void conducir() { ... }
+    }
+
+    class Mecanico {
+        public void reparar(Auto auto) {
+            auto.verMotor();
+            auto.llenarTanque();
+            auto.inflarRuedas();
+        }
+    }
+
+    class Valet {
+        public void estacionar(Auto auto) {
+            auto.conducir();
+        }
+    }
+    ```
+  ][
+    ```java
+    interface Reparable {
+        void verMotor();
+        void llenarTanque();
+        void inflarRuedas();
+    }
+
+    interface Conducible {
+        void conducir();
+    }
+
+    class Auto implements Reparable, Conducible { ... }
+
+    class Mecanico {
+        public void reparar(Reparable r) { ... }
+    }
+
+    class Valet {
+        public void estacionar(Conducible c) { ... }
+    }
+    ```
+  ]
+]
+
+#slide[
+  = Preferir composición sobre herencia
+
+  Preferir la composición de objetos
+  en lugar de la herencia para reutilizar código y extender
+  funcionalidades.
+
+  #v(1fr)
+  #nosi(alignment: top+left, gutter: 0.35cm)[
+    #v(1cm)
+    #image("pila1.png", width: 4cm)
+  ][
+    #v(1cm)
+    #image("pila2.png", width: 4cm)
+  ]
+  #v(1fr)
+
+  #fuente("https://en.wikipedia.org/wiki/Composition_over_inheritance")
+]
+
+#slide[
+  = Preferir composición sobre herencia (cont.)
+
+  #v(1fr)
+  #align(center)[
+    #table(
+      columns: 4,
+      stroke: (x, y) => if y == 0 {
+        (bottom: 0.7pt + black)
+      },
+      inset: 1em,
+      table.header(
+        [*Efecto deseado*], [*Composición*], [*Interfaces*], [*Herencia*],
+      ),
+      [Reutilización de código], [#bueno[Sí]], [#malo[No]], [#bueno[Sí]],
+      [Polimorfismo], [#malo[No]], [#bueno[Sí]], [#bueno[Sí]],
+      [Acoplamiento], [#bueno[Bajo]], [#bueno[Bajo]], [#malo[Alto]],
+    )
+  ]
+  #v(1fr)
+]
+
+#slide[
+  = Preferir composición sobre herencia (cont.)
+
+  Los *Patrones de diseño* como *Strategy* y *Bridge* suelen combinar
+  la composición con interfaces para lograr un diseño flexible y
+  extensible.
+
+  #v(1fr)
+  #nosi(alignment: top+left, gutter: 0.35cm)[
+    #image("animales.png", width: 10cm)
+  ][
+    #image("animales2.png", width: 15cm)
+  ]
+  #v(1fr)
+
+  #fuente("https://refactoring.guru/design-patterns/catalog")
 ]
 
 #fin()

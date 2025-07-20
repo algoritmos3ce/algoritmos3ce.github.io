@@ -70,3 +70,25 @@
 
 #let malo(body) = text(rojo)[ #sym.crossmark.heavy #body ]
 #let bueno(body) = text(verde)[ #sym.checkmark.heavy #body ]
+
+#let bonustrack(content) = [
+  #set page(
+    margin: (left: 2cm),
+    background: {
+      place(top + left)[
+        #box(
+          fill: azul,
+          height: 100%,
+          width: 1cm,
+        )[
+          #set text(white)
+          #place(center+horizon, clearance: 1em)[
+            #rotate(-90deg, reflow: true)[ * Bonus track * ]
+          ]
+        ]
+      ]
+    },
+  )
+
+  #content
+]

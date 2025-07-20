@@ -278,7 +278,7 @@
     Una práctica común es definir *métodos de acceso* (getters) y *métodos de
     modificación* (setters) para acceder y modificar los atributos de una clase.
 
-    Los setters permiten entre otras cosas validar que no se violen la
+    Los setters permiten entre otras cosas validar que no se violen las
     *invariantes* del objeto.
   ][
     #set text(size: 12pt)
@@ -886,6 +886,22 @@
   hay una única implementación del método `enviar`.
 
   #fuente("https://github.com/dcorsi/algo3/tree/main/comunicaciones")
+]
+
+#bonustrack[
+  = Colecciones de Java
+
+  Java provee una serie de *interfaces* y *clases* para trabajar con colecciones
+  de objetos, que permiten abstraer los detalles de implementación y enfocarse
+  en la lógica de negocio.
+
+  #v(1fr)
+  #align(center)[ #image("javacolluml.png", width: 50%) ]
+  #v(1fr)
+  #align(center)[ #image("javacoll.png", width: 70%) ]
+  #v(1fr)
+
+  #fuente("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/package-summary.html#CollectionsFramework")
 ]
 
 #fin()
