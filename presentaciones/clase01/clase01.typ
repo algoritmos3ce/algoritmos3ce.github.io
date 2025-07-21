@@ -1,6 +1,5 @@
 #import "@preview/polylux:0.4.0": *
 #import "@preview/cetz:0.4.0"
-#import "@preview/prequery:0.1.0"
 
 #import "../defs.typ": *
 
@@ -49,11 +48,7 @@
         - Eiffel (Bertrand Meyer)
         - Delphi (Object Pascal, Anders Hejlsberg $->$ Borland)
     ],
-    prequery.image(
-      "https://spectrum.ieee.org/media-library/a-screenshot-of-a-bitmapped-and-mostly-grayscale-computer-desktop-with-text-in-multiple-windows-and-a-cartoon-of-a-leprechaun.png?id=33024258",
-      "smalltalk.png",
-      width: 100%,
-    ),
+    image("smalltalk.png", width: 100%),
   )
 
   #fuente("https://en.wikipedia.org/wiki/Object-oriented_programming")
@@ -82,7 +77,7 @@
       #box(image("javalogo.png", width: 3cm), baseline: 50%)
       #box(image("pythonlogo.png", width: 3cm), inset: (x: 0.5cm), baseline: 50%)
       #box(image("rubylogo.png", width: 4cm), baseline: 50%)
-      #box(prequery.image("https://upload.wikimedia.org/wikipedia/en/0/0d/Microsoft_.NET_Framework_v4.5_logo.png", "netlogo.png", width: 4cm), baseline: 50%, inset: (x: 0.5cm))
+      #box(image("netlogo.png", width: 4cm), baseline: 50%, inset: (x: 0.5cm))
       #box(image("gofdp.jpg", width: 4cm), baseline: 50%, inset: (x: 0.5cm))
     ],
   )
@@ -167,7 +162,7 @@
       #v(1fr)
       #image("javalogo.png", width: 4cm)
       #v(1fr)
-      #prequery.image("https://upload.wikimedia.org/wikipedia/commons/5/5d/Duke_%28Java_mascot%29_waving.svg", "javaduke.svg", width:3cm)
+      #image("javaduke.svg", width: 3cm)
       #v(1fr)
     ]
   )
@@ -278,11 +273,10 @@
       *Unified Modeling Language:* proporciona una forma estándar de
       visualizar el diseño de un sistema.
 
-      #prequery.image("https://upload.wikimedia.org/wikipedia/commons/e/ed/UML_diagrams_overview.svg", "umldiagrams.svg", width: 100%)
-
+      #image("umldiagrams.svg", width: 100%)
     ],
     [
-      #prequery.image("https://upload.wikimedia.org/wikipedia/commons/d/d5/UML_logo.svg", "umllogo.svg", width: 5cm)
+      #image("umllogo.svg", width: 5cm)
     ],
   )
 
@@ -293,7 +287,7 @@
   = UML: Diagrama de clases
 
   #place(center + horizon)[
-    #prequery.image("https://uml.planttext.com/plantuml/svg/PL8zRy8m4DtpAsuCfQ3E31Me4nqwD6FLmJYdO1hVeVEvGaNzxpLn314TBClluvxlx7LG8nfzN-rTYs2Ts1whyENeQCHuy4nizy8UGILE6TkR43QgudPHSMkP6lU3y3IH24TgBGkX9BmQ7D1OGnVWN07CmP42uKctfFMi-YsYruWT3nA0HHP5Zy8DMa7b2PuMad8Oe7asrXV2czFRu7c4yRWTfRDHUu4xr0BN1N_747irBO_5ZGm5QNA_c-GycdRCFHe232yiWdQyv1oQD27gm2C5Sy3xYFg_x_7ESZ-MpV5uJIr0NQOQybvQ-MRNmY5sgOK2fGTNPpFZZQCwftryWf4k367N65wKvrgLoZVoOP7ZLoaWRPc0vVBvrbsrHchJv_e3", "clases.svg", width: 80%)
+    #image("clases.svg", width: 80%)
   ]
 
   #fuente("https://www.planttext.com/?text=PL8zRy8m4DtpAsuCfQ3E31Me4nqwD6FLmJYdO1hVeVEvGaNzxpLn314TBClluvxlx7LG8nfzN-rTYs2Ts1whyENeQCHuy4nizy8UGILE6TkR43QgudPHSMkP6lU3y3IH24TgBGkX9BmQ7D1OGnVWN07CmP42uKctfFMi-YsYruWT3nA0HHP5Zy8DMa7b2PuMad8Oe7asrXV2czFRu7c4yRWTfRDHUu4xr0BN1N_747irBO_5ZGm5QNA_c-GycdRCFHe232yiWdQyv1oQD27gm2C5Sy3xYFg_x_7ESZ-MpV5uJIr0NQOQybvQ-MRNmY5sgOK2fGTNPpFZZQCwftryWf4k367N65wKvrgLoZVoOP7ZLoaWRPc0vVBvrbsrHchJv_e3")
@@ -313,7 +307,7 @@
   = UML: Diagrama de secuencia
 
   #place(center + horizon)[
-    #prequery.image("https://uml.planttext.com/plantuml/svg/dLF1JiCm3BtdAtpS3Y3EQAh64IHE4wUTGcjL6MbSEIuVnvKVmstNT4t798WKHN7USvvVd7qKoz8rthIwkjArDWYyT5ZJKzkkWyQMGWnliRFio9YIqGhEX2FT5Ma7Zx3RZOYYw9dkSm5Ui4rYJHbkqKVq9RH2GMvSi0pX-wj19eYeR4dOfRBJaAR2B6yU67IQOywjBM-srqgwhEBiaX9UAGghiWP3j2S45zHLwutnH2qq3eCUnr7JVOto74H353TRAE31W8vhzYoG0ogh9X7pwjsPDY1M9kJthGkP-C2e7QIRCTCDve6yrYppyoprJXtL1oTIfZdaObCN_kRFg5AVAlpD7Isgys8h-gyzSuBnNYzp2312ISoeFsauxSUxjlb7sc6epBJsysfNxlL4F-uF", "secuencia.svg", height: 95%)
+    #image("secuencia.svg", height: 95%)
   ]
 
   #fuente("https://www.planttext.com/?text=dLF1JiCm3BtdAtpS3Y3EQAh64IHE4wUTGcjL6MbSEIuVnvKVmstNT4t798WKHN7USvvVd7qKoz8rthIwkjArDWYyT5ZJKzkkWyQMGWnliRFio9YIqGhEX2FT5Ma7Zx3RZOYYw9dkSm5Ui4rYJHbkqKVq9RH2GMvSi0pX-wj19eYeR4dOfRBJaAR2B6yU67IQOywjBM-srqgwhEBiaX9UAGghiWP3j2S45zHLwutnH2qq3eCUnr7JVOto74H353TRAE31W8vhzYoG0ogh9X7pwjsPDY1M9kJthGkP-C2e7QIRCTCDve6yrYppyoprJXtL1oTIfZdaObCN_kRFg5AVAlpD7Isgys8h-gyzSuBnNYzp2312ISoeFsauxSUxjlb7sc6epBJsysfNxlL4F-uF")

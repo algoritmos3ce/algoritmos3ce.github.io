@@ -1,6 +1,5 @@
 #import "@preview/polylux:0.4.0": *
 #import "@preview/cetz:0.4.0"
-#import "@preview/prequery:0.1.0"
 
 #import "../defs.typ": *
 
@@ -808,94 +807,59 @@
 #slide[
   = OCP: Open/Closed Principle
 
+  #set text(size: 14pt)
   *Principio abierto/cerrado:* Las clases deben estar abiertas para su extensión,
   pero cerradas para su modificación.
 
   Es decir, debe ser posible agregar nuevas funcionalidades a una clase
   sin modificar su código existente.
 
-  #set text(size: 14pt)
-  #withlabel[ #malo[ No ] ][
+  #set text(size: 12pt)
+  #nosi[
     ```java
-    public class Calculadora {
-        public int calcular(String op, int a, int b) {
-            switch (op) {
-                case "+": return a + b;
-                case "-": return a - b;
+    public class Enemigo {
+        String tipo;
+
+        public int getAtaque() {
+            switch (tipo) {
+                case "goblin": return 10;
+                case "orco": return 15;
+                case "dragon": return 35;
             }
         }
 
-        public boolean esConmutativo(String op) {
-            switch (op) {
-                case "+": return true;
-                case "-": return false;
+        public int getDefensa() {
+            switch (tipo) {
+                case "goblin": return 5;
+                case "orco": return 10;
+                case "dragon": return 20;
             }
         }
+    }
+    ```
+  ][
+    ```java
+    public interface Enemigo {
+        int getAtaque();
+        int getDefensa();
+    }
+
+    public class Goblin implements Enemigo {
+        public int getAtaque() { return 10; }
+        public int getDefensa() { return 5; }
+    }
+
+    public class Orco implements Enemigo {
+        public int getAtaque() { return 15; }
+        public int getDefensa() { return 10; }
+    }
+
+    public class Dragon implements Enemigo {
+        public int getAtaque() { return 35; }
+        public int getDefensa() { return 20; }
     }
     ```
   ]
-]
-
-#slide[
-  = OCP: Open/Closed Principle (cont.)
-
-  #set text(size: 12pt)
-
-  #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
-    #bueno[ Sí: ]
-
-    ```java
-    public interface Operacion {
-        String simbolo();
-        int calcular(int a, int b);
-        boolean esConmutativo();
-    }
-    ```
-
-    ```java
-    public class Suma implements Operacion {
-        public String simbolo() { return "+"; }
-        public int calcular(int a, int b) { return a + b; }
-        public boolean esConmutativo() { return true; }
-    }
-    ```
-
-    ```java
-    public class Resta implements Operacion {
-        public String simbolo() { return "-"; }
-        public int calcular(int a, int b) { return a - b; }
-        public boolean esConmutativo() { return false; }
-    }
-    ```
-  ][][
-    ```java
-    public class Calculadora {
-        private Map<String, Operacion> operaciones = new HashMap<>();
-
-        public void registrarOperacion(Operacion operacion) {
-            operaciones.put(operacion.simbolo(), operacion);
-        }
-
-        public String mostrar(String op, int a, int b) {
-            int r = calcular(op, a, b);
-            return "%d %s %d = %c".formatted(a, op, b, r);
-        }
-
-        public int calcular(String op, int a, int b) {
-            Operacion operacion = operaciones.get(op);
-            return operacion.calcular(a, b);
-        }
-    }
-    ```
-
-    ```java
-    Calculadora calc = new Calculadora();
-    calc.registrarOperacion(new Suma());
-    calc.registrarOperacion(new Resta());
-
-    System.out.println(calc.calcular("+", 5, 3));
-    ```
-  ][]
 ]
 
 #slide[
@@ -1100,10 +1064,28 @@
   #v(1fr)
   #nosi(alignment: top+left, gutter: 0.35cm)[
     #v(1cm)
-    #image("pila1.png", width: 4cm)
+    #{
+      set text(font: "DejaVu Sans Mono")
+      cetz.canvas({
+        import cetz.draw: *
+        content((0, 0), box([ListaEnlazada], inset: 0.3cm, stroke: black), name: "lista")
+        content((rel: (0, -3)), box([Cola], inset: 0.3cm, stroke: black), name: "cola")
+
+        line("cola.north", "lista.south", mark: (end: (symbol: ">", scale: 2)))
+      })
+    }
   ][
     #v(1cm)
-    #image("pila2.png", width: 4cm)
+    #{
+      set text(font: "DejaVu Sans Mono")
+      cetz.canvas({
+        import cetz.draw: *
+        content((0, 0), box([ListaEnlazada], inset: 0.3cm, stroke: black), name: "lista")
+        content((rel: (0, -3)), box([Cola], inset: 0.3cm, stroke: black), name: "cola")
+
+        line("cola.north", "lista.south", mark: (start: (symbol: "diamond", scale: 2, fill: black)))
+      })
+    }
   ]
   #v(1fr)
 
