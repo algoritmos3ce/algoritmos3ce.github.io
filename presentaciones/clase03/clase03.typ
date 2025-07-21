@@ -20,11 +20,12 @@
   ]
 ]
 
-#let nosi(body1, body2, alignment: top+right, ..args) = [
+#let nosi(body1, body2, alignment: top+right, ..args, labels: ([No], [Sí])) = [
+  #let (izq, der) = labels
   #grid(columns: (1fr, auto, 1fr, auto, 1fr), ..args)[][
-    #withlabel(alignment: alignment)[ #malo[ No ] ][ #body1 ]
+    #withlabel(alignment: alignment)[ #malo[ #izq ] ][ #body1 ]
   ][][
-    #withlabel(alignment: alignment)[ #bueno[ Sí ] ][ #body2 ]
+    #withlabel(alignment: alignment)[ #bueno[ #der ] ][ #body2 ]
   ][]
 ]
 
@@ -447,6 +448,107 @@
   #fuente("https://en.wikipedia.org/wiki/Cohesion_(computer_science)")
 ]
 
+#slide[
+  = Alta cohesión
+
+  #v(1fr)
+  #nosi(labels: ([Baja cohesión], [Alta cohesión]))[
+    #v(2em);
+    ```java
+    void f() {
+        int x = 42;
+        // ...
+        // ...
+        // ...
+        // ...
+        // ...
+        System.out.println(x);
+        // ...
+        // ...
+        // ...
+        // ...
+        // ...
+    }
+    ```
+  ][
+    #v(2em);
+    ```java
+    void f() {
+        // ...
+        // ...
+        // ...
+        // ...
+        // ...
+        int x = 42;
+        System.out.println(x);
+        // ...
+        // ...
+        // ...
+        // ...
+        // ...
+    }
+    ```
+  ]
+  #v(1fr)
+]
+
+#slide[
+  = Bajo acoplamiento
+
+  #set text(size: 12pt)
+  #nosi(labels: ([Alto acoplamiento], [Bajo acoplamiento]), alignment: top+left)[
+    #v(2em);
+    ```java
+    public class Cliente {
+        private String nombre;
+        private String apellido;
+
+        public String nombreCompleto() {
+            return nombre + " " + apellido;
+        }
+    }
+    ```
+    ```java
+    public class Presentacion {
+        private PrintStream out;
+
+        public void bienvenida(Cliente c) {
+            String s = "Bienvenido, " + c.nombreCompleto() + "!";
+            out.println(s);
+        }
+    }
+    ```
+    ```java
+    Presentacion presentacion = new Presentacion(System.out);
+    Cliente cliente = new Cliente("Juan", "Pérez");
+    presentacion.bienvenida(cliente);
+    ```
+  ][
+    #v(2em);
+    ```java
+    public class Mensajes {
+        public String bienvenida(String nombreCompleto) {
+            return "Bienvenido, " + nombreCompleto + "!";
+        }
+    }
+
+    public class Presentacion {
+        private PrintStream out;
+
+        public void mostrarMensaje(String s) {
+            out.println(s);
+        }
+    }
+    ```
+    ```java
+    Mensajes mensajes = new Mensajes();
+    Presentacion presentacion = new Presentacion(System.out);
+    Cliente cliente = new Cliente("Juan", "Pérez");
+    String mensaje = mensajes.bienvenida(cliente.nombreCompleto());
+    presentacion.mostrarMensaje(mensaje);
+    ```
+  ]
+]
 
 #slide[
   #layout(size => [
