@@ -38,14 +38,14 @@
       = Algunas definiciones
 
       / Code smell: Un indicio de que algo no está bien en el código.
-        #link("https://en.wikipedia.org/wiki/Code_smell")[\#]
+        #linklet("https://en.wikipedia.org/wiki/Code_smell")
 
       / Deuda técnica: Es el costo implícito del trabajo adicional futuro resultante de elegir
-        una solución fácil sobre una más robusta. #link("https://en.wikipedia.org/wiki/Technical_debt")[\#]
+        una solución fácil sobre una más robusta. #linklet("https://en.wikipedia.org/wiki/Technical_debt")
 
       / Refactoring: Proceso de reestructuración del código para mejorar su
         legibilidad, mantenibilidad y extensibilidad, sin cambiar su comportamiento
-        externo. #link("https://en.wikipedia.org/wiki/Code_refactoring")[\#]
+        externo. #linklet("https://en.wikipedia.org/wiki/Code_refactoring")
 
       #quote(attribution: [Martin Fowler])[
         Any fool can write code that a computer can understand. Good
@@ -860,6 +860,49 @@
     }
     ```
   ]
+]
+
+#slide[
+  = OCP: Tipos enumerativos
+
+  #set text(size: 14pt)
+  #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
+    ```java
+    public enum TipoEnemigo {
+        GOBLIN(10, 5),
+        ORCO(15, 10),
+        DRAGON(35, 20);
+
+        private final int ataque;
+        private final int defensa;
+
+        Enemigo(int ataque, int defensa) {
+            this.ataque = ataque;
+            this.defensa = defensa;
+        }
+
+        public int getAtaque() {
+            return ataque;
+        }
+
+        public int getDefensa() {
+            return defensa;
+        }
+    }
+    ```
+  ][][
+    ```java
+    public class Enemigo {
+        public final TipoEnemigo tipo;
+
+        public Enemigo(TipoEnemigo tipo) {
+            this.tipo = tipo;
+        }
+    }
+    ```
+  ][]
+
+  #fuente("https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html")
 ]
 
 #slide[

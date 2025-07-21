@@ -20,10 +20,7 @@
 
   show heading: set text(azul)
   show heading: set block(below: 1em)
-  show link: it => {
-    set text(azul)
-    underline(it)
-  }
+  show link: set text(azul)
 
   it
 }
@@ -61,10 +58,17 @@
   ]
 }
 
+#let external-link = [
+  #set text(font: "Font Awesome 6 Free", size: 0.75em)
+  \u{f08e}
+]
+
+#let linklet(url) = link(url)[ #external-link ]
+
 #let fuente(url) = {
   place(bottom + right)[
     #set text(size: 10pt)
-    #box(fill: white, inset: 0.5em)[#link(url)[Fuente]]
+    #box(fill: white, inset: 0.5em)[#link(url)[Fuente #external-link]]
   ]
 }
 

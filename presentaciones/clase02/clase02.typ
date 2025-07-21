@@ -241,7 +241,7 @@
     [
       En Java la restricción de acceso se logra mediante el uso de
       *modificadores de acceso*: `private`, `protected` y `public`.
-      #link("https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html")[\[\#\]]
+      #linklet("https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html")
     ],
     [
       #set align(center)
@@ -613,7 +613,7 @@
   = La clase Object
 
   En Java, todas las clases heredan directa o indirectamente de la clase
-  `Object`. #link("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/Object.html")[\[\#\]]
+  `Object`. #linklet("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/Object.html")
 
   Entre los métodos heredados se destaca `toString()`, que devuelve una
   representación en forma de cadena del objeto.

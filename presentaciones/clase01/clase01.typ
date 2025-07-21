@@ -318,7 +318,7 @@
 
   - El código se organiza en *paquetes* (carpetas) y *clases* (usualmente un archivo `.java` por cada clase).
 
-  - Guía de estilo: https://github.com/pepperkit/java-style-guide
+  - Guía de estilo #linklet("https://github.com/pepperkit/java-style-guide")
     - Clases: `PascalCase` (ej. `Punto`)
     - Variables, atributos, y métodos: `camelCase` (ej. `x`, `calcularNorma`)
     - Constantes: `UPPER_CASE` (ej. `PI`, `MAX_INT`)
@@ -343,22 +343,22 @@
 
   #set text(size: 15pt)
 
-  - Dos categorías: #link("https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html")[\[\#\]]
+  - Dos categorías: #linklet("https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html")
     - *Primitivos*: `int`, `double`, `boolean`, `char`, etc. (valor por defecto: `0`)
     - *Referencias*: apuntan a un objeto en memoria (ej: `Punto`, valor por defecto: `null`)
 
-  - Arreglos: #link("https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html")[\[\#\]]
+  - Arreglos: #linklet("https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html")
     - Declaración: `int[] numeros;`
     - Inicialización: `numeros = new int[10];` #h(1em) `numeros = {1, 2, 3};`
     - Acceso: `numeros[0]` #h(1em) `numeros.length`
     - El tamaño de un arreglo es fijo una vez creado
 
-  - Strings: #link("https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/String.html")[\[\#\]]
+  - Strings: #linklet("https://docs.oracle.com/en/java/javase/22/docs/api/java.base/java/lang/String.html")
     - Son instancias de la clase `String`
     - `"..."` es azúcar sintáctica para `new String(...)`
     - Inmutables
 
-  - Colecciones dinámicas: #link("https://docs.oracle.com/javase/tutorial/collections/TOC.html")[\[\#\]]
+  - Colecciones dinámicas: #linklet("https://docs.oracle.com/javase/tutorial/collections/TOC.html")
     - Clases disponibles en la biblioteca estándar
     - `ArrayList`, `HashSet`, `HashMap`, etc.
 ]
