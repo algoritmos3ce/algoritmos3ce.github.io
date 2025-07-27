@@ -1,4 +1,5 @@
 #import "@preview/polylux:0.4.0": *
+#import "@preview/shadowed:0.2.0": shadowed
 
 #let azul = rgb("#0088cc")
 #let rojo = rgb("#cc2200")
@@ -66,9 +67,11 @@
 #let linklet(url) = link(url)[ #external-link ]
 
 #let fuente(url) = {
-  place(bottom + right)[
-    #set text(size: 10pt)
-    #box(fill: white, inset: 0.5em)[#link(url)[Fuente #external-link]]
+  set text(size: 14pt)
+  place(top + right)[
+    #move(dx: 1cm, dy: -1cm)[
+      #shadowed(fill: white, inset: 0.5em)[#linklet(url)]
+    ]
   ]
 }
 
