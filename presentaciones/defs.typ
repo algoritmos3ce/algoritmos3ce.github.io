@@ -60,7 +60,7 @@
 }
 
 #let external-link = [
-  #set text(font: "Font Awesome 6 Free", size: 0.75em)
+  #set text(font: "Font Awesome 5 Free", size: 0.75em)
   \u{f08e}
 ]
 
