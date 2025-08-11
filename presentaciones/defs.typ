@@ -14,6 +14,7 @@
   set terms(separator: [*:* ])
   show raw.where(block: true): it => block(fill: rgb("#f0f0f0"), inset: 1em, it)
   show raw.where(block: false): it => box(fill: rgb("#f0f0f0"), inset: (x: 3pt, y: 0pt), outset: (y: 3pt), it)
+  set raw(syntaxes: "prolog.sublime-syntax")
 
   set quote(block: true)
   show quote: set pad(x: 5em)
