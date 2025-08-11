@@ -61,6 +61,11 @@ nav_order: 8
    <br>ISBN-13: 9781520918914
    <br>[Versión online](http://www.amzi.com/AdventureInProlog/index.php)
 
+- **Simply Logical**
+    <br>Peter Flach
+    <br>ISBN: 0471 94152 2
+    <br>[Versión online](https://book.simply-logical.space/src/simply-logical.html)
+
 ## Cálculo Lambda
 
 -  **The Lambda Calculus, Its Syntax and Semantics (1984)**
