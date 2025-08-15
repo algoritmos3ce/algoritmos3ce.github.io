@@ -1,8 +1,8 @@
 ---
 title: "TP2"
 layout: default
-parent: "Trabajos prácticos"
 nav_order: 2
+nav_exclude: true
 ---
 
 <img src="./banner.png" style="width: 100%">
@@ -383,4 +383,3 @@ Ejemplos de archivos `.sl` con definiciones de sistemas-L.
 <a href="./tp3-2019-c1-lsystems-svg.zip" class="btn btn-default btn-lg">sistemas-l-svg.zip</a>
 
 Archivos SVG generados a partir de los sistemas-L de ejemplo.
-

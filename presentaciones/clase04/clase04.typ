@@ -13,9 +13,11 @@
   = Programación orientada a eventos
 
   #grid(columns: (1fr, auto), gutter: 1cm)[
-    Es un paradigma de programación en el que el *flujo del programa* es
-    determinado por la ocurrencia de *eventos*, que son previstos pero no planeados
-    (es decir, no se sabe cuándo ocurrirán).
+    #emphbox[
+      Es un paradigma de programación en el que el *flujo del programa* es
+      determinado por la ocurrencia de *eventos*, que son previstos pero no planeados
+      (es decir, no se sabe cuándo ocurrirán).
+    ]
 
     Un ejemplo común es el desarrollo de
     *interfaces gráficas de usuario (GUI)*. En este caso, se deben manejar eventos como
@@ -78,9 +80,11 @@
   #toolbox.side-by-side(columns: (1fr, auto), gutter: 0.5cm)[
     = Callbacks
 
-    Un *callback* es una función que se pasa como parámetro a otra función
-    (típicamente *no bloqueante*). El callback será invocado en algún momento posterior
-    (es decir, en forma *asíncrona*), por ejemplo cuando ocurre un evento.
+    #emphbox(inset: 0em, outset: 0.5em)[
+      Un *callback* es una función que se pasa como parámetro a otra función
+      (típicamente *no bloqueante*). El callback será invocado en algún momento posterior
+      (es decir, en forma *asíncrona*), por ejemplo cuando ocurre un evento.
+    ]
 
     En lenguajes orientados a objetos como Java, el pasaje de callbacks se realiza
     mediante interfaces o clases abstractas.

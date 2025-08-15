@@ -11,38 +11,70 @@ nav_order: 5
 
 # Material
 
+https://www.youtube.com/playlist?list=PLR0NFKZIjBcB5Ov5YqNTUi4U6u_7y71Ou
+
 * [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcCdO6vn0ZI-ltAWf4zb_3uL)
 
  * Clase 1 - Programación orientada a objetos
-      [[Presentación]](https://drive.google.com/file/d/1sJRMQvZdSzRf-E_7_rqc5-m_-HPXKhVX/view?usp=drive_link)
+      [[Presentación]](/presentaciones/clase01/clase01.pdf)
       [[Apunte]](https://drive.google.com/file/d/16Ns8j6c-1i6EsnIInhpw5WGtCJb_4LkB/view?usp=sharing)
       [[Presentación repaso práctica]](https://docs.google.com/presentation/d/1DfgDeJCAoMXov6CLfXfvVAcphlKo6Aq7/edit?usp=drive_link&ouid=114882499087956113949&rtpof=true&sd=true)
  * Clase 2 - Abstracción, encapsulamiento, herencia y polimorfismo
-      [[Presentación]](https://drive.google.com/file/d/1MyW7iMGjv5ckcsUPXVaebPlGcmOLwVBl/view?usp=sharing)
+      [[Presentación]](/presentaciones/clase02/clase02.pdf)
       [[Apunte]](https://drive.google.com/file/d/1HIvOpkntijYvR20UfPSte1UrRG69zwOd/view?usp=sharing)
  * Clase 3 - Principios de diseño
-      [[Presentación]](https://drive.google.com/file/d/1ffeqPpfE3wM8TRpEFOM98ed6G67_dqCA/view?usp=sharing)
+      [[Presentación]](/presentaciones/clase03/clase03.pdf)
  * Clase 4 - Programación orientada a eventos
-      [[Presentación]](https://drive.google.com/file/d/1FWaI2S8euIqEn84ImFZ0asFdswLNB-Tm/view?usp=sharing)
+      [[Presentación]](/presentaciones/clase04/clase04.pdf)
  * Clase 5 - Interfaces gráficas
-      [[Presentación]](https://drive.google.com/file/d/1ISQiStcwnMe78LULVvUTRok-3JlxuhtT/view?usp=sharing)
+      [[Presentación]](/presentaciones/clase05/clase05.pdf)
  * Clase 6 - Programación lógica
-      [[Presentación]](https://drive.google.com/file/d/1lXE783umlguTgPgFgP06KVdWjQiVfyOW/view?usp=sharing)
+      [[Presentación]](/presentaciones/clase06/clase06.pdf)
  * Clase 7 - Cálculo Lambda
       [[Apunte]](https://drive.google.com/file/d/1uGF-x1OjKyusgihN8bevHG6eApaHJAdE/view?usp=sharing)
  * Clase 8 - Programación funcional - Java y Clojure
-      [[Presentación]](https://drive.google.com/file/d/1SfMGaRY8id3tLCw-FHtklfBtzLtINR47/view?usp=sharing)
+      <!-- [[Presentación]]() -->
       [[Apunte]](https://drive.google.com/file/d/1pAjjK04vpL5PIWxEYZoLckeL34rQBvEt/view?usp=sharing)
  * Clase 9 - Programación concurrente en Java
-      [[Presentación]](https://drive.google.com/file/d/1mW3deWgmzdSk12Xh5m5OOQrIOoncwS_4/view?usp=sharing)
+      <!-- [[Presentación]]() -->
  * Clase 10 - Programación concurrente en Clojure
-      [[Presentación]](https://drive.google.com/file/d/1WdtuN8XOW1UPUj9oG8USF0XAq7kcne8Y/view?usp=sharing)
+      <!-- [[Presentación]]() -->
+
 <hr/>
 
 <details markdown="block">
   <summary><b>Material de cuatrimestres anteriores</b></summary>
 
 * 2025c1
+
+  * [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcCdO6vn0ZI-ltAWf4zb_3uL)
+
+  * Clase 1 - Programación orientada a objetos
+        [[Presentación]](https://drive.google.com/file/d/1sJRMQvZdSzRf-E_7_rqc5-m_-HPXKhVX/view?usp=drive_link)
+        [[Apunte]](https://drive.google.com/file/d/16Ns8j6c-1i6EsnIInhpw5WGtCJb_4LkB/view?usp=sharing)
+        [[Presentación repaso práctica]](https://docs.google.com/presentation/d/1DfgDeJCAoMXov6CLfXfvVAcphlKo6Aq7/edit?usp=drive_link&ouid=114882499087956113949&rtpof=true&sd=true)
+  * Clase 2 - Abstracción, encapsulamiento, herencia y polimorfismo
+        [[Presentación]](https://drive.google.com/file/d/1MyW7iMGjv5ckcsUPXVaebPlGcmOLwVBl/view?usp=sharing)
+        [[Apunte]](https://drive.google.com/file/d/1HIvOpkntijYvR20UfPSte1UrRG69zwOd/view?usp=sharing)
+  * Clase 3 - Principios de diseño
+        [[Presentación]](https://drive.google.com/file/d/1ffeqPpfE3wM8TRpEFOM98ed6G67_dqCA/view?usp=sharing)
+  * Clase 4 - Programación orientada a eventos
+        [[Presentación]](https://drive.google.com/file/d/1FWaI2S8euIqEn84ImFZ0asFdswLNB-Tm/view?usp=sharing)
+  * Clase 5 - Interfaces gráficas
+        [[Presentación]](https://drive.google.com/file/d/1ISQiStcwnMe78LULVvUTRok-3JlxuhtT/view?usp=sharing)
+  * Clase 6 - Programación lógica
+        [[Presentación]](https://drive.google.com/file/d/1lXE783umlguTgPgFgP06KVdWjQiVfyOW/view?usp=sharing)
+  * Clase 7 - Cálculo Lambda
+        [[Apunte]](https://drive.google.com/file/d/1uGF-x1OjKyusgihN8bevHG6eApaHJAdE/view?usp=sharing)
+  * Clase 8 - Programación funcional - Java y Clojure
+        [[Presentación]](https://drive.google.com/file/d/1SfMGaRY8id3tLCw-FHtklfBtzLtINR47/view?usp=sharing)
+        [[Apunte]](https://drive.google.com/file/d/1pAjjK04vpL5PIWxEYZoLckeL34rQBvEt/view?usp=sharing)
+  * Clase 9 - Programación concurrente en Java
+        [[Presentación]](https://drive.google.com/file/d/1mW3deWgmzdSk12Xh5m5OOQrIOoncwS_4/view?usp=sharing)
+  * Clase 10 - Programación concurrente en Clojure
+        [[Presentación]](https://drive.google.com/file/d/1WdtuN8XOW1UPUj9oG8USF0XAq7kcne8Y/view?usp=sharing)
+
+* 2024c2
     * [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcDm3bEeNSyDeEIY1fYHp8i1)
 
 * 2024c1

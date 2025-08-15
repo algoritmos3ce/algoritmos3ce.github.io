@@ -12,15 +12,19 @@
 #slide[
   = Paradigmas de Programación
 
-  - *Imperativos* (énfasis en la ejecución de instrucciones)
+  #emphbox[
+    - *Imperativos* (énfasis en la ejecución de instrucciones)
 
-    - Programación Procedimental (ej. Pascal)
-    - Programación Orientada a Objetos (ej. Smalltalk)
+      - Programación Procedimental (ej. Pascal)
 
-  - *Declarativos* (énfasis en la evaluación de expresiones)
+      - Programación Orientada a Objetos (ej. Smalltalk)
 
-    - Programación Funcional (ej. Haskell)
-    - Programación Lógica (ej. Prolog)
+    - *Declarativos* (énfasis en la evaluación de expresiones)
+
+      - Programación Funcional (ej. Haskell)
+
+      - Programación Lógica (ej. Prolog)
+  ]
 
   Los lenguajes más utilizados (por ejemplo, Java) son *multiparadigma*. Cabe a los
   programadores usar el estilo de programación más adecuado para cada trabajo.
@@ -87,12 +91,13 @@
   = Objetos
 
   #grid(
-    columns: (0.8fr, 1fr),
-    gutter: 2cm,
-    align: horizon,
+    columns: (1fr, auto),
+    gutter: 0.5cm,
     [
-      Un *objeto* es una entidad (habitualmente almacenada en memoria) que
-      tiene *identidad*, *estado* y *comportamiento*.
+      #emphbox[
+        Un *objeto* es una entidad (habitualmente almacenada en memoria) que
+        tiene *identidad*, *estado* y *comportamiento*.
+      ]
 
       Un sistema orientado a objetos se forma de un conjunto de objetos que
       interactúan pasando *mensajes* entre sí.

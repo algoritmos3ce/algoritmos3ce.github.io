@@ -100,3 +100,5 @@
 
   #content
 ]
+
+#let emphbox(body, ..args) = block(width: 100%, fill: azul.transparentize(90%), inset: 0.75em, ..args)[#body]

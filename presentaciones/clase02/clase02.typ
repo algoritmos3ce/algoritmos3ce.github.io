@@ -14,8 +14,10 @@
 
   #grid(columns: (40%, auto), gutter: 1cm,
     [
-      Proceso cognitivo en el que se *seleccionan las características más
-      relevantes* de un sistema, y se *omiten los detalles no importantes*.
+      #emphbox[
+        Proceso cognitivo en el que se *seleccionan las características más
+        relevantes* de un sistema, y se *omiten los detalles no importantes*.
+      ]
 
       Es la creación de un *modelo simplificado* para representar un
       *sistema complejo*, concentrándose únicamente en los conceptos relevantes
@@ -68,7 +70,7 @@
   definición de *interfaces*.
 
   #set align(center)
-  #set text(size: 12pt)
+
   #v(1fr)
   ```java
   public interface Lista {
@@ -221,51 +223,44 @@
 #slide[
   = Encapsulamiento
 
-  #grid(columns: 2, gutter: 1cm,
-    [
-      El término *encapsulamiento* tiene dos significados:
+  #v(1fr)
+  #set text(size: 15pt)
+  #emphbox[ #grid(columns: (1fr, auto), column-gutter: 0.5cm)[
+    El término *encapsulamiento* tiene dos significados:
 
-      - La *agrupación de estado y comportamiento* en una unidad conceptual
-        (la clase).
+    - La *agrupación de estado y comportamiento* en una unidad conceptual
+      (la clase).
 
-      - La aplicación de *mecanismos de restricción de acceso* a los atributos
-        y métodos, para *ocultar los detalles internos* de un objeto.
-    ],
-    [
-      #align(center + horizon)[
-        #image("capsula.png", width: 5cm)
-      ]
-    ],
-  )
-  #grid(columns: 2, gutter: 1cm, align: horizon,
-    [
-      En Java la restricción de acceso se logra mediante el uso de
-      *modificadores de acceso*: `private`, `protected` y `public`.
-      #linklet("https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html")
-    ],
-    [
-      #set align(center)
-      #set text(size: 12pt)
-      #v(1fr)
-      ```java
-      public class VectorDinamico implements Lista {
-          // Detalles de bajo nivel de abstracción
-          private Object[] elementos;
-          private int cantidad;
+    - La aplicación de *mecanismos de restricción de acceso* a los atributos
+      y métodos, para *ocultar los detalles internos* de un objeto.
+  ][
+    #align(horizon)[ #image("capsula.png", width: 5cm) ]
+  ]]
+  #v(1fr)
+  #grid(columns: (1fr, auto), column-gutter: 0.5cm, align: horizon)[
+    En Java la restricción de acceso se logra mediante el uso de
+    *modificadores de acceso*: `private`, `protected` y `public`.
+    #linklet("https://docs.oracle.com/javase/tutorial/java/javaOO/accesscontrol.html")
+  ][
+    #set text(size: 12pt)
+    ```java
+    public class VectorDinamico implements Lista {
+        // Detalles de bajo nivel de abstracción
+        private Object[] elementos;
+        private int cantidad;
 
-          public ArrayList() { ... }
-          public int capacidad() { ... }
-          public void extender(...) { ... }
+        public ArrayList() { ... }
+        public int capacidad() { ... }
+        public void extender(...) { ... }
 
-          // Implementación de la interfaz:
-          @Override public void agregar(Object element) { ... }
-          @Override public Object obtener(int index) { ... }
-          @Override public int size() { ... }
-      }
-      ```
-      #v(1fr)
-    ],
-  )
+        // Implementación de la interfaz:
+        @Override public void agregar(Object element) { ... }
+        @Override public Object obtener(int index) { ... }
+        @Override public int size() { ... }
+    }
+    ```
+  ]
+  #v(1fr)
 
   #fuente("https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)")
 ]
@@ -319,8 +314,10 @@
 
   πολλύς μορφή: “muchas formas”.
 
-  Es la capacidad de representar *múltiples tipos de datos* diferentes mediante
-  *un único símbolo*.
+  #emphbox[
+    Es la capacidad de representar *múltiples tipos de datos* diferentes mediante
+    *un único símbolo*.
+  ]
 
   Comunmente se reconocen las siguientes categorías de polimorfismo:
 
@@ -344,8 +341,10 @@
 
   #grid(columns: (60%, auto), gutter: 1cm,
     [
-      Es la capacidad de escribir dos o más *funciones o métodos*
-      con el *mismo nombre* pero *diferente firma*.
+      #emphbox[
+        Es la capacidad de escribir dos o más *funciones o métodos*
+        con el *mismo nombre* pero *diferente firma*.
+      ]
 
       #set text(size: 14pt)
       ```java
@@ -377,8 +376,10 @@
 #slide[
   = Polimorfismo por coerción
 
-  En programación, _coerción_ significa *forzar a que un
-  valor de un tipo sea convertido a otro tipo*.
+  #emphbox[
+    En programación, _coerción_ significa *forzar a que un
+    valor de un tipo sea convertido a otro tipo*.
+  ]
 
   #set text(size: 14pt)
   ```java
@@ -406,8 +407,10 @@
 #slide[
   = Polimorfismo paramétrico
 
-  Cuando se usa un *símbolo genérico* que luego puede ser sustituido por un
-  tipo específico.
+  #emphbox[
+    Cuando se usa un *símbolo genérico* que luego puede ser sustituido por un
+    tipo específico.
+  ]
 
   ```java
   public interface Lista<T> {
@@ -429,9 +432,11 @@
 #slide[
   = Polimorfismo por inclusión o de subtipos
 
-  Se basa en el hecho de que los tipos de datos forman una *jerarquía*, de
-  forma tal que un objeto de un tipo *subtipo* puede ser tratado como un
-  objeto de su tipo *supertipo*.
+  #emphbox[
+    Se basa en el hecho de que los tipos de datos forman una *jerarquía*, de
+    forma tal que un objeto de un tipo *subtipo* puede ser tratado como un
+    objeto de su tipo *supertipo*.
+  ]
 
   #set text(size: 14pt)
   ```java
@@ -477,8 +482,10 @@
     [
       #set text(size: 14pt)
 
-      Es un mecanismo que permite *crear nuevas clases basadas en clases existentes*,
-      *heredando sus atributos y métodos*, y *agregando o modificando funcionalidad*.
+      #emphbox[
+        Es un mecanismo que permite *crear nuevas clases basadas en clases existentes*,
+        *heredando sus atributos y métodos*, y *agregando o modificando funcionalidad*.
+      ]
 
       A la clase previamente existente se
       la conoce como *superclase* (o _clase
@@ -721,9 +728,11 @@
 #slide[
   = Clases abstractas
 
-  Si una clase o alguno de sus métodos está marcado con la palabra clave
-  `abstract`, entonces la clase es *abstracta* y *no puede ser instanciada
-  directamente*.
+  #emphbox(outset: 0.5em, inset: 0em)[
+    Si una clase o alguno de sus métodos está marcado con la palabra clave
+    `abstract`, entonces la clase es *abstracta* y *no puede ser instanciada
+    directamente*.
+  ]
 
   #set text(size: 12pt)
   #grid(columns: 2, gutter: 1cm, align: center + horizon,

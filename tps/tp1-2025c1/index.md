@@ -1,8 +1,8 @@
 ---
 title: "TP1"
 layout: default
-parent: "Trabajos prácticos"
 nav_order: 1
+nav_exclude: true
 ---
 
 # TP1: Robots
@@ -52,10 +52,10 @@ El TP se desarrolla en forma **grupal**, en grupos de 2 integrantes.
   nivel.
 * Si el jugador toca una celda incendiada, termina el juego.
 * Si un robot toca una celda incendiada, el robot es destruido.
-* En cada escenario habrá 4 recursos recolectables, por ejemplo “diamantes”, ubicados en 
+* En cada escenario habrá 4 recursos recolectables, por ejemplo “diamantes”, ubicados en
   celdas aleatorias y distintas y a al menos 3 celdas de distancia entre sí.
-* Los casilleros con recursos recolectables NO son transitables para los robots, pero pero 
-  sí para el jugador. 
+* Los casilleros con recursos recolectables NO son transitables para los robots, pero pero
+  sí para el jugador.
 * Cuando un jugador pisa una celda con un recurso recolectable, el recurso se considera
   "recolectado" y desaparece del tablero. La celda pasa a ser transitable para robots.
 * Si al finalizar el turno, todos los robots están destruidos o se han recolectado todos

@@ -9,9 +9,7 @@ nav_order: 2
 Para aprobar la materia es necesario:
 
 * Aprobar los **2 trabajos prácticos**, con nota 4 o superior.
-* Aprobar los **2 parciales**, con nota 4 o superior.
-
-No hay examen final; si los parciales y TPs están aprobados se considera la materia aprobada.
+* Aprobar el **examen**, con nota 4 o superior.
 
 ## Trabajos Prácticos
 
@@ -42,15 +40,12 @@ No hay examen final; si los parciales y TPs están aprobados se considera la mat
 * **[Plagiar](#plagio) un trabajo práctico implica la desaprobación del mismo,
   y por lo tanto de la materia.**
 
-## Parciales
+## Examen
 
-* Hay **2 parciales** con **2 recuperatorios cada uno**.
-* Los parciales se aprueban con nota 4 o superior. Suelen ser 5
-  ejercicios y se requieren 3 ejercicios bien para aprobar.
-* Todos los recuperatorios se toman una vez finalizada la cursada.
-* Se puede recuperar los parciales para levantar nota sin riesgo de empeorarla
-  (se considera la nota mayor de las obtenidas).
-* **[Plagiar](#plagio) un parcial implica la desaprobación del mismo.**
+* Hay **un examen escrito** con **2 recuperatorios**.
+* El examen se aprueba con nota 4 o superior (que generalmente corresponde
+  al 60% de las preguntas contestadas correctamente).
+* **[Plagiar](#plagio) un examen implica la desaprobación del mismo.**
 
 ## Notas
 
