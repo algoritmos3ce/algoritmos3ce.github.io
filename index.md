@@ -17,11 +17,11 @@ Este curso corresponde a las materias:
 
 ## Docentes
 
-*Profesor:* Diego Essaya
+**Profesor:** Diego Essaya
 
-*Jefe de Trabajos Prácticos:* Santiago Maraggi
+**Jefe de Trabajos Prácticos:** Santiago Maraggi
 
-*Ayudantes:*
+**Ayudantes:**
 - Alberto Carmona
 - Dante Finci
 - José Ignacio Castro Martínez
@@ -29,7 +29,7 @@ Este curso corresponde a las materias:
 - Luca Salluzzi
 - María Macarena Vita Sanchez
 
-*Colaboradores:*
+**Colaboradores:**
 - Ezequiel Urbina
 - Federico Nicolás Pagnotta Lemes
 - Franco Ricciardo Calderaro
