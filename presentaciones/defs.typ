@@ -5,11 +5,11 @@
 #let rojo = rgb("#cc2200")
 #let verde = rgb("#228800")
 
-#let default-style(it) = {
-  import "defs.typ": *
+#let textsize = 16pt
 
+#let default-style(it) = {
   set page(paper: "presentation-16-9", margin: 1cm)
-  set text(size: 16pt, font: "DejaVu Sans")
+  set text(size: textsize, font: "DejaVu Sans")
   set list(tight: false)
   set terms(separator: [*:* ])
   show raw.where(block: true): it => block(fill: rgb("#f0f0f0"), inset: 1em, it)
@@ -101,4 +101,7 @@
   #content
 ]
 
+#let hr = line(length: 100%, stroke: azul.transparentize(90%))
+
 #let emphbox(body, ..args) = block(width: 100%, fill: azul.transparentize(90%), inset: 0.75em, ..args)[#body]
+#let emphbox-small(body, ..args) = block(width: 100%, fill: azul.transparentize(90%), outset: 0.75em, ..args)[#body]

@@ -31,6 +31,7 @@ https://www.youtube.com/playlist?list=PLR0NFKZIjBcB5Ov5YqNTUi4U6u_7y71Ou
  * Clase 6 - Programación lógica
       [[Presentación]](/presentaciones/clase06/clase06.pdf)
  * Clase 7 - Cálculo Lambda
+      [[Presentación]](/presentaciones/clase07/clase07.pdf)
       [[Apunte]](https://drive.google.com/file/d/1uGF-x1OjKyusgihN8bevHG6eApaHJAdE/view?usp=sharing)
  * Clase 8 - Programación funcional - Java y Clojure
       <!-- [[Presentación]]() -->
