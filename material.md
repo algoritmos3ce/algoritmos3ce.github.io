@@ -5,15 +5,13 @@ nav_order: 5
 ---
 
 <!--
-    Los archivos están subidos en la carpeta de drive del curso:
+    Los archivos de drive están subidos en esta carpeta:
     https://drive.google.com/drive/folders/1-sBhVb2DKF5OCUpH2EepX7p870APkWxe?usp=drive_link
 -->
 
 # Material
 
-https://www.youtube.com/playlist?list=PLR0NFKZIjBcB5Ov5YqNTUi4U6u_7y71Ou
-
-* [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcCdO6vn0ZI-ltAWf4zb_3uL)
+* [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcB5Ov5YqNTUi4U6u_7y71Ou)
 
  * Clase 1 - Programación orientada a objetos
       [[Presentación]](/presentaciones/clase01/clase01.pdf)
