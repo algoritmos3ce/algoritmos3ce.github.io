@@ -12,6 +12,9 @@
 #slide[
   = Paradigmas de Programación
 
+  Es una manera de categorizar los lenguajes de programación según su
+  estilo y enfoque. Entre los paradigmas más comunes se destacan:
+
   #emphbox[
     - *Imperativos* (énfasis en la ejecución de instrucciones)
 
@@ -26,19 +29,19 @@
       - Programación Lógica (ej. Prolog)
   ]
 
-  Los lenguajes más utilizados (por ejemplo, Java) son *multiparadigma*. Cabe a los
+  Algunos lenguajes son *puros*, es decir que soportan un único paradigma.
+
+  Los lenguajes más utilizados son *multiparadigma*. Cabe a los
   programadores usar el estilo de programación más adecuado para cada trabajo.
 
   #fuente("https://en.wikipedia.org/wiki/Programming_paradigm")
 ]
 
 #slide[
-  #grid(
-    columns: (2fr, 1.8fr),
-    align: (auto, horizon + center),
-    gutter: 1cm,
+  = OOP: Historia
+
+  #grid(columns: (1fr, auto), align: (auto, horizon + center), gutter: 1em,
     [
-      = OOP: Historia
 
       / 1950s: La idea de "objetos" surge del grupo de IA del MIT
 
@@ -52,7 +55,11 @@
         - Eiffel (Bertrand Meyer)
         - Delphi (Object Pascal, Anders Hejlsberg $->$ Borland)
     ],
-    image("smalltalk.png", width: 100%),
+    [
+      #set text(size: 11pt)
+      #image("smalltalk.png", width: 12cm)
+      #align(center)[Smalltalk-78 (1979)]
+    ],
   )
 
   #fuente("https://en.wikipedia.org/wiki/Object-oriented_programming")
@@ -66,7 +73,7 @@
     [
       = OOP: Historia (cont.)
 
-      / 1990s-2000s: OOP es mainstream
+      / 1990s-2000s: OOP es el paradigma más popular
         - Java (James Gosling $->$ Sun Microsystems $->$ Oracle)
         - Python (Guido van Rossum)
         - Ruby (Yukihiro Matsumoto)
@@ -162,6 +169,14 @@
       - Compilación a bytecode y ejecución en una máquina virtual (JVM)
         - Portabilidad: "Write once, run anywhere"
         - Windows, Linux, macOS, Android, etc.
+
+      Se distribuye en dos paquetes:
+      / JDK: Java Development Kit, incluye herramientas de desarrollo
+        (compilador, depurador, etc.) y la JVM.
+      / JRE: Java Runtime Environment, incluye la JVM y las bibliotecas estándar.
+
+      Desde 2010 Java pertenece a Oracle. La implementación de referencia
+      oficial se llama *OpenJDK* y es software libre.
     ],
     [
       #v(1fr)
@@ -171,6 +186,8 @@
       #v(1fr)
     ]
   )
+
+  #fuente("https://en.wikipedia.org/wiki/Java_(programming_language)")
 ]
 
 #slide[
