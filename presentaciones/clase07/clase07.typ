@@ -9,10 +9,6 @@
   = Cálculo Lambda
 ]
 
-// **Diapositiva 1: Título de la Presentación**
-// * **Título:** Paradigmas de Programación: Una Introducción al Cálculo Lambda.
-// * **Resumen:** Breve introducción al tema de la clase. [cite_start]Se mencionará que el Cálculo Lambda es un modelo de computación que sirve como la base teórica de los lenguajes de programación funcional. [cite: 5, 26]
-
 #slide[
   #grid(columns: (1fr, auto), gutter: 0.5cm)[
     = Origen

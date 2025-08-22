@@ -47,12 +47,14 @@
   - *Imperativos* (énfasis en la ejecución de instrucciones)
 
     - Programación Procedimental (ej. Pascal)
+
     - Programación Orientada a Objetos (ej. Smalltalk)
 
   - *Declarativos* (énfasis en la evaluación de expresiones)
 
     - Programación Funcional (ej. Haskell)
-    - *Programación Lógica (ej. Prolog)*
+
+    - #emphbox-small[*Programación Lógica (ej. Prolog)*]
 
   La Programación Lógica se basa en expresar *proposiciones, reglas y hechos
   lógicos*, y utilizar un *motor de inferencia* para resolver problemas.

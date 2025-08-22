@@ -56,7 +56,7 @@
 
 #let fin() = {
   titulo[
-    #place(center + horizon, image("redes.png", width: 70%))
+    #place(center + horizon, image("redes.png", width: 50%))
   ]
 }
 

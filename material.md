@@ -32,7 +32,7 @@ nav_order: 5
       [[Presentación]](/presentaciones/clase07/clase07.pdf)
       [[Apunte]](https://drive.google.com/file/d/1uGF-x1OjKyusgihN8bevHG6eApaHJAdE/view?usp=sharing)
  * Clase 8 - Programación funcional - Java y Clojure
-      <!-- [[Presentación]]() -->
+      [[Presentación]](/presentaciones/clase08/clase08.pdf)
       [[Apunte]](https://drive.google.com/file/d/1pAjjK04vpL5PIWxEYZoLckeL34rQBvEt/view?usp=sharing)
  * Clase 9 - Programación concurrente en Java
       <!-- [[Presentación]]() -->
