@@ -12,6 +12,15 @@ nav_order: 9
   <br>Documentación / referencia de la API de Java 24
   <br>[Otras versiones](https://docs.oracle.com/en/java/javase/)
 
+* [The Java™ Tutorials](https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html)
+  <br>Tutoriales oficiales de Oracle
+
+* [Tutoriales en dev.java](https://dev.java/learn)
+  <br>Más tutoriales
+
+* [Playground en dev.java](https://dev.java/playground)
+  <br>Entorno online para probar código Java
+
 ## UML
 
 * [PlantUML](https://plantuml.com/)
