@@ -79,19 +79,19 @@
 #let malo(body) = text(rojo)[ #sym.crossmark.heavy #body ]
 #let bueno(body) = text(verde)[ #sym.checkmark.heavy #body ]
 
-#let bonustrack(content) = [
+#let special(color, label, content) = [
   #set page(
     margin: (left: 2cm),
     background: {
       place(top + left)[
         #box(
-          fill: azul,
+          fill: color,
           height: 100%,
           width: 1cm,
         )[
           #set text(white)
           #place(center+horizon, clearance: 1em)[
-            #rotate(-90deg, reflow: true)[ * Bonus track * ]
+            #rotate(-90deg, reflow: true)[ *#label* ]
           ]
         ]
       ]
@@ -100,6 +100,9 @@
 
   #content
 ]
+
+#let bonustrack(content) = special(azul, [Bonus Track], content)
+#let ejercicio(content) = special(rojo, [Ejercicio], content)
 
 #let hr = line(length: 100%, stroke: azul.transparentize(90%))
 
