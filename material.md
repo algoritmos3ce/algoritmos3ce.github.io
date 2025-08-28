@@ -35,9 +35,9 @@ nav_order: 5
       [[Presentación]](/presentaciones/clase08/clase08.pdf)
       [[Apunte]](https://drive.google.com/file/d/1pAjjK04vpL5PIWxEYZoLckeL34rQBvEt/view?usp=sharing)
  * Clase 9 - Programación concurrente en Java
-      <!-- [[Presentación]]() -->
+      [[Presentación]](/presentaciones/clase09/clase09.pdf)
  * Clase 10 - Programación concurrente en Clojure
-      <!-- [[Presentación]]() -->
+      [[Presentación]](/presentaciones/clase10/clase10.pdf)
 
 <hr/>
 

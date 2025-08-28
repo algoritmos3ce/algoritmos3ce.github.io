@@ -64,17 +64,6 @@
   #fuente("https://en.wikipedia.org/wiki/Concurrent_computing")
 ]
 
-// TODO
-// - Go blocks + canales
-// - Corutinas
-// - Generadores
-// - Actores
-// - GPU
-// - Clojure
-//   - Atoms
-//   - Agents & STM
-// - Arquitectura Lambda
-
 #slide[
   = Procesos
 
