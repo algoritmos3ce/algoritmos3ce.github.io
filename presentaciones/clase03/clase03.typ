@@ -47,14 +47,48 @@
         legibilidad, mantenibilidad y extensibilidad, sin cambiar su comportamiento
         externo. #linklet("https://en.wikipedia.org/wiki/Code_refactoring")
 
+      #set text(size: 14pt)
       #quote(attribution: [Martin Fowler])[
-        Any fool can write code that a computer can understand. Good
-        programmers write code that humans can understand.
+        Cualquier idiota puede escribir código que una computadora pueda entender.
+        Los buenos programadores escriben código que los humanos pueden entender.
       ]
     ][
       #image("refactoring.jpg", height: size.height)
     ]
   ])
+]
+
+#slide[
+  #toolbox.side-by-side(columns: (1fr, auto))[
+    = La teoría de la ventana rota
+
+    #v(1fr)
+    #quote(attribution: [Andrew Hunt])[
+      Se rompe una ventana en un edificio de departamentos, pero nadie la arregla.
+      Queda rota. Luego se rompe otra cosa. Tal vez sea un accidente, tal vez no,
+      pero tampoco se arregla. Aparece un graffiti. Se acumula más y más daño.
+      Muy rápidamente se obtiene un crecimiento exponencial: todo el edificio se
+      deteriora. Los inquilinos se mudan. Entra el crimen. Y has perdido el
+      juego.
+    ]
+    #v(1fr)
+  ][
+    #image("pragmatic.jpg", height: 1fr)
+  ]
+]
+
+#slide[
+  #toolbox.side-by-side(columns: (1fr, auto))[
+    = La regla de los Boy Scouts
+
+    #v(1fr)
+    #quote(attribution: [Robert "Uncle Bob" C. Martin])[
+      Siempre deja el campamento un poco mejor de lo que lo encontraste.
+    ]
+    #v(1fr)
+  ][
+    #image("cleancode.jpg", height: 1fr)
+  ]
 ]
 
 #slide[
@@ -108,16 +142,12 @@
     = No solo es acerca del código
 
     #toolbox.side-by-side(columns: (1fr, auto))[
+      #v(1fr)
       #quote(attribution: [Linus Torvalds])[
-        ...git actually has a simple design, with stable and reasonably
-        well-documented data structures. In fact, I'm a huge proponent of
-        designing your code around the data, rather than the other way around,
-        and I think it's one of the reasons git has been fairly successful [...]
-        I will, in fact, claim that the difference between a bad programmer
-        and a good one is whether he considers his code or his data structures
-        more important. *Bad programmers worry about the code. Good programmers
-        worry about data structures and their relationships.*
+        Los malos programadores se preocupan por el código.
+        Los buenos programadores se preocupan por las estructuras de datos.
       ]
+      #v(1fr)
     ][
       #image("linus.jpg", height: size.height * 0.8)
     ]
@@ -146,7 +176,8 @@
   ]
 
   #set text(size: 14pt)
-  #nosi[
+  #nosi()[
+    #v(2em)
     ```java
     public int esPar(int n) {
         if (n < 0) {
@@ -162,6 +193,7 @@
     }
     ```
   ][
+    #v(2em)
     ```java
     public int esPar(int n) {
         return n % 2 == 0;
@@ -1147,7 +1179,7 @@
       },
       inset: 1em,
       table.header(
-        [*Efecto deseado*], [*Composición*], [*Interfaces*], [*Herencia*],
+        [], [*Composición*], [*Interfaces*], [*Herencia*],
       ),
       [Reutilización de código], [#bueno[Sí]], [#malo[No]], [#bueno[Sí]],
       [Polimorfismo], [#malo[No]], [#bueno[Sí]], [#bueno[Sí]],
