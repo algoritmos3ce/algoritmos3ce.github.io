@@ -23,9 +23,14 @@
   #let (izq, der) = labels
   #grid(columns: (1fr, auto, 1fr, auto, 1fr), ..args)[][
     #withlabel(alignment: alignment)[ #malo[ #izq ] ][ #body1 ]
-  ][][
-    #withlabel(alignment: alignment)[ #bueno[ #der ] ][ #body2 ]
-  ][]
+  ][][#{
+    let content = withlabel(alignment: alignment)[ #bueno[ #der ] ][ #body2 ]
+    if ("presentar" in sys.inputs) {
+      uncover(2, content)
+    } else {
+      content
+    }
+  }][]
 ]
 
 #caratula[
