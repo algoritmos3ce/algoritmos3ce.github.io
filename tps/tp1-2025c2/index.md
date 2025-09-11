@@ -1,7 +1,7 @@
 ---
 title: "TP1"
 layout: default
-nav_order: 2
+nav_order: 1
 ---
 
 <img src="./logo.png" style="width: 100%">
