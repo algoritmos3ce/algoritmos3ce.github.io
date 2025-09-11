@@ -1,6 +1,7 @@
 ---
 title: "TP1"
 layout: default
+parent: Trabajos Prácticos
 nav_order: 1
 ---
 
