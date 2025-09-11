@@ -1,7 +1,7 @@
 ---
 title: "TP1"
 layout: default
-parent: Trabajos Prácticos
+parent: Trabajos prácticos
 nav_order: 1
 ---
 
@@ -10,7 +10,7 @@ nav_order: 1
 # TP1: YABC - Yet Another Battle City
 {: .no_toc }
 
-**Paradigmas de Programación - FIUBA**  
+**Paradigmas de Programación - FIUBA**
 **Enunciado de Trabajo Práctico 1**
 
 1. Índice
@@ -27,15 +27,15 @@ Implementar una versión propia del tradicional juego **Battle City**.
 
 ## Aplicación de temas y conceptos
 
-- Programación Orientada a Objetos  
-- Principios de Programación  
+- Programación Orientada a Objetos
+- Principios de Programación
 - Interfaces Gráficas
 
 ## Contexto del Proyecto (Hipótesis)
 
 Según las mejores prácticas, se desea separar el código en al menos dos capas de abstracción:
 
-- **Vista o Presentación**: renderizado, efectos de sonido, eventos de teclado del usuario  
+- **Vista o Presentación**: renderizado, efectos de sonido, eventos de teclado del usuario
 - **Modelo**: tanques, niveles, lógica del juego
 
 > 💡 *A futuro*, se contempla el uso de un motor 3D. Por lo tanto, **las clases del Modelo no deben tener ninguna dependencia** de clases de la Vista ni de JavaFX.
@@ -152,7 +152,7 @@ Al destruir enemigos se sortea la aparición de un power-up aleatorio en el mapa
 
 ## 🎨 Gráficos
 
-Se proveen sprites hechos a mano para su uso en el juego.  
+Se proveen sprites hechos a mano para su uso en el juego.
 - Tamaño estándar: **20x20 píxeles**
 - Uso: opcional, pueden modificarse, redimensionarse o reemplazarse
 
@@ -229,7 +229,7 @@ Los sonidos provistos fueron descargados de [pixabay.com](https://pixabay.com) y
 
 ### Implementación de Reglas de Juego
 
-Todas las reglas del juego deben ser implementadas para aprobar el trabajo práctico.  
+Todas las reglas del juego deben ser implementadas para aprobar el trabajo práctico.
 Las siguientes características son **opcionales**, pero se tendrán en cuenta para alcanzar las notas más altas:
 
 - Juego cooperativo: dos jugadores simultáneos
@@ -317,7 +317,7 @@ Los niveles se definirán en formato **XML**, permitiendo especificar:
 - Repositorio: **Git y GitHub**, alojado en GitHub Classroom
 - Carga de niveles: **Parser XML**
 
-> 🔒 *IMPORTANTE*: El contenido del proyecto es **privado** mientras al menos un grupo tenga el TP en curso.  
+> 🔒 *IMPORTANTE*: El contenido del proyecto es **privado** mientras al menos un grupo tenga el TP en curso.
 > Compartir código será motivo de **descalificación inmediata** para todos los involucrados.
 
 ---
@@ -508,4 +508,3 @@ El código será analizado en función de los siguientes principios:
 - Se contempla **una única instancia de reentrega**, dentro del plazo de la **"fecha límite de aprobación"**, tanto si el trabajo fue aprobado como si no.
 
 > 📌 *Es responsabilidad del grupo cumplir con los plazos y condiciones establecidos por la cátedra.*
-
