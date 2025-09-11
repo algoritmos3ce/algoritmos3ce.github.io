@@ -5,7 +5,7 @@ nav_order: 2
 nav_exclude: true
 ---
 
-<img src="./banner.png" style="width: 100%">
+<img src="./logo.png" style="width: 100%">
 
 # TP1: YABC - Yet Another Battle City
 {: .no_toc }
@@ -261,9 +261,9 @@ El juego debe iniciar con una pantalla de bienvenida que incluya:
 - Si ambos jugadores son eliminados:
   - Se muestra un cartel de derrota
   - Se regresa a la pantalla de inicio
-- Controles:
-  - Jugador 1: `W-A-S-D`
-  - Jugador 2: flechas del teclado
+- Controles (movimiento + DISPARO):
+  - Jugador 1: `W-A-S-D` + ESPACIO
+  - Jugador 2: flechas del teclado + ENTER
 - Al eliminar todos los enemigos de un nivel:
   - Se pasa al siguiente nivel
 - El juego consta de **3 niveles distintos**
