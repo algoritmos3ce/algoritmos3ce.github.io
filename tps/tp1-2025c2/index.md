@@ -484,6 +484,7 @@ El código será analizado en función de los siguientes principios:
 - Aplicación de **polimorfismo** y diseño de clases según principios vistos
 - Separación adecuada entre **vista** y **lógica**
 - Ausencia de dependencias del modelo hacia la vista o clases de JavaFX
+- Las contribuciones de todos los integrantes del grupo al proyecto deben ser significativas
 
 ---
 
