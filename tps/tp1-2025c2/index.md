@@ -89,7 +89,9 @@ La base puede estar rodeada por ladrillos, que pueden ser destruidos por enemigo
 
 - Están precargados para cada nivel.
 - Se pueden generar enemigos adicionales por *spawning* desde la parte superior del mapa.
-- Límite de *spawning*: **máximo 10 tanques por minuto**.
+- Límite de *spawning*: **máximo 10 tanques durante no más de 1 minuto**.
+
+> 🛠️ *Este límite se establece para facilitar la corrección del trabajo práctico, permitiendo observar el comportamiento de los enemigos en un intervalo controlado.*
 
 Tipos de enemigos:
 
@@ -117,18 +119,20 @@ Los enemigos usan una **máquina de estados simple**:
 
 Al destruir enemigos se sortea la aparición de un power-up aleatorio en el mapa.
 
-- Probabilidad de aparición: **20%** por enemigo destruido
+- Probabilidad de aparición: **20%** por enemigo destruido (un powerup por vez)
+- Todos los tipos de powerup tienen igual probabilidad entre sí de aparecer
 - Ubicación: totalmente aleatoria, no alineada con la grilla
 - Tamaño: igual al de un bloque estático o tanque
 - Activación: se consumen al ser “pisados” por el jugador
 - Efecto: se aplica inmediatamente y el power-up desaparece
+- **Solo los jugadores** pueden consumir power-ups.
 
 ### Power-ups obligatorios
 
 | Power-up | Efecto |
 |----------|--------|
-| **Granada** | Destruye todos los enemigos en pantalla |
-| **Casco** | Otorga invulnerabilidad temporal por 10 segundos |
+| **Granada** | Destruye todos los enemigos en pantalla (si no hay spawnings pendientes, se gana el nivel) |
+| **Casco** | Otorga invulnerabilidad temporal por 10 segundos ante disparos (ver animaciones de tanque) |
 | **Estrella** | Mejora el disparo del jugador (mata cualquier tanque con un solo disparo) |
 
 ### Power-up extra (no evaluable)
@@ -190,14 +194,11 @@ Se proveen sprites hechos a mano para su uso en el juego.
 - Si se reemplaza el set provisto, se deberá mantener la animación alternando sprites.
 - En reposo, el tanque conserva el **último sprite utilizado**.
 - Al iniciar el nivel, cada tanque debe tener un **sprite predeterminado**.
-
-### Power-up de indestructibilidad
-
-- Al tomar el power-up, se dibuja el sprite semitransparente `InvulnerableRing20x20.png` sobre el tanque.
-- **Solo los jugadores** pueden consumir power-ups.
 - Cuando un tanque es destruido:
   - Se reemplaza por el sprite de tanque destruido
   - El lugar queda **intransitable** hasta finalizar el nivel
+- Al tomar un jugador el power-up de indestructibilidad, se dibuja el sprite semitransparente `InvulnerableRing20x20.png` sobre su tanque.
+
 
 ---
 
@@ -433,7 +434,7 @@ La entrega se realiza mediante **GitHub Classroom**, en equipos de **2 integrant
 
 <a href="./YABC-Assets.zip" class="btn btn-default btn-lg">YABC-Assets.zip</a>
 
-Se provee material auxiliar de uso opcional (se pueden reemplazar, pero no pueden faltar funcionalidades relacionadas):
+Se provee material auxiliar de uso opcional (se pueden reemplazar elementos, pero no pueden faltar funcionalidades relacionadas):
 - Editor de niveles en formato XML estandarizado
 - Archivo XSD para validación de archivos de nivel en formato XML
 - Sonidos, según tabla de eventos
