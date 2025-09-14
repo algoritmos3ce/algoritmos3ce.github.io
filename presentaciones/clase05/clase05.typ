@@ -136,11 +136,6 @@
 
     / Persistencia: Se encarga de *almacenar* el estado de la aplicación de forma
       permanente, por ejemplo en una base de datos o un archivo.
-
-    Muchos frameworks se basan en la arquitectura *MVC (Model-View-Controller)*
-    #linklet("https://developer.mozilla.org/en-US/docs/Glossary/MVC"),
-    para desacoplar la lógica de negocio (Modelo), la representación gráfica (Vista)
-    y la interacción del usuario (Controlador).
   ][
     #image("tiers.png", width: 8cm)
   ]
@@ -148,7 +143,30 @@
   #fuente("https://en.wikipedia.org/wiki/Multitier_architecture")
 ]
 
+#slide[
+  = El patrón MVC
 
+  #grid(columns: (1fr, auto))[
+    Muchos frameworks se basan en la arquitectura *MVC* (Model-View-Controller),
+    para desacoplar la lógica de negocio (Modelo), la representación gráfica (Vista)
+    y la interacción del usuario (Controlador). Este patrón fue creado para
+    desarrollar aplicaciones GUI en Smalltalk-80.
+
+    Los frameworks modernos adoptan diferentes variantes de MVC. Por ejemplo,
+    en el patrón *MVP* (Modelo-Vista-Presentación) los _widgets_ de la Vista son
+    responsables de interceptar el _input_ del usuario y enviarlo a la Presentación.
+  ][
+    #align(right)[
+      #v(1fr)
+      #image("mvc.png", height: 4.5fr)
+      #v(1fr)
+      #image("mvp.png", height: 3fr)
+      #v(1fr)
+    ]
+  ]
+
+  #fuente("https://developer.mozilla.org/en-US/docs/Glossary/MVC")
+]
 
 #slide[
   = Desarrollo de aplicaciones con GUI en Java
@@ -316,6 +334,89 @@
   ]
 
   #fuente("https://www3.ntu.edu.sg/home/ehchua/programming/java/Javafx1_intro.html")
+]
+
+#slide[
+  = Properties & Bindings
+
+  Las clases del paquete `javafx.beans.property` ofrecen interfaces e
+  implementaciones de *properties*, que encapsulan valores que pueden ser
+  *observados* y *enlazados* (_bindings_).
+
+  ```java
+  IntegerProperty num = new SimpleIntegerProperty(42);
+  num.addListener((_, viejo, nuevo) -> {
+      System.out.printf("El número cambió de %s a %s\n", viejo, nuevo);
+  });
+  num.set(num.get() + 1);
+  ```
+
+  ```java
+  IntegerProperty a = new SimpleIntegerProperty(3);
+  IntegerProperty b = new SimpleIntegerProperty(5);
+  IntegerProperty c = new SimpleIntegerProperty();
+  NumberBinding suma = a.add(b);
+  c.bind(suma); // binding: c = a + b
+
+  System.out.println(c.getValue()); // 8
+  a.set(10);
+  System.out.println(c.getValue()); // 15
+  ```
+
+  #fuente("https://docs.oracle.com/javafx/2/binding/jfxpub-binding.htm")
+]
+
+#slide[
+  = Properties & Bindings (cont.)
+
+  Ejemplo de uso de *bindings* para centrar un elemento en la ventana:
+
+  ```java
+  Circle c = new Circle(30, Color.BLACK);
+
+  Group root = new Group(c);
+  Scene scene = new Scene(root, 150, 150);
+
+  c.centerXProperty().bind(scene.widthProperty().divide(2));
+  c.centerYProperty().bind(scene.heightProperty().divide(2));
+
+  stage.setScene(scene);
+  stage.show();
+  ```
+]
+
+#slide[
+  = Properties & Bindings (cont.)
+
+  El mecanismo de _bindings_ también se puede usar para automatizar la
+  actualización de la _vista_ a partir de los cambios del _modelo_:
+
+  #set text(size: 12pt)
+  ```java
+  // modelo
+  class Persona {
+      public final StringProperty nombre = new SimpleStringProperty("Juan");
+      public final IntegerProperty edad = new SimpleIntegerProperty(20);
+  }
+  ```
+
+  ```java
+  // vista
+  Persona p = new Persona();
+
+  TextField nombre = new TextField();
+  nombre.textProperty().bindBidirectional(p.nombre);
+
+  Button incrementar = new Button("incrementar");
+  incrementar.setOnAction(_ -> {
+      p.edad.set(p.edad.get() + 1);
+  });
+
+  Label label = new Label();
+  label.textProperty().bind(Bindings.format("%s tiene %d años", p.nombre, p.edad));
+  ```
+
+  Nota: esto requiere que el modelo dependa de JavaFX.
 ]
 
 #slide[
