@@ -10,6 +10,29 @@
 ]
 
 #slide[
+  = Paradigmas de Programación
+
+  - *Imperativos* (énfasis en la ejecución de instrucciones)
+
+    - Programación Procedimental (ej. Pascal)
+
+    - Programación Orientada a Objetos (ej. Smalltalk)
+
+  - *Declarativos* (énfasis en la evaluación de expresiones)
+
+    - Programación Funcional (ej. Haskell)
+
+    - #emphbox-small[*Programación Lógica (ej. Prolog)*]
+
+  La Programación Lógica se basa en expresar *proposiciones, reglas y hechos
+  lógicos*, y utilizar un *motor de inferencia* para resolver problemas.
+
+  Es un paradigma *declarativo*, ya que se enfoca en _qué_ se quiere lograr
+  en lugar de _cómo_ lograrlo, permitiendo que el motor de inferencia se
+  encargue de la ejecución.
+]
+
+#slide[
   = Programación Lógica
 
   #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
@@ -39,29 +62,6 @@
   ][]
 
   #fuente("https://swish.swi-prolog.org/p/IajwiKgo.pl")
-]
-
-#slide[
-  = Paradigmas de Programación
-
-  - *Imperativos* (énfasis en la ejecución de instrucciones)
-
-    - Programación Procedimental (ej. Pascal)
-
-    - Programación Orientada a Objetos (ej. Smalltalk)
-
-  - *Declarativos* (énfasis en la evaluación de expresiones)
-
-    - Programación Funcional (ej. Haskell)
-
-    - #emphbox-small[*Programación Lógica (ej. Prolog)*]
-
-  La Programación Lógica se basa en expresar *proposiciones, reglas y hechos
-  lógicos*, y utilizar un *motor de inferencia* para resolver problemas.
-
-  Es un paradigma *declarativo*, ya que se enfoca en _qué_ se quiere lograr
-  en lugar de _cómo_ lograrlo, permitiendo que el motor de inferencia se
-  encargue de la ejecución.
 ]
 
 #slide[
@@ -125,7 +125,7 @@
 
   / Términos atómicos:
 
-    / Átomos: `x`, `azul`, `hola_munto`, `'Hola, Mundo!'`.
+    / Átomos: `x`, `azul`, `hola_mundo`, `'Hola, Mundo!'`.
     / Números: enteros y números de punto flotante. Ejemplos: `42`, `3.14`.
     / Variables: `X`, `Resultado`, `_temp`. \
       Las variables son *unificadas* con otros términos durante la resolución
@@ -198,13 +198,13 @@
 
   / `X == Y`: Verdadero si `X` e `Y` son términos idénticos.
 
-  / `X /== Y`: Verdadero si `X` e `Y` no son términos idénticos.
+  / `X \== Y`: Verdadero si `X` e `Y` no son términos idénticos.
 
   / `X = Y`: *Unifica* `X` e `Y` (falso si no son unificables).
 
-  / `X /= Y`: Verdadero si  `X` e `Y` no son unificables.
+  / `X \= Y`: Verdadero si  `X` e `Y` no son unificables.
 
-  / `var(X)` / `atom(X)` / `number(X` / ...: Verdadero si `X` es una variable,
+  / `var(X)` / `atom(X)` / `number(X)` / ...: Verdadero si `X` es una variable,
     átomo, número, etc.
 
   #fuente("https://www.swi-prolog.org/pldoc/man?section=builtin")
@@ -213,21 +213,23 @@
 #slide[
   = Unificación
 
-  Para resolver una consulta, el motor de Prolog comienza intentando
-  *unificar* el objetivo con alguna de las cláusulas de la base de datos.
-
-  La unificación es un proceso
-  que intenta encontrar una correspondencia entre los términos, *unificando*
-  o *instanciando* variables con valores concretos si es necesario.
+  Dos términos *unifican* si pueden representar la misma estructura.
+  Si alguno de los términos contiene variables, éstas se *instancian*
+  para lograr la unificación.
 
   Por ejemplo:
 
-  - `padre(homero, bart)` se unifica con `padre(homero, bart)`.
-  - `padre(homero, bart)` #text(red)[no] se unifica con `padre(homero, lisa)`.
-  - `padre(homero, X)` se unifica con `padre(homero, bart)` con `X = bart`.
-  - `padre(P, X)` se unifica con `padre(homero, bart)` con `P = homero`, `X = bart`.
-  - `2 + 3` #text(red)[no] se unifica con `5`.
+  - `padre(homero, bart)` #text(verde)[unifica] con `padre(homero, bart)`.
+  - `padre(homero, bart)` #text(rojo)[no unifica] con `padre(homero, lisa)`.
+  - `padre(homero, X)` #text(verde)[unifica] con `padre(homero, bart)` instanciando `X = bart`.
+  - `padre(P, X)` #text(verde)[unifica] con `padre(homero, bart)` instanciando `P = homero`, `X = bart`.
+  - `2 + 3` #text(rojo)[no unifica] con `5`.
 
+  Para *resolver una consulta*, el motor de Prolog:
+
+  - Intenta unificar el objetivo con alguna de las cláusulas de la base de datos (buscando de arriba hacia abajo).
+  - Para las cláusulas de tipo `q :- p`, el objetivo debe unificar con `q`.
+  - Si la cláusula unificada tiene un cuerpo `p`, se intenta resolver la consulta `?- p.`, con las variables instanciadas en la unificación de `q`.
 ]
 
 
@@ -255,31 +257,37 @@
   = Árbol de búsqueda
 
   Un *árbol de búsqueda* es una manera de mostrar cómo Prolog resuelve una
-  consulta. Para dibujar el árbol:
+  consulta.
 
-  1. Escribir la consulta en un recuadro en la parte superior de la página.
-     El recuadro actúa como una lista de tareas pendientes.
+  #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
+    Base de datos:
 
-  2. Dibujar las ramas basándose en la cantidad de cláusulas definidas para
-     el predicado al que se dirige la consulta.
+    ```prolog
+    f(a).
+    f(b).
+    g(a).
+    g(b).
+    h(b).
+    k(X) :- f(X), g(X), h(X).
+    ```
 
-  3. Proceder con las ramas de izquierda a derecha. Si una rama corresponde
-     a un hecho, ir al paso 4. Si una rama corresponde a una regla, ir al paso 5.
+    Consulta:
 
-  4. Si la consulta no se unifica con el hecho, dibujar una cruz ($crossmark$,
-     denotando una rama muerta); de lo contrario (la consulta se unifica
-     con el hecho) dibujar un recuadro vacío ($square.stroked.big$, señalando que no queda
-     nada por hacer).
+    ```prolog
+    ?- k(Y).
+    ```
+  ][][
+    // https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%223HUzLkMqPp62n1jcsH72%22%3E5Vldc6IwFP01zHQfdICg2MdWq33odrrb2V3tW5QA2SJxQqzaX78BwmcA3dWKne1DJzlJLsm995x8qIDhcjuhcOV%2BJRbyFF21tgoYKbpuaCr%2FHwK7GNAHAnAotmJIy4Bn%2FI4EmHRbYwsFhY6MEI%2FhVRFcEN9HC1bAIKVkU%2BxmE6%2F41RV0kAQ8L6Ano7%2BwxdwYHfTUDL9H2HGTL2uqaFnCpLMAAhdaZJODwJ0ChpQQFpeW2yHyQt8lfonHjWta04lR5LODBty82uTehv3J08sPYL9M%2BuZLxxBzY7tkwcji6xdVQplLHOJD7y5DbylZ%2BxYKraq8lvV5IGTFQY2DvxFjOxFMuGaEQy5beqIVbTGbhsO7PVGb5VpGW2E5quySis%2FoLjcorM7ybdmwqJaMk70kHBeQNV2gBtck2Qapg1hDPz3uF%2Fot9wERgwkiS8TnwztQ5EGG34p5BUV6Omm%2FLIK8IIJYkx%2BPjvbNMLzvtzYbP45Uc%2FLzvqP1Y8Nv0FuLT814NSqp08poP8A552whQtDDjs%2FLC%2B41RDnwhijDnBU3omGJLStOBhTgdziP7IX%2BXhHss2hRvVulN0ojEBpA2yrKisEZUQrBqk1a2cHCekftateGSGyhOkkwD46BsP4UriYzXR5BbDvguVGOWTqng8LYlHy5KCpg3OHI69XsS1cKY5GSGxcz9LyCUXpvuCwXg2sTn43hEnuhc4acBpiHmGcT2jTxRQpgbQBAIoG7VBPj%2BiYnoAJyc9oJ1OM5UelMc4%2B%2FjpIw%2FZI1TD9Qw%2FptaVjlbAZS8k9TCYPtSdheXTL%2FUuqaJMzQ%2BmaBRfpJFKzTK1odnEvQ9DpBs6%2BmXxR9GB710pLLSxcucrpRFDldlUUuxc6ichr4SJm7ZJXrH6hyWmtHtaZpy5RwrmBKBHjpRNAGJSIMZCJo%2BlmJUKs1n9CdoH9Gd1beKCrStOxBfrVdhcUFJUGw34eUME4vEm7CRigRNva85MoZEC%2BcTYQNiUdo9AV%2BpAz%2FOB7EUqV2gQ40wzSvr1WVi%2FEANN00pIjUyzoout%2BolHXZ%2B%2FpHeV8%2BC6UiMU9FYn6GrD7KraBNkai%2BJ6t7PPYpdsvSTlbcA6vXfXjsjjxqGqUTEtBKsYz3dTHqqBNn40qrtoFPR5j2t4FkV%2F3vCANaI8z1mQkD9u%2F0F0USo7xZGy1v1pr8nH5CjpitkeRET0%2F1B5yTc6n8Bple1%2FdwSX7y7ZUMlUkZL%2FDjSNmTSJk9hs2ldLv09%2FwG2rTwGlb6lUAziwb%2B5TWMV7Of9OLu2e%2Bi4O4P%3C%2Fdiagram%3E%3C%2Fmxfile%3E
 
-  5. Si la consulta no se unifica con el encabezado de la regla, dibujar una cruz;
-     de lo contrario, dibujar un nuevo recuadro con el cuerpo de la regla como
-     nueva consulta. Ir al paso 2.
+    #image("arbol2.png", width: 10cm)
+  ][]
 
   #fuente("https://lpn.swi-prolog.org/lpnpage.php?pagetype=html&pageid=lpn-htmlse6")
 ]
 
+
 #slide[
-  = Ejemplo
+  = Árbol de búsqueda (cont.)
 
   #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
     Base de datos:
@@ -287,7 +295,7 @@
     ```prolog
     ama(vincent, mia).
     ama(marcellus, mia).
-    celoso(A, B) :− ama(A, C), ama(B, C).
+    celoso(A, B) :- ama(A, C), ama(B, C).
     ```
 
     Consulta:
@@ -296,10 +304,12 @@
     ?- celoso(X, Y).
     ```
   ][][
-    // https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%223HUzLkMqPp62n1jcsH72%22%3E7Vpbc%2BIgGP01mWkf7BBIoj6qvT10dzrT2dnaN2owYZcEJ%2BKtv36JIYkEte56t%2Ftk%2BLgEvsM5HFQLdaLpQ4IH4TfuE2ZB4E8tdGtBaEPUlB9pZJZFGg7IAkFCfdWoDLzQD6KCebMR9clQayg4Z4IO9GCPxzHpCS2Gk4RP9GZ9zvS3DnBAjMBLDzMz%2BpP6IlSrcEEZfyQ0CPM320DVRDhvrALDEPt8shBCdxbqJJyL7CmadghLk5fnJet3v6K2mFhCYrFRh9bvPn%2FsY%2B%2Fh%2Be0H6r89ePW3mqPmJmb5gokv16%2BKPBEhD3iM2V0ZbSd8FPskHRXIUtnmifOBDNoy%2BIsIMVNg4pHgMhSKiKlaMqXiNe1%2B46pSd6HmdqpGnhdmeSEWyWyhU1rsLtaV3ealvF%2B2vnRRK9OmQkM%2BSnpkTa7y7YeTgIg17WABrmQF4RGR85H9EsKwoGN9Hlhtz6BoVyIoHxSIfwGom407xmyk3vQqi%2FMn0LKgx%2BTM2%2B%2BJfArSp25R2V66E57wuyS0hh5mNIjlc08mkCQyMCaJoJIxLVURUd%2FPNgoZ0g%2F8Ph8vxWLAaSzmC3bblntboJMOQKbWEjqrziWJNNxWbmgz%2BUp9YDbKxlCogZ7Ticsmao6woffg%2Ff5Q7ogqdMXr%2Fx1N20DTQve1ND%2BE8SG%2FktjKgUH32gBPJ%2BkkpIK8DPB8f0%2BkUuuQ9nks7nFEWZqmjuQBlcBC8J1M1mFkcMhMe56wuoJvVqhkVp6UkmrnB0O4IKcI7Ikm9U8StpWqwbOSNbihrHnHlLWGQYRWoVxjGqdaZIpbp2gSUXwZ8lZfy7MauHFsr65xbTeSV6vbOoOdg0kgMJDbIVXrF0nV5jGpapuHVsnVCMsVMjYafgm22mA5EGp4cAPcnEhb8tNFh%2BIjXGVJcISvWpkf6Vxnn2moXYZO2qI4ukWBwLQoRewgFsVG%2Fz2K5j02ED77qHcvu2lwo226lIsQNrRlnle4DLtCpv3JmLdOxpRmyXPoxFXL9iqq1VhysYKHVC2TAueYVwecWl7tJefuSaewujWRt%2BxANTMI95ZB58wyCE8ug%2B4%2BHcnxrmKf2wpnS%2Buy85MSVgQKVUHP5qV67eEWANZYnYVL3kWYHXctTWvyGoccRY0tYT2c%2Fyn274XdLj7%2FdQZtrMNbgumgCker6O6bo6ZluNDryJ4APOB1JN%2BVZ2NOqg756OYEnpu9c08ug1%2FV3sFV9m73R0LzyEeC%2BbXHxdo2eF62TRbL%2FwJlzct%2FVKG7Pw%3D%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E
+    // https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%223HUzLkMqPp62n1jcsH72%22%3E5VrLctowFP0azyQLGFuyDVkCScgi7WQm02lgp2Bhq7UtRohXvr4ylvwSEFoeMXQV6%2BpKsu695%2BjIwYC9aNlnaBJ8ox4ODWB6SwPeGwBYAJriT2JZpZa2LQ0%2BI550yg2v5ANLo3KbEQ9PS46c0pCTSdk4onGMR7xkQ4zRRdltTMPyqhPkY83wOkKhbv1JPB7IXThmbn%2FCxA%2FUypYpeyKknKVhGiCPLgom%2BGDAHqOUp0%2FRsofDJHgqLum4xy292YsxHPO9BnR%2Bj%2BnTGLn9l%2BEPOB723dawYct34yu1YeyJ%2FcsmZTygPo1R%2BJBbu4zOYg8ns5qilfs8UzoRRksYf2HOVzKZaMapMAU8CmUvXhL%2BlgxvOrI1KPTcL%2BXM68ZKNWLOVoVBSXNQ7MuHrVtqnB4lGbgpnbER3hEaVW2I%2BZjv8AOpXxK3wgIyB31MIyzeRzgwHCJO5uW6QrI8%2Fcwvz6B4kEn8i4Q66bxzFM7kSm%2BiuX4yOwZwQ7GV7jsTT37yNMg6uxsr4Rm9C0CXsodC4sfieSQiipkwzDHjRCCmIzsi4nlpoeAp%2BUDv6%2FmSXEwoifl6w07XcO43Z2dHlSYL4aWxAfZykRKySsGX7CNztXcq5EQvyYsLF7k2aJdH0PF4Kkqkmrps%2BX%2FPpqVl04CPjWTfOKRTeiNyKyY2B7dNLXtllC4CwvHrBK0rfiGoupzTMY35I4pImMSpJ5BBRGaB%2BR0vdkFIy4cedxWxliTBVUaTaXuRc6qlToagwKfq%2BDg6TlqfBOwgWgN15jWwJ6%2B5teK1toaETkZdcxInZKSzWy9ziQiqMb%2B1DuY3OaphNm3LbZWwdhzOa7SsMoLts3GgqWXuiFBtXQNU72oFVUs%2FtXKsRkhsOQxn08tFqyrIw%2BFqNk1HAelAfDrwXHgE2zQJitBNJxUkvdv0b2LqKlPdNYpd1ijA1DVKZjuLRrHgfytS3D2Zz6rX7cu608DR1WVKfZkNHsxsh8oMqwKm0%2FGYu4vHJGmJg6jutGW5Fdpqb7hagXPSlo6BiwysbdYtsIrsipGtdQirtQndTUeqHkFwsgjaFxZBULsIOqfUJLW%2Bje2tSexja5ItnyErBAWrSU93JEed4CKg7kGbxE7hnldfuaM%2Blh%2Fju4sJbTndgWk9nwLKKv%2Fq7hef%2F9MGngejNqxgtJrdU2NUlwyXdCHZemBe44VE1eTFiJOqQv5ycQIuTd45tYvg1cq7z4%2BEM8k2%2B%2B6LjwT9w8dlyTZwtbJNNPPfA6Xu%2Ba%2Bq4MMf%3C%2Fdiagram%3E%3C%2Fmxfile%3E
 
-    #image("arbol.png", width: 10cm)
+    #image("arbol.png", width: 12cm)
   ][]
+
+  #fuente("https://lpn.swi-prolog.org/lpnpage.php?pagetype=html&pageid=lpn-htmlse6")
 ]
 
 #slide[
@@ -436,6 +446,30 @@
   ]
 
   #fuente("https://www.amzi.com/articles/prolog_under_the_hood.htm")
+]
+
+#slide[
+  = Links
+
+  / SWI-Prolog: #linklet("https://www.swi-prolog.org/")
+
+    Entorno de programación Prolog y recursos adicionales
+
+  / SWISH: #linklet("https://swish.swi-prolog.org/")
+
+    Intérprete online de SWI-Prolog
+
+  / SWISH Examples: #linklet("https://swish.swi-prolog.org/example/examples.swinb")
+
+    Ejemplos de programas escritos en SWI-Prolog
+
+  / Prolog Under the Hood\: An Honest Look: #linklet("http://www.amzi.com/articles/prolog_under_the_hood.htm")
+
+    Artículo que explica el funcionamiento interno de Prolog
+
+  / The Power of Prolog: #linklet("https://www.metalevel.at/prolog")
+
+    Libro online
 ]
 
 #fin()
