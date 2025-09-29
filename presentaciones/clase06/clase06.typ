@@ -313,6 +313,78 @@
 ]
 
 #slide[
+  = El modelo de seguimiento de Prolog
+
+  #grid(columns: (1fr, auto), gutter: 0.5cm)[
+    #set text(size: 13pt)
+    Es podible _depurar_ un programa en Prolog utilizando el predicado `trace`.
+
+    La ejecución del programa se describe de manera procedimental en términos
+    de cuatro eventos:
+
+    / *Call*: Se intenta resolver un objetivo.
+
+    / *Exit*: El objetivo se resuelve exitosamente.
+
+    / *Fail*: El objetivo no puede ser resuelto.
+
+    / *Redo*: Se reintenta resolver un objetivo para encontrar más soluciones.
+  ][
+    #image("trace.png", width: 15cm)
+  ]
+
+  #place(bottom+center)[ #shadowed[ #image("trace3.png", width: 4.8cm) ] ]
+
+  #fuente("https://www.amzi.com/articles/prolog_under_the_hood.htm")
+]
+
+#slide[
+  = El modelo de seguimiento de Prolog (cont.)
+
+  #grid(columns: (1fr, auto, 1fr, auto, 1fr, auto, 1fr))[][
+    #set text(size: 13pt)
+
+    #v(0.1fr)
+    ```prolog
+    f(a).
+    f(b).
+    g(a).
+    g(b).
+    h(b).
+    k(X) :- f(X), g(X), h(X).
+    ```
+
+    ```prolog
+    ?- k(Y).
+    ```
+    #v(0.1fr)
+  ][][
+    #v(0.1fr)
+    #image("arbol2.png", width: 10cm)
+    #v(0.1fr)
+  ][][
+    #v(0.1fr)
+    #image("trace2.png", height: 1fr)
+    #v(0.1fr)
+  ][]
+
+  #fuente("https://lpn.swi-prolog.org/lpnpage.php?pagetype=html&pageid=lpn-htmlse6")
+]
+
+#slide[
+  = Entrada/Salida básica
+
+  / `read(X)`: Lee un *término* (terminado con `.`) de la entrada estándar y
+    lo unifica con `X`.
+
+  / `write(X)`: Escribe el *término* `X` en la salida estándar.
+
+  / `nl`: Escribe un salto de línea en la salida estándar.
+
+  #fuente("https://www.swi-prolog.org/pldoc/man?section=termrw")
+]
+
+#slide[
   = Predicados de control
 
   / `repeat`: Siempre tiene éxito, y provee un número infinito de soluciones
@@ -413,42 +485,6 @@
 ]
 
 #slide[
-  = Entrada/Salida básica
-
-  / `read(X)`: Lee un *término* (terminado con `.`) de la entrada estándar y
-    lo unifica con `X`.
-
-  / `write(X)`: Escribe el *término* `X` en la salida estándar.
-
-  / `nl`: Escribe un salto de línea en la salida estándar.
-
-  #fuente("https://www.swi-prolog.org/pldoc/man?section=termrw")
-]
-
-#slide[
-  = El Modelo de Seguimiento de Prolog
-
-  #grid(columns: (1fr, auto), gutter: 0.5cm)[
-    Es podible _depurar_ un programa en Prolog utilizando el predicado `trace`.
-
-    La ejecución del programa se describe de manera procedimental en términos
-    de cuatro eventos:
-
-    / *Call*: Se intenta resolver un objetivo.
-
-    / *Exit*: El objetivo se resuelve exitosamente.
-
-    / *Fail*: El objetivo no puede ser resuelto.
-
-    / *Redo*: Se reintenta resolver un objetivo para encontrar más soluciones.
-  ][
-    #shadowed[ #image("trace.png", width: 15cm) ]
-  ]
-
-  #fuente("https://www.amzi.com/articles/prolog_under_the_hood.htm")
-]
-
-#slide[
   = Links
 
   / SWI-Prolog: #linklet("https://www.swi-prolog.org/")
@@ -463,9 +499,9 @@
 
     Ejemplos de programas escritos en SWI-Prolog
 
-  / Prolog Under the Hood\: An Honest Look: #linklet("http://www.amzi.com/articles/prolog_under_the_hood.htm")
+  / Learn Prolog Now!: #linklet("https://lpn.swi-prolog.org/lpnpage.php?pageid=top")
 
-    Artículo que explica el funcionamiento interno de Prolog
+    Libro online
 
   / The Power of Prolog: #linklet("https://www.metalevel.at/prolog")
 

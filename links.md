@@ -65,6 +65,9 @@ nav_order: 9
 * [Prolog Under the Hood: An Honest Look](http://www.amzi.com/articles/prolog_under_the_hood.htm)
   <br>Artículo que explica el funcionamiento interno de Prolog
 
+* [Learn Prolog Now](https://lpn.swi-prolog.org/lpnpage.php?pageid=top)
+  <br>Libro online
+
 * [The Power of Prolog](https://www.metalevel.at/prolog)
   <br>Libro online
 
