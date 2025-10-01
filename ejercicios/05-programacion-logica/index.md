@@ -31,13 +31,13 @@ Cómo responde Prolog a las siguientes consultas? Dibujar en cada caso el árbol
 de búsqueda.
 
 ```prolog
-mago(ron).
-bruja(ron).
-mago(hermione).
-bruja(hermione).
-mago(harry).
-mago(Y).
-bruja(Y).
+?- mago(ron).
+?- bruja(ron).
+?- mago(hermione).
+?- bruja(hermione).
+?- mago(harry).
+?- mago(Y).
+?- bruja(Y).
 ```
 
 {: .ejercicio }
@@ -97,7 +97,7 @@ trenDirecto(nancy, metz).
 
 Escribir un predicado `viajar/2` que permita averiguar si es posible o no viajar de una
 localidad a otra, ya sea en uno o más tramos de tren. Por ejemplo,
-`viajar(nancy, saarbruecken)` debe dar verdadero.
+`?- viajar(nancy, saarbruecken)` debe dar verdadero.
 
 {: .ejercicio }
 ## Árbol binario
@@ -145,14 +145,14 @@ X = [eins, sieben, sechs, zwei].
 ## Lista duplicada
 
 Una lista es duplicada si está compuesta por dos bloques consecutivos de
-los mismos elementos. Por ejemplo `[a,b,c,a,b,c]` es duplicada. Escribir un
+los mismos elementos. Por ejemplo `[a, b, c, a, b, c]` es duplicada. Escribir un
 predicado `duplicada(Lista)` que determine si la lista es duplicada o no.
 
 {: .ejercicio }
 ## Palíndromo
 
 Escribir el predicado `palindromo(Lista)` que determine si la lista es
-palindrómica. Por ejemplo: `palindromo([n, e, u, q, u, e, n])` debe dar verdadero.
+palindrómica. Por ejemplo: `?- palindromo([n, e, u, q, u, e, n])` debe dar verdadero.
 
 {: .ejercicio }
 ## Acertijo
