@@ -23,11 +23,12 @@ Sea la siguiente base de datos:
 mago(ron).
 tieneVarita(harry).
 juegaQuidditch(harry).
-mago(X):- tieneEscoba(X), tieneVarita(X).
+mago(X) :- tieneEscoba(X), tieneVarita(X).
 tieneEscoba(X):- juegaQuidditch(X).
 ```
 
-Cómo responde Prolog a las siguientes consultas?
+Cómo responde Prolog a las siguientes consultas? Dibujar en cada caso el árbol
+de búsqueda.
 
 ```prolog
 mago(ron).
@@ -44,20 +45,20 @@ bruja(Y).
 
 Sea la siguiente base de datos:
 
-```
-palabra(determinante,el).
-palabra(determinante,un).
-palabra(nucleo,pez).
-palabra(nucleo,'alfajor triple').
-palabra(verbo,come).
-palabra(verbo,compra).
+```prolog
+palabra(determinante, el).
+palabra(determinante, un).
+palabra(nucleo, pez).
+palabra(nucleo, 'alfajor triple').
+palabra(verbo, come).
+palabra(verbo, compra).
 
-oracion(Palabra1,Palabra2,Palabra3,Palabra4,Palabra5):-
-   palabra(determinante,Palabra1),
-   palabra(nucleo,Palabra2),
-   palabra(verbo,Palabra3),
-   palabra(determinante,Palabra4),
-   palabra(nucleo,Palabra5).
+oracion(Palabra1, Palabra2, Palabra3, Palabra4, Palabra5):-
+   palabra(determinante, Palabra1),
+   palabra(nucleo, Palabra2),
+   palabra(verbo, Palabra3),
+   palabra(determinante, Palabra4),
+   palabra(nucleo, Palabra5).
 ```
 
 ¿Qué consulta hay que hacer para averiguar todas las oraciones posibles?
@@ -84,19 +85,19 @@ Escribir una base de datos y una consulta que encuentre una solución al problem
 Sean las siguientes cláusulas que describen algunas localidades que están
 conectadas con un tramo de tren:
 
-```
-trenDirecto(saarbruecken,dudweiler).
-trenDirecto(forbach,saarbruecken).
-trenDirecto(freyming,forbach).
-trenDirecto(stAvold,freyming).
-trenDirecto(fahlquemont,stAvold).
-trenDirecto(metz,fahlquemont).
-trenDirecto(nancy,metz).
+```prolog
+trenDirecto(saarbruecken, dudweiler).
+trenDirecto(forbach, saarbruecken).
+trenDirecto(freyming, forbach).
+trenDirecto(stAvold, freyming).
+trenDirecto(fahlquemont, stAvold).
+trenDirecto(metz, fahlquemont).
+trenDirecto(nancy, metz).
 ```
 
 Escribir un predicado `viajar/2` que permita averiguar si es posible o no viajar de una
 localidad a otra, ya sea en uno o más tramos de tren. Por ejemplo,
-`viajar(nancy,saarbruecken)` debe dar verdadero.
+`viajar(nancy, saarbruecken)` debe dar verdadero.
 
 {: .ejercicio }
 ## Árbol binario
@@ -119,25 +120,25 @@ T = arbol(hoja(4), arbol(hoja(2), hoja(1))).
 Sea la siguiente base de datos:
 
 ```prolog
-traduccion(eins,uno).
-traduccion(zwei,dos).
-traduccion(drei,tres).
-traduccion(vier,cuatro).
-traduccion(fuenf,cinco).
-traduccion(sechs,seis).
-traduccion(sieben,siete).
-traduccion(acht,ocho).
-traduccion(neun,nueve).
+traduccion(eins, uno).
+traduccion(zwei, dos).
+traduccion(drei, tres).
+traduccion(vier, cuatro).
+traduccion(fuenf, cinco).
+traduccion(sechs, seis).
+traduccion(sieben, siete).
+traduccion(acht, ocho).
+traduccion(neun, nueve).
 ```
 
-Escribir el predicado `traduccionLista(A,E)` que produzca la traducción de una
+Escribir el predicado `traduccionLista(A, E)` que produzca la traducción de una
 lista de números etre alemán y español. Por ejemplo,
 
 ```prolog
-?- traduccionLista([eins,neun,zwei], X).
-X = [uno,nueve,dos].
-?- traduccionLista(X, [uno,siete,seis,dos]).
-X = [eins,sieben,sechs,zwei].
+?- traduccionLista([eins, neun, zwei], X).
+X = [uno, nueve, dos].
+?- traduccionLista(X, [uno, siete, seis, dos]).
+X = [eins, sieben, sechs, zwei].
 ```
 
 {: .ejercicio }
@@ -151,7 +152,7 @@ predicado `duplicada(Lista)` que determine si la lista es duplicada o no.
 ## Palíndromo
 
 Escribir el predicado `palindromo(Lista)` que determine si la lista es
-palindrómica. Por ejemplo: `palindromo([n,e,u,q,u,e,n])` debe dar verdadero.
+palindrómica. Por ejemplo: `palindromo([n, e, u, q, u, e, n])` debe dar verdadero.
 
 {: .ejercicio }
 ## Acertijo
