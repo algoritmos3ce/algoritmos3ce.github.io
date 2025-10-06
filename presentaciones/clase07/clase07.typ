@@ -127,12 +127,21 @@
   Una abstracción `λx.M` *liga* las variables `x` que aparecen en el cuerpo `M`.
   Todas las demás variables en `M` son *libres*.
 
-  #align(center)[ #box(fill: rgb("#f0f0f0"), inset: 1em)[
-    #set text(size: 30pt, font: "DejaVu Sans Mono")
-    (λ#text(blue)[z].#text(rojo)[x] #text(verde)[y] #text(blue)[z]) (λ#text(purple)[x].#text(purple)[x]) \
-    #v(-0.75em)
-    #nb#nb#text(blue)[└─────┘]#sym.space#sym.space#sym.space#sym.space#text(purple)[└─┘]#sym.space
-  ]]
+  #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
+    #v(1fr)
+    #align(center)[ #box(fill: rgb("#f0f0f0"), inset: 1em)[
+      #set text(size: 30pt, font: "DejaVu Sans Mono")
+      (λ#text(blue)[z].#text(rojo)[x] #text(verde)[y] #text(blue)[z]) (λ#text(purple)[x].#text(purple)[x]) \
+      #v(-0.75em)
+      #nb#nb#text(blue)[└─────┘]#sym.space#sym.space#sym.space#sym.space#text(purple)[└─┘]#sym.space
+    ]]
+    #v(1fr)
+  ][][
+    #align(center)[
+      #image("arbol.png", height: 1fr)
+    ]
+  ][]
+  #fuente("https://projectultimatum.org/cgi-bin/lambda?t=(%CE%BBz.x%20y%20z)%20(%CE%BBx.x)&r=&m=any%20order")
 ]
 
 #slide[
@@ -321,19 +330,20 @@
     Una expresión lambda que no tiene variables libres es un *combinador*.
   ]
 
-  La *lógica combinatoria* es un modelo de computación más simple que el cálculo
-  lambda, que usa combinadores en lugar de abstracciones. Cualquier expresión
-  lambda se puede transformar en una expresión equivalente que solo use combinadores.
+  La *lógica combinatoria* es un modelo de computación equivalente al cálculo
+  lambda pero más simple, ya que usa combinadores en lugar de abstracciones.
 
-  El *cálculo SKI* se basa en los combinadores:
+  Por ejemplo, el *cálculo SKI* se basa en los combinadores:
 
   ```
   I = λx.x                         I x = x
   K = λx y.x                     K x y = x
-  S = λx y z.x z (y z)         S x y z = (x z) (y z)
+  S = λx y z.x z (y z)         S x y z = x z (y z)
   ```
 
   Ejemplo: `SKSK = KK(SK) = K`
+
+  #fuente("https://developerdiary.me/ski-calculus/")
 ]
 
 #slide[
@@ -356,6 +366,8 @@
   ```
   Fix f = f (Fix f)
   ```
+
+  #fuente("https://en.wikipedia.org/wiki/Fixed-point_combinator")
 ]
 
 #slide[
