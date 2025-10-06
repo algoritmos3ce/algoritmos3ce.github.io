@@ -105,16 +105,20 @@
 
   1. Se pueden omitir los paréntesis externos: `M N ≡ (M N)`
   2. Las aplicaciones se asocian a la izquierda: `M N P ≡ ((M N) P)`
-  4. El cuerpo de la abstracción se extiende todo lo posible hacia la derecha: `λx.M N ≡ λx.(M N)`
-  5. Se pueden contraer múltiples abstracciones lambda: `λx.λy.λz.N ≡ λx y z.N`
-  3. Cuando todas las variables son de una única letra, se pueden omitir los espacios: `MNP ≡ M N P`
+  3. El cuerpo de la abstracción se extiende todo lo posible hacia la derecha: `λx.M N ≡ λx.(M N)`
+  4. Se pueden contraer múltiples abstracciones lambda: `λx.λy.λz.N ≡ λx y z.N`
+  5. Cuando todas las variables son de una única letra, se pueden omitir los espacios: `MNP ≡ M N P`
 
-  Ejemplo: para simplificar `(((λx.(λy.(y x))) a) b)`:
-  - `((λx.(λy.(y x))) a) b` (1)
-  - `(λx.(λy.(y x))) a b` (2)
-  - `(λx.λy.y x) a b` (3)
-  - `(λx y.y x) a b` (4)
-  - `(λxy.yx)ab` (5)
+  Ejemplo:
+
+  #align(center)[
+  `(((λx.(λy.(y x))) a) b)` \
+  `((λx.(λy.(y x))) a) b` (1) \
+  `(λx.(λy.(y x))) a b` (2) \
+  `(λx.λy.y x) a b` (3) \
+  `(λx y.y x) a b` (4) \
+  `(λxy.yx)ab` (5)
+  ]
 ]
 
 #slide[
@@ -124,18 +128,10 @@
   Todas las demás variables en `M` son *libres*.
 
   #align(center)[ #box(fill: rgb("#f0f0f0"), inset: 1em)[
-    #set text(size: 30pt)
-    #show raw: r => {
-      show "z": set text(blue)
-      r
-    }
-    `(λz.z x y)`
-    #h(-0.25em)
-    #show raw: r => {
-      show "x": set text(purple)
-      r
-    }
-    `(λx.x)`
+    #set text(size: 30pt, font: "DejaVu Sans Mono")
+    (λ#text(blue)[z].#text(rojo)[x] #text(verde)[y] #text(blue)[z]) (λ#text(purple)[x].#text(purple)[x]) \
+    #v(-0.75em)
+    #nb#nb#text(blue)[└─────┘]#sym.space#sym.space#sym.space#sym.space#text(purple)[└─┘]#sym.space
   ]]
 ]
 
