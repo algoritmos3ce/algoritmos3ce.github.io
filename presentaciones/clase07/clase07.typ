@@ -165,7 +165,7 @@
     Una *η-redex* es una expresión de la forma `λx.M x` donde `x` no aparece
     libre en `M`.
 
-    Según la regla η, `λx.M y =η M`.
+    Según la regla η, `λx.M x =η M`.
 ]
 
 #slide[
@@ -175,16 +175,16 @@
 
   / Forma β-normal: si no contiene ninguna β-redex.
 
-    Ejemplo: `z λx.y x`
+    Ejemplo: `z (λx.y x) w`
 
   / Forma β-η-normal: si no contiene ninguna β-redex ni η-redex.
 
-    Ejemplo: `z λx.x y`
+    Ejemplo: `z (λx.x) w`
 
   / Forma normal de cabecera: si no hay una β-redex en la cabeza de la
     expresión.
 
-    Ejemplo: `w ((λz.z z) (λx.x x))`
+    Ejemplo: `z ((λx.x) w)`
 
   #hr
 
@@ -267,7 +267,7 @@
     ```
 
     ```
-    Succ = λn λf x.f (n f x)
+    Succ = λn.λf x.f (n f x)
     Pred = λn.λf.λx.n (λg.λh.h (g f)) (λu.x) (λu.u)
     ```
 
