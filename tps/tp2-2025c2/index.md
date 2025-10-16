@@ -2,7 +2,7 @@
 title: "TP2"
 layout: default
 nav_order: 2
-nav_exclude: true
+parent: Trabajos prácticos
 ---
 
 # TP2
@@ -473,7 +473,7 @@ La entrega se realiza mediante **GitHub Classroom**, en equipos de **2 integrant
 
 ### Pasos para vinculación
 
-1. Acceder al enlace: [GitHub Classroom TP2](https://classroom.github.com/a/xyz)
+1. Acceder al enlace: **(se habilitará próximamente)** <!-- [GitHub Classroom TP2](https://classroom.github.com/a/xyz) -->
 2. Un integrante:
    - Crea un grupo (máximo 2 personas)
    - Asigna un nombre identificable y académico
