@@ -35,20 +35,25 @@
 
 
 #slide[
-  = Historia
+  #grid(columns: (1fr, auto), gutter: 1em)[
+    = Historia
 
-  #set text(size: textsize - 1pt)
+    #set text(size: textsize - 2pt)
 
-  / 1930s: Cálculo Lambda.
+    / 1930s: Cálculo Lambda.
 
-  / 1958 - Lisp: El primero de los lenguajes funcionales, y el más influyente; creado por John McCarthy.
-    De alto nivel, con un sistema de tipos dinámico y una sintaxis basada en listas.
+    / 1958 - Lisp: El primero de los lenguajes funcionales, y el más influyente; creado por John McCarthy.
+      De alto nivel, con un sistema de tipos dinámico y una sintaxis basada en listas.
 
-  / 1973 - ML: Precursor de muchos lenguajes modernos.
-    Incorpora un sistema de tipos estático e inferencia de tipos.
+    / 1973 - ML: Precursor de muchos lenguajes modernos.
+      Incorpora un sistema de tipos estático e inferencia de tipos.
 
-  / 1975 - Scheme: Un dialecto de Lisp creado por Guy Steele y Gerald Sussman.
-    En 1985 Sussman y Hal Abelson publican *Structure and Interpretation of Computer Programs* (SICP), que populariza el lenguaje y el paradigma.
+    / 1975 - Scheme: Un dialecto de Lisp creado por Guy Steele y Gerald Sussman.
+      En 1985 Sussman y Hal Abelson publican *Structure and Interpretation of Computer Programs* (SICP), que populariza el lenguaje y el paradigma.
+  ][
+    #image("sicp.jpg", height: 55%)
+  ]
+  #set text(size: textsize - 2pt)
 
   / 1986 - Erlang: Un lenguaje diseñado para sistemas distribuidos y tolerantes a fallos.
 
@@ -66,36 +71,48 @@
 ]
 
 #slide[
+
   = Características
 
-  - Funciones puras
+  #grid(columns: (1fr, auto), gutter: 1em)[
+    - Funciones puras
 
-  - Transparencia referencial
+    - Transparencia referencial
 
-  - Datos inmutables
+    - Datos inmutables
 
-  - Las funciones son ciudadanos de primera clase
+    - Las funciones son ciudadanos de primera clase
 
-  - Funciones de orden superior
+    - Funciones de orden superior
 
-  - Recursión
+    - Recursión
 
-  - Evaluación perezosa
+    - Evaluación perezosa
 
-  - Estructuras de datos funcionales
+    - Estructuras de datos funcionales
+  ][
+    #align(right)[
+      ```lisp
+      (defun fib (n)
+        "Return the nth Fibonacci number."
+        (if (< n 2)
+            n
+            (+ (fib (- n 1))
+               (fib (- n 2)))))
+      ```
+      #v(1fr)
+      #image("xkcd.png", width: 14cm)
+      #v(1fr)
+    ]
+  ]
 ]
 
 #slide[
   #grid(columns: (1fr, auto), gutter: 1em)[
     = Clojure
 
-    - Creado por Rich Hickey en 2007
-    - Diseñado para la JVM, interoperable con Java
-    - Dialecto de Lisp
-    - Multiparadigma (principalmente funcional)
-    - Tipado dinámico
-
-    #v(1fr)
+    #align(center)[ #image("clojure-logo.png", width: 4cm) ]
+  ][
     #[
       #set text(size: textsize - 1pt)
       ```clj
@@ -110,15 +127,17 @@
       (println (qsort [3 6 8 10 1 2 1]))
       ```
     ]
-    #v(1fr)
-  ][
-    #align(right)[
-      #image("clojure-logo.png", width: 4cm)
-      #v(1fr)
-      #image("xkcd.png", width: 14cm)
-      #v(1fr)
-    ]
   ]
+
+  - Creado por Rich Hickey en 2007
+
+  - Diseñado para la JVM, interoperable con Java
+
+  - Dialecto de Lisp
+
+  - Multiparadigma (principalmente funcional)
+
+  - Tipado dinámico
 
   #fuente("https://en.wikipedia.org/wiki/Clojure")
 ]
@@ -184,9 +203,7 @@
     - *No produce efectos colaterales*.
   ]
 
-  Ejemplos:
-
-  #set text(size: textsize - 2pt)
+  #set text(size: textsize - 1pt)
 
   #grid(columns: (1fr, auto, 1fr, auto, 1fr), gutter: 1em)[][
     #malo[ Impura ] (no es determinística):
@@ -312,38 +329,44 @@
 #slide[
   = Recursión
 
-  En los lenguajes funcionales, la iteración (ciclos) se logra mediante la
-  *recursión*.
-
-  #[
-    #set text(size: textsize -2pt)
-    ```clj
-    (defn _buscar [lista x i]
-      (if (>= i (count lista))
-        nil
-        (if (= (nth lista i) x)
-          i
-          (_buscar lista x (inc i)))))
-
-    (defn buscar [lista x]
-      (_buscar lista x 0))
-    ```
-  ]
-
-  Si la llamada recursiva está en posición de cola, se puede usar `recur`:
-  #linklet("https://clojure.org/reference/special_forms#recur")
-
-  #[
-    #set text(size: textsize -2pt)
-    ```clj
-    (defn buscar [lista x]
-      (loop [i 0]
-        (if (>= i (count lista))
+  #grid(columns: (1fr, auto), gutter: 1em)[
+    En los lenguajes funcionales, la iteración (ciclos) se logra mediante la
+    *recursión*.
+  ][
+    #[
+      #set text(size: textsize -2pt)
+      ```clj
+      (defn _buscar [v x i]
+        (if (>= i (count v))
           nil
-          (if (= (nth lista i) x)
+          (if (= (nth v i) x)
             i
-            (recur (inc i))))))
-    ```
+            (_buscar v x (inc i)))))
+
+      (defn buscar [v x]
+        (_buscar v x 0))
+      ```
+    ]
+  ][
+    Si la llamada recursiva está en *posición de cola*
+    #linklet("https://en.wikipedia.org/wiki/Tail_call"), se puede usar `recur`
+    #linklet("https://clojure.org/reference/special_forms#recur").
+
+    De esta forma, el compilador puede optimizar la llamada recursiva y evitar
+    el crecimiento del _stack_.
+  ][
+    #[
+      #set text(size: textsize -2pt)
+      ```clj
+      (defn buscar [v x]
+        (loop [i 0]
+          (if (>= i (count v))
+            nil
+            (if (= (nth v i) x)
+              i
+              (recur (inc i))))))
+      ```
+    ]
   ]
 ]
 
@@ -510,10 +533,11 @@
     #linklet("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/stream/package-summary.html")
 
     ```java
-    List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5);
-    List<Integer> cuadrados = numeros.stream()
-                                    .map(n -> n * n)
-                                    .collect(Collectors.toList());
+    List<String> nombres = Arrays.asList("Alicia", "Roberto", "Andrés", "Tomás");
+    List<String> resultado = nombres.stream()
+                               .filter(n -> n.startsWith("A"))
+                               .map(String::toUpperCase)
+                               .toList();
     ```
 
   / Record classes: Son una forma concisa
