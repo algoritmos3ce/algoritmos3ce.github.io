@@ -125,9 +125,9 @@ Apila en `DS` el valor de la coordenada `y`.
 ----
 
 {: .comando }
-`Z`
+`T`
 
-Apila en `DS` el valor de la coordenada `y`.
+Apila en `DS` el valor de la coordenada `t`.
 
 ----
 
@@ -148,7 +148,7 @@ Por ejemplo, `N126`:
 1. `N` Apila `0`.
 1. `1` Queda `0 * 10 + 1 = 1`
 1. `2` Queda `1 * 10 + 2 = 12`
-1. `6` Queda `12 * 10 + 5 = 126`
+1. `6` Queda `12 * 10 + 6 = 126`
 
 El siguiente código, entonces, genera una imagen de un color pleno violeta pastel: `N146N111N218`
 
@@ -336,7 +336,7 @@ Se decrementa el contador en el tope de `LS`.
 
 Si el contador es positivo, se debe iterar una vez más. Se reemplaza `IDX` por el valor en el tope de `LS`.
 
-En caso contrario, se incrementa `IDX` continuando la ejecución en el siguiente comando luego de `]`.
+En caso contrario, se desapila de `LS` y se incrementa `IDX` continuando la ejecución en el siguiente comando luego de `]`.
 
 ## Pruebas
 
