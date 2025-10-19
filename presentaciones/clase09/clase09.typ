@@ -22,6 +22,7 @@
     simultánea. Requiere soporte de hardware (múltiples CPUs o cores).
   ]
 
+  // https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Untitled%20Diagram.drawio&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%22Swm-8bIEyxdl3VB-l6Hu%22%3E7Vvfj5s4EP5rIvUeugLMrzxu0u21up5uT7lTnx1wEmsdjIxJsv3rzw44AUw35ASBdMlDBGMY4%2Fm%2BsYfxMAHz7eF3BuPNnzREZGIZ4WECPk0sy7d98S8Fr5nA8aaZYM1wmInMs2CBf6BcaOTSFIcoKV3IKSUcx2VhQKMIBbwkg4zRffmyFSXlXmO4RppgEUCiS7%2FjkG%2FyYTnGWf4F4fVG9WwaecsWqotzQbKBId0XROBpAuaMUp4dbQ9zRKTtlF2y%2Bz7%2FpPX0YAxFvMkN8xcY%2B388hsj8i371v3%2F9e%2F3N%2FehlWnaQpPmA84flr8oCKAofpSHFWUBgkuBgAmYbviVCYIpDRtMoRLITQ5wlnNEXNKeEMiEJ0QqmhB%2FlkHGlJ6IRUrLPmJD8XtFTfib1Zg%2BCQg2f84DNkxkF%2FRDdIs5exSX7M1AKp00BIyVjiECOd2X1MOfL%2BqTu1MMzxaJjy8ipbdm5npzZpgJaqUhoygKU31UEpqLI9S8oEmZaI64pEgeFYZ9FR9yv4IB5mQNljPcbzNEihoFs3Qu3LxNiJTBUBJhYIITIXwUaNUSLG%2FhouTpBvUOMo8O1YCs0nIoRTSc7L5DB9GvYYBo%2FB75k6WvN6mtmnT%2F%2Fa2qmFUPmZftBgteR9DYxdCRMNZOGwWJKeswbtjgM5e0zhhL8Ay6PqiQwsaTIcRzObOJ8krpSTpNsUjU1CHI3LOKVi1oAxLSnZUAMHRC3Bg%2FQFR4K6K54vvIDFNTyfOk7tmO0Y1YbXOb5idM34bmpzx%2F%2FiOFAIXq8D7avaMSViEiLfQwhe%2FkgkDOOv4klLCP%2BgQ1cd%2Br91g6SQDlEjuTU6Nk%2FrBr%2FcI%2BLd4h34nAtDxW0M9Um%2Bio03wfgbfihPzD0gIYex2gb03eDiFuNx8xpz5DYlxecMbhuFlxbRkvBtaao6%2BDa6Tbq6Cm6njYL5roLOlzNrO87uvb7jq4bZBLuMLrunef6W%2BQYVL81UblmGUBPj8vATf1iWuMXWlT93qNpYDnDgs3S%2Fe4OpzNgDmw6s%2Bq84e6iIeANzKzKDe7brPZ0aGbtODN%2Bm0nAaRC7T29qVj3RNMY0b003vj2sxRHouaYxptGnM3tosOn5qNHv3po4jaEBWJdLGv2uClt1O71v2NwxD9xeHtivoPS%2F88BVRR3ngd1fMg9seX1XWbhjIriMiNtzItjVMydjOUCTKL9SDnBytb6A9Bq8%2FY7LVrNlC7RVG6gp6njZ8vRXPTG96kQYpCN3ML2CvqvYvAbB5PBzUtU4AvRexebpccRY%2FdR8seq7%2FMlrsF%2BTvCAebIrWROxphzKjHg2oKvTlBSFMNicfKgB40crHwMC2bUcilMTZRwkrfJDKZgQuEXkWqHFMa2nwrXLBknJOtzU84TSuoxNNOcGReD71OYSRDSyWRtge1vIjjYfdLnwI4rQlXzYqW66G9aB7s8pdlNjgdMWGBttMIxtuwwa%2FdzaoEGpkQ%2B9ssNz%2B2dDgtWZkw03YAPpfKcya%2BswFClIUBRiSK%2BI5lj1sT%2BmKRf6IZgsouZVdj5o3nroMX3cVVHW1njQKUiZHhN4lRk4Fo5rqz7ot%2FQ4x0ss%2FnyGDBJFrPkD4dQDyygBZNQB57QAkTs%2FfEGdpn%2FOH2ODpPw%3D%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E
   #align(center)[ #image("conc-par.png", height: 1fr) ]
 ]
 
@@ -40,7 +41,7 @@
 
     Ejemplos: servidores, bases de datos, interfaces de usuario.
 
-    Se benefician más de la *concurrencia*.
+    Suelen beneficiarse más de la *concurrencia*.
 
     #v(1fr)
 
@@ -50,7 +51,7 @@
 
     Ejemplos: simuladores, videojuegos, procesamiento de imágenes, criptografía, IA.
 
-    Se benefician más del *paralelismo*.
+    Suelen beneficiarse más del *paralelismo*.
 
     #v(1fr)
   ][
@@ -70,14 +71,14 @@
   Son unidades de ejecución independientes y aisladas, con su propio espacio
   de memoria.
 
-  Son manejados por el sistema operativo. El *scheduler* asigna tiempo de CPU
-  a cada proceso (y en el caso de sistemas multicore, puede ejecutar
-  múltiples procesos en paralelo).
+  Son manejados por el sistema operativo. El *scheduler* (planificador) es el
+  componente del SO que asigna tiempo de CPU a cada proceso (y en el caso de
+  sistemas multicore, asigna los diferentes cores).
 
   #align(center)[ #image("scheduler.jpg", width: 80%) ]
 
-  Requieren mecanismos de IPC (_comunicación inter-proceso_) como *pipes*
-  o *sockets* para comunicarse entre sí.
+  Para comunicarse entre sí, los procesos requieren mecanismos de IPC
+  (_comunicación inter-proceso_) provistos por el SO, como *pipes* o *sockets*.
 ]
 
 #slide[
@@ -110,6 +111,8 @@
     }
     ```
   ]
+
+  #align(center)[ #image("socket.png", width: 50%) ]
 ]
 
 #slide[
@@ -551,7 +554,7 @@
 ]
 
 #slide[
-  = Computaciones asíncronas
+  = Computación asíncrona
 
   #emphbox[Una función *sincrónica* bloquea el hilo que la invoca hasta que
   la operación finaliza, mientras que una función *asíncrona* retorna
