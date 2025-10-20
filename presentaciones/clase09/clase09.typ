@@ -102,7 +102,7 @@
     #set text(size: 12pt)
     Cliente:
     ```java
-    try (Socket clientSocket = new Socket(host, port)) {
+    try (Socket clientSocket = new Socket("localhost", 1234)) {
         PrintWriter out = new PrintWriter(
             clientSocket.getOutputStream(),
             true
@@ -215,6 +215,8 @@
 #slide[
   = Condiciones de carrera
 
+  #set text(size: 15pt)
+
   #emphbox[ Una *condición de carrera* ocurre cuando el orden de las
   operaciones realizadas por dos o más hilos afecta el resultado final,
   a menudo provocando bugs. ]
@@ -243,6 +245,9 @@
   La JVM define un *modelo de memoria* que especifica cómo y cuándo los
   cambios hechos por un hilo son visibles para otros hilos.
   #linklet("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/concurrent/package-summary.html#MemoryVisibility")
+
+  #emphbox[ Una función o objeto es *thread-safe* si puede ser utilizado
+    por múltiples hilos sin condiciones de carrera. ]
 
   #fuente("https://en.wikipedia.org/wiki/Race_condition#In_software")
 ]
@@ -575,7 +580,7 @@
     }
 
     Future<Long> sumarAsincronico(long[] array) {
-        Future<Long> r = new Future<>();
+        CompletableFuture<Long> r = new CompletableFuture<>();
         Thread t = new Thread(() -> {
             long suma = sumar(array);
             r.complete(suma);
