@@ -10,11 +10,11 @@ nav_order: 3
 
 # Fechas de final 2025c2 (diciembre 2025 - febrero/marzo 2026)
 
-*  Viernes 19 de diciembre, 17 a 20 hs, aula a determinar
-*  Viernes 13 de febrero, 17 a 20 hs, aula a determinar
-*  Viernes 20 de febrero, 17 a 20 hs, aula a determinar
-*  Viernes 27 de febrero, 17 a 20 hs, aula a determinar
-*  Viernes 06 de marzo, 17 a 20 hs, aula a determinar
+*  Viernes 19 de diciembre, 17 a 20 hs, aula E3
+*  Viernes 13 de febrero, 17 a 20 hs, aula E3
+*  Viernes 20 de febrero, 17 a 20 hs, aula E3
+*  Viernes 27 de febrero, 17 a 20 hs, aula E3
+*  Viernes 06 de marzo, 17 a 20 hs, aula E3
 
 {: .importante }
 > Recordá inscribirte en el SIU Guaraní. Te podés inscribir hasta 72 hs hábiles antes de la fecha del final.
