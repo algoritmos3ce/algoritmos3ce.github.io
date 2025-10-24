@@ -13,7 +13,8 @@
   = Modelos de concurrencia alternativos
 
   #grid(columns: (1fr, auto))[
-    #set text(size: 13pt)
+    #set text(size: 1em)
+    #v(0.01fr)
     - Hilos y candados (Clojure)
     - Programación funcional (Clojure)
       - Promise
@@ -28,6 +29,7 @@
     - Corutinas y generadores (Python)
     - Paralelismo en el GPU
     - Big Data
+    #v(0.01fr)
   ][
     #v(0.01fr)
     #block(height: 1fr)[ #shadowed[ #image("seven.jpg", height: 1fr) ] ]
@@ -55,8 +57,8 @@
                           (Thread/sleep 1000)
                           (println "2: candado liberado")))))
 
-  (doall (map #(.start %) [hilo1 hilo2]))
-  (doall (map #(.join %) [hilo1 hilo2]))
+  (run! #(.start %) [hilo1 hilo2])
+  (run! #(.join %) [hilo1 hilo2])
   ```
 ]
 
@@ -124,9 +126,9 @@
 #slide[
   = pcalls, pvalues y pmap
 
-  - `(pcalls f1 f2 f3)`: Ejecuta las funciones en paralelo.
-  - `(pvalues expr1 expr2 expr3)`: Evalúa las expresiones en paralelo.
-  - `(pmap f coll)`: Similar a `map`, pero ejecuta las aplicaciones de `f` en paralelo.
+  - `(pcalls f1 f2 f3)`: Ejecuta las funciones en hilos separados.
+  - `(pvalues expr1 expr2 expr3)`: Evalúa las expresiones en hilos separados.
+  - `(pmap f coll)`: Similar a `map`, pero ejecuta las aplicaciones de `f` en hilos separados.
 
   ```clj
   (defn tarea-muy-costosa [n]
@@ -152,19 +154,20 @@
 
   - `(delay expr)` crea un objeto de tipo `Delay`, que asegura que la expresión
     se evalúa una única vez la primera vez que es desreferenciada.
-  - `(deref d)` o `@d` desreferencia el delay.
+  - `(deref d)` o `@d` obtiene el resultado de la evaluación de la expresión,
+    bloqueando si aun no se ha terminado de evaluar.
 
   ```clj
   (defn tarea-muy-costosa [n]
-      (println "evaluando!")
-      (Thread/sleep 3000)
-      (+ n 10))
+    (println "evaluando!")
+    (Thread/sleep 3000)
+    (+ n 10))
 
   (def d (delay (tarea-muy-costosa 1)))
   (println "Delay creado")
 
-  (future (let [r @d] (println "Resultado 1:" r)))
-  (future (let [r @d] (println "Resultado 2:" r)))
+  (println (time @d))
+  (println (time @d))
 
   (shutdown-agents)
   ```
@@ -246,27 +249,27 @@
 
   #set text(size: 12pt)
   ```clj
-  (def estado-rifa (agent {:prox-numero-libre 0
-                           :total-recaudado 0}))
+  (require '[clojure.pprint :as p])
 
-  (defn mostrar [n t]
-    (println (format "número reservado: %d, total recaudado: %d" n t)))
+  (def rifa (agent {:proximo-numero-libre 0
+                    :reservas []}))
 
-  (add-watch estado-rifa nil (fn [_ _ viejo nuevo]
-                               (mostrar (viejo :prox-numero-libre)
-                                        (nuevo :total-recaudado))))
+  (defn reservar-numero [persona precio]
+    (send rifa (fn [estado]
+                 (let [n (:proximo-numero-libre estado)
+                       nueva-reserva {:persona persona
+                                      :numero n
+                                      :precio precio}]
+                   (-> estado
+                       (update :proximo-numero-libre inc)
+                       (update :reservas conj nueva-reserva))))))
 
-  (defn reservar-numero [precio]
-    (let [actualizar #(-> %
-                          (update :prox-numero-libre inc)
-                          (update :total-recaudado + precio))]
-      (send estado-rifa actualizar)))
+  (dorun (pmap #(reservar-numero % (rand-int 5000))
+               ["Ana" "Beto" "Carla" "Diego" "Eva" "Fabián" "Gisela" "Hugo"]))
 
-  (dotimes [_ 8]
-    (.start (Thread. (fn []
-                       (Thread/sleep (rand-int 300))
-                       (reservar-numero (rand-int 5000))
-                       (recur)))))
+  (await rifa)
+  (p/pprint @rifa)
+  (shutdown-agents)
   ```
 
   #fuente("https://clojure.org/reference/agents")
@@ -293,23 +296,32 @@
 ]
 
 #slide[
-  = Go blocks & channels
+  = Communicating Sequential Processes (CSP)
 
-  La biblioteca `core.async` permite crear _go blocks_, que se ejecutan de
-  una manera alternativa a los hilos del SO (y por lo tanto suelen ser más
-  livianos).
+  #set text(size: 0.9em)
+  #emphbox[
+    CSP es un modelo de concurrencia basado en procesos livianos que se comunican
+    mediante el paso de mensajes a través de canales.
+  ]
+
+  La biblioteca `core.async` es una implementación de CSP en Clojure, inspirada
+  en las _goroutines_ y _channels_ de Go.
 
   #grid(columns: (1fr, auto), gutter: 1em)[
-    - `(go ...)` ejecuta el cuerpo en forma asincrónica en un go block.
     - `(chan)` crea un canal.
-    - `(>! c v)` encolar `v` en el canal `c` (bloquea si el _buffer_ del canal está lleno).
-    - `(<! c)` desencolar del canal `c` (bloquea si no hay nada para leer).
+    - `(>! c v)` encola `v` en el canal `c` (bloquea si el _buffer_ del canal está lleno).
+    - `(<! c)` desencola del canal `c` (bloquea si no hay nada para leer).
+    - `(close! c)` cierra el canal `c` (`<!` devolverá `nil`).
+    - `(go ...)` ejecuta el cuerpo en forma asincrónica en un go block.
+      Devuelve un canal que contendrá el resultado.
   ][
     #{
-      set text(size: 12pt)
+      set text(size: 0.7em)
       let src = read("ejemplos/goblocks/src/goblocks/core.clj")
       raw(src, lang: "java", block: true)
     }
+    #set text(size: 14pt)
+    #place(top+right)[#shadowed(fill: white, inset: 0.5em)[#linklet("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase10/ejemplos/goblocks")]]
   ]
 
   #fuente("https://clojuredocs.org/clojure.core.async")

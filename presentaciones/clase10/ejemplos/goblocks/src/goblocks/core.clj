@@ -1,21 +1,19 @@
 (ns goblocks.core
-  (:gen-class))
-
-(require '[clojure.core.async :refer [<!! <! >! chan go go-loop close!]])
+  (:gen-class)
+  (:require
+   [clojure.core.async :as async :refer [<!! <! >! chan go close!]]))
 
 (defn -main []
-  (let [c (chan)
-        suma (atom 0)
+  (let [entrada (chan)
+        _ (go (doseq [_ (range 10000)]
+                (>! entrada (rand-int 100)))
+              (close! entrada))
         workers (for [_ (range 100)]
-                  (go-loop []
-                    (let [n (<! c)]
-                      (when (some? n)
-                        (swap! suma + n)
-                        (recur)))))]
-    (go
-      (doseq [x (range 1000)]
-        (>! c x))
-      (close! c))
-
-    (doall (map <!! workers))
-    (println @suma)))
+                  (go (loop [suma 0]
+                        (let [n (<! entrada)]
+                          (if (nil? n)
+                            suma
+                            (recur (+ suma n)))))))
+        salidas (async/merge workers)
+        resultado (go (<! (async/reduce + 0 salidas)))]
+    (println (<!! resultado))))
