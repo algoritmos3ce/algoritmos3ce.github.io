@@ -3,6 +3,7 @@ title: "TP1"
 layout: default
 parent: Trabajos prácticos
 nav_order: 1
+nav_exclude: true
 ---
 
 <img src="./logo.png" style="width: 100%">
