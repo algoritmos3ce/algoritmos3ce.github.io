@@ -159,15 +159,18 @@
 
   ```clj
   (defn tarea-muy-costosa [n]
-    (println "evaluando!")
+    (locking *out* (println "evaluando!"))
     (Thread/sleep 3000)
     (+ n 10))
 
   (def d (delay (tarea-muy-costosa 1)))
   (println "Delay creado")
 
-  (println (time @d))
-  (println (time @d))
+  (dotimes [_ 10]
+    (future
+      (locking *out* (println "(deref d)"))
+      (let [v @d]
+        (locking *out* (println v)))))
 
   (shutdown-agents)
   ```
@@ -196,7 +199,7 @@
 
   (dotimes [_ 8]
     (.start (Thread. (fn []
-                       (Thread/sleep (rand-int 300))
+                       (Thread/sleep (long (rand-int 300)))
                        (let [[n t] (reservar-numero (rand-int 5000))]
                          (locking *out* (println (format "número reservado: %d, total recaudado: %d" n t))))
                        (recur)))))
@@ -229,7 +232,7 @@
 
   (dotimes [_ 8]
     (.start (Thread. (fn []
-                       (Thread/sleep (rand-int 300))
+                       (Thread/sleep (long (rand-int 300)))
                        (let [[n t] (reservar-numero (rand-int 5000))]
                          (locking *out* (println (format "número reservado: %d, total recaudado: %d" n t))))
                        (recur)))))
