@@ -12,14 +12,12 @@ public class JuegoApp {
     public JuegoApp(Scanner scanner) {
         this.scanner = scanner;
         this.juego = new Juego(MAX_NUMERO, MAX_INTENTOS);
-
-
     }
 
     public void jugar() {
         System.out.printf(
-                "Adivina el número secreto entre 1 and %d." +
-                        "Tienes %d intentos.%n\n",
+                "Adivina el número secreto entre 1 and %d. " +
+                        "Tienes %d intentos.\n\n",
                 MAX_NUMERO,
                 MAX_INTENTOS
         );
@@ -40,14 +38,5 @@ public class JuegoApp {
         Scanner scanner = new Scanner(System.in);
         JuegoApp app = new JuegoApp(scanner);
         app.jugar();
-
-        int n = 7;
-        f(n);
-    }
-
-    static void f(int n) {
-        n += 1;
-
-
     }
 }

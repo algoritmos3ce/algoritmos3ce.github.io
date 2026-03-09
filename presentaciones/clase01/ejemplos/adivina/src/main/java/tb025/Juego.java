@@ -10,8 +10,6 @@ public class Juego {
         this.intentos = maxIntentos;
         Random rand = new Random();
         this.numeroSecreto = rand.nextInt(maxNumero) + 1;
-        int[] numeros;
-        numeros = new int[]{1, 2, 3};
     }
 
     public int getIntentos() {
