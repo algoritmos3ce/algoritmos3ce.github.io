@@ -371,7 +371,7 @@
 
   - Arreglos: #linklet("https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html")
     - Declaración: `int[] numeros;`
-    - Inicialización: `numeros = new int[10];` #h(1em) `numeros = {1, 2, 3};`
+    - Inicialización: `numeros = new int[10];` #h(1em) `int[] numeros = {1, 2, 3};`
     - Acceso: `numeros[0]` #h(1em) `numeros.length`
     - El tamaño de un arreglo es fijo una vez creado
 
