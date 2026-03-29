@@ -128,10 +128,10 @@
   = Una advertencia...
 
   #toolbox.side-by-side(columns: (1fr, auto))[
-    Ojo: los principios de diseño *no son dogmas*.
+    Ojo: los principios de diseño *no deben convertirse en dogmas*.
 
     No se deben aplicar ciegamente, sino que deben ser considerados
-    como guías para mejorar la calidad del código y la arquitectura del
+    como *sugerencias* para mejorar la calidad del código y la arquitectura del
     software.
 
     Muchos de estos principios pueden entrar en conflicto entre sí, y
@@ -1175,6 +1175,43 @@
 #slide[
   = Preferir composición sobre herencia (cont.)
 
+  #let herencia = {
+    set text(font: "DejaVu Sans Mono")
+    cetz.canvas({
+      import cetz.draw: *
+      content((0, 0), box([A], inset: 0.3cm, stroke: black), name: "a")
+      content((rel: (1.5, 0)), box([B], inset: 0.3cm, stroke: black), name: "b")
+      content((rel: (0, -2), to: ("a.center", 50%, "b.center")), box([C], inset: 0.3cm, stroke: black), name: "c")
+
+      line("a.south", ("c.north-west", 25%, "c.north-east"), mark: (end: (symbol: ">", scale: 2)))
+      line("b.south", ("c.north-west", 75%, "c.north-east"), mark: (end: (symbol: ">", scale: 2)))
+    })
+  }
+  #let interfaces = {
+    set text(font: "DejaVu Sans Mono")
+    cetz.canvas({
+      import cetz.draw: *
+      content((0, 0), box([A], inset: 0.3cm, stroke: black), name: "a")
+      content((rel: (1.5, 0)), box([B], inset: 0.3cm, stroke: black), name: "b")
+      content((rel: (0, -2), to: ("a.center", 50%, "b.center")), box([_C_], inset: 0.3cm, stroke: black), name: "c")
+
+      line("a.south", ("c.north-west", 25%, "c.north-east"), mark: (end: (symbol: ">", scale: 2)), stroke: (dash: "dashed"))
+      line("b.south", ("c.north-west", 75%, "c.north-east"), mark: (end: (symbol: ">", scale: 2)), stroke: (dash: "dashed"))
+    })
+  }
+  #let composicion = {
+    set text(font: "DejaVu Sans Mono")
+    cetz.canvas({
+      import cetz.draw: *
+      content((0, 0), box([A], inset: 0.3cm, stroke: black), name: "a")
+      content((rel: (1.5, 0)), box([B], inset: 0.3cm, stroke: black), name: "b")
+      content((rel: (0, -2), to: ("a.center", 50%, "b.center")), box([C], inset: 0.3cm, stroke: black), name: "c")
+
+      line("a.south", ("c.north-west", 25%, "c.north-east"), mark: (start: (symbol: "diamond", scale: 2, fill: black)))
+      line("b.south", ("c.north-west", 75%, "c.north-east"), mark: (start: (symbol: "diamond", scale: 2, fill: black)))
+    })
+  }
+
   #v(1fr)
   #align(center)[
     #table(
@@ -1184,7 +1221,16 @@
       },
       inset: 1em,
       table.header(
-        [], [*Composición*], [*Interfaces*], [*Herencia*],
+        [],
+        [*Composición*
+
+          #box[#composicion]],
+        [*Interfaces*
+
+          #box[#interfaces]],
+        [*Herencia*
+
+          #box[#herencia]],
       ),
       [Reutilización de código], [#bueno[Sí]], [#malo[No]], [#bueno[Sí]],
       [Polimorfismo], [#malo[No]], [#bueno[Sí]], [#bueno[Sí]],
@@ -1210,6 +1256,62 @@
   #v(1fr)
 
   #fuente("https://refactoring.guru/design-patterns/catalog")
+]
+
+#bonustrack[
+  = Preferir composición sobre herencia (cont.)
+
+  El patrón *Entity Component System* (ECS) es un ejemplo de arquitectura de
+  software que utiliza la composición para modelar entidades en un sistema.
+  Se utiliza frecuentemente en el desarrollo de videojuegos.
+
+  #align(center)[ #image("ecs.png", width: 70%) ]
+
+  #fuente("https://en.wikipedia.org/wiki/Entity_component_system")
+]
+
+#bonustrack[
+  = Chau herencia
+
+  Los lenguajes modernos han optado por no soportar la herencia clásica,
+  y en su lugar se enfocan en la composición y el uso de
+  mecanismos alternativos para lograr el poliformismo.
+
+  #toolbox.side-by-side(columns: (1fr, auto))[
+    #table(
+      columns: 2,
+      stroke: (x, y) => if y == 0 {
+        (bottom: 0.7pt + black)
+      },
+      inset: 1em,
+      table.header(
+        [*Lenguaje*],
+        [*Mecanismo*],
+      ),
+      [Go], [interfaces + struct embedding #linklet("https://go.dev/doc/faq#inheritance")],
+      [Rust], [traits #linklet("https://doc.rust-lang.org/stable/book/ch10-02-traits.html?highlight=interfaces&utm_source=chatgpt.com")],
+      [Swift], [protocolos #linklet("https://docs.swift.org/swift-book/documentation/the-swift-programming-language/protocols/")],
+      [Kotlin], [interfaces + delegación #linklet("https://kotlinlang.org/docs/delegation.html")],
+    )
+  ][
+    #image("herencia-meme.jpg", width: 10cm)
+  ]
+]
+
+#bonustrack[
+  = Antipatrones
+
+  Un antipatrón es un proceso, estructura o patrón de acción comúnmente
+  utilizado que tiene más consecuencias negativas que positivas.
+
+  Ejemplos:
+
+  - *God Object:* Una sola clase maneja todo el control en un programa en lugar de distribuirlo entre múltiples clases.
+  - *Magic Number:* Un valor literal con un significado importante pero no explicado que podría ser reemplazado por una constante con nombre.
+  - *Poltergeist:* Objetos efímeros que solo existen para invocar otros métodos en clases.
+  - *Código spaguetti:* Un sistema de software que carece de una arquitectura perceptible, y su flujo de control es difícil de seguir debido a la falta de estructura.
+
+  #fuente("https://en.wikipedia.org/wiki/List_of_software_anti-patterns")
 ]
 
 #fin()
