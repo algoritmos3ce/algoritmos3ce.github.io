@@ -1,5 +1,47 @@
 <center>
 <a href="https://fi.uba.ar">
-<img src="/assets/fiuba-logo.png" style="width: 200px">
+<img src="/assets/fiuba-logo.png" class="fiuba-logo" style="width: 200px">
 </a>
 </center>
+
+<button id="theme-toggle" class="theme-toggle" type="button" aria-label="Cambiar a modo noche" title="Cambiar a modo noche">
+  <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M12 18a6 6 0 1 1 0-12a6 6 0 0 1 0 12Zm0-14a1 1 0 0 1-1-1V2a1 1 0 1 1 2 0v1a1 1 0 0 1-1 1Zm0 19a1 1 0 0 1-1-1v-1a1 1 0 1 1 2 0v1a1 1 0 0 1-1 1ZM4 13H3a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2Zm19 0h-1a1 1 0 1 1 0-2h1a1 1 0 1 1 0 2ZM6.34 7.76a1 1 0 0 1-1.41 0L4.22 7.05a1 1 0 1 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41Zm13.44 13.44a1 1 0 0 1-1.41 0l-.71-.71a1 1 0 1 1 1.41-1.41l.71.71a1 1 0 0 1 0 1.41ZM19.78 7.05l-.71.71a1 1 0 1 1-1.41-1.41l.71-.71a1 1 0 1 1 1.41 1.41ZM6.34 20.49l-.71.71a1 1 0 0 1-1.41-1.41l.71-.71a1 1 0 0 1 1.41 1.41Z"/>
+  </svg>
+  <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M21 13.6A8.5 8.5 0 0 1 10.4 3a.9.9 0 0 0-1.08-1.1A10 10 0 1 0 22.1 14.68a.9.9 0 0 0-1.1-1.08ZM12 20a8 8 0 0 1-2.93-15.44A10.3 10.3 0 0 0 19.44 14.93A8 8 0 0 1 12 20Z"/>
+  </svg>
+</button>
+
+<script>
+  (function () {
+    var storageKey = 'theme';
+    var root = document.documentElement;
+    var btn = document.getElementById('theme-toggle');
+    if (!btn) return;
+
+    function getTheme() {
+      var t = root.getAttribute('data-theme');
+      return (t === 'dark' || t === 'light') ? t : 'light';
+    }
+
+    function setTheme(next) {
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem(storageKey, next); } catch (e) {}
+      syncButton(next);
+    }
+
+    function syncButton(current) {
+      var label = current === 'dark' ? 'Cambiar a modo día' : 'Cambiar a modo noche';
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+    }
+
+    syncButton(getTheme());
+
+    btn.addEventListener('click', function () {
+      var current = getTheme();
+      setTheme(current === 'dark' ? 'light' : 'dark');
+    });
+  })();
+</script>

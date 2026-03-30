@@ -1,0 +1,29 @@
+<script>
+  (function () {
+    var storageKey = 'theme';
+    var root = document.documentElement;
+
+    function preferredTheme() {
+      try {
+        var saved = localStorage.getItem(storageKey);
+        if (saved === 'dark' || saved === 'light') return saved;
+      } catch (e) {}
+      return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+    }
+
+    root.setAttribute('data-theme', preferredTheme());
+  })();
+</script>
+
+<style>
+  /* Evita el flash de fondo/colores antes de cargar el CSS principal */
+  html[data-theme="dark"] {
+    background: #0d1117;
+    color-scheme: dark;
+  }
+  html[data-theme="dark"] body {
+    background: #0d1117;
+    color: #c9d1d9;
+  }
+</style>
+
