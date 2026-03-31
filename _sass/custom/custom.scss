@@ -60,6 +60,16 @@ html[data-theme="dark"] .site-title {
   color: #f0f6fc;
 }
 
+html[data-theme="dark"] .site-title:hover {
+  background-image: none;
+  background-color: rgba(138, 180, 255, 0.12);
+}
+
+html[data-theme="dark"] .site-button:hover {
+  background-image: none;
+  background-color: rgba(138, 180, 255, 0.12);
+}
+
 html[data-theme="dark"] .site-header {
   border-bottom-color: rgba(255, 255, 255, 0.16);
 }
