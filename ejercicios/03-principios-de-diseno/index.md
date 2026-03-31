@@ -139,36 +139,18 @@ Dado el siguiente código, identificar qué principios se violan y proponer un d
 
 ```java
 public class Empleado {
-    private String nombre;
-    private String apellido;
-    private int edad;
+    public final String nombre;
+    public final String apellido;
+    public final int edad;
 
-    public void setNombre(String nombre) {
+    public Empleado(String nombre, String apellido, int edad) {
         this.nombre = nombre;
-    }
-
-    public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-
-    public void setEdad(int edad) {
         this.edad = edad;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public int getEdad() {
-        return edad;
-    }
-
-    public String getNombreCompleto() {
-        return nombre + " " + apellido;
+    public void mostrarInfo() {
+        System.out.printf("%s, %s tiene %d años.\n", apellido, nombre, edad);
     }
 }
 ```

@@ -9,10 +9,6 @@
   = Cálculo Lambda
 ]
 
-// **Diapositiva 1: Título de la Presentación**
-// * **Título:** Paradigmas de Programación: Una Introducción al Cálculo Lambda.
-// * **Resumen:** Breve introducción al tema de la clase. [cite_start]Se mencionará que el Cálculo Lambda es un modelo de computación que sirve como la base teórica de los lenguajes de programación funcional. [cite: 5, 26]
-
 #slide[
   #grid(columns: (1fr, auto), gutter: 0.5cm)[
     = Origen
@@ -109,16 +105,20 @@
 
   1. Se pueden omitir los paréntesis externos: `M N ≡ (M N)`
   2. Las aplicaciones se asocian a la izquierda: `M N P ≡ ((M N) P)`
-  4. El cuerpo de la abstracción se extiende todo lo posible hacia la derecha: `λx.M N ≡ λx.(M N)`
-  5. Se pueden contraer múltiples abstracciones lambda: `λx.λy.λz.N ≡ λx y z.N`
-  3. Cuando todas las variables son de una única letra, se pueden omitir los espacios: `MNP ≡ M N P`
+  3. El cuerpo de la abstracción se extiende todo lo posible hacia la derecha: `λx.M N ≡ λx.(M N)`
+  4. Se pueden contraer múltiples abstracciones lambda: `λx.λy.λz.N ≡ λx y z.N`
+  5. Cuando todas las variables son de una única letra, se pueden omitir los espacios: `MNP ≡ M N P`
 
-  Ejemplo: para simplificar `(((λx.(λy.(y x))) a) b)`:
-  - `((λx.(λy.(y x))) a) b` (1)
-  - `(λx.(λy.(y x))) a b` (2)
-  - `(λx.λy.y x) a b` (3)
-  - `(λx y.y x) a b` (4)
-  - `(λxy.yx)ab` (5)
+  Ejemplo:
+
+  #align(center)[
+  `(((λx.(λy.(y x))) a) b)` \
+  `((λx.(λy.(y x))) a) b` (1) \
+  `(λx.(λy.(y x))) a b` (2) \
+  `(λx.λy.y x) a b` (3) \
+  `(λx y.y x) a b` (4) \
+  `(λxy.yx)ab` (5)
+  ]
 ]
 
 #slide[
@@ -127,20 +127,21 @@
   Una abstracción `λx.M` *liga* las variables `x` que aparecen en el cuerpo `M`.
   Todas las demás variables en `M` son *libres*.
 
-  #align(center)[ #box(fill: rgb("#f0f0f0"), inset: 1em)[
-    #set text(size: 30pt)
-    #show raw: r => {
-      show "z": set text(blue)
-      r
-    }
-    `(λz.z x y)`
-    #h(-0.25em)
-    #show raw: r => {
-      show "x": set text(purple)
-      r
-    }
-    `(λx.x)`
-  ]]
+  #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
+    #v(1fr)
+    #align(center)[ #box(fill: rgb("#f0f0f0"), inset: 1em)[
+      #set text(size: 30pt, font: "DejaVu Sans Mono")
+      (λ#text(blue)[z].#text(rojo)[x] #text(verde)[y] #text(blue)[z]) (λ#text(purple)[x].#text(purple)[x]) \
+      #v(-0.75em)
+      #nb#nb#text(blue)[└─────┘]#sym.space#sym.space#sym.space#sym.space#text(purple)[└─┘]#sym.space
+    ]]
+    #v(1fr)
+  ][][
+    #align(center)[
+      #image("arbol.png", height: 1fr)
+    ]
+  ][]
+  #fuente("https://projectultimatum.org/cgi-bin/lambda?t=(%CE%BBz.x%20y%20z)%20(%CE%BBx.x)&r=&m=any%20order")
 ]
 
 #slide[
@@ -164,7 +165,7 @@
     Una *η-redex* es una expresión de la forma `λx.M x` donde `x` no aparece
     libre en `M`.
 
-    Según la regla η, `λx.M y =η M`.
+    Según la regla η, `λx.M x =η M`.
 ]
 
 #slide[
@@ -174,16 +175,16 @@
 
   / Forma β-normal: si no contiene ninguna β-redex.
 
-    Ejemplo: `z λx.y x`
+    Ejemplo: `z (λx.y x) w`
 
   / Forma β-η-normal: si no contiene ninguna β-redex ni η-redex.
 
-    Ejemplo: `z λx.x y`
+    Ejemplo: `z (λx.x) w`
 
   / Forma normal de cabecera: si no hay una β-redex en la cabeza de la
     expresión.
 
-    Ejemplo: `w ((λz.z z) (λx.x x))`
+    Ejemplo: `z ((λx.x) w)`
 
   #hr
 
@@ -266,7 +267,7 @@
     ```
 
     ```
-    Succ = λn λf x.f (n f x)
+    Succ = λn.λf x.f (n f x)
     Pred = λn.λf.λx.n (λg.λh.h (g f)) (λu.x) (λu.u)
     ```
 
@@ -329,19 +330,20 @@
     Una expresión lambda que no tiene variables libres es un *combinador*.
   ]
 
-  La *lógica combinatoria* es un modelo de computación más simple que el cálculo
-  lambda, que usa combinadores en lugar de abstracciones. Cualquier expresión
-  lambda se puede transformar en una expresión equivalente que solo use combinadores.
+  La *lógica combinatoria* es un modelo de computación equivalente al cálculo
+  lambda pero más simple, ya que usa combinadores en lugar de abstracciones.
 
-  El *cálculo SKI* se basa en los combinadores:
+  Por ejemplo, el *cálculo SKI* se basa en los combinadores:
 
   ```
   I = λx.x                         I x = x
   K = λx y.x                     K x y = x
-  S = λx y z.x z (y z)         S x y z = (x z) (y z)
+  S = λx y z.x z (y z)         S x y z = x z (y z)
   ```
 
   Ejemplo: `SKSK = KK(SK) = K`
+
+  #fuente("https://developerdiary.me/ski-calculus/")
 ]
 
 #slide[
@@ -364,6 +366,8 @@
   ```
   Fix f = f (Fix f)
   ```
+
+  #fuente("https://en.wikipedia.org/wiki/Fixed-point_combinator")
 ]
 
 #slide[

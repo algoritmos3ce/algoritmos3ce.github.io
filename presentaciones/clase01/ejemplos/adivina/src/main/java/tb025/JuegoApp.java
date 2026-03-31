@@ -16,10 +16,10 @@ public class JuegoApp {
 
     public void jugar() {
         System.out.printf(
-            "Adivina el número secreto entre 1 and %d." +
-            "Tienes %d intentos.%n\n",
-            MAX_NUMERO,
-            MAX_INTENTOS
+                "Adivina el número secreto entre 1 and %d. " +
+                        "Tienes %d intentos.\n\n",
+                MAX_NUMERO,
+                MAX_INTENTOS
         );
         while (juego.getIntentos() > 0) {
             System.out.printf("Quedan %d intentos.\n", juego.getIntentos());

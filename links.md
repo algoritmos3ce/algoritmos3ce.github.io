@@ -1,7 +1,7 @@
 ---
 title: Links útiles
 layout: default
-nav_order: 9
+nav_order: 10
 ---
 
 # Links útiles
@@ -11,6 +11,15 @@ nav_order: 9
 * [Java® Platform, Standard Edition & Java Development Kit - Version 24 API Specification](https://docs.oracle.com/en/java/javase/24/docs/api/index.html)
   <br>Documentación / referencia de la API de Java 24
   <br>[Otras versiones](https://docs.oracle.com/en/java/javase/)
+
+* [The Java™ Tutorials](https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html)
+  <br>Tutoriales oficiales de Oracle
+
+* [Tutoriales en dev.java](https://dev.java/learn)
+  <br>Más tutoriales
+
+* [Playground en dev.java](https://dev.java/playground)
+  <br>Entorno online para probar código Java
 
 ## UML
 
@@ -55,6 +64,9 @@ nav_order: 9
 
 * [Prolog Under the Hood: An Honest Look](http://www.amzi.com/articles/prolog_under_the_hood.htm)
   <br>Artículo que explica el funcionamiento interno de Prolog
+
+* [Learn Prolog Now](https://lpn.swi-prolog.org/lpnpage.php?pageid=top)
+  <br>Libro online
 
 * [The Power of Prolog](https://www.metalevel.at/prolog)
   <br>Libro online

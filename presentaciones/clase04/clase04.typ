@@ -48,43 +48,84 @@
 ]
 
 #slide[
-  = Mensajes sincrónicos y _polling_
+  = Estrategia de _polling_
 
-  Una estrategia posible para procesar eventos es la de *polling* (encuestar).
+  #set text(size: 14pt)
 
-  // @startuml
-  // hide footbox
-  // participant Teclado
-  // participant Aplicación
-  // activate Aplicación
-  // Aplicación -> Teclado : getTeclaPresionada()
-  // activate Teclado
-  // Teclado --> Aplicación : null
-  // deactivate Teclado
-  // Aplicación -> Teclado : getTeclaPresionada()
-  // activate Teclado
-  // Teclado --> Aplicación : null
-  // deactivate Teclado
-  // Aplicación -> Teclado : getTeclaPresionada()
-  // activate Teclado
-  // Teclado --> Aplicación : "A"
-  // deactivate Teclado
-  // @enduml
-  #align(center)[ #image("polling.png", width: 7cm) ]
+  #grid(columns: (1fr, auto), gutter: 1em)[
+    La estrategia más primitiva para procesar eventos es la de *polling*
+    (encuestar).
 
-  Esta estrategia es *sincrónica* y *bloqueante*: el encuestador está bloqueado
-  en un _busy loop_ hasta que ocurra el evento de interés.
+    #[
+
+      ```java
+      long ultimo = System.currentTimeMillis();
+      int segundos = 0;
+      while (true) {
+          // pasó 1 segundo desde la última vez?
+          long ahora = System.currentTimeMillis();
+          if (ahora - ultimo > 1000) {
+              segundos += 1;
+              System.out.printf("Pasaron %ds.\n", segundos);
+              ultimo = ahora;
+          }
+      }
+      ```
+    ]
+  ][
+    // @startuml
+    // hide footbox
+    // skinparam sequenceMessageAlign reverseDirection
+    // participant System
+    // participant Aplicación
+    // activate Aplicación
+    // Aplicación -> System : currentTimeMillis()
+    // activate System
+    // System --> Aplicación : 987
+    // deactivate System
+    // Aplicación -> System : currentTimeMillis()
+    // activate System
+    // System --> Aplicación : 992
+    // deactivate System
+    // Aplicación -> System : currentTimeMillis()
+    // activate System
+    // System --> Aplicación : 1003
+    // deactivate System
+    // Aplicación -> Aplicación : segundos += 1
+    // Aplicación -> System : currentTimeMillis()
+    // activate System
+    // System --> Aplicación : 1015
+    // @enduml
+    #image("polling.png", width: 7cm)
+  ]
+
+  Esta estrategia es *sincrónica*: las operaciones ocurren en
+  un orden determinado.
+
+  Esta estrategia se conoce también como *busy waiting* o *busy loop*:
+  el encuestador usa recursos del sistema (CPU, energía) mientras espera
+  a que ocurra el evento de interés.
+
+  También se dice que es una estrategia de tipo *pull*: el encuestador debe
+  "tirar" para enterarse de los eventos.
+
+  #fuente("https://en.wikipedia.org/wiki/Polling_(computer_science)")
 ]
 
 #slide[
   #toolbox.side-by-side(columns: (1fr, auto), gutter: 0.5cm)[
     = Callbacks
 
+    #set text(size: 14pt)
+
     #emphbox(inset: 0em, outset: 0.5em)[
       Un *callback* es una función que se pasa como parámetro a otra función
       (típicamente *no bloqueante*). El callback será invocado en algún momento posterior
-      (es decir, en forma *asíncrona*), por ejemplo cuando ocurre un evento.
+      (es decir, en forma *asincrónica*), por ejemplo cuando ocurre un evento.
     ]
+
+    Esta estrategia es de tipo *push*: el emisor "empuja" los eventos a los
+    consumidores.
 
     En lenguajes orientados a objetos como Java, el pasaje de callbacks se realiza
     mediante interfaces o clases abstractas.
@@ -144,7 +185,7 @@
         }
     }
 
-    class Callback implements TimerTask {
+    class Callback extends TimerTask {
         int segundos = 0;
 
         @Override public void run() {
@@ -173,7 +214,7 @@
     public class Main {
         public static void main(String[] args) {
             Timer timer = new Timer();
-            Callback callback = new Callback();
+            TimerTask callback = new Callback();
             // callback.run() será invocado cada 1 segundo
             timer.scheduleAtFixedRate(callback, 0, 1000);
             // El mensaje anterior fue no bloqueante
@@ -181,7 +222,7 @@
         }
     }
 
-    class Callback implements TimerTask {
+    class Callback extends TimerTask {
         int segundos = 0;
 
         @Override public void run() {
@@ -194,7 +235,7 @@
     public class Main {
         public static void main(String[] args) {
             Timer timer = new Timer();
-            Callback callback = new TimerTask() {
+            TimerTask callback = new TimerTask() {
                 int segundos = 0;
 
                 @Override public void run() {
@@ -214,6 +255,147 @@
 ]
 
 #slide[
+  = Ejemplo: HttpClient
+
+  ```java
+  Consumer<HttpResponse<String>> callback = new Consumer<>() {
+      @Override
+      public void accept(HttpResponse<String> response) {
+          System.out.println(response.body());
+      }
+  };
+
+  HttpRequest request = HttpRequest.newBuilder()
+          .uri(URI.create("https://pokeapi.co/api/v2/pokemon/ditto"))
+          .build();
+  try (HttpClient client = HttpClient.newHttpClient()) {
+      client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
+              .thenAccept(callback);
+      System.out.println("Request sent");
+  }
+  ```
+]
+
+#slide[
+  = Azúcar sintáctica: Expresión Lambda
+
+  #set text(size: 11pt)
+  #let h = 13cm
+  #let rh = h / 5
+  #grid(columns: (auto, auto), rows: (rh,rh,rh,rh,rh), column-gutter: 0.5cm, align: (left, left+horizon),
+    grid.cell(rowspan: 5)[
+      #image("brainmeme.jpg", height: h)
+    ],[
+      ```java
+      Consumer<HttpResponse<String>> callback = new Consumer<>() {
+          @Override public void accept(HttpResponse<String> response) {
+              System.out.println(response.body());
+          }
+      };
+      ```
+    ],[
+      ```java
+      Consumer<HttpResponse<String>> callback = (HttpResponse<String> response) -> {
+          System.out.println(response.body());
+      };
+      ```
+    ],[
+      ```java
+      Consumer<HttpResponse<String>> callback = (response) -> {
+          System.out.println(response.body());
+      };
+      ```
+    ],[
+      ```java
+      Consumer<HttpResponse<String>> callback = response -> {
+          System.out.println(response.body());
+      };
+      ```
+    ],[
+      ```java
+      Consumer<HttpResponse<String>> callback = response -> System.out.println(response.body());
+      ```
+    ]
+  )
+
+  #fuente("https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html")
+]
+
+#slide[
+  = Entrada/Salida bloqueante
+
+  #set text(size: 14pt)
+
+  Las APIs de I/O son tradicionalmente *sincrónicas* y *bloqueantes*.
+
+  Por ejemplo, el siguiente pseudocódigo muestra la implementación más intuitiva de un
+  _socket server_:
+
+  #align(center)[
+    ```python
+    servidor = crearSocketServidor()
+    while True:
+        # bloquea hasta que un cliente se conecta
+        cliente = servidor.accept()
+
+        while True:
+            # bloquea hasta que el cliente envía datos o se desconecta
+            s = cliente.read()
+            if not s:
+                # cliente desconectado
+                s.close()
+                break
+            else:
+                # envía la respuesta al cliente
+                cliente.write(s);
+    ```
+  ]
+
+  La limitación principal de esta implementación es que las funciones `accept` y
+  `read` son *bloqueantes*, y por lo tanto el servidor solo puede atender a
+  un cliente por vez.
+
+  #fuente("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase04/ejemplos/nio")
+]
+
+#slide[
+  = Entrada/Salida multiplexada
+
+  #set text(size: 14pt)
+
+  La estrategia de *entrada/salida multiplexada* permite bloquear
+  hasta que ocurra algún evento de interés.
+
+  #align(center)[
+    #set text(size: 12pt)
+    ```python
+    server = crearServerSocket()
+    sockets = [server]
+    while True:
+        # bloquea hasta que ocurra algún evento de interés
+        subconjunto = select(sockets)
+        for socket in subconjunto:
+            if type(socket) is ServerSocket:
+                # aceptamos la conexion de un cliente
+                cliente = server.accept()
+                sockets += cliente
+            else:
+                # recibimos datos de un cliente
+                s = socket.read()
+                if not s:
+                    # cliente desconectado
+                    socket.close()
+                    sockets.remove(socket)
+                else:
+                    # envía la respuesta al cliente
+                    socket.write(s);
+    ```
+  ]
+
+  #fuente("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase04/ejemplos/nio")
+]
+
+#slide[
   = Patrón Observer
 
   Es un patrón de diseño de POO que permite registrar múltiples *callbacks*
@@ -223,7 +405,7 @@
   #align(center)[ #image("observer.png", width: 15cm) ]
 
   Nota: en esta implementación, la publicación del evento es *sincrónica* con
-  la ejecución de los callbacks.
+  la ejecución de los handlers.
 
   #fuente("https://refactoring.guru/design-patterns/observer")
 ]
@@ -287,8 +469,8 @@
   = Event loop
 
   Es una estrategia que permite desacoplar aun más los emisores de los
-  consumidores. La publicación del evento es *asíncrona* con la invocación
-  del *handler*.
+  consumidores. La publicación de los eventos es *asincrónica* con la invocación
+  de los handlers.
 
   // draw.io: https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=evetloop&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%22p774UbMqfreBMpaSZLkb%22%3E7ZlLc5swEMc%2FDZOTMwYZbB%2FjR5JLZjqTzHTam4xkUAOICOFHP31XRphnatr4lU4vsVikBX7%2FRbtLDDQNNw8Cx%2F4TJzQwrD7ZGGhmWJbZRwh%2BlGWrLWa%2Fn1k8wYi2FYZn9pPmS7U1ZYQmlYmS80CyuGp0eRRRV1ZsWAi%2Brk5b8qB61Rh7%2Bor9wvDs4oA2pn1lRPqZdWSXZj9S5vmy%2FnwhzidrQ%2BJjwtclE5obaCo4l9ko3ExpoOjlXLJ19%2B%2Bc3d%2BYoJHssuDb2%2FeXu2g%2Be7tfjb1k%2B2MVP5CelXlZ4SDVD6xvVm5zAoKnEaHKSd9Ak7XPJH2OsavOrkF0sPkyDODIhKF2R4Wkm3fv09w%2FPcQN5SGVYgtT9AKUE9Qh4%2BjDdYEf5Uz9EvqhtmGtuLf3XECBgebyB4xQg9GUB1gFNYU%2FdAXPxZMGNgAgq2xwwLwIxi4soAIMChODULvTJ0JGiFo%2BETRhP%2FFi50pBjzmL5O6x7Ilhz5SvFK6ZvSzKdSIFf6VwWxz8ziIeKS9LFgQ10wnkQU15TLNFHnQqeQYNeZ54mihp3IC5r%2FC7gFdsiowJinaiCer6%2FGNhXkZrWGi5XFqu29ABzhBn4djOccgPrCr5YZP8uAW8fSrwdgP8C3V3L0asAphHmKiDm7ubTwjbvjLYzuGNGhJMrIbLgG7uVOoDEjQiejgDaZKEuVW2VSEyl5TkKbE7tRIW%2BzdYBA2wZKuq%2BzZW%2Bgpf1MZXiGINqqJYNdoJT4VL9aJyKqz7GVf9jAe3dtWTxMKjsuEJWOJtaZremDvf8NiuBULmsAiLPdK%2Fj5Th%2F0iBogEdUrhrrDj1WOkWKcdSc3RYzXMXaFaNbc9uKQHaKjTnVJvj%2BAoh1fJHr6WMPS%2BkvCgrUZqHLOGQqy9Py6zRakm3Z6ZlNmmpSh9MAefxx4jVC3%2FJ4%2BNwHB7uncxRC0bzZHWL2aHDLJHZN8mKIsGJv0favXvKs1u48dRHidvsM4B1m76kIsrT3e6DhLlry5TlkWJ1oQFSpzZAeGbZzdKT2HREBm2l58haIOdIpeewtnWMmyI6bRr2T6ZhswP%2BRBoKLqGS4Mp9TwX%2FhVQd1V7NvVyXk7XZwF08EQwHV5cIOnReZ6dUr8BGF6fU7DqmPEpSeKGvosCo76m9lk31zMQ6VPb%2Ffp82rHVX9Tqka5e29%2FPhtgwOi2%2Fy2fTiXxto%2Fgs%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E
 
@@ -316,7 +498,7 @@
 #slide[
   = Ejemplo: Node.js
 
-  #set text(size: 14pt)
+  #set text(size: 13pt)
   #quote[
     Node.js operates on a single-thread *event loop*, using *non-blocking* I/O
     calls, allowing it to support tens of thousands of concurrent connections
@@ -328,19 +510,21 @@
 
   #align(center)[
     ```js
-    import { createServer } from 'node:http';
+    const net = require('node:net');
 
-    function processRequest(req, res) {
-      res.writeHead(200, { 'Content-Type': 'text/plain' });
-      res.end('Hello World!\n');
-    };
+    const server = net.createServer((client) => {
+      console.log('client connected');
+      client.on('end', () => {
+        console.log('client disconnected');
+      });
+      client.on('data', (data) => {
+        client.write(data);
+      });
+    });
 
-    function onServerListening() {
-      console.log('Listening on 127.0.0.1:3000');
-    }
-
-    const server = createServer(processRequest);
-    server.listen(3000, '127.0.0.1', onServerListening);
+    server.listen(5000, () => {
+      console.log('server listening');
+    });
     ```
   ]
 
@@ -387,10 +571,6 @@
         </body>
       </html>
       ```
-      #[
-        #set text(10pt)
-        Para probar en el navegador: `data:text/html, <!doctype html> ...`
-      ]
     ]
   ]
 
@@ -426,6 +606,11 @@
       <pre id="output"></pre>
     </body>
     ```
+
+    #[
+      #set text(size: 10pt)
+      JSFiddle: #linklet("https://jsfiddle.net/q4r69wc2/")
+    ]
   ][][
     ```js
     const output = document.querySelector("#output");
@@ -495,61 +680,6 @@
   ]]
 
   #fuente("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase04/ejemplos/eventos2")
-]
-
-#slide[
-  #box(width: 10cm)[
-    = Azúcar sintáctica: Expresión Lambda
-  ]
-
-  #place(right+horizon)[
-    #set text(size: 9pt)
-    #grid(columns: (auto, auto), rows: (1fr,1fr,1fr,1fr,1fr,1fr), column-gutter: 0.5cm, align: (left, left+horizon),
-      grid.cell(rowspan: 6)[
-        #image("brainmeme.jpg", width: 2.85cm)
-      ],[
-        ```java
-        rootPane.addEventHandler(MyEvent.EVENT_TYPE, new EventHandler<MyEvent>() {
-            @Override
-            public void handle(MyEvent event) {
-                output.appendText("Got MyEvent!\n");
-            }
-        });
-        ```
-      ],[
-        ```java
-        rootPane.addEventHandler(MyEvent.EVENT_TYPE, (MyEvent event) -> {
-            output.appendText("Got MyEvent!\n");
-        });
-        ```
-      ],[
-        ```java
-        rootPane.addEventHandler(MyEvent.EVENT_TYPE, (event) -> {
-            output.appendText("Got MyEvent!\n");
-        });
-        ```
-      ],[
-        ```java
-        rootPane.addEventHandler(MyEvent.EVENT_TYPE, event -> {
-            output.appendText("Got MyEvent!\n");
-        });
-        ```
-      ],[
-        ```java
-        rootPane.addEventHandler(MyEvent.EVENT_TYPE, _ -> {
-            output.appendText("Got MyEvent!\n");
-        });
-        ```
-      ],[
-        ```java
-        rootPane.addEventHandler(MyEvent.EVENT_TYPE, _ -> output.appendText("Got MyEvent!\n"));
-        ```
-      ],
-    )
-  ]
-
-
-  #fuente("https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html")
 ]
 
 #fin()

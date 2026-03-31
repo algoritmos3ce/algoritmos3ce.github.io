@@ -11,7 +11,7 @@ nav_order: 5
 
 # Material
 
-* [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcB5Ov5YqNTUi4U6u_7y71Ou)
+* [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcBiAnEoemjMTvB7bDym_A8H)
 
  * Clase 1 - Programación orientada a objetos
       [[Presentación]](/presentaciones/clase01/clase01.pdf)
@@ -22,6 +22,7 @@ nav_order: 5
       [[Apunte]](https://drive.google.com/file/d/1HIvOpkntijYvR20UfPSte1UrRG69zwOd/view?usp=sharing)
  * Clase 3 - Principios de diseño
       [[Presentación]](/presentaciones/clase03/clase03.pdf)
+      [[Apunte]](https://drive.google.com/file/d/1eFq63Y12beQco3P8zIvT2DBZNHzfDFiU/view?usp=sharing)
  * Clase 4 - Programación orientada a eventos
       [[Presentación]](/presentaciones/clase04/clase04.pdf)
  * Clase 5 - Interfaces gráficas
@@ -31,18 +32,22 @@ nav_order: 5
  * Clase 7 - Cálculo Lambda
       [[Presentación]](/presentaciones/clase07/clase07.pdf)
       [[Apunte]](https://drive.google.com/file/d/1uGF-x1OjKyusgihN8bevHG6eApaHJAdE/view?usp=sharing)
- * Clase 8 - Programación funcional - Java y Clojure
-      <!-- [[Presentación]]() -->
+ * Clase 8 - Programación funcional
+      [[Presentación]](/presentaciones/clase08/clase08.pdf)
       [[Apunte]](https://drive.google.com/file/d/1pAjjK04vpL5PIWxEYZoLckeL34rQBvEt/view?usp=sharing)
  * Clase 9 - Programación concurrente en Java
-      <!-- [[Presentación]]() -->
- * Clase 10 - Programación concurrente en Clojure
-      <!-- [[Presentación]]() -->
+      [[Presentación]](/presentaciones/clase09/clase09.pdf)
+ * Clase 10 - Modelos de concurrencia alternativos
+      [[Presentación]](/presentaciones/clase10/clase10.pdf)
 
 <hr/>
 
 <details markdown="block">
   <summary><b>Material de cuatrimestres anteriores</b></summary>
+
+* 2025c2
+
+  * [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcB5Ov5YqNTUi4U6u_7y71Ou)
 
 * 2025c1
 

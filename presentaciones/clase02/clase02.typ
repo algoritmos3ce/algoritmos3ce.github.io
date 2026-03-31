@@ -76,7 +76,7 @@
   public interface Lista {
       void agregar(Object element);
       Object obtener(int index);
-      int size();
+      int cantidad();
   }
   ```
   #v(1fr)
@@ -106,7 +106,7 @@
       public interface Lista {
           void agregar(Object element);
           Object obtener(int index);
-          int size();
+          int cantidad();
       }
       ```
       #v(1fr)
@@ -130,14 +130,14 @@
           private Object[] elementos;
           private int cantidad;
 
-          public ArrayList() { ... }
+          public VectorDinamico() { ... }
           public int capacidad() { ... }
           public void extender(...) { ... }
 
           // Implementación de la interfaz:
           @Override public void agregar(Object element) { ... }
           @Override public Object obtener(int index) { ... }
-          @Override public int size() { ... }
+          @Override public int cantidad() { ... }
       }
       ```
       #v(1fr)
@@ -148,12 +148,10 @@
           import cetz.draw: *
           content((0, 0), box([_Lista_], inset: 0.3cm, stroke: black), name: "lista")
           content((rel: (0, -2)), box([VectorDinamico], inset: 0.3cm, stroke: black), name: "vd")
-          content((rel: (5, 0)), box([Object], inset: 0.3cm, stroke: black), name: "o")
+          content((rel: (5, 0)), box([Object\[\]], inset: 0.3cm, stroke: black), name: "o")
 
           line("vd.north", "lista.south", mark: (end: (symbol: ">", scale: 2)), stroke: (dash: "dashed"))
-          line("vd.east", "o.west", mark: (start: (symbol: "diamond", scale: 2)), name: "elems")
-          content((rel: (.2, .25), to: "elems.start"), anchor: "south-west", [1])
-          content((rel: (-.2, .25), to: "elems.end"), anchor: "south-east", [\*])
+          line("vd.east", "o.west", mark: (start: (symbol: "diamond", scale: 2, fill: black)), name: "elems")
         })
       }
       #v(1fr)
@@ -249,14 +247,14 @@
         private Object[] elementos;
         private int cantidad;
 
-        public ArrayList() { ... }
+        public VectorDinamico() { ... }
         public int capacidad() { ... }
         public void extender(...) { ... }
 
         // Implementación de la interfaz:
         @Override public void agregar(Object element) { ... }
         @Override public Object obtener(int index) { ... }
-        @Override public int size() { ... }
+        @Override public int cantidad() { ... }
     }
     ```
   ]
@@ -416,7 +414,7 @@
   public interface Lista<T> {
       void agregar(T element);
       T obtener(int index);
-      int size();
+      int cantidad();
   }
 
   public class VectorDinamico<T> implements Lista<T> {
@@ -427,6 +425,7 @@
   ```
 
   En Java, a esta variante de polimorfismo se la conoce  como *Generics*.
+  #linklet("https://docs.oracle.com/javase/tutorial/java/generics/index.html")
 ]
 
 #slide[
@@ -443,7 +442,7 @@
   public interface Lista {
     void agregar(Object element);
     Object obtener(int index);
-    int size();
+    int cantidad();
   }
   ```
 
@@ -521,7 +520,7 @@
                 this.titulo = titulo;
             }
 
-            public void imprimir(String s) {
+            public void imprimir() {
                 System.out.println("Documento: " + titulo);
             }
         }
@@ -897,19 +896,29 @@
 ]
 
 #bonustrack[
-  = Colecciones de Java
+  = Ejemplo: Java Collections Framework
 
-  Java provee una serie de *interfaces* y *clases* para trabajar con colecciones
-  de objetos, que permiten abstraer los detalles de implementación y enfocarse
-  en la lógica de negocio.
-
-  #v(1fr)
-  #align(center)[ #image("javacolluml.png", width: 50%) ]
-  #v(1fr)
-  #align(center)[ #image("javacoll.png", width: 70%) ]
-  #v(1fr)
+  #align(center)[ #image("javacolluml.png", height: 2fr) ]
+  #align(center)[ #image("javacoll.png", height: 1fr) ]
 
   #fuente("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/package-summary.html#CollectionsFramework")
 ]
+
+#bonustrack[
+  = Ejemplo: Java I/O
+
+  #place(center+horizon)[ #image("io.png", height: 1fr) ]
+
+  #fuente("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/io/package-tree.html")
+]
+
+#bonustrack[
+  = Ejemplo: Java Exceptions
+
+  #align(center+horizon)[ #image("exceptions.png", width: 100%) ]
+
+  #fuente("https://docs.oracle.com/javase/tutorial/essential/exceptions/index.html")
+]
+
 
 #fin()

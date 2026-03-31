@@ -23,9 +23,14 @@
   #let (izq, der) = labels
   #grid(columns: (1fr, auto, 1fr, auto, 1fr), ..args)[][
     #withlabel(alignment: alignment)[ #malo[ #izq ] ][ #body1 ]
-  ][][
-    #withlabel(alignment: alignment)[ #bueno[ #der ] ][ #body2 ]
-  ][]
+  ][][#{
+    let content = withlabel(alignment: alignment)[ #bueno[ #der ] ][ #body2 ]
+    if ("presentar" in sys.inputs) {
+      uncover(2, content)
+    } else {
+      content
+    }
+  }][]
 ]
 
 #caratula[
@@ -47,14 +52,48 @@
         legibilidad, mantenibilidad y extensibilidad, sin cambiar su comportamiento
         externo. #linklet("https://en.wikipedia.org/wiki/Code_refactoring")
 
+      #set text(size: 14pt)
       #quote(attribution: [Martin Fowler])[
-        Any fool can write code that a computer can understand. Good
-        programmers write code that humans can understand.
+        Cualquier idiota puede escribir código que una computadora pueda entender.
+        Los buenos programadores escriben código que los humanos pueden entender.
       ]
     ][
       #image("refactoring.jpg", height: size.height)
     ]
   ])
+]
+
+#slide[
+  #toolbox.side-by-side(columns: (1fr, auto))[
+    = La teoría de la ventana rota
+
+    #v(1fr)
+    #quote(attribution: [Andrew Hunt])[
+      Se rompe una ventana en un edificio de departamentos, pero nadie la arregla.
+      Queda rota. Luego se rompe otra cosa. Tal vez sea un accidente, tal vez no,
+      pero tampoco se arregla. Aparece un graffiti. Se acumula más y más daño.
+      Muy rápidamente se obtiene un crecimiento exponencial: todo el edificio se
+      deteriora. Los inquilinos se mudan. Entra el crimen. Y has perdido el
+      juego.
+    ]
+    #v(1fr)
+  ][
+    #image("pragmatic.jpg", height: 1fr)
+  ]
+]
+
+#slide[
+  #toolbox.side-by-side(columns: (1fr, auto))[
+    = La regla de los Boy Scouts
+
+    #v(1fr)
+    #quote(attribution: [Robert "Uncle Bob" C. Martin])[
+      Siempre deja el campamento un poco mejor de lo que lo encontraste.
+    ]
+    #v(1fr)
+  ][
+    #image("cleancode.jpg", height: 1fr)
+  ]
 ]
 
 #slide[
@@ -89,10 +128,10 @@
   = Una advertencia...
 
   #toolbox.side-by-side(columns: (1fr, auto))[
-    Ojo: los principios de diseño *no son dogmas*.
+    Ojo: los principios de diseño *no deben convertirse en dogmas*.
 
     No se deben aplicar ciegamente, sino que deben ser considerados
-    como guías para mejorar la calidad del código y la arquitectura del
+    como *sugerencias* para mejorar la calidad del código y la arquitectura del
     software.
 
     Muchos de estos principios pueden entrar en conflicto entre sí, y
@@ -108,16 +147,12 @@
     = No solo es acerca del código
 
     #toolbox.side-by-side(columns: (1fr, auto))[
+      #v(1fr)
       #quote(attribution: [Linus Torvalds])[
-        ...git actually has a simple design, with stable and reasonably
-        well-documented data structures. In fact, I'm a huge proponent of
-        designing your code around the data, rather than the other way around,
-        and I think it's one of the reasons git has been fairly successful [...]
-        I will, in fact, claim that the difference between a bad programmer
-        and a good one is whether he considers his code or his data structures
-        more important. *Bad programmers worry about the code. Good programmers
-        worry about data structures and their relationships.*
+        Los malos programadores se preocupan por el código.
+        Los buenos programadores se preocupan por las estructuras de datos.
       ]
+      #v(1fr)
     ][
       #image("linus.jpg", height: size.height * 0.8)
     ]
@@ -146,7 +181,8 @@
   ]
 
   #set text(size: 14pt)
-  #nosi[
+  #nosi()[
+    #v(2em)
     ```java
     public int esPar(int n) {
         if (n < 0) {
@@ -162,6 +198,7 @@
     }
     ```
   ][
+    #v(2em)
     ```java
     public int esPar(int n) {
         return n % 2 == 0;
@@ -1138,6 +1175,43 @@
 #slide[
   = Preferir composición sobre herencia (cont.)
 
+  #let herencia = {
+    set text(font: "DejaVu Sans Mono")
+    cetz.canvas({
+      import cetz.draw: *
+      content((0, 0), box([A], inset: 0.3cm, stroke: black), name: "a")
+      content((rel: (1.5, 0)), box([B], inset: 0.3cm, stroke: black), name: "b")
+      content((rel: (0, -2), to: ("a.center", 50%, "b.center")), box([C], inset: 0.3cm, stroke: black), name: "c")
+
+      line("a.south", ("c.north-west", 25%, "c.north-east"), mark: (end: (symbol: ">", scale: 2)))
+      line("b.south", ("c.north-west", 75%, "c.north-east"), mark: (end: (symbol: ">", scale: 2)))
+    })
+  }
+  #let interfaces = {
+    set text(font: "DejaVu Sans Mono")
+    cetz.canvas({
+      import cetz.draw: *
+      content((0, 0), box([A], inset: 0.3cm, stroke: black), name: "a")
+      content((rel: (1.5, 0)), box([B], inset: 0.3cm, stroke: black), name: "b")
+      content((rel: (0, -2), to: ("a.center", 50%, "b.center")), box([_C_], inset: 0.3cm, stroke: black), name: "c")
+
+      line("a.south", ("c.north-west", 25%, "c.north-east"), mark: (end: (symbol: ">", scale: 2)), stroke: (dash: "dashed"))
+      line("b.south", ("c.north-west", 75%, "c.north-east"), mark: (end: (symbol: ">", scale: 2)), stroke: (dash: "dashed"))
+    })
+  }
+  #let composicion = {
+    set text(font: "DejaVu Sans Mono")
+    cetz.canvas({
+      import cetz.draw: *
+      content((0, 0), box([A], inset: 0.3cm, stroke: black), name: "a")
+      content((rel: (1.5, 0)), box([B], inset: 0.3cm, stroke: black), name: "b")
+      content((rel: (0, -2), to: ("a.center", 50%, "b.center")), box([C], inset: 0.3cm, stroke: black), name: "c")
+
+      line("a.south", ("c.north-west", 25%, "c.north-east"), mark: (start: (symbol: "diamond", scale: 2, fill: black)))
+      line("b.south", ("c.north-west", 75%, "c.north-east"), mark: (start: (symbol: "diamond", scale: 2, fill: black)))
+    })
+  }
+
   #v(1fr)
   #align(center)[
     #table(
@@ -1147,7 +1221,16 @@
       },
       inset: 1em,
       table.header(
-        [*Efecto deseado*], [*Composición*], [*Interfaces*], [*Herencia*],
+        [],
+        [*Composición*
+
+          #box[#composicion]],
+        [*Interfaces*
+
+          #box[#interfaces]],
+        [*Herencia*
+
+          #box[#herencia]],
       ),
       [Reutilización de código], [#bueno[Sí]], [#malo[No]], [#bueno[Sí]],
       [Polimorfismo], [#malo[No]], [#bueno[Sí]], [#bueno[Sí]],
@@ -1173,6 +1256,62 @@
   #v(1fr)
 
   #fuente("https://refactoring.guru/design-patterns/catalog")
+]
+
+#bonustrack[
+  = Preferir composición sobre herencia (cont.)
+
+  El patrón *Entity Component System* (ECS) es un ejemplo de arquitectura de
+  software que utiliza la composición para modelar entidades en un sistema.
+  Se utiliza frecuentemente en el desarrollo de videojuegos.
+
+  #align(center)[ #image("ecs.png", width: 70%) ]
+
+  #fuente("https://en.wikipedia.org/wiki/Entity_component_system")
+]
+
+#bonustrack[
+  = Chau herencia
+
+  Los lenguajes modernos han optado por no soportar la herencia clásica,
+  y en su lugar se enfocan en la composición y el uso de
+  mecanismos alternativos para lograr el poliformismo.
+
+  #toolbox.side-by-side(columns: (1fr, auto))[
+    #table(
+      columns: 2,
+      stroke: (x, y) => if y == 0 {
+        (bottom: 0.7pt + black)
+      },
+      inset: 1em,
+      table.header(
+        [*Lenguaje*],
+        [*Mecanismo*],
+      ),
+      [Go], [interfaces + struct embedding #linklet("https://go.dev/doc/faq#inheritance")],
+      [Rust], [traits #linklet("https://doc.rust-lang.org/stable/book/ch10-02-traits.html?highlight=interfaces&utm_source=chatgpt.com")],
+      [Swift], [protocolos #linklet("https://docs.swift.org/swift-book/documentation/the-swift-programming-language/protocols/")],
+      [Kotlin], [interfaces + delegación #linklet("https://kotlinlang.org/docs/delegation.html")],
+    )
+  ][
+    #image("herencia-meme.jpg", width: 10cm)
+  ]
+]
+
+#bonustrack[
+  = Antipatrones
+
+  Un antipatrón es un proceso, estructura o patrón de acción comúnmente
+  utilizado que tiene más consecuencias negativas que positivas.
+
+  Ejemplos:
+
+  - *God Object:* Una sola clase maneja todo el control en un programa en lugar de distribuirlo entre múltiples clases.
+  - *Magic Number:* Un valor literal con un significado importante pero no explicado que podría ser reemplazado por una constante con nombre.
+  - *Poltergeist:* Objetos efímeros que solo existen para invocar otros métodos en clases.
+  - *Código spaguetti:* Un sistema de software que carece de una arquitectura perceptible, y su flujo de control es difícil de seguir debido a la falta de estructura.
+
+  #fuente("https://en.wikipedia.org/wiki/List_of_software_anti-patterns")
 ]
 
 #fin()
