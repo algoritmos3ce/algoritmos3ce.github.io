@@ -282,10 +282,15 @@
   #set text(size: 11pt)
   #let h = 13cm
   #let rh = h / 5
-  #grid(columns: (auto, auto), rows: (rh,rh,rh,rh,rh), column-gutter: 0.5cm, align: (left, left+horizon),
+  #grid(
+    columns: (auto, auto),
+    rows: (rh, rh, rh, rh, rh),
+    column-gutter: 0.5cm,
+    align: (left, left + horizon),
     grid.cell(rowspan: 5)[
       #image("brainmeme.jpg", height: h)
-    ],[
+    ],
+    [
       ```java
       Consumer<HttpResponse<String>> callback = new Consumer<>() {
           @Override public void accept(HttpResponse<String> response) {
@@ -293,32 +298,77 @@
           }
       };
       ```
-    ],[
+    ],
+    [
       ```java
       Consumer<HttpResponse<String>> callback = (HttpResponse<String> response) -> {
           System.out.println(response.body());
       };
       ```
-    ],[
+    ],
+    [
       ```java
       Consumer<HttpResponse<String>> callback = (response) -> {
           System.out.println(response.body());
       };
       ```
-    ],[
+    ],
+    [
       ```java
       Consumer<HttpResponse<String>> callback = response -> {
           System.out.println(response.body());
       };
       ```
-    ],[
+    ],
+    [
       ```java
       Consumer<HttpResponse<String>> callback = response -> System.out.println(response.body());
       ```
-    ]
+    ],
   )
 
   #fuente("https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html")
+]
+
+#slide[
+  = Ejemplo: SAX XML Parser
+
+  #set text(size: 15pt)
+
+  SAX (Simple API for XML) permite procesar un documento XML de manera secuencial, generando eventos
+  por cada elemento.
+
+  #grid(columns: (auto, 1fr, auto))[
+    ```xml
+    <books>
+        <book>
+            <title>Effective Java</title>
+            <author>Joshua Bloch</author>
+        </book>
+        <book>
+            <title>Clean Code</title>
+            <author>Robert C. Martin</author>
+        </book>
+    </books>
+    ```
+  ][][
+    ```java
+    public class BookSAXHandler extends DefaultHandler {
+      @Override public void startElement(...) { ... }
+      @Override public void characters() { ... }
+      @Override public void endElement(...) { ... }
+    }
+    ```
+  ]
+
+  ```java
+  BookSAXHandler handler = new BookSAXHandler();
+  SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
+  parser.parse("books.xml", handler);
+  ```
+
+  #fuente("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase04/ejemplos/sax")
+
 ]
 
 #slide[
@@ -584,8 +634,8 @@
     #set text(size: 15pt)
     En el DOM, los eventos se propagan en 2 etapas:
 
-      / Captura: Desde la raíz hacia un nodo *target*.
-      / Burbujeo: Desde el nodo *target* hacia la raíz.
+    / Captura: Desde la raíz hacia un nodo *target*.
+    / Burbujeo: Desde el nodo *target* hacia la raíz.
 
     Este detalle es relevante cuando se registran múltiples *listeners* en el DOM:
     el mecanismo de propagación determina el orden en que se ejecutan los
@@ -639,20 +689,20 @@
     raw(src, lang: "java", block: true)
   }
 
-  #place(bottom+left)[
+  #place(bottom + left)[
     #image("eventos-javafx.png", width: 10cm)
   ]
-  #place(bottom+right)[
+  #place(bottom + right)[
     #{
       set text(size: 11pt)
       let src = read("ejemplos/eventos/src/main/java/tb025/AppController.java").split("\n").slice(12).join("\n")
       raw(src, lang: "java", block: true)
     }
   ]
-  #place(bottom+left)[
+  #place(bottom + left)[
     #image("eventos-javafx.png", width: 10cm)
   ]
-  #place(top+right)[
+  #place(top + right)[
     // https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%22p774UbMqfreBMpaSZLkb%22%3E7VhRb5swEP41eeyEcbImj02adtLWp0xp%2B%2BiFG7AaDjlHIP31M%2BEIMNQonVRB1T7BfXdnm%2B%2F8nWxGchHlt0YlwR16oEeu4%2BUjeT1yXeHKmX0UyL5Cxk6J%2BCb0GKuBVfgMDFZhaejBthVIiJrCpA1uMI5hQy1MGYNZO%2Bw36vasifJ5RqcGVhuloRN2H3oUlOh00oj%2BBqEfVDMLhz2RqoIZ2AbKw6wByeVILgwilW9RvgBdsFfxUubdvOA9LsxATOckfH9%2BwN30bv306z6S26fkawbri0teG%2B2rDwbPfj%2BbaChAH2OllzU6N5jGHhSjOtaqY34gJhYUFvwDRHsupkoJLRRQpNkLeUgPRfqXCVuPDc91ziMfjH1lxGT2jaTCfGz66rSDVed5V8U2sGaMMZTITag1%2B7ssMrFbTM0GTlBX7UZlfKATcW4ZV%2FDamIBrdAsYgV2vDTCgFYW79r5TvH39Y1xdYfvCRX5FwXncndIpz7SiQgL%2FboN2kbMgJFgl6kBIZqXeLuiLJO7AEOQnP5u9stINN4oLMWMga8iOoaChOOm8EVPTT2n8rzTcM6UhByUNtyuNDcRDlIboWRqiZ21cvmdxyDPFMR6UOMSs35K7H6HkYlhnBdlpiOs55sPrh7Lndjju8PQTcroyoPrnatrmatIzVcfL0Oep6vUXjnOPVWJY56pq3UPrI8eb%2BUC0Ibr9dp4SYTw4poT7ZlRZs%2F4lcvA1%2FizJ5V8%3D%3C%2Fdiagram%3E%3C%2Fmxfile%3E
     #image("scenegraph.png", width: 5cm)
   ]
@@ -663,7 +713,7 @@
 #slide[
   = JavaFX: Eventos
 
-  #place(bottom+left)[
+  #place(bottom + left)[
     #{
       set text(size: 11pt)
       let src = read("ejemplos/eventos2/src/main/java/tb025/AppController.java").split("\n").slice(16).join("\n")
@@ -671,7 +721,7 @@
     }
   ]
 
-  #place(top+right)[#shadowed[
+  #place(top + right)[#shadowed[
     #{
       set text(size: 11pt)
       let src = read("ejemplos/eventos2/src/main/java/tb025/MyEvent.java").split("\n").slice(5).join("\n")
