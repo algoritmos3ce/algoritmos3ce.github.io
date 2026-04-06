@@ -413,8 +413,9 @@
 
   #set text(size: 14pt)
 
-  La estrategia de *entrada/salida multiplexada* permite bloquear
-  hasta que ocurra algún evento de interés.
+  La estrategia de *entrada/salida multiplexada* consiste en bloquear la
+  ejecución hasta que ocurra algún evento de interés en alguno de los
+  archivos monitoreados.
 
   #align(center)[
     #set text(size: 12pt)
@@ -446,6 +447,31 @@
 ]
 
 #slide[
+  = Entrada/Salida no bloqueante
+
+  #set text(size: 14pt)
+
+  Otra estrategia para manipular múltiples archivos es la de *entrada/salida no
+  bloqueante*, en la que las funciones de lectura y escritura no bloquean la
+  ejecución, sino que se ejecutan en segundo plano. La notificación de la
+  finalización de la operación ocurre en forma *asincrónica* mediante callbacks.
+
+  ```java
+  var handler = new CompletionHandler<Integer, Void>() {
+      public void completed(Integer r, Void att) { ... }
+      public void failed(Throwable exc, Void att) { ... }
+  };
+
+  var a = AsynchronousFileChannel.open(Path.of("a.txt"), CREATE, WRITE);
+  var b = AsynchronousFileChannel.open(Path.of("b.txt"), CREATE, WRITE);
+
+  // no bloqueante!
+  a.write(ByteBuffer.wrap("A".getBytes()), 0, null, handler);
+  b.write(ByteBuffer.wrap("B".getBytes()), 0, null, handler);
+  ```
+]
+
+#slide[
   = Patrón Observer
 
   Es un patrón de diseño de POO que permite registrar múltiples *callbacks*
@@ -454,7 +480,7 @@
 
   #align(center)[ #image("observer.png", width: 15cm) ]
 
-  Nota: en esta implementación, la publicación del evento es *sincrónica* con
+  Nota: en el diseño mostrado arriba, la publicación del evento es *sincrónica* con
   la ejecución de los handlers.
 
   #fuente("https://refactoring.guru/design-patterns/observer")
