@@ -101,7 +101,7 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
 
 ## 📂 Carga de Niveles
 
-- Los niveles deben definirse en **archivos XML** (se sugiere usar SAX). Alternativamente se podrán usar formatos JSON o Markdown, por cargo y cuenta del equipo de trabajo.
+- Los niveles deben definirse en **archivos XML**, usando cualquiera de los [https://www.javacodegeeks.com/2013/05/parsing-xml-using-dom-sax-and-stax-parser-in-java.html](tres parsers disponibles) en la biblioteca estándar de Java.
 - Cada archivo incluye:
   - Lista de enemigos y tiempo de aparición de los enemigos.
     - Se especifica para cada enemigo en la lista el tipo de enemigo y el tiempo de aparición
@@ -110,8 +110,8 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
   - Posición de base enemiga, ruta y base del jugador.
     - La ruta inicia siempre en la base enemiga (spawning point) y termina en la base del jugador.
   - Slots disponibles para torretas y dinero inicial.  
-- El formato puede ser definido por cada grupo, pero debe validarse al cargar.  
-- En caso de error en el archivo, el programa debe manejarlo grácilmente y mostrar un mensaje de error informativo al usuario.
+- El formato puede ser definido por cada grupo, pero debe validarse al cargar.
+- En caso de formato inválido, el programa debe mostrar un mensaje de error informativo al usuario y finalizar la ejecución.
 
 ---
 
