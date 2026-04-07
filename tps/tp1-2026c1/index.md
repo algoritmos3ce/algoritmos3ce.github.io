@@ -32,7 +32,7 @@ Implementar una versión propia del tradicional género **Tower Defense**, aplic
 
 ## 🧩 Aplicación de temas y conceptos
 
-- Programaci贸n Orientada a Objetos  
+- Programación Orientada a Objetos  
 - Principios de diseño (bajo acoplamiento, alta cohesión, DRY, KISS, SOLID, etc.)  
 - Interfaces gráficas con **JavaFX**  
 - Gestión de dependencias con **Maven**
@@ -217,7 +217,7 @@ Debe incluir:
   - Integrantes del grupo.  
   - Nombre del proyecto.  
   - Descripci贸n breve del proyecto.
-  - Instrucciones de ejecuci贸n.
+  - Instrucciones de ejecución.
   - Instrucciones de juego (reglas y controles).
 
 ### Observación
