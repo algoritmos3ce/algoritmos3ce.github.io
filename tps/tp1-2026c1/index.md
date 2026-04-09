@@ -18,19 +18,19 @@ nav_exclude: true
 
 ---
 
-## 🎯 Objetivo
+## Objetivo
 
 Implementar una versión propia del tradicional género **Tower Defense**, aplicando conceptos de **Programación Orientada a Objetos (POO)** y principios de buen diseño de software.
 
 ---
 
-## 📚 Referencias
+## Referencias
 
 - 📖 [Tower Defense en Wikipedia](https://en.wikipedia.org/wiki/Tower_defense)
 
 ---
 
-## 🧩 Aplicación de temas y conceptos
+## Aplicación de temas y conceptos
 
 - Programación Orientada a Objetos  
 - Principios de diseño (bajo acoplamiento, alta cohesión, DRY, KISS, SOLID, etc.)  
@@ -39,7 +39,7 @@ Implementar una versión propia del tradicional género **Tower Defense**, aplic
 
 ---
 
-## ⚙️ Contexto del Proyecto
+## Contexto del Proyecto
 
 El juego debe estar dividido en al menos dos capas de abstracción:
 
@@ -50,7 +50,7 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
 
 ---
 
-## 🕹️ Reglas del Juego
+## Reglas del Juego
 
 ### Escenario
 
@@ -63,26 +63,35 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
 
 ### Enemigos
 
-- 3 tipos de enemigos, cada uno con:
+- 3 tipos de enemigos:
   - Sprite distintivo.  
   - Puntos de vida diferentes.  
   - Recompensa en dinero y puntaje al ser destruidos.  
-  - Nivel de daño distinto al llegar a la base (se inmolan al llegar).  
-- Todos los enemigos avanzan a la misma velocidad siguiendo la ruta.  
+  - Nivel de daño distinto al llegar a la base (se inmolan al llegar).
+  - Uno de los tipos de enemigos tiene que usar un recorrido recto hacia base, que ignore la ruta fija. Por ejemplo: un avion (este no es un criterio de Aprobacion pero debe ser considerado para llegar a la nota maxima) 
 - Colisiones con proyectiles se evalúan a nivel de sprite por bounding box global (ancho por alto).
 
 ### Torretas
 
-- Al menos **3 tipos de torretas**.  
+- Al menos **3 tipos de torretas**:
+  - Una **torreta simple**: dispara al primer enemigo del recorrido que respeta su rango de alcance
+  - Una **torreta radial**: no apunta a un enemigo específico, sino que ataca una zona del mapa en una dirección determinada dentro de su rango de alcance. Afectando únicamente a los enemigos que se encuentren dentro de esa área en el momento del disparo. Tiene menor rango de alcance que la torreta simple.
+  - Una **torreta aerea**: dispara solo a los enemigos que no sigen la ruta fija y que estan dentro de su rango de alcance.
 - Cada tipo tiene:
   - Costo distinto.  
-  - Tasa de disparos distinta (medible en disparos por minuto o un disparo cada tantos milisegunods).
-  - Alcance de sus disparos
+  - Tasa de disparos (medible en disparos por minuto o un disparo cada tantos milisegunods).
+  - Danio por disparo
+  - Un rango de alcance de sus disparos
 - Los proyectiles:
   - Se disparan hacia un enemigo específico.  
   - Actualizan su dirección en cada frame, avanzando hasta impactar o hasta que el enemigo desaparezca.  
 - Las torretas son autónomas, disparan al enemigo más cercano dentro de su radio de alcance.
 - Una vez colocadas, se pueden reemplazar por otra torreta comprando la nueva como si el slot ocupado estuviera vacío.
+- Cada torreta tiene un **nivel determindado**:
+  - Cuando se ubica una torreta dentro de un slot donde ya habia ese tipo de torreta su nivel sube.
+  - Cunado el nivel sube. La torreta duplica su velocidad y su danio al disparar
+  - Se arraca con nivel inicial. Y solo tiene 4 niveles posibles
+  - Una vez llegado al nivel maximo no se puede ubicar la misma torreta dentro de ese slot.
 
 
 ### Dinámica de juego
@@ -90,7 +99,7 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
 - El jugador inicia cada nivel con una cantidad fija de dinero.
 - El nivel puede traer algunas torretas preinstaladas en algunos slots (no deben ser suficientes para pasar el nivel).  
 - El jugador puede instalar torretas en slots predeterminados seleccionando el tipo desde la barra superior.
-- Al instalarse una torreta, se deduce el costo del dinero disponible del jugador. En caso de no ser suficiente el dinero, no se podrá instalar la torreta.
+- Al instalarse una torreta, se reduce el costo del dinero disponible del jugador. En caso de no ser suficiente el dinero, no se podrá instalar la torreta.
 - El nivel termina cuando:
   - Se destruyen todos los enemigos (victoria de nivel).  
   - La base del jugador es destruida (derrota).  
@@ -99,28 +108,28 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
 
 ---
 
-## 📂 Carga de Niveles
+## Carga de Niveles
 
 - Los niveles deben definirse en **archivos XML**, usando cualquiera de los [https://www.javacodegeeks.com/2013/05/parsing-xml-using-dom-sax-and-stax-parser-in-java.html](tres parsers disponibles) en la biblioteca estándar de Java.
 - Cada archivo incluye:
-  - Lista de enemigos y tiempo de aparición de los enemigos.
-    - Se especifica para cada enemigo en la lista el tipo de enemigo y el tiempo de aparición
-	- La lista de enemigos se ordenará de menor a mayor por tiempo de aparición en el juego, pero no en el archivo de configuración.
+  - Lista de enemigos y tiempo de aparición o delay de los enemigos.
+    - Se especifica para cada enemigo en la lista el tipo de enemigo y el tiempo de aparición o diferencial de tiempo entre la aparicion de un enemigo a otro (delay)
     - Se podrán agregar enemigos en cualquier orden de aparición en el archivo para que el juego los levante y haga aparecer cada uno a su tiempo.
   - Posición de base enemiga, ruta y base del jugador.
+    - Se debe especificar la ruta que deben seguir los enemigos  
     - La ruta inicia siempre en la base enemiga (spawning point) y termina en la base del jugador.
-  - Slots disponibles para torretas y dinero inicial.  
+  - Slots disponibles para torretas y dinero inicial.
 - El formato puede ser definido por cada grupo, pero debe validarse al cargar.
 - En caso de formato inválido, el programa debe mostrar un mensaje de error informativo al usuario y finalizar la ejecución.
 
 ---
 
-## 🖥️ Interfaz
+## Interfaz
 
 - Menú de inicio con:
   - **Iniciar juego** (primer nivel).  
   - **Salir**.  
-- Barra superior en niveles de juego con:
+- Barra superior/inferior en niveles de juego con:
   - Dinero disponible.  
   - Puntaje acumulado.  
   - Íconos de las 3 torretas (para selección e instalación).  
@@ -130,7 +139,7 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
 
 ---
 
-## 🔊 Gráficos y Sonidos
+##  Gráficos y Sonidos
 
 - Cada grupo debe obtener o generar sus propios **sprites y sonidos**.  
 - Se recomienda mantener coherencia visual y sonora.  
@@ -145,25 +154,30 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
 
 ### Sitios recomendados
 
-- 🎨 **[OpenGameArt.org](https://opengameart.org/)**  
+- **[OpenGameArt.org](https://opengameart.org/)**  
   Repositorio comunitario de sprites, tilesets, íconos y efectos visuales para videojuegos. Todo el material está bajo licencias libres (Creative Commons, GPL, etc.), ideal para proyectos académicos.
 
-- 🔊 **[Freesound.org](https://freesound.org/)**  
+- **[Freesound.org](https://freesound.org/)**  
   Biblioteca colaborativa de efectos de sonido y música, con licencias abiertas. Permite descargar y reutilizar sonidos siempre que se respeten las condiciones de atribución.
 
-- 🎵 **[Pixabay](https://pixabay.com/sound-effects/)**  
+- **[Pixabay](https://pixabay.com/sound-effects/)**  
   Además de imágenes, ofrece música y efectos de sonido libres de derechos, aptos para uso no comercial y académico.
+
+### Assets provistos por la catedra (Opcionales)
+Les proveemos los assets que fueron armados por nosotros. **No son de uso obligatorio**. Pueden usar sus propios assets si asi lo desean.
+
+**[assets.zip](./assets.zip)**
 
 ---
 
 ### Observación
 
-💡 Se debe verificar siempre la **licencia específica** de cada recurso descargado, ya que algunos requieren atribución explícita al autor. El uso de material con licencias abiertas es obligatorio para evitar problemas legales o de derechos de autor.
+ Se debe verificar siempre la **licencia específica** de cada recurso descargado, ya que algunos requieren atribución explícita al autor. El uso de material con licencias abiertas es obligatorio para evitar problemas legales o de derechos de autor.
 Si algún recurso requiere atribución, se debe mencionarlo en el archivo **README.md** del proyecto.
 
 ---
 
-## 📋 Requerimientos Funcionales
+## Requerimientos Funcionales
 
 - Implementación completa de las reglas descritas.  
 - Bucle de renderizado y bucle de cómputo de colisiones/física con **frames temporizados**.  
@@ -176,7 +190,7 @@ Extras opcionales para mejor nota:
 
 ---
 
-## 📊 Parámetros sugeridos
+## Parámetros sugeridos
 
 | Elemento          | Valor sugerido |
 |-------------------|----------------|
@@ -189,14 +203,14 @@ Extras opcionales para mejor nota:
 | Recompensa débil   | 10 monedas |
 | Recompensa medio   | 20 monedas |
 | Recompensa fuerte  | 30 monedas |
-| Costo torreta básica | 50 monedas |
-| Costo torreta rápida | 75 monedas |
-| Costo torreta potente | 100 monedas |
+| Costo torreta simple | 50 monedas |
+| Costo torreta radial | 75 monedas |
+| Costo torreta aerea | 100 monedas |
 | Dinero inicial nivel | 100 monedas |
 
 ---
 
-## 📋 Requerimientos No Funcionales
+## Requerimientos No Funcionales
 
 - Lenguaje: **Java**
 - Interfaz: **JavaFX**.
@@ -206,7 +220,7 @@ Extras opcionales para mejor nota:
 
 ---
 
-## 📄 Documentación Escrita
+## Documentación Escrita
 
 Debe incluir:
 
@@ -216,17 +230,18 @@ Debe incluir:
   - Docentes y corrector.  
   - Integrantes del grupo.  
   - Nombre del proyecto.  
-  - Descripci贸n breve del proyecto.
+  - Descripcion breve del proyecto.
   - Instrucciones de ejecución.
   - Instrucciones de juego (reglas y controles).
+  - Formato `.xml` utilizado para la carga de niveles
 
 ### Observación
 
-💡 **El archivo readme.md debe ser creado y completado al inicio del desarrollo del trabajo práctico para que se pueda asignar el docente corrector al grupo. Sin este archivo, la cátedra no podrá identificar al grupo y podrían perder la regularidad de no cumplir este requerimiento a tiempo. Se debe completar el readme al crear el repositorio al menos con los datos básicos del proyecto y alumnos, para completar luego más adelante las instrucciones detalladas para la ejecución del programa y las reglas del juego.**
+ **El archivo readme.md debe ser creado y completado al inicio del desarrollo del trabajo práctico para que se pueda asignar el docente corrector al grupo. Sin este archivo, la cátedra no podrá identificar al grupo y podrían perder la regularidad de no cumplir este requerimiento a tiempo. Se debe completar el readme al crear el repositorio al menos con los datos básicos del proyecto y alumnos, para completar luego más adelante las instrucciones detalladas para la ejecución del programa y las reglas del juego.**
 
 ---
 
-## 🧪 Pruebas y Optimización
+## Pruebas y Optimización
 
 - No se requiere optimización avanzada de física o renderizado
 - Pruebas automáticas: **opcionales**, solo para clases del modelo
@@ -236,7 +251,7 @@ Debe incluir:
 	- No es obligatorio usar mockito
 ---
 
-## 🎥 Documentación Audiovisual
+## Documentación Audiovisual
 
 Cada integrante debe presentar un video individual que cumpla con:
 
@@ -250,7 +265,7 @@ Cada integrante debe presentar un video individual que cumpla con:
 
 ---
 
-## 🚀 Entrega y Gestión de Repositorio
+## Entrega y Gestión de Repositorio
 
 La entrega se realiza mediante **GitHub Classroom**, en equipos de **2 integrantes**.
 
@@ -274,7 +289,7 @@ La entrega se realiza mediante **GitHub Classroom**, en equipos de **2 integrant
 - Se recomienda clonar el repositorio en limpio para verificar funcionamiento
 - Al aprobarse, los cambios deben integrarse a la **rama principal**
 
-> 📌 *El archivo `readme.md` debe ser el primer archivo incluido en el repositorio.*
+>  *El archivo `readme.md` debe ser el primer archivo incluido en el repositorio.*
 
 ### Observaciones
 
@@ -285,7 +300,7 @@ La entrega se realiza mediante **GitHub Classroom**, en equipos de **2 integrant
 
 ---
 
-## 🧭 Trabajo de Referencia
+## Trabajo de Referencia
 
 Se incluye un ejemplo para ilustrar la **separación en capas** y el uso de **Canvas en JavaFX** para renderizar en tiempo real.
 
@@ -293,9 +308,9 @@ Se incluye un ejemplo para ilustrar la **separación en capas** y el uso de **Ca
 - Controles por teclado
 - Descargable y ejecutable
 
-🔗 [Repositorio de referencia - Pong](https://github.com/algoritmos3ce/pong)
+ [Repositorio de referencia - Pong](https://github.com/algoritmos3ce/pong)
 
-## ✅ Criterios de Corrección
+## Criterios de Corrección
 
 ### Principios de Programación evaluados
 
@@ -312,7 +327,7 @@ El código será analizado en función de los siguientes principios:
 - **Separation of Concerns**
 - **Principios SOLID**
 
-> 🎯 Se busca lograr **bajo acoplamiento** y **alta cohesión** en el diseño de clases.
+> Se busca lograr **bajo acoplamiento** y **alta cohesión** en el diseño de clases.
 
 ---
 
@@ -325,7 +340,8 @@ El código será analizado en función de los siguientes principios:
 - Video individual por integrante, con exposición clara de decisiones de diseño
 - Elegancia y legibilidad del código
 - Uso correcto del paradigma de **Programación Orientada a Objetos**
-- Aplicación de **polimorfismo** y diseño de clases según principios vistos
+- Aplicación de **polimorfismo** en los enemigos y torretas.
+- Diseño de clases según principios vistos
 - Separación adecuada entre **vista** y **lógica**
 - Ausencia de dependencias del modelo hacia la vista o clases de JavaFX
 - Manejo correcto de archivos de nivel.
@@ -334,7 +350,7 @@ El código será analizado en función de los siguientes principios:
 
 ---
 
-## 🚫 Prácticas prohibidas
+## Prácticas prohibidas
 
 - Variables globales o `static` (excepto constantes).  
 - Métodos o clases excesivamente largas (código spaghetti).  
@@ -342,7 +358,7 @@ El código será analizado en función de los siguientes principios:
 
 ---
 
-## 📝 Entrega y Nota
+## Entrega y Nota
 
 - La entrega debe realizarse dentro del plazo indicado como **"fecha límite de entrega"** en el calendario de la materia.
 - Si no se cumple con esta fecha, el trabajo será considerado **desaprobado** y no se aceptarán entregas posteriores.
@@ -353,7 +369,7 @@ El código será analizado en función de los siguientes principios:
 - Si se aprueba, se asignará una **nota entre 4 y 10**.
 - Se contempla **una única instancia de reentrega**, dentro del plazo de la **"fecha límite de aprobación"**, tanto si el trabajo fue aprobado como si no.
 
-> 📌 *Es responsabilidad del grupo cumplir con los plazos y condiciones establecidos por la cátedra.*
+> *Es responsabilidad del grupo cumplir con los plazos y condiciones establecidos por la cátedra.*
 
 
 ---
