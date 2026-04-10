@@ -68,7 +68,6 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
   - Puntos de vida diferentes.  
   - Recompensa en dinero y puntaje al ser destruidos.  
   - Nivel de daño distinto al llegar a la base (se inmolan al llegar).
-  - Enemigo aéreo: emprende un recorrido recto hacia base, ignorando la ruta fija, y su sprite se renderiza siempre por encima de los demás.
 - Colisiones con proyectiles se evalúan a nivel de sprite por bounding box global (ancho por alto).
 
 ### Torretas
