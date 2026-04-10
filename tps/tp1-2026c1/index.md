@@ -68,30 +68,27 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
   - Puntos de vida diferentes.  
   - Recompensa en dinero y puntaje al ser destruidos.  
   - Nivel de daño distinto al llegar a la base (se inmolan al llegar).
-  - Uno de los tipos de enemigos tiene que usar un recorrido recto hacia base, que ignore la ruta fija. Por ejemplo: un avion (este no es un criterio de Aprobacion pero debe ser considerado para llegar a la nota maxima) 
+  - Enemigo aéreo: emprende un recorrido recto hacia base, ignorando la ruta fija, y su sprite se renderiza siempre por encima de los demás.
 - Colisiones con proyectiles se evalúan a nivel de sprite por bounding box global (ancho por alto).
 
 ### Torretas
 
 - Al menos **3 tipos de torretas**:
-  - Una **torreta simple**: dispara al primer enemigo del recorrido que respeta su rango de alcance
-  - Una **torreta radial**: no apunta a un enemigo específico, sino que ataca una zona del mapa en una dirección determinada dentro de su rango de alcance. Afectando únicamente a los enemigos que se encuentren dentro de esa área en el momento del disparo. Tiene menor rango de alcance que la torreta simple.
-  - Una **torreta aerea**: dispara solo a los enemigos que no sigen la ruta fija y que estan dentro de su rango de alcance.
+  - Una **torreta simple**: dispara al primer enemigo del recorrido que respeta su rango de alcance.
+  - Una **torreta rápida**: tiene el doble de cadencia de disparos e igual daño por disparo que la torreta simple.
+  - Una **torreta potente**: sus disparos son de un color diferente al de las torretas anteriores e inflijen el doble de daño.
+  - Una **torreta distante**: tiene el doble de alcance que las demás torretas y funciona como una torreta simple. Esta torreta será opcional y para mejorar la nota.
 - Cada tipo tiene:
   - Costo distinto.  
   - Tasa de disparos (medible en disparos por minuto o un disparo cada tantos milisegunods).
-  - Danio por disparo
+  - Daño por disparo
   - Un rango de alcance de sus disparos
 - Los proyectiles:
-  - Se disparan hacia un enemigo específico.  
-  - Actualizan su dirección en cada frame, avanzando hasta impactar o hasta que el enemigo desaparezca.  
+  - Se disparan hacia un enemigo específico.
+  - Tienen una cantidad de daño asociada y que se aplica al enemigo impactado.
+  - Actualizan su dirección en cada frame, avanzando hasta impactar o hasta que el enemigo desaparezca o hasta que el proyectil salga del área de juego (que en este caso coincide con la pantalla).  
 - Las torretas son autónomas, disparan al enemigo más cercano dentro de su radio de alcance.
 - Una vez colocadas, se pueden reemplazar por otra torreta comprando la nueva como si el slot ocupado estuviera vacío.
-- Cada torreta tiene un **nivel determindado**:
-  - Cuando se ubica una torreta dentro de un slot donde ya habia ese tipo de torreta su nivel sube.
-  - Cunado el nivel sube. La torreta duplica su velocidad y su danio al disparar
-  - Se arraca con nivel inicial. Y solo tiene 4 niveles posibles
-  - Una vez llegado al nivel maximo no se puede ubicar la misma torreta dentro de ese slot.
 
 
 ### Dinámica de juego
@@ -99,18 +96,19 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
 - El jugador inicia cada nivel con una cantidad fija de dinero.
 - El nivel puede traer algunas torretas preinstaladas en algunos slots (no deben ser suficientes para pasar el nivel).  
 - El jugador puede instalar torretas en slots predeterminados seleccionando el tipo desde la barra superior.
-- Al instalarse una torreta, se reduce el costo del dinero disponible del jugador. En caso de no ser suficiente el dinero, no se podrá instalar la torreta.
+- Al instalarse una torreta, se deduce el costo del dinero disponible del jugador. En caso de no ser suficiente el dinero, no se podrá instalar la torreta.
 - El nivel termina cuando:
   - Se destruyen todos los enemigos (victoria de nivel).  
-  - La base del jugador es destruida (derrota).  
+  - La base del jugador es destruida (derrota).
+  - El jugador interrupe el juego (cerrando la aplicación).
 - El juego consta de **3 niveles**.  
-- Al ganar el último nivel se muestra un cartel de felicitaciones (victoria definitiva). Al cerrarse el cartel se volverá al menú de inicio
+- Al ganar el último nivel se muestra un cartel de felicitaciones (victoria definitiva). Al cerrarse el cartel se volverá al menú de inicio.
 
 ---
 
 ## Carga de Niveles
 
-- Los niveles deben definirse en **archivos XML**, usando cualquiera de los [https://www.javacodegeeks.com/2013/05/parsing-xml-using-dom-sax-and-stax-parser-in-java.html](tres parsers disponibles) en la biblioteca estándar de Java.
+- Los niveles deben definirse en **archivos XML**, usando cualquiera de los [tres parsers disponibles](https://www.javacodegeeks.com/2013/05/parsing-xml-using-dom-sax-and-stax-parser-in-java.html) en la biblioteca estándar de Java.
 - Cada archivo incluye:
   - Lista de enemigos y tiempo de aparición o delay de los enemigos.
     - Se especifica para cada enemigo en la lista el tipo de enemigo y el tiempo de aparición o diferencial de tiempo entre la aparicion de un enemigo a otro (delay)
@@ -118,8 +116,8 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
   - Posición de base enemiga, ruta y base del jugador.
     - Se debe especificar la ruta que deben seguir los enemigos  
     - La ruta inicia siempre en la base enemiga (spawning point) y termina en la base del jugador.
-  - Slots disponibles para torretas y dinero inicial.
-- El formato puede ser definido por cada grupo, pero debe validarse al cargar.
+  - Slots disponibles para torretas, torretas iniciales, si las hubiera, y dinero inicial.
+- El formato puede ser definido por cada grupo, pero debe validarse al cargar, tanto en formato, mediante el parser, como semánticamente, mediante un archivo XSD a definir propio (tipos de dato, etc.). Se puede usar IA para generar el XSD en base al formato XML que defina el equipo y validarlo con la API de javax.xml.validation.
 - En caso de formato inválido, el programa debe mostrar un mensaje de error informativo al usuario y finalizar la ejecución.
 
 ---
@@ -127,12 +125,15 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
 ## Interfaz
 
 - Menú de inicio con:
+  - Imagen de bienvenida
   - **Iniciar juego** (primer nivel).  
-  - **Salir**.  
-- Barra superior/inferior en niveles de juego con:
-  - Dinero disponible.  
-  - Puntaje acumulado.  
-  - Íconos de las 3 torretas (para selección e instalación).  
+  - **Salir**.
+- Pantalla de niveles de juego con:
+  - Barra superior o inferior en niveles de juego con:
+    - Dinero disponible.  
+    - Puntaje acumulado.  
+    - Íconos de las 3 torretas para su selección y posterior instalación en el escenario.
+  - Escenario donde se instalarán y dibujarán los enemigos, las torretas, los disparos y las bases enemiga y propia.
 - Flujo:
   - Al ganar un nivel → cartel de victoria → siguiente nivel.  
   - Al perder un nivel → cartel de derrota → volver al menú.  
@@ -143,7 +144,7 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
 
 - Cada grupo debe obtener o generar sus propios **sprites y sonidos**.  
 - Se recomienda mantener coherencia visual y sonora.  
-- No infringir derechos de autor de material de uso restringido.
+- No infringir derechos de autor de material de uso restringido. Mencionar licencias de uso en archivo README del TP y acreditar autores de material ajeno citando las fuentes cuando corresponda según licencia de uso.
 - Los sonidos deben ser música de fondo en bucle y efectos para los siguientes eventos clave del juego:
   - aparición de enemigo
   - muerte de enemigo
@@ -164,15 +165,17 @@ Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
   Además de imágenes, ofrece música y efectos de sonido libres de derechos, aptos para uso no comercial y académico.
 
 ### Assets provistos por la catedra (Opcionales)
-Les proveemos los assets que fueron armados por nosotros. **No son de uso obligatorio**. Pueden usar sus propios assets si asi lo desean.
+Se proveen assets de referencia que **no son de uso obligatorio**. Alternativamente pueden generar y usar sus propios assets u obtener otros de terceros, respetando las debidas licencias de uso. Estos assets fueron confeccionados en base a este trabajo de licencia de uso libre: [assets_de_base](https://zintoki.itch.io/ground-shaker).
 
 **[assets.zip](./assets.zip)**
+
+Se aclara además que se pueden usar assets esquemáticos que no requieran por ejemplo rotación de la imagen. Las animaciones y el uso de sprites más avanzado podrán ser tenidos en cuenta para la evaluación del trabajo globalmente, aunque no es el foco de la materia el criterio artístico ni estético.
 
 ---
 
 ### Observación
 
- Se debe verificar siempre la **licencia específica** de cada recurso descargado, ya que algunos requieren atribución explícita al autor. El uso de material con licencias abiertas es obligatorio para evitar problemas legales o de derechos de autor.
+Se debe verificar siempre la **licencia específica** de cada recurso descargado, ya que algunos requieren atribución explícita al autor. El uso de material con licencias abiertas es obligatorio para evitar problemas legales o de derechos de autor.
 Si algún recurso requiere atribución, se debe mencionarlo en el archivo **README.md** del proyecto.
 
 ---
@@ -180,11 +183,11 @@ Si algún recurso requiere atribución, se debe mencionarlo en el archivo **READ
 ## Requerimientos Funcionales
 
 - Implementación completa de las reglas descritas.  
-- Bucle de renderizado y bucle de cómputo de colisiones/física con **frames temporizados**.  
+- Bucle de renderizado y bucle de cómputo de colisiones/física separado con **frames temporizados**.  
 - Al menos 3 niveles jugables.  
 
 Extras opcionales para mejor nota:
-- Animaciones en sprites (marcha de enemigos, spawning, instalación de torretas, disparos, etc).  
+- Animaciones en sprites (marcha de enemigos, spawning, instalación de torretas, rotación de torretas para "apuntado", disparos, etc).  
 - Variantes de proyectiles.
 - Barras de vida para enemigos y base.  
 
