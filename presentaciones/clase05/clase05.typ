@@ -13,11 +13,16 @@
   = Interfaces de usuario
 
   #align(center, block(height: 13cm)[
-    #grid(columns: (auto, auto, auto), rows: (1fr,1fr,1fr), column-gutter: 0.5cm, align: (left, center+horizon, left+horizon), // stroke: black,
+    #grid(
+      columns: (auto, auto, auto),
+      rows: (1fr, 1fr, 1fr),
+      column-gutter: 0.5cm,
+      align: (left, center + horizon, left + horizon),
+      // stroke: black,
       grid.cell(rowspan: 3)[ #image("brainmeme.jpg", height: 100%) ],
       [ #image("vt100.jpg", height: 4cm) ], [ CLI ],
       [ #image("tui.png", height: 4cm) ], [ TUI ],
-      [ #image("kde.jpg", height: 4cm) ],[ GUI ],
+      [ #image("kde.jpg", height: 4cm) ], [ GUI ],
     )
   ])
 ]
@@ -42,9 +47,10 @@
     end function
     ```
   ][
-    Dado que las interfaces de usuario deben lidiar con múltiples entradas y salidas
-    (mouse, teclado, monitor, etc.), la implementación más usual es mediante un
-    *event loop*. #linklet("https://en.wikipedia.org/wiki/Event_loop")
+    En las interfaces de usuario TUI/GUI hay que lidiar con múltiples entradas y
+    salidas (mouse, teclado, monitor, etc.). La implementación más usual es
+    mediante un *event loop*.
+    #linklet("https://en.wikipedia.org/wiki/Event_loop")
 
     Los *frameworks GUI* suelen abstraer el event loop; el cliente solo debe
     escribir el código que procesa los eventos.
@@ -72,7 +78,7 @@
 
     Además, considerar el *nivel de abstracción* deseado. Algunos ejemplos:
 
-    / Librerías gráficas (bajo nivel): OpenGL, Vulkan, DirectX \
+    / Librerías gráficas (bajo nivel): SDL, OpenGL, Vulkan, DirectX \
       Se encargan de dibujar píxeles en la pantalla, pero no proveen
       componentes de interfaz de usuario.
 
@@ -203,16 +209,16 @@
   En 2018 Oracle hizo que JavaFX fuera parte del proyecto OpenJDK, bajo el
   nombre *OpenJFX*.
 
-    Entre otras, posee las siguientes funcionalidades:
+  Entre otras, posee las siguientes funcionalidades:
 
-    - Gráficos 2D y 3D acelerados
-    - Controles, diseños y cuadros/tablas de la GUI
-    - Soporte de audio y video
-    - Efectos y animaciones
-    - Definición de la estructura GUI con FXML
-    - Personalización de los estilos con CSS
+  - Gráficos 2D y 3D acelerados
+  - Controles, diseños y cuadros/tablas de la GUI
+  - Soporte de audio y video
+  - Efectos y animaciones
+  - Definición de la estructura GUI con FXML
+  - Personalización de los estilos con CSS
 
-  #place(right+horizon, dy: 1cm)[#image("javafx.png", width: 11cm)]
+  #place(right + horizon, dy: 1cm)[#image("javafx.png", width: 11cm)]
 
   Para proporcionar el máximo rendimiento, JavaFX utiliza diferentes motores de
   renderizado nativos según la plataforma en la que se ejecuta.
@@ -315,7 +321,9 @@
     #image("scenegraph-controles.png", width: 12cm)
   ]
 
-  #fuente("https://download.java.net/java/GA/javafx24/docs/api/javafx.controls/javafx/scene/control/package-summary.html")
+  #fuente(
+    "https://download.java.net/java/GA/javafx24/docs/api/javafx.controls/javafx/scene/control/package-summary.html",
+  )
 ]
 
 #slide[
@@ -452,7 +460,9 @@
     ```
   ]
 
-  #fuente("https://download.java.net/java/GA/javafx24/docs/api/javafx.fxml/javafx/fxml/doc-files/introduction_to_fxml.html")
+  #fuente(
+    "https://download.java.net/java/GA/javafx24/docs/api/javafx.fxml/javafx/fxml/doc-files/introduction_to_fxml.html",
+  )
 ]
 
 #slide[
@@ -465,6 +475,39 @@
   #align(center)[ #image("scenebuilder.jpg", height: 10.5cm) ]
 
   #fuente("https://gluonhq.com/products/scene-builder/")
+]
+
+#bonustrack[
+  = Resources
+
+  #set text(size: 14pt)
+
+  Las imágenes, sonidos y otros archivos necesarios para la aplicación se suelen
+  almacenar en la carpeta `resources` del proyecto, y son automáticamente
+  incluidos en el archivo JAR generado al compilar.
+
+  ```
+  src/
+    main/
+      java/
+        com/miempresa/miproyecto/...
+      resources/
+        imagenes/
+          logo.png
+        sonidos/
+          click.wav
+        fxml/
+          principal.fxml
+  ```
+
+  ```java
+  Image logo = new Image(getClass().getResourceAsStream("/imagenes/logo.png"));
+  AudioClip click = new AudioClip(
+    getClass()
+      .getResource("/sonidos/click.wav")
+      .toExternalForm());
+  FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/principal.fxml"));
+  ```
 ]
 
 #fin()
