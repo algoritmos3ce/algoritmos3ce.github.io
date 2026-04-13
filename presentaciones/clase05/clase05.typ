@@ -430,6 +430,8 @@
 #slide[
   = FXML
 
+  #set text(size: 14pt)
+
   Permite definir la estructura del Scene Graph en un archivo XML,
   separando la *presentación* de la *lógica*. Es similar a HTML, pero con
   etiquetas específicas de JavaFX.
@@ -437,12 +439,13 @@
   #[
     #set text(size: 14pt)
     ```xml
-    <VBox>
-        <children>
-            <TextField fx:id="textField" />
-            <Button fx:id="btn" text="Click Me!" />
-        </children>
-    </VBox>
+    <fx:root type="javafx.scene.layout.VBox"
+        xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+       <children>
+          <TextField fx:id="textField"  />
+          <Button fx:id="btn" mnemonicParsing="false" text="Button" />
+       </children>
+    </fx:root>
     ```
 
     ```java
