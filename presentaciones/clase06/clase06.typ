@@ -24,6 +24,8 @@
 
     - #emphbox-small[*Programación Lógica (ej. Prolog)*]
 
+  #v(0.5em)
+
   La Programación Lógica se basa en expresar *proposiciones, reglas y hechos
   lógicos*, y utilizar un *motor de inferencia* para resolver problemas.
 
@@ -69,30 +71,55 @@
 
   / 1960s: Las ideas fundamentales surgieron de la demostración automática de
     teoremas y la investigación en IA. El avance clave fue el
-    *Principio de Resolución* en 1965, una regla de inferencia única y poderosa
+    *Principio de Resolución* #linklet("https://en.wikipedia.org/wiki/Resolution_(logic)")
+    en 1965, una regla de inferencia única y poderosa
     para la lógica de primer orden que las computadoras podían implementar.
 
-  / 1970s: Se desarrolla la regla de *inferencia SLD*, una extensión del
+  / 1970s: Se desarrolla la regla de *inferencia SLD*
+    #linklet("https://en.wikipedia.org/wiki/SLD_resolution"), una extensión del
     Principio de Resolución que permite la ejecución de programas lógicos.
 
     Inspirados por estas ideas, Alain Colmerauer y Philippe Roussel
-    desarrollaron *Prolog* (*PROgrammation en LOGique*).
+    desarrollaron *Prolog* (*PROgrammation en LOGique*)
+    #linklet("https://en.wikipedia.org/wiki/Prolog").
     Su propósito inicial era procesar el lenguaje natural (francés).
+
+    Otro lenguaje importante de esta época fue *Datalog*
+    #linklet("https://en.wikipedia.org/wiki/Datalog"), que se convirtió
+    en un precursor de los sistemas de *bases de datos relacionales*,
+    influyendo el desarrollo de *SQL* #linklet("https://en.wikipedia.org/wiki/SQL").
 
   / 1980s: Prolog y lenguajes similares son utilizados principalmente
     en ámbitos académicos y de investigación, para aplicaciones como
     *demostración de teoremas*, *sistemas expertos*,
     *sistemas de tipos* y *procesamiento de lenguaje natural*.
 
-  / 1990s: Prolog es estandarizado como *ISO Prolog*.
+    #fuente("https://en.wikipedia.org/wiki/Logic_programming")
+]
 
-  #fuente("https://en.wikipedia.org/wiki/Logic_programming")
+#slide[
+  = Historia (cont.)
+
+  El paradigma de programación lógica nunca tuvo la popularidad masiva de los
+  paradigmas imperativos o funcional, pero aun así ha tenido un impacto
+  significativo en la informática:
+
+  - Datalog se utiliza en sistemas de bases de datos y análisis de datos (ej:
+    *Soufflé* #linklet("https://en.wikipedia.org/wiki/Souffl%C3%A9_(programming_language)")).
+
+  - Prolog fue estandarizado como *ISO Prolog* y sigue siendo utilizado en algunas
+    aplicaciones comerciales y de investigación (ej: *IBM Watson*
+    #linklet("https://en.wikipedia.org/wiki/IBM_Watson")).
+
+  - Las técnicas de programación lógica se utlizan frecuentemente para resolver
+    problemas de nicho, en ámbitos como ingeniería civil y mecánica,
+    diseño de circuitos electrónicos, seguridad informática, etc.
 ]
 
 #slide[
   = Definiciones
 
-  / Proposición: una afirmación lógica que puede ser verdadera o falsa.
+  / Proposición / Predicado: una afirmación lógica que puede ser verdadera o falsa.
 
     Ejemplo: "Hoy es martes"
 
@@ -143,8 +170,8 @@
       La notación `f/n` se usa para referirse a un functor `f` con aridad `n`.
       Por ejemplo: `padre/2`.
 
-      *Azucar sintáctica:* Algunos predicados que pueden ser escritos como
-      operadores *infijos*. Por ejemplo: `=(X, Y)` es equivalente a `X = Y`.
+      *Azucar sintáctica:* Algunas estructuras pueden ser escritas como
+      operadores *infijos*. Por ejemplo, para `=/2`: `=(X, Y)` es equivalente a `X = Y`.
     / Listas: `[]`, `[1, 2, 3]`, `[X, Y]` \
       Si `T` es una lista, `[H|T]` es una lista con cabeza `H` y cola `T`.
     / Cadenas: `"Hola, Mundo!"`
@@ -219,11 +246,16 @@
 
   Por ejemplo:
 
-  - `padre(homero, bart)` #text(verde)[unifica] con `padre(homero, bart)`.
-  - `padre(homero, bart)` #text(rojo)[no unifica] con `padre(homero, lisa)`.
-  - `padre(homero, X)` #text(verde)[unifica] con `padre(homero, bart)` instanciando `X = bart`.
-  - `padre(P, X)` #text(verde)[unifica] con `padre(homero, bart)` instanciando `P = homero`, `X = bart`.
-  - `2 + 3` #text(rojo)[no unifica] con `5`.
+  #grid(
+    columns: (auto, auto, auto),
+    align: (right, center, left),
+    gutter: 0.5em,
+    [`padre(homero, bart)`], [#text(verde)[unifica] con], [`padre(homero, bart)`.],
+    [`padre(homero, bart)`], [#text(rojo)[no unifica] con], [`padre(homero, lisa)`.],
+    [`padre(homero, X)`], [#text(verde)[unifica] con], [`padre(homero, bart)` instanciando `X = bart`.],
+    [`padre(P, X)`], [#text(verde)[unifica] con], [`padre(homero, bart)` instanciando `P = homero`, `X = bart`.],
+    [`2 + 3`], [#text(rojo)[no unifica] con], [`5`.],
+  )
 
   Para *resolver una consulta*, el motor de Prolog:
 
@@ -241,8 +273,9 @@
     una cláusula. En este caso, Prolog sigue una estrategia
     de búsqueda de tipo *depth-first*:
     unifica el objetivo con la primera de las alternativas y continúa la búsqueda.
-    En caso de que alguno de los sub-objetivos falle, la búsqueda
-    retrocede (*backtracking*), deshace todas las unificaciones hechas,
+
+    En caso de que alguno de los sub-objetivos falle, se aplica *backtracking*:
+    la búsqueda retrocede, deshace todas las unificaciones hechas,
     y prueba con la siguiente alternativa.
 
     Notar que el orden de las cláusulas en la base de datos
@@ -256,8 +289,9 @@
 #slide[
   = Árbol de búsqueda
 
-  Un *árbol de búsqueda* es una manera de mostrar cómo Prolog resuelve una
-  consulta.
+  Dada una consulta, se puede armar un *árbol de búsqueda* o *árbol SLD*
+  #linklet("https://book.simply-logical.space/src/text/1_part_i/3.1.html")
+  que muestra el proceso de resolución de Prolog.
 
   #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
     Base de datos:
@@ -333,7 +367,7 @@
     #image("trace.png", width: 15cm)
   ]
 
-  #place(bottom+center)[ #shadowed[ #image("trace3.png", width: 4.8cm) ] ]
+  #place(bottom + center)[ #shadowed[ #image("trace3.png", width: 4.8cm) ] ]
 
   #fuente("https://www.amzi.com/articles/prolog_under_the_hood.htm")
 ]
@@ -420,7 +454,9 @@
   Prolog adopta el *modelo de mundo cerrado*: *todo lo que no se pueda
   demostrar como verdadero, es falso*.
 
-  De esta manera el predicado `\+` implementa la *negación por falla*:
+  De esta manera el predicado `\+`
+  #linklet("https://www.swi-prolog.org/pldoc/doc_for?object=(%5C%2B)/1")
+  implementa la *negación por falla*:
 
   ```prolog
   \+ P :- P, !, fail.
@@ -434,15 +470,18 @@
   `?- legal(X)` no puede ser usada para listar todos los valores de `X`
   que son legales.
 
-  #fuente("https://www.swi-prolog.org/pldoc/doc_for?object=(%5C%2B)/1")
+  #fuente("https://book.simply-logical.space/src/text/1_part_i/3.3.html")
 ]
 
 #slide[
   = Aritmética
 
-  El operador `is` permite escribir predicados que involucran expresiones
+  El operador `is`
+  #linklet("https://www.swi-prolog.org/pldoc/doc_for?object=(is)/2")
+  permite escribir predicados que involucran expresiones
   aritméticas, pero tiene algunas limitaciones. En su lugar, se recomienda
-  usar la biblioteca `clp(fd)`:
+  usar la biblioteca `clp(fd)`
+  #linklet("https://www.swi-prolog.org/pldoc/man?section=clpfd-predicate-index"):
 
   ```prolog
   :- use_module(library(clpfd)).
@@ -457,8 +496,6 @@
   R = 2 + 3.   % R se unifica con el término +(2, 3)
   R #= 2 + 3.  % R se unifica con el número 5
   ```
-
-  #fuente("https://www.swi-prolog.org/pldoc/man?section=clpfd-predicate-index")
 ]
 
 #slide[
