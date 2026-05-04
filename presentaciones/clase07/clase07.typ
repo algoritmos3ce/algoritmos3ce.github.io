@@ -103,21 +103,21 @@
 
   Para simplificar la notación:
 
-  1. Se pueden omitir los paréntesis externos: `M N ≡ (M N)`
-  2. Las aplicaciones se asocian a la izquierda: `M N P ≡ ((M N) P)`
-  3. El cuerpo de la abstracción se extiende todo lo posible hacia la derecha: `λx.M N ≡ λx.(M N)`
+  1. Se pueden omitir los paréntesis externos: `(M N) ≡ M N`
+  2. Las aplicaciones se asocian a la izquierda: `((M N) P) ≡ M N P`
+  3. El cuerpo de la abstracción se extiende todo lo posible hacia la derecha: `λx.(M N) ≡ λx.M N`
   4. Se pueden contraer múltiples abstracciones lambda: `λx.λy.λz.N ≡ λx y z.N`
-  5. Cuando todas las variables son de una única letra, se pueden omitir los espacios: `MNP ≡ M N P`
+  5. Cuando todas las variables son de una única letra, se pueden omitir los espacios: `M N P ≡ MNP`
 
   Ejemplo:
 
   #align(center)[
-  `(((λx.(λy.(y x))) a) b)` \
-  `((λx.(λy.(y x))) a) b` (1) \
-  `(λx.(λy.(y x))) a b` (2) \
-  `(λx.λy.y x) a b` (3) \
-  `(λx y.y x) a b` (4) \
-  `(λxy.yx)ab` (5)
+    `(((λx.(λy.(y x))) a) b)` \
+    `((λx.(λy.(y x))) a) b` (1) \
+    `(λx.(λy.(y x))) a b` (2) \
+    `(λx.λy.y x) a b` (3) \
+    `(λx y.y x) a b` (4) \
+    `(λxy.yx)ab` (5)
   ]
 ]
 
@@ -177,6 +177,8 @@
 
     Ejemplo: `z (λx.y x) w`
 
+    #emphbox[ La forma β-normal de una expresión, si existe, es única. ]
+
   / Forma β-η-normal: si no contiene ninguna β-redex ni η-redex.
 
     Ejemplo: `z (λx.x) w`
@@ -190,8 +192,6 @@
 
   Para "evaluar" una expresión lambda, se aplican las reglas de reducción
   repetidamente hasta llegar a una forma normal.
-
-  #emphbox[ La forma normal de una expresión, si existe, es única. ]
 ]
 
 
@@ -205,11 +205,13 @@
   #align(center)[#grid(columns: 2, gutter: 1em)[
     ```
     (λu.u (λt.t) ((λy.y) u)) ((λz.z) x)
-                 ─────β───── ─────β────
-    ──────────────────β────────────────
+                 ───────β─── ───────β──
+    ────────────────────────β──────────
     ```
   ][
-    #linklet("https://projectultimatum.org/cgi-bin/lambda?t=(%CE%BBu.u%20(%CE%BBt.t)%20((%CE%BBy.y)%20u))%20((%CE%BBz.z)%20x)&r=&m=normal%20order")
+    #linklet(
+      "https://projectultimatum.org/cgi-bin/lambda?t=(%CE%BBu.u%20(%CE%BBt.t)%20((%CE%BBy.y)%20u))%20((%CE%BBz.z)%20x)&r=&m=normal%20order",
+    )
   ]]
 
   Entre las estrategias más comunes están:
@@ -225,15 +227,17 @@
   / Call by value: Como el orden aplicativo, pero no se aplican reducciones dentro de abstracciones.
 
     #emphbox-small[
-      Esta estrategia es la más común en lenguajes de programación tradiciconales como C:
-      los argumentos de una función se evalúan antes de llamar a la función.
+      Esta estrategia es la más común en lenguajes de programación tradicionales
+      con *evaluación ansiosa* (C, Python, Java...): los argumentos de una función se evalúan
+      antes de llamar a la función.
     ]
 
   / Call by name: Como el orden normal, pero no se aplican reducciones dentro de abstracciones.
 
     #emphbox-small[
-      Esta estrategia y otras similares, son comunes en lenguajes con  *evaluación perezosa* como Haskell:
-      las funciones reciben expresiones sin evaluar, y las evalúan solo cuando las necesitan.
+      Esta estrategia y otras similares, son comunes en lenguajes funcionales
+      con *evaluación perezosa* como Haskell: las funciones reciben expresiones
+      sin evaluar, y las evalúan solo cuando las necesitan.
     ]
 
   #fuente("https://en.wikipedia.org/wiki/Evaluation_strategy")
@@ -283,6 +287,8 @@
     Leq := λm n.IsZero (Sub m n)
     ```
   ][]
+
+  #fuente("https://en.wikipedia.org/wiki/Church_encoding")
 ]
 
 #slide[
@@ -306,7 +312,7 @@
   ][][
     *Listas:*
 
-    La lista `[a b c]` se representa como \
+    La lista `[a b c]` se puede representar como \
     `(False, (a, (False, (b, (False, (c, Nil))))))`
 
     ```
@@ -351,15 +357,24 @@
 
   ¿Cómo podemos escribir funciones recursivas en el cálculo lambda?
 
+  #text(rojo)[
+    ```
+    Fact = λn.If (IsZero n) 1 (Mul n (Fact (Pred n)))
+    ```
+  ]
+
   De alguna manera necesitamos que la función pueda invocarse a sí misma.
   En los lenguajes tradicionales podemos usar el _nombre_ de la función
   dentro del cuerpo de la misma función, pero en el cálculo lambda
   las funciones no tienen nombre, solo los argumentos.
 
-  #emphbox[
-    Un *combinador de punto fijo* es una función que recibe una función
-    `f` y devuelve un _punto fijo_; es decir un valor `p` tal que `f p = p`.
-  ]
+]
+
+#slide[
+  = Recursión (cont.)
+
+  Un *combinador de punto fijo* es una función que recibe una función `f` y
+  devuelve un _punto fijo_; es decir un valor `p` tal que `f p = p`.
 
   Es decir, si `Fix` es un combinador de punto fijo:
 
@@ -367,37 +382,26 @@
   Fix f = f (Fix f)
   ```
 
-  #fuente("https://en.wikipedia.org/wiki/Fixed-point_combinator")
-]
-
-#slide[
-  = Recursión (cont.)
-
   El combinador de punto fijo más conocido es el *combinador Y*:
 
   ```
   Y = λf.(λx.f (x x)) (λx.f (x x))
   ```
 
-  *Verificación:*
-
-  ```
-  Y g = (λx.g (x x)) (λx.g (x x))
-      = g ((λx.g (x x)) (λx.g (x x)))
-      = g (Y g)
-  ```
-
-  El combinador Y permite escribir funciones recursivas. Por ejemplo:
+  Usando el combinador Y podemos escribir la función factorial como:
 
   ```
   Fact = Y (λf.λx.If (IsZero x) 1 (Mul x (f (Pred x))))
   ```
+
+  #fuente("https://en.wikipedia.org/wiki/Lambda_calculus#Recursion_and_fixed_points")
 ]
 
 #slide[
   = Recursión (cont.)
 
-  El combinador Y produce _stack overflow_ en lenguajes como C y Python.
+  El combinador Y produce _stack overflow_ en lenguajes con evaluación ansiosa
+  como C y Python.
 
   El combinador Z es una variante que resuelve este problema:
 
@@ -437,5 +441,53 @@
   ][]
 ]
 
+#bonustrack[
+  = La Máquina de Turing #linklet("https://en.wikipedia.org/wiki/Turing_machine")
+
+  La Máquina de Turing es otro modelo de computación, propuesto por Alan
+  Turing en 1936.
+
+  Consiste en una cinta infinita dividida en celdas, un cabezal que puede leer
+  y escribir símbolos en la cinta, y una máquina de estados interna que
+  controla el movimiento del cabezal y las operaciones de lectura/escritura.
+
+  #align(center)[
+    #image("turing-machine.jpg", width: 9cm)
+  ]
+
+  La Máquina de Turing y Cálculo Lambda son modelos equivalentes, pero opuestos
+  en su enfoque:
+  - Máquina de Turing #sym.arrow Lenguajes imperativos
+  - Cálculo Lambda #sym.arrow Lenguajes funcionales
+]
+
+#bonustrack[
+  = Tesis de Church-Turing #linklet("https://en.wikipedia.org/wiki/Church%E2%80%93Turing_thesis")
+
+  #emphbox[
+    Una función es computable si y solo si es computable por una máquina de Turing.
+  ]
+
+  Se puede probar que el cálculo lambda y la máquina de Turing son modelos
+  equivalentes, Es decir, que cualquier función que se puede computar con una
+  máquina de Turing también se puede computar con el cálculo lambda, y viceversa.
+
+  Generalizando, se dice que un modelo es *Turing-completo*
+  #linklet("https://en.wikipedia.org/wiki/Turing_completeness") si puede simular
+  a una máquina de Turing, lo que implica que es capaz de procesar cualquier
+  algoritmo computable.
+
+  #text(size: textsize - 2pt)[
+    Ejemplos: #linklet("https://github.com/thaliaarchi/notes/blob/main/topics/unexpected_turing.md")
+
+    - La máquina de Turing
+    - Cálculo Lambda
+    - Lógica combinatoria
+    - La arquitectura de von Neumann #linklet("https://en.wikipedia.org/wiki/Von_Neumann_architecture")
+    - La mayoría de los lenguajes de programación (ej: Python, C, Prolog, Haskell)
+    - Autómatas celulares (ej: Game of Life #linklet("https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"))
+    - Minecraft #linklet("https://www.youtube.com/watch?v=FDiapbD0Xfg")
+  ]
+]
 
 #fin()
