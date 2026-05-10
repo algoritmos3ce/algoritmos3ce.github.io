@@ -6,7 +6,7 @@
 #show: default-style
 
 #caratula[
-  #place(top+left)[ #image("meme1.png", width: 15cm) ]
+  #place(top + left)[ #image("meme1.png", width: 15cm) ]
   #v(5cm)
   = Programación Funcional
 ]
@@ -72,7 +72,7 @@
 
 #slide[
 
-  = Características
+  = Características del paradigma funcional
 
   #grid(columns: (1fr, auto), gutter: 1em)[
     - Funciones puras
@@ -94,7 +94,7 @@
     #align(right)[
       ```lisp
       (defun fib (n)
-        "Return the nth Fibonacci number."
+        "Devuelve el n-ésimo número de Fibonacci"
         (if (< n 2)
             n
             (+ (fib (- n 1))
@@ -334,7 +334,7 @@
     *recursión*.
   ][
     #[
-      #set text(size: textsize -2pt)
+      #set text(size: textsize - 4pt)
       ```clj
       (defn _buscar [v x i]
         (if (>= i (count v))
@@ -356,7 +356,24 @@
     el crecimiento del _stack_.
   ][
     #[
-      #set text(size: textsize -2pt)
+      #set text(size: textsize - 4pt)
+      ```clj
+      (defn _buscar [v x i]
+        (if (>= i (count v))
+          nil
+          (if (= (nth v i) x)
+            i
+            (recur v x (inc i)))))
+      ```
+    ]
+  ][
+    La forma especial `loop`
+    #linklet("https://clojure.org/reference/special_forms#loop")
+    también se puede usar para crear un punto de recursión explícito
+    sin necesidad de definir una función auxiliar.
+  ][
+    #[
+      #set text(size: textsize - 4pt)
       ```clj
       (defn buscar [v x]
         (loop [i 0]
@@ -382,16 +399,33 @@
   Algunos lenguajes funcionales, como Haskell, tienen evaluación perezosa
   por defecto.
 
-  En otros lenguajes, como Clojure, se puede lograr
-  utilizando estructuras de datos perezosas o funciones específicas.
+  Clojure no tiene evaluación perezosa por defecto, pero proporciona mecanismos
+  para crear y manipular *secuencias perezosas*
+  #linklet("https://clojure-doc.org/articles/language/laziness/"):
 
-  En Clojure, la mayoría de las funciones que operan sobre *secuencias*
-  son perezosas.
+  #[
+    #set text(size: textsize - 2pt)
 
-  ```clj
-  (range)           ; (1 2 3 4 5 ...)
-  (take 5 (range))  ; (1 2 3 4 5)
-  ```
+    #grid(columns: (1fr, auto), gutter: 1em)[
+      ```clj
+      (range)           ; (1 2 3 4 5 ...)
+      (take 5 (range))  ; (1 2 3 4 5)
+      ```
+    ][
+      ```clj
+      (defn fib-seq
+        "Devuelve una secuencia infinita de números de Fibonacci"
+        ([]
+          (fib-seq 1 1))
+        ([a b]
+          (lazy-seq
+            (cons a (fib-seq b (+ a b))))))
+
+      (fib-seq) ; (1 1 2 3 5 8 13 21 34 55 ...)
+      (take 10 (fib-seq)) ; (1 1 2 3 5 8 13 21 34 55)
+      ```
+    ]
+  ]
 
   #fuente("https://en.wikipedia.org/wiki/Lazy_evaluation")
 ]
@@ -429,22 +463,29 @@
 #slide[
   = Ventajas de la Programación Funcional
 
-  / Código reutilizable: La combinación de funciones puras y de orden superior
-    suele resultar en un código más modular y reutilizable.
+  #grid(columns: (1fr, auto), gutter: 1em)[
+    #set text(size: textsize - 1pt)
 
-  / Más fácil de razonar: Al evitar el estado compartido y los datos mutables,
-    el comportamiento de una función depende únicamente de sus entradas.
+    / Código reutilizable: La combinación de funciones puras y de orden superior
+      suele resultar en un código más modular y reutilizable.
 
-  / Más fácil de depurar y probar: Las funciones puras son triviales de probar;
-    se proporciona una entrada y se verifica una salida.
+    / Más fácil de razonar: Dada la ausencia de un estado mutable y efectos
+      colaterales, el comportamiento de una función depende únicamente de sus
+      entradas.
 
-  / Menos código: Los lenguajes funcionales suelen ser más expresivos
-    y concisos, lo que reduce la cantidad de código necesario para lograr
-    el mismo resultado.
+    / Más fácil de depurar y probar: Las funciones puras son triviales de probar;
+      se proporciona una entrada y se verifica la salida.
 
-  / Concurrencia más segura: Los datos inmutables son inherentemente
-    seguros para operaciones concurrentes, eliminando categorías enteras de
-    errores comunes como condiciones de carrera y bloqueos.
+    / Menos código: Los lenguajes funcionales suelen ser más expresivos
+      y concisos, lo que reduce la cantidad de código necesario para lograr
+      el mismo resultado.
+
+    / Concurrencia más segura: Los datos inmutables son inherentemente
+      seguros para operaciones concurrentes, eliminando categorías enteras de
+      errores comunes como condiciones de carrera y bloqueos.
+  ][
+    #image("meme-no-state.png", width: 8cm)
+  ]
 ]
 
 #bonustrack[
@@ -577,6 +618,49 @@
         };
     }
     ```
+]
+
+#slide[
+  = Programación funcional en Java (cont.)
+
+  / Colecciones inmutables: La biblioteca estándar de Java incluye clases para
+    colecciones inmutables, como `List.of`, `Set.of`, `Map.of`, etc.
+    #linklet("https://docs.oracle.com/en/java/javase/26/core/creating-immutable-lists-sets-and-maps.html")
+
+    ```java
+    List<String> nombres = List.of("Alicia", "Roberto", "Andrés", "Tomás");
+    nombres.add("María"); // UnsupportedOperationException
+    ```
+]
+
+#bonustrack[
+  = The Billion Dollar Mistake
+
+  Tony Hoare #linklet("https://en.wikipedia.org/wiki/Tony_Hoare") introdujo el
+  concepto de referencias nulas en 1965 "simplemente porque era tan fácil de
+  implementar". En 2009 se refirió a esa decisión como "mi error de mil millones
+  de dólares".
+
+  Los lenguajes modernos han adoptado diferentes enfoques para evitar el uso de
+  referencias nulas. Por ejemplo, en Java 8 se introdujo la clase `Optional`
+  #linklet("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/Optional.html")
+  para representar valores que pueden estar presentes o ausentes de manera
+  segura, evitando el uso de `null`.
+
+  ```java
+  String nombre = "Alice";
+  String apellido = null;
+  String nombreCompleto = (nombre != null ? nombre : "?") + " " +
+                          (apellido != null ? apellido : "?");
+  ```
+
+  ```java
+  Optional<String> nombre = Optional.of("Alice");
+  Optional<String> appellido = Optional.empty();
+  String nombreCompleto = nombre.orElse("?") + " " + appellido.orElse("?");
+  ```
+
+  #fuente("https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare")
 ]
 
 #titulo[
