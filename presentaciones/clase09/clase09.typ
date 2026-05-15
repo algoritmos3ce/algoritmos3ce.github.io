@@ -41,7 +41,7 @@
 
     Ejemplos: servidores, bases de datos, interfaces de usuario.
 
-    Suelen beneficiarse más de la *concurrencia*.
+    No suelen beneficiarse mucho del paralelismo.
 
     #v(1fr)
 
@@ -51,7 +51,7 @@
 
     Ejemplos: simuladores, videojuegos, procesamiento de imágenes, criptografía, IA.
 
-    Suelen beneficiarse más del *paralelismo*.
+    Suelen beneficiarse más del paralelismo.
 
     #v(1fr)
   ][
@@ -177,7 +177,9 @@
     }
   ]
 
-  #fuente("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase09/ejemplos/EjemploThreads1")
+  #fuente(
+    "https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase09/ejemplos/EjemploThreads1",
+  )
 ]
 
 #ejercicio[
@@ -215,11 +217,11 @@
 #slide[
   = Condiciones de carrera
 
-  #set text(size: 15pt)
+  #set text(size: textsize - 2pt)
 
   #emphbox[ Una *condición de carrera* ocurre cuando el orden de las
-  operaciones realizadas por dos o más hilos afecta el resultado final,
-  a menudo provocando bugs. ]
+    operaciones realizadas por dos o más hilos afecta el resultado final,
+    a menudo provocando bugs. ]
 
   #align(center)[
     #stack(dir: ltr, spacing: 1cm)[
@@ -244,9 +246,11 @@
 
   La JVM define un *modelo de memoria* que especifica cómo y cuándo los
   cambios hechos por un hilo son visibles para otros hilos.
-  #linklet("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/concurrent/package-summary.html#MemoryVisibility")
+  #linklet(
+    "https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/concurrent/package-summary.html#MemoryVisibility",
+  )
 
-  #emphbox[ Una función o objeto es *thread-safe* si puede ser utilizado
+  #emphbox[ Una función u objeto es *thread-safe* si puede ser utilizado
     por múltiples hilos sin condiciones de carrera. ]
 
   #fuente("https://en.wikipedia.org/wiki/Race_condition#In_software")
@@ -256,8 +260,8 @@
   = Sincronización: Candados
 
   #emphbox[ Un *candado* (*lock* / *mutex*) es un mecanismo de sincronización que
-  permite a los hilos coordinar el acceso a recursos compartidos,
-  previniendo condiciones de carrera. ]
+    permite a los hilos coordinar el acceso a recursos compartidos,
+    previniendo condiciones de carrera. ]
 
   #grid(columns: (auto, 1fr), gutter: 1em)[
     #set text(size: 12pt)
@@ -379,8 +383,8 @@
 
   #set text(size: 14pt)
   #emphbox[ Un *deadlock* ocurre cuando dos o más hilos
-  están bloqueados permanentemente, esperando por un recurso que nunca será
-  liberado. ]
+    están bloqueados permanentemente, esperando por un recurso que nunca será
+    liberado. ]
 
   #grid(columns: (auto, 1fr), gutter: 1em)[
     #set text(size: 11pt)
@@ -455,7 +459,7 @@
 
   #grid(columns: (1fr, auto), gutter: 1em)[
     #emphbox[ Una *variable de condición* permite a un hilo suspender su
-    ejecución hasta que se cumpla una condición específica. ]
+      ejecución hasta que se cumpla una condición específica. ]
 
     #set text(size: 11pt)
 
@@ -514,7 +518,9 @@
   - `CopyOnWriteArrayList`: Una lista que crea una copia del arreglo
     subyacente en cada operación de escritura. Ideal para escenarios con
     muchas lecturas y pocas escrituras.
-    #linklet("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/concurrent/CopyOnWriteArrayList.html")
+    #linklet(
+      "https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/concurrent/CopyOnWriteArrayList.html",
+    )
 
   - `ConcurrentHashMap`: Un mapa hash que permite acceso concurrente
     eficiente. Divide el mapa en segmentos para minimizar la contención
@@ -537,7 +543,7 @@
   // An atomic transaction is an indivisible and irreducible series of database operations such that either all occur, or none occur.
 
   #emphbox[Una *transacción atómica* es una serie *indivisible* e *irreducible*
-  de operaciones, de modo que *o todas ocurren, o ninguna ocurre*.]
+    de operaciones, de modo que *o todas ocurren, o ninguna ocurre*.]
 
   La JVM garantiza que algunas operaciones son atómicas (por ejemplo, la
   lectura y escritura de referencias y algunos tipos primitivos).
@@ -562,8 +568,8 @@
   = Computación asíncrona
 
   #emphbox[Una función *sincrónica* bloquea el hilo que la invoca hasta que
-  la operación finaliza, mientras que una función *asíncrona* retorna
-  inmediatamente, permitiendo que el hilo invocante continúe su ejecución.]
+    la operación finaliza, mientras que una función *asíncrona* retorna
+    inmediatamente, permitiendo que el hilo invocante continúe su ejecución.]
 
   La clase `Future` representa el resultado de una computación
   asíncrona. #linklet("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/util/concurrent/Future.html")
