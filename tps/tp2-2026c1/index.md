@@ -29,7 +29,7 @@ Se evaluarán los siguientes conceptos:
 Clojure
 
 ## Interfaz de usuario
-Libre: se permite utilizar Java/JavaFX para la interfaz gráfica. También se admite una interfaz de línea de comandos mínima si el equipo prefiere priorizar el núcleo funcional.
+Libre: se permite utilizar Java o Clojure para la interfaz gráfica. También se admite una interfaz de línea de comandos mínima si el equipo prefiere priorizar el núcleo funcional.
 
 ![Interfaz Gráfica de Referencia TP 2 2026 1C](./TP2_GUI.png)
 
@@ -46,7 +46,7 @@ Desarrollar una aplicación de procesamiento de imágenes basada en **filtros co
 - entrada/salida de archivos,
 - interfaz de usuario.
 
-El objetivo es construir un sistema que permita cargar una imagen, armar un pipeline de filtros, visualizar el resultado y guardar la imagen procesada.
+El objetivo es construir un sistema que permita cargar una imagen, armar una _pipeline_ de filtros, visualizar el resultado y guardar la imagen procesada.
 
 ---
 
@@ -57,6 +57,7 @@ Al finalizar el trabajo práctico, el equipo deberá demostrar que puede:
 - modelar datos y transformaciones con funciones puras en Clojure;
 - componer filtros en un pipeline;
 - separar la lógica funcional de la interfaz gráfica y de la persistencia;
+- aplicar concurrencia para mejorar la experiencia de usuario durante el procesamiento;
 - justificar decisiones de diseño y de implementación.
 
 ---
@@ -65,7 +66,7 @@ Al finalizar el trabajo práctico, el equipo deberá demostrar que puede:
 
 La interfaz gráfica no debe ser necesariamente idéntica a la captura de referencia, pero sí debe ofrecer una experiencia equivalente a la siguiente:
 
-- una barra de menú con acciones de archivo;
+- una barra de menú o botones con acciones de archivo;
 - un área central para visualizar la imagen cargada o procesada;
 - un panel lateral para construir y administrar el pipeline de filtros;
 - botones para agregar, aplicar y limpiar filtros;
@@ -77,40 +78,41 @@ La interfaz gráfica no debe ser necesariamente idéntica a la captura de refere
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────────────┐
-│ File                                                                         │
+│ Archivo                                                                      │
 │ ┌───────────────┐                                                            │
-│ │ Open          │                                                            │
-│ │ Save          │                                                            │
-│ │ Save As       │                                                            │
-│ │ Quit          │                                                            │
+│ │ Abrir         │                                                            │
+│ │ Guardar       │                                                            │
+│ │ Guardar como  │                                                            │
+│ │ Salir         │                                                            │
 │ └───────────────┘                                                            │
 │                                                                              │
 │                     [ Área principal de visualización ]                      │
 │                          imagen cargada / procesada                          │
 │                                                                              │
-│                                                           Pipeline           │
+│                                                           Filtros            │
 │                                                           ┌───────────────┐  │
-│                                                           │ 1. Desaturate │× │
-│                                                           │ 2. Blur       │× │
-│                                                           │ 3. Invert     │× │
+│                                                           │ 1. Desaturar  │× │
+│                                                           │ 2. Difuminado │× │
+│                                                           │ 3. Invertir   │× │
 │                                                           └───────────────┘  │
 │                                                           [ selector ▼ ]     │
-│                                                           [ Add to pipeline ]│
-│                                                           [ Apply Pipeline ] │
-│                                                           [ Clear Pipeline ] │
+│                                                           [ Agregar ]        │
+│                                                           [ Aplicar ]        │
+│                                                           [ Reset ]          │
 └──────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### Comportamiento esperado de la interfaz
 
-- **Open**: abre una imagen desde disco.
-- **Save**: guarda la imagen actual en el mismo archivo, si existe uno asociado.
-- **Save As**: guarda la imagen actual en un archivo elegido por el usuario.
-- **Pipeline**: muestra la secuencia de filtros seleccionados.
-- **Add to pipeline**: agrega un filtro al final de la secuencia.
+- **Abrir**: abre una imagen desde disco.
+- **Guardar**: guarda la imagen actual en el mismo archivo, si existe uno asociado.
+- **Gurdar como**: guarda la imagen actual en un archivo elegido por el usuario.
+- **Filtros**: muestra la secuencia de filtros seleccionados.
+- **selector**: permite elegir un filtro para agregar al pipeline.
+- **Agregar**: agrega el filtro seleccionado al final del pipeline.
 - **×**: elimina un filtro individual del pipeline.
 - **Apply Pipeline**: aplica todos los filtros en orden sobre la imagen original cargada.
-- **Clear Pipeline**: vacía el pipeline y restaura la imagen original.
+- **Reset**: vacía el pipeline y restaura la imagen original.
 
 ---
 
@@ -122,40 +124,39 @@ Implementar un módulo puro de procesamiento de imágenes donde las transformaci
 ### 4.2 Filtros mínimos
 El trabajo debe incluir al menos **tres filtros**:
 
-1. un filtro puntual por píxel,
-2. un filtro por vecindad o convolución,
+1. un filtro puntual por píxel (por ejemplo desaturar, invertir, brillo, colorizar),
+2. un filtro por vecindad o convolución (por ejemplo difuminado, realce, detección de bordes),
 3. un tercer filtro libre a elección del grupo.
-
-Ejemplos válidos:
-- Desaturate,
-- Blur,
-- Invert,
-- Brightness,
-- Sharpen.
 
 #### Guía rápida de los ejemplos de filtros
 
 A continuación se describe, de forma general, qué hace cada filtro propuesto y una idea posible de implementación en el núcleo funcional:
 
-- **Desaturate**  
-  Convierte la imagen a escala de grises eliminando la información de color.  
+- **Desaturar**  
+  Convierte la imagen a escala de grises eliminando la información de color.
   Implementación general: para cada píxel, calcular un valor de luminancia (por ejemplo, promedio o combinación ponderada de R, G y B) y asignarlo por igual a los tres canales.
 
-- **Blur**  
-  Suaviza la imagen reduciendo detalle fino y ruido local.  
-  Implementación general: aplicar una convolución con un kernel de suavizado (por ejemplo, caja 3x3 o gaussiano), reemplazando cada píxel por una combinación de sus vecinos.
-
-- **Invert**  
+- **Invertir**
   Invierte los colores, generando el negativo de la imagen.  
   Implementación general: para cada canal de cada píxel, usar `nuevo = 255 - valor` (o el máximo del rango correspondiente).
 
-- **Brightness**  
+- **Brillo**  
   Aumenta o reduce el brillo global de la imagen.  
   Implementación general: sumar (o restar) una constante a cada canal por píxel y recortar el resultado al rango válido (por ejemplo, 0..255).
 
-- **Sharpen**  
+- **Difuminado**
+  Suaviza la imagen reduciendo detalle fino y ruido local.  
+  Implementación general: aplicar una convolución con un _kernel_ de suavizado (por ejemplo, caja 3x3 o gaussiano), reemplazando cada píxel por una combinación de sus vecinos.
+
+- **Realce**  
   Realza bordes y detalles para que la imagen se vea más nítida.  
-  Implementación general: aplicar un kernel de realce (convolución) o combinar la imagen original con una versión suavizada para destacar altas frecuencias.
+  Implementación general: aplicar un _kernel_ de realce (convolución) o combinar la imagen original con una versión suavizada para destacar altas frecuencias.
+
+Más información:
+
+- https://en.wikipedia.org/wiki/Digital_image_processing#Digital_image_transformations
+- https://ai.stanford.edu/~syyeung/cvweb/tutorial1.html
+- https://lodev.org/cgtutor/filtering.html
 
 ### 4.3 Pipeline editable
 Debe ser posible construir y editar un pipeline de filtros antes de ejecutarlo.
@@ -169,11 +170,11 @@ El pipeline debe permitir:
 ### 4.4 Carga y guardado
 La aplicación debe permitir cargar imágenes desde disco y guardar el resultado procesado.
 
-### 4.5 Concurrencia básica
-Para incorporar concurrencia de forma accesible, se requiere al menos lo siguiente:
+### 4.5 Paralelismo
+Para que la aplicación no se sienta bloqueada y para mejorar el rendimiento aprovechando múltiples _cores_, se requiere al menos lo siguiente:
 
 - La aplicación debe ejecutar **Apply Pipeline** en segundo plano para no bloquear la interfaz.
-- Mientras se procesa, la UI debe reflejar que hay una tarea en curso (por ejemplo, deshabilitar botones o mostrar "Procesando...").
+- Mientras se procesa, la UI debe reflejar que hay una tarea en curso (por ejemplo, deshabilitar botones, mostrar "Procesando..." y/o cambiar el puntero del mouse a un reloj).
 - Al finalizar, la imagen mostrada debe actualizarse con el resultado.
 - **Opcionalmente**: paralelizar el cálculo de cada filtro dividiéndolo por segmentos de imagen (filas, bloques, etc.), aprovechando múltiples cores. Nota: cada píxel de salida es independiente porque lee de la imagen original (inmutable para ese filtro).
 
@@ -181,36 +182,28 @@ Para incorporar concurrencia de forma accesible, se requiere al menos lo siguien
 
 ## 5. Recomendación técnica de implementación
 
-Para simplificar la corrección y el desarrollo, se recomienda la siguiente estructura conceptual:
+Para simplificar el desarrollo y la corrección, se recomienda la siguiente estructura conceptual:
 
 - **`filters.clj`**: funciones puras de procesamiento de imagen.
 - **`app.clj`**: interfaz gráfica, estado de la aplicación y manejo de eventos.
 - **`core.clj`**: punto de entrada del programa.
 
-Se sugiere almacenar la imagen original separada de la imagen mostrada, de modo que el pipeline pueda re-aplicarse sin degradar progresivamente el resultado.
-
-Ejemplo de estado interno del programa:
-
-```clojure
-{:image    nil
- :original nil
- :file     nil
- :pipeline []}
-```
-
 ---
 
 ## 6. Criterios de evaluación
 
-
+Los requerimientos son **mínimos**. Se permite agregar funcionalidades adicionales
+a la interfaz, pero no se evaluarán ni se otorgarán puntos extra por ello.
+Se recomienda enfocarse en cumplir los requerimientos mínimos con calidad y claridad.
 
 ### Requerimientos no funcionales
 
 - El proyecto debe estar armado utilizando la herramienta Leiningen.
 - Se debe poder ejecutar el programa con `lein run`. Deben estar las indicaciones elementales en el README.
-- El código debe estar separado en al menos dos capas de abstracción: **lógica** y **presentación**.
-- La capa lógica debe estar programada en **Clojure**, utilizando **funciones puras**.
-- No hay requerimientos específicos acerca de la capa de presentación. Algunas opciones:
+- El código debe estar separado en al menos dos capas de abstracción: **lógica** (principalmente los algoritmos de procesamiento de imagen) y **presentación** (GUI).
+- La capa lógica debe estar programada en **Clojure**.
+- Los filtros deben ser implementados como **funciones puras**.
+- No hay requerimientos específicos acerca de la capa de presentación. Algunas sugerencias:
    - En Clojure con JavaFX
    - En Clojure con Swing (para evitar la dependencia externa)
    - En Java con JavaFX
@@ -220,9 +213,6 @@ Ejemplo de estado interno del programa:
 - Puntos extra por usar todos los cores disponibles para el aplicado de los filtros.
 - Puntos extra por lograr que el procesamiento se ejecute en forma fluida y con buena experiencia de usuario.
 
-Todos los requerimientos son **mínimos**. Se permite agregar elementos adicionales
-a la interfaz y al lenguaje de la máquina virtual.
-
 ### Documentación Audiovisual
 
 Cada integrante debe presentar un video individual que cumpla con:
@@ -230,10 +220,11 @@ Cada integrante debe presentar un video individual que cumpla con:
 - Duración: **5 a 10 minutos**
 - Debe verse la **cara del expositor**
 - Mostrar el programa funcionando (máximo 1 minuto)
-- Explicar:
+- Mostrar el código, explicando:
    - Flujo del programa
    - Funcionamiento de las secciones de código más relevantes
-   - Dónde se crean los hilos y cómo se logra la concurrencia
+   - Cómo se implementan los filtros
+   - Cómo se logra la concurrencia
 
 
 ### Entrega y Gestión de Repositorio
