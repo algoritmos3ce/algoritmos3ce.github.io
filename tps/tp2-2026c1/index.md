@@ -234,13 +234,17 @@ La entrega se realiza mediante **GitHub Classroom**, en equipos de **2 integrant
 
 #### Pasos para vinculación
 
-1. Acceder al enlace: [GitHub Classroom TP2](https://classroom.github.com/a/CSraDdqA)
-2. Un integrante:
+Los grupos se han mantenido del TP1. Aceptar invitación para iniciar la tarea en [GitHub Classroom TP2](https://classroom.github.com/a/-EqadU5w).
+
+En caso de necesitar crear un nuevo equipo el flujo debe ser el mismo que en el TP1:
+1. Un integrante:
    - Crea un grupo (máximo 2 personas)
    - Asigna un nombre identificable y académico
-3. El segundo integrante:
+2. El segundo integrante:
    - Ingresa al mismo enlace
    - Se une al grupo creado
+
+Por excepción se podrá mover integrante de un grupo o crear uno nuevo. Contactarse con la cátedra en caso de necesitar reajuste de equipo y comentar circunstancias que lo ameriten.
 
 #### Repositorio
 
