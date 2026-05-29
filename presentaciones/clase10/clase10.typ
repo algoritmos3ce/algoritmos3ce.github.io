@@ -157,6 +157,8 @@
   - `(deref d)` o `@d` obtiene el resultado de la evaluación de la expresión,
     bloqueando si aun no se ha terminado de evaluar.
 
+  #set text(size: textsize - 1pt)
+
   ```clj
   (defn tarea-muy-costosa [n]
     (locking *out* (println "evaluando!"))
@@ -299,13 +301,43 @@
 ]
 
 #slide[
-  = Communicating Sequential Processes (CSP)
+  = Communicating Sequential Processes (CSP) (Go)
 
   #set text(size: 0.9em)
   #emphbox[
     CSP es un modelo de concurrencia basado en procesos livianos que se comunican
     mediante el paso de mensajes a través de canales.
   ]
+
+  #grid(columns: (1fr, auto, auto), gutter: 1em)[
+    Este modelo de concurrencia fue popularizado por el lenguaje de programación Go, que lo implementa mediante _goroutines_ y _channels_.
+
+    - `make(chan)` crea un canal.
+    - `c <- v` encola el valor `v` en el canal `c` (bloquea si el _buffer_ del canal está lleno).
+    - `v := <-c` desencola del canal `c` (bloquea si no hay nada para leer).
+    - `close(c)` cierra el canal `c` (`<-c` devolverá el _valor cero_ del tipo del canal).
+    - `go f()` ejecuta la función en forma asincrónica en una goroutine.
+  ][
+    #{
+      set text(size: 11pt)
+      let src = read("ejemplos/go-csp/main.go").split("\n").slice(0, 14).join("\n")
+      raw(src, lang: "go", block: true)
+    }
+    #set text(size: 14pt)
+    #place(top + right)[#shadowed(fill: white, inset: 0.5em)[#linklet(
+      "https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase10/ejemplos/go-csp",
+    )]]
+  ][
+    #{
+      set text(size: 11pt)
+      let src = read("ejemplos/go-csp/main.go").split("\n").slice(15).join("\n")
+      raw(src, lang: "go", block: true)
+    }
+  ]
+]
+
+#slide[
+  = Communicating Sequential Processes (CSP) (Clojure)
 
   La biblioteca `core.async` es una implementación de CSP en Clojure, inspirada
   en las _goroutines_ y _channels_ de Go.
@@ -321,10 +353,12 @@
     #{
       set text(size: 0.7em)
       let src = read("ejemplos/goblocks/src/goblocks/core.clj")
-      raw(src, lang: "java", block: true)
+      raw(src, lang: "clojure", block: true)
     }
     #set text(size: 14pt)
-    #place(top+right)[#shadowed(fill: white, inset: 0.5em)[#linklet("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase10/ejemplos/goblocks")]]
+    #place(top + right)[#shadowed(fill: white, inset: 0.5em)[#linklet(
+      "https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase10/ejemplos/goblocks",
+    )]]
   ]
 
   #fuente("https://clojuredocs.org/clojure.core.async")
@@ -512,6 +546,53 @@
 ]
 
 #bonustrack[
+  = Structured Concurrency
+
+  #set text(size: textsize - 2pt)
+
+  #emphbox[
+    Structured Concurrency es un modelo de concurrencia que organiza las tareas concurrentes en una jerarquía, facilitando el manejo de errores y la cancelación de tareas relacionadas.
+  ]
+
+  #grid(columns: (1fr, auto))[
+    Java:
+    ```java
+    try (var scope = new StructuredTaskScope()) {
+        var user = scope.fork(() -> loadUser());
+        var orders = scope.fork(() -> loadOrders());
+
+        scope.join();
+        scope.throwIfFailed();
+
+        return new Result(user.get(), orders.get());
+    }
+    ```
+  ][
+    Kotlin:
+    ```kt
+    suspend fun loadData(): Result = coroutineScope {
+        val user = async { loadUser() }
+        val orders = async { loadOrders() }
+
+        Result(user.await(), orders.await())
+    }
+    ```
+
+    Python:
+    ```py
+    async def load_data():
+        async with asyncio.TaskGroup() as tg:
+            user = tg.create_task(load_user())
+            orders = tg.create_task(load_orders())
+
+        return Result(user.result(), orders.result())
+    ```
+  ]
+
+  #fuente("https://docs.oracle.com/en/java/javase/21/core/structured-concurrency.html")
+]
+
+#bonustrack[
   = Paralelismo en el GPU
 
   #grid(columns: (1fr, auto), gutter: 1em)[
@@ -544,16 +625,25 @@
       (bottom: 0.7pt + black)
     },
     inset: 1em,
-    table.header(
-      [ *Matrix size* ], [ *1 CPU core* ], [ *64 CPU cores* ], [ *1 GPU* ], [ *GPU speedup* ]
-    ),
+    table.header([ *Matrix size* ], [ *1 CPU core* ], [ *64 CPU cores* ], [ *1 GPU* ], [ *GPU speedup* ]),
     [ (512, 512) ], [ 5.472 ms ], [ 517.722 μs ], [ 115.805 μs ], [ ~47x / ~5x ],
     [ (1024, 1024) ], [ 43.364 ms ], [ 2.929 ms ], [ 173.316 μs ], [ ~250x / ~17x ],
     [ (2048, 2048) ], [ 344.364 ms ], [ 30.081 ms ], [ 866.348 μs ], [ ~400x / ~35x ],
     [ (4096, 4096) ], [ 3.221 s ], [ 159.563 ms ], [ 5.910 ms ], [ ~550x / ~27x ],
- 	)
+  )
 
   #fuente("https://en.wikipedia.org/wiki/General-purpose_computing_on_graphics_processing_units")
+]
+
+#bonustrack[
+  = Paralelismo en el GPU: Shaders
+
+  #[
+    #set align(center)
+    #shadowed(fill: white, inset: 0.5em)[#image("shadertoy.png", width: 90%)]
+  ]
+
+  #fuente("https://www.shadertoy.com/new")
 ]
 
 #bonustrack[
@@ -562,7 +652,7 @@
   #grid(columns: (1fr, auto), gutter: 1em)[
     #set text(size: 12pt)
     #emphbox[Se denomina *big data* al manejo de grandes volúmenes de datos, que
-    no pueden ser procesados con los mecanismos tradicionales.]
+      no pueden ser procesados con los mecanismos tradicionales.]
 
     Aplicaciones que necesitan big data: búsquedas en Internet, redes sociales,
     gobiernos, salud, fintech, etc.

@@ -478,7 +478,7 @@
     ```java
     public class CasillaDeCorreo {
         private Object paquete;
-        private boolean vacio;
+        private boolean vacio = true;
 
         public synchronized void depositar(Object p) throws InterruptedException {
             while (!vacio) {
