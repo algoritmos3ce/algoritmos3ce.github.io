@@ -305,8 +305,8 @@
 
   #set text(size: 0.9em)
   #emphbox[
-    CSP es un modelo de concurrencia basado en procesos livianos que se comunican
-    mediante el paso de mensajes a través de canales.
+    CSP es un modelo de concurrencia basado en procesos livianos que se
+    comunican mediante el paso de mensajes a través de canales.
   ]
 
   #grid(columns: (1fr, auto, auto), gutter: 1em)[
@@ -590,6 +590,47 @@
   ]
 
   #fuente("https://docs.oracle.com/en/java/javase/21/core/structured-concurrency.html")
+]
+
+#bonustrack[
+  = Rust: Fearless Concurrency
+
+  #emphbox[
+    // If code involving threads compiles, Rust has already verified that it cannot contain data races. Unsynchronized shared mutable state is rejected at compile time.
+    El compilador de Rust verifica *en tiempo de compilación* que el código concurrente no puede contener condiciones de carrera.
+  ]
+
+  Estos ejemplos #text(rojo)[no compilan]:
+
+  #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
+    ```rs
+    use std::thread;
+
+    fn main() {
+        let mut counter = 0;
+
+        thread::spawn(|| {
+            counter += 1;
+        });
+
+        counter += 1;
+    }
+    ```
+  ][][
+    ```rs
+    use std::{rc::Rc, thread};
+
+    fn main() {
+        let data = Rc::new(String::from("hola"));
+
+        thread::spawn(move || {
+            println!("{data}");
+        });
+
+        data.push_str(" mundo!");
+    }
+    ```
+  ][]
 ]
 
 #bonustrack[
