@@ -30,7 +30,7 @@ Se evaluarán los siguientes conceptos:
 Clojure
 
 ## Interfaz de usuario
-Libre: se permite utilizar Java o Clojure para la interfaz gráfica. También se admite una interfaz de línea de comandos mínima si el equipo prefiere priorizar el núcleo funcional.
+Libre: se permite utilizar Java o Clojure para la interfaz gráfica.
 
 ![Interfaz Gráfica de Referencia TP 2 2026 1C](./TP2_GUI.png)
 
