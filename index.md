@@ -8,12 +8,12 @@ nav_order: 1
 Este es el sitio de **TB025 Paradigmas de Programación**, curso
 Essaya, de la [Facultad de Ingeniería de la Universidad de Buenos Aires
 (FIUBA)](https://fi.uba.ar). La información que se presenta corresponde al
-**1er cuatrimestre 2026**.
+**2do cuatrimestre 2026**.
 
 Este curso corresponde a las materias:
 
 * TB025 - Paradigmas de Programación
-* 75.07 / 95.02 - Algoritmos y Programación III
+* 95.02 - Algoritmos y Programación III
 
 ## Docentes
 
@@ -32,7 +32,6 @@ Este curso corresponde a las materias:
 **Colaboradores:**
 - Ezequiel Urbina
 - Federico Nicolás Pagnotta Lemes
-- Franco Ricciardo Calderaro
 - Ignacio Joaquín Ramos
 - Lautaro Trabado
 - Leonel Rolon

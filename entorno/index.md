@@ -20,7 +20,7 @@ recomendaciones:
 - [Visual Studio Code](https://code.visualstudio.com/) (con [este plugin](https://code.visualstudio.com/docs/languages/java))
 
 Si no sabés cuál elegir, recomendamos utilizar **IntelliJ IDEA Community
-Edition**, que es gratuito y de código abierto.
+Edition**, que en su versión *community edition* es gratuito y de código abierto.
 
 ## Tutoriales
 

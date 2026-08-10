@@ -11,7 +11,7 @@ nav_order: 5
 
 # Material
 
-* [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcBiAnEoemjMTvB7bDym_A8H)
+* [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLXg2P668M3OQ)
 
  * Clase 1 - Programación orientada a objetos
       [[Presentación]](/presentaciones/clase01/clase01.pdf)
@@ -44,6 +44,10 @@ nav_order: 5
 
 <details markdown="block">
   <summary><b>Material de cuatrimestres anteriores</b></summary>
+
+* 2026c1
+
+  * [[Grabaciones de las clases]](https://www.youtube.com/playlist?list=PLR0NFKZIjBcBiAnEoemjMTvB7bDym_A8H)
 
 * 2025c2
 

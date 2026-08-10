@@ -20,6 +20,20 @@ nav_order: 9
    <br>Grady Booch, Robert Maksimchuk, Michael Engle, Bobbi Young, Jim Conallen, Kelli Houston
    <br>ISBN-13: 9780201895513
 
+-  **Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development, 3ra. ed. (2004)** 
+  <br>Craig Larman  
+  <br>ISBN-13: 9780131489066
+
+## Principios de diseño
+
+- **Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software, 2da. ed. (2020)**  
+  <br>Eric Freeman, Elisabeth Robson  
+  <br>ISBN-13: 9781492078005
+
+- **Clean Code: A Handbook of Agile Software Craftsmanship (2008)**  
+  <br>Robert C. Martin  
+  <br>ISBN-13: 9780132350884
+
 ## Java
 
 -  **Head First Java: A Learner’s Guide to Real-World Programming, 3ra. ed. (2022)**
@@ -50,9 +64,14 @@ nav_order: 9
    <br>Brian Goetz
    <br>ISBN-13: 9788131713396
 
+- **Modern Concurrency in Java: Virtual Threads, Structured Concurrency, and Beyond (2025)**  
+  <br>A. N. M. Bazlur Rahman  
+  <br>ISBN-13: 9781098165413
+
 -  **Seven Concurrency Models in Seven Weeks: When Threads Unravel (2014)**
    <br>Paul Butcher
    <br>ISBN-13: 9781937785659
+
 
 ## Programación Lógica
 
@@ -68,6 +87,11 @@ nav_order: 9
 
 ## Cálculo Lambda
 
+- **An Introduction to Functional Programming Through Lambda Calculus (2011)**  
+  <br>Greg Michaelson  
+  <br>ISBN-13: 9780486478838  
+  <br>[Versión online](https://www.macs.hw.ac.uk/~greg/books/gjm.lambook88.pdf)
+
 -  **The Lambda Calculus, Its Syntax and Semantics (1984)**
    <br>Henk Barendregt
    <br>ISBN-13: 9780444875082
@@ -77,6 +101,11 @@ nav_order: 9
 -  **Structure and Interpretation of Computer Programs, 2a. ed. (1996)**
    <br>Harold Abelson, Gerald Jay Sussman
    <br>ISBN-13: 9780262510875
+
+- **Structure and Interpretation of Computer Programs: JavaScript Edition (2022)**  
+  <br>Harold Abelson, Gerald Jay Sussman, Martin Henz, Tobias Wrigstad  
+  <br>ISBN-13: 9780262543231  
+  <br>[Versión online](https://sicp.sourceacademy.org/)
 
 -  **Grokking Simplicity: Taming complex software with functional thinking (2021)**
    <br>Eric Normand
@@ -92,39 +121,3 @@ nav_order: 9
 -  **Functional Design: Principles, Patterns, and Practices (2023)**
    <br>Robert C. Martin
    <br>ISBN-13: 9780138176396
-
-
-<!--
--  **Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software, 2da. ed. (2021)**
-   <br>Eric Freeman, Elisabeth Robson
-   <br>ISBN-13: 9781492078005
-
--  **Test-Driven Java Development, 2da. ed. (2018)**
-   <br>Alex Garcia, Viktor Farcic
-   <br>ISBN-13: 9781788836111
-
--  **Software Engineering with UML (2018)**
-   <br>Bhuvan Unhelkar
-   <br>ISBN-13: 9781138297432
-
--  **UML: Modelado de software para profesionales (2011)**
-   <br>Carlos M. Fontela
-   <br>ISBN-13: 9789871609222
-
--  **Clean Code (2008)**
-   <br>Robert C. Martin
-   <br>ISBN-13: 9780132350884
-
--  **Code Complete (2004)**
-   <br>Steve McConnell
-   <br>ISBN-13: 9780735619678
-
--  **Agile Software Development, Principles, Patterns, and Practices (2003)**
-   <br>Robert C. Martin
-   <br>ISBN-13: 9780135974445
-
--  **Design Patterns: Elements of Reusable Object-Oriented Software (1994)**
-   <br>Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
-   <br>ISBN-13: 9780201633610
-
--->

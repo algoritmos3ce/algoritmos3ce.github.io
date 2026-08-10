@@ -8,12 +8,12 @@ nav_order: 10
 
 ## Java
 
-* [Java® Platform, Standard Edition & Java Development Kit - Version 24 API Specification](https://docs.oracle.com/en/java/javase/24/docs/api/index.html)
+* [Java® Platform, Standard Edition & Java Development Kit - Version 26 API Specification](https://docs.oracle.com/en/java/javase/26/docs/api/index.html)
   <br>Documentación / referencia de la API de Java 24
   <br>[Otras versiones](https://docs.oracle.com/en/java/javase/)
 
 * [The Java™ Tutorials](https://docs.oracle.com/javase/tutorial/tutorialLearningPaths.html)
-  <br>Tutoriales oficiales de Oracle
+  <br>Tutoriales oficiales de Oracle (para la versión 8, pero la mayoría de los conceptos siguen siendo vigentes)
 
 * [Tutoriales en dev.java](https://dev.java/learn)
   <br>Más tutoriales
@@ -31,6 +31,10 @@ nav_order: 10
 
 * [diagrams.net](https://www.diagrams.net/index.html)
   <br>Editor UML del tipo WYSIWYG
+
+* [Mermaid](https://mermaid.js.org/) Alternativa a PlantUML basada en JavaScript (no requiere JVM). Integrado nativamente en GitHub, GitLab, Notion, Obsidian. Muy popular para diagramas en Markdown.
+
+* [ZenUML](https://zenuml.com/) Alternativa moderna a PlantUML con sintaxis más simple, enfocada en diagramas de secuencia.
 
 ## JavaFX
 
@@ -74,10 +78,6 @@ nav_order: 10
 ## Cálculo Lambda
 
 * [Lambda Calculus Evaluator](https://kdlcj.gitlab.io/lambda/)
-
-* [Lambda Calculator](http://www.cburch.com/dev/lambda/index.html)
-
-* [Lambda Reducer](https://www.math.cmu.edu/~wgunther/lamred.html)
 
 * [Lambda Viewer](http://projectultimatum.org/cgi-bin/lambda)
 
