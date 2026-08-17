@@ -36,7 +36,6 @@ Este curso corresponde a las materias:
 - Lautaro Trabado
 - Leonel Rolon
 - Leticia Figueroa
-- Martín Fernandez Lahore
 - Matías Rea
 - Yaco Santamarina
 
