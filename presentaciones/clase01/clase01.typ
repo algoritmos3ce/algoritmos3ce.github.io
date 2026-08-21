@@ -47,7 +47,8 @@
 
       / 1960s: Simula: primer lenguage con objetos, clases y herencia
 
-      / 1970s: Smalltalk (Alan Kay): Primer lenguaje OOP puro
+      / 1970s: Smalltalk (Alan Kay): Primer lenguaje OOP puro, muy influyente en
+        el desarrollo del paradigma y las interfaces gráficas (GUI).
 
       / 1980s: OOP gana popularidad
         - C++ (Bjarne Stroustrup)
@@ -308,8 +309,20 @@
 #slide[
   = UML: Diagrama de clases
 
-  #place(center + horizon)[
-    #image("clases.svg", width: 80%)
+  #set text(size: 14pt)
+
+  El diagrama de clases captura la estructura de un sistema mostrando sus clases,
+  interfaces, atributos, métodos y relaciones.
+
+  Es un diagrama de *estructura estática*, ya que no muestra el comportamiento
+  del sistema a lo largo del tiempo.
+
+  Un buen diagrama debe capturar y *resumir* las ideas principales del sistema.
+  En la mayoría de los casos no es necesario (ni conveniente) incluir todos los
+  detalles.
+
+  #align(center)[
+    #image("clases.svg", width: 18cm)
   ]
 
   #fuente("https://www.planttext.com/?text=PL8zRy8m4DtpAsuCfQ3E31Me4nqwD6FLmJYdO1hVeVEvGaNzxpLn314TBClluvxlx7LG8nfzN-rTYs2Ts1whyENeQCHuy4nizy8UGILE6TkR43QgudPHSMkP6lU3y3IH24TgBGkX9BmQ7D1OGnVWN07CmP42uKctfFMi-YsYruWT3nA0HHP5Zy8DMa7b2PuMad8Oe7asrXV2czFRu7c4yRWTfRDHUu4xr0BN1N_747irBO_5ZGm5QNA_c-GycdRCFHe232yiWdQyv1oQD27gm2C5Sy3xYFg_x_7ESZ-MpV5uJIr0NQOQybvQ-MRNmY5sgOK2fGTNPpFZZQCwftryWf4k367N65wKvrgLoZVoOP7ZLoaWRPc0vVBvrbsrHchJv_e3")
@@ -328,9 +341,21 @@
 #slide[
   = UML: Diagrama de secuencia
 
-  #place(center + horizon)[
-    #image("secuencia.svg", height: 95%)
-  ]
+  #grid(columns: (1fr, auto), align: horizon, gutter: 0.5cm,
+    [
+      #set text(size: 14pt)
+
+      El diagrama de secuencia captura el comportamiento de un sistema mostrando
+      cómo los objetos interactúan entre sí a lo largo del tiempo.
+
+      Por cada objeto se dibuja una *línea de vida* vertical, y los mensajes que
+      se envían entre ellos se representan con flechas horizontales.
+
+      Es un diagrama de *comportamiento dinámico*, ya que muestra la evolución
+      del sistema a lo largo del tiempo.
+    ],
+    [#image("secuencia.svg", height: 1fr)],
+  )
 
   #fuente("https://www.planttext.com/?text=dLF1JiCm3BtdAtpS3Y3EQAh64IHE4wUTGcjL6MbSEIuVnvKVmstNT4t798WKHN7USvvVd7qKoz8rthIwkjArDWYyT5ZJKzkkWyQMGWnliRFio9YIqGhEX2FT5Ma7Zx3RZOYYw9dkSm5Ui4rYJHbkqKVq9RH2GMvSi0pX-wj19eYeR4dOfRBJaAR2B6yU67IQOywjBM-srqgwhEBiaX9UAGghiWP3j2S45zHLwutnH2qq3eCUnr7JVOto74H353TRAE31W8vhzYoG0ogh9X7pwjsPDY1M9kJthGkP-C2e7QIRCTCDve6yrYppyoprJXtL1oTIfZdaObCN_kRFg5AVAlpD7Isgys8h-gyzSuBnNYzp2312ISoeFsauxSUxjlb7sc6epBJsysfNxlL4F-uF")
 ]
