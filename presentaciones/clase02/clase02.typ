@@ -310,7 +310,7 @@
 #slide[
   = Polimorfismo
 
-  πολλύς μορφή: “muchas formas”.
+  πολύ μορφή: "muchas formas"
 
   #emphbox[
     Es la capacidad de representar *múltiples tipos de datos* diferentes mediante
