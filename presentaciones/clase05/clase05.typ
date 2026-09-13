@@ -36,17 +36,15 @@
   ][
     #set text(size: 14pt)
     ```
-    function main
+    function main():
         initialize()
-        while command != quit
+        while command != quit:
             show_prompt()
             command := read_line()
             result := process_command(command)
             show_result(result)
-        end while
-    end function
     ```
-  ][
+  ][#v(1cm)][][
     En las interfaces de usuario TUI/GUI hay que lidiar con múltiples entradas y
     salidas (mouse, teclado, monitor, etc.). La implementación más usual es
     mediante un *event loop*.
@@ -57,13 +55,11 @@
   ][
     #set text(size: 14pt)
     ```
-    function main
+    function main():
         initialize()
-        while event != quit
+        while event != quit:
             event := get_next_event()
             process_event(event)
-        end while
-    end function
     ```
   ]
 ]
@@ -430,42 +426,58 @@
 #slide[
   = FXML
 
-  #set text(size: 14pt)
+  #set text(size: 12pt)
 
-  Permite definir la estructura del Scene Graph en un archivo XML,
-  separando la *presentación* de la *lógica*. Es similar a HTML, pero con
-  etiquetas específicas de JavaFX.
+  *FXML*
+  #linklet("https://download.java.net/java/GA/javafx24/docs/api/javafx.fxml/javafx/fxml/doc-files/introduction_to_fxml.html")
+  Permite definir la estructura del Scene Graph en un archivo XML, separando la
+  *presentación* de la *lógica*. Es similar a HTML, pero con etiquetas
+  específicas de JavaFX.
 
-  #[
-    #set text(size: 14pt)
+  #grid(columns: (auto, 1fr), gutter: 1cm)[
+    #set text(size: 11pt)
+    `resources/Ejemplo.fxml`
     ```xml
-    <fx:root type="javafx.scene.layout.VBox"
-        xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
-       <children>
-          <TextField fx:id="textField"  />
-          <Button fx:id="btn" mnemonicParsing="false" text="Button" />
-       </children>
-    </fx:root>
+    <VBox xmlns="http://javafx.com/javafx/26"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="tb025.Ejemplo">
+       <TextField fx:id="nombre" promptText="Nombre"/>
+       <Button fx:id="btnSaludar" text="Saludar"/>
+    </VBox>
     ```
 
+    `src/main/java/tb025/Ejemplo.java`
     ```java
-    public class CustomControl extends VBox {
-        @FXML private TextField textField;
-        @FXML private Button btn;
+    public class Ejemplo {
+        @FXML public TextField nombre;
+        @FXML public Button btnSaludar;
 
-        public CustomControl() {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("custom_control.fxml"));
-            fxmlLoader.setRoot(this);
-            fxmlLoader.setController(this);
-            fxmlLoader.load();
+        public void initialize() {
+            btnSaludar.setOnAction(_ -> {
+                new Alert(AlertType.INFORMATION,
+                          "Hola " + nombre.getText())
+                    .show();
+            });
         }
     }
     ```
+  ][
+    `src/main/java/tb025/Main.java`
+    ```java
+    public class Main extends Application {
+        @Override public void start(Stage stage) throws Exception {
+            FXMLLoader loader = new FXMLLoader(
+                getClass().getResource("/Ejemplo.fxml"));
+            Parent root = loader.load();
+
+            var scene = new Scene(root, 640, 480);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }    ```
   ]
 
-  #fuente(
-    "https://download.java.net/java/GA/javafx24/docs/api/javafx.fxml/javafx/fxml/doc-files/introduction_to_fxml.html",
-  )
+  #fuente("https://github.com/algoritmos3ce/algoritmos3ce.github.io/tree/main/presentaciones/clase05/ejemplos/fxml")
 ]
 
 #slide[

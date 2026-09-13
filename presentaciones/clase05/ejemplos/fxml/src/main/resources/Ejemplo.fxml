@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tb025.Ejemplo">
+   <TextField fx:id="nombre" promptText="Nombre"/>
+   <Button fx:id="btnSaludar" mnemonicParsing="false" text="Saludar"/>
+</VBox>
