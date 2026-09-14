@@ -452,7 +452,7 @@
         @FXML public TextField nombre;
         @FXML public Button btnSaludar;
 
-        public void initialize() {
+        @FXML public void initialize() {
             btnSaludar.setOnAction(_ -> {
                 new Alert(AlertType.INFORMATION,
                           "Hola " + nombre.getText())
@@ -523,6 +523,51 @@
       .toExternalForm());
   FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/principal.fxml"));
   ```
+]
+
+#slide[
+  = JavaFX Application Thread
+
+  #set text(size: 13pt)
+
+  #grid(columns: (1fr, 1fr), gutter: 1cm)[
+    La interfaz gráfica se ejecuta en un único hilo dedicado. Los handlers de
+    eventos normalmente se ejecutan en este hilo, por lo que *no debemos
+    bloquearlo con operaciones costosas*.
+
+    ```java
+    button.setOnAction(_ -> {
+        // operación costosa que bloquea el hilo de la UI
+        for (int i = 1; i <= 1000000; i++) {}
+    });
+    ```
+  ][
+    JavaFX provee la clase `Task` para ejecutar operaciones costosas en un hilo
+    separado y actualizar la UI de forma segura:
+
+    ```java
+    Task<Void> task = new Task<>() {
+        @Override public Void call() {
+            final int N = 1000000;
+            for (int i = 1; i <= N; i++) {
+                if (isCancelled()) {
+                    break;
+                }
+                updateProgress(i, N);
+            }
+            return null;
+        }
+    };
+
+    ProgressBar bar = new ProgressBar();
+    bar.progressProperty().bind(task.progressProperty());
+
+    btnComenzar.setOnAction(_ -> new Thread(task).start());
+    btnCancelar.setOnAction(_ -> task.cancel());
+    ```
+  ]
+
+  #fuente("https://openjfx.io/javadoc/24/javafx.graphics/javafx/concurrent/Task.html")
 ]
 
 #fin()
