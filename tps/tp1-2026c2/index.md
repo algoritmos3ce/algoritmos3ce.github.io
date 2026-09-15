@@ -186,7 +186,7 @@ Extras opcionales para mejor nota:
 - Lenguaje: **Java**
 - Interfaz: **JavaFX**.
 - Dependencias: **Maven**.
-- Repositorio: **GitHub Classroom**.
+- Repositorio: **GitHub**.
 - Separación clara entre modelo y vista.  
 
 ---
@@ -242,27 +242,26 @@ Cada integrante debe presentar un video individual que cumpla con:
 
 ## Entrega y Gestión de Repositorio
 
-La entrega se realiza mediante **GitHub Classroom**, en equipos de **2 integrantes**.
+La entrega se realiza mediante **GitHub**, en equipos de **2 integrantes**.
 
 ### Pasos para vinculación:
 
-1. Acceder al enlace de invitación: [GitHub Classroom TP1 2026 C1](https://classroom.github.com/a/J6EGHkDm)
-2. Un integrante:
-   - Crea un grupo (máximo 2 personas)
-   - Asigna un nombre identificable y académico
-3. El segundo integrante:
-   - Ingresa al mismo enlace
-   - Se une al grupo creado
+1. Crear un repositorio en GitHub con archivo .gitignore estándar para maven/IntelliJ/Java.
+2. Configurar proyecto maven y subir un proyecto maven/javafx compilable y ejecutable ("Hola Mundo").
+3. Crear archivo README.md con los datos de los integrantes del grupo y la información general.
+4. Enviar el enlace una sola vez por el grupo del repo por mensaje privado a Santiago Maraggi, indicando integrantes por apellido y padrón.
+5. Dar permiso de acceso a los Docentes Diego Essaya (dessaya) y Santiago Maraggi (smaraggi-fiuba).
+6. Se dará acceso al Tutor/Corrector adicionalmente una vez asignado.
 
 ### Repositorio
 
-- GitHub genera automáticamente el repositorio compartido
+- GitHub permite dar acceso por usuarios
 - Entrega oficial: mediante **Pull Request**
   - Indicar rama de entrega
   - Estado del proyecto
   - Condiciones de ejecución
 - Se recomienda clonar el repositorio en limpio para verificar funcionamiento
-- Al aprobarse, los cambios deben integrarse a la **rama principal**
+- Al aprobarse, los cambios deben quedar todos integrados a la **rama principal** (main)
 
 >  *El archivo `readme.md` debe ser el primer archivo incluido en el repositorio, INMEDIATAMENTE AL INICIARSE EL TP CON LOS DATOS DE LOS INTEGRANTES DEL GRUPO.*
 
