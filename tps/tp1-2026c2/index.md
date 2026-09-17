@@ -20,13 +20,100 @@ nav_exclude: true
 
 ## Objetivo
 
-Implementar una versión propia del estilo del juego de cartas **Gwent** (marca registrada), aplicando conceptos de **Programación Orientada a Objetos (POO)** y principios de buen diseño de software. Nuestro juego se llamará Paradigwent.
+Implementar una versión propia del estilo del juego de cartas **Gwent** (marca registrada), que denominaremos Paradigwent, aplicando conceptos de **Programación Orientada a Objetos (POO)** y principios de buen diseño de software. Nuestro juego se llamará Paradigwent.
 
 ---
 
 ## Referencias
 
+A modo ilustrativo, se adjuntan referencias del juego Gwent original. Paradigwent prescinde de algunos elementos y simplifica otros, según se detalla en secciones siguientes.
+
 - 📖 [Reglas de Gwent en Wikipedia](https://witcher.fandom.com/wiki/Gwent)
+- 🎥 [Partida Completa de GWENT Ejemplo](https://www.youtube.com/watch?v=XLcEuosKT8Y)
+
+### Simplificaciones Principales Respecto del Juego Gwent Original
+
+- No implementamos cartas de "Rey/Líder"
+- No implementamos "héroes"
+- Menos cartas de "Efectos Especiales" (se detalla en el apartado de "Mazo de Cartas")
+
+---
+
+
+## Reglas del Juego Paradigwent
+
+Las siguientes reglas delimitan la jugabilidad esperada. No obstante, en caso de encontrarlo necesario, el grupo puede extender alguna regla particular en acuerdo con su corrector, siempre que no contradiga el set de reglas básico.
+
+### Dinámica de juego
+
+- Paradigwent es un juego de cartas por turnos entre dos jugadores, de los cuales uno será la computadora.
+- El juego consiste en "rondas" en que los jugadores juegan "turnos" de forma alternada.
+- Se sortea qué jugador tiene primero su Turno. Por cada Turno se puede jugar una sola carta. 
+- Ambos jugadores inician el Juego con 10 cartas en la "Mano" obtenidas de su mazo por sorteo. Esta mano es única para toda la Partida, sin reposición de cartas. El resto de las cartas inicia en el "Mazo". La "Mano" consiste en las cartas que el jugador tiene a disposición para jugar y poner en el tablero.
+- Los jugadores inician con tres "Vidas". Se pierde una vida al perder o empatar una "Ronda". Un jugador pierde el juego al quedarse sin "vidas".
+- Dentro de una ronda, en cada "turno" el jugador puede jugar una sola carta o "pasar". El jugador que "pasa" ya no vuelve a jugar turnos en esa ronda. Si queda un solo jugador, este repite turnos hasta "pasar" también.
+- Cuando ambos jugadores "pasan", se evalúa al ganador de la ronda. Para esto, se evalúa la Fuerza de cada jugador en el tablero, considerando criaturas de ataque, clima y efectos especiales. Gana la Ronda el que más "Fuerza" haya podido agrupar.En caso de empate, ambos pierden una vida, sino el perdedor solamente pierde una vida.
+- El ganador de una ronda es el que reúna más puntos de ataque entre todas sus cartas jugadas en el tablero, considerando también las cartas de Efecto (Criaturas con Habilidad, Clima, Cartas de Efecto).
+- Al finalizar una ronda se limpia el tablero de ambos jugadores y todas las cartas jugadas anteriormente van a la pila de "Descarte".
+- Las cartas que son eliminadas al terminar una Ronda o por efecto de una habilidad especial se mueven a la pila de "Descarte".
+- Hay tres tipos de cartas: 
+  - Criatura
+  - Efecto
+  - Clima
+- Las criaturas pueden tener tres tipos de ataque. En el tablero, para cada jugador las criaturas se juegan en una "Línea de Ataque" específica según su tipo de ataque:
+    - Cuerpo a Cuerpo
+    - Ataque a Distancia
+    - Asedio
+- Las criaturas tienen una "Fuerza de Ataque", que se suma para computar a la Fuerza al finalizar una Ronda. Algunas critaturas además pueden tener una Habilidad o Efecto Especial (similar a las cartas de Efecto).
+- Las Cartas de Efecto pueden afectar a otras cartas. A este efecto se pueden adjuntar a otra carta o una línea de ataque (Cuerpo a Cuerpo/Distancia/Asedio).
+- Las cartas de "Clima" modifican a todas las cartas en juego. Solamente puede haber una carta de clima en el tablero en juego (al jugarse una carta de Clima se envía cualquier otra anteriomente en juego al "Descarte").
+
+
+### Tablero de Juego
+
+- Resolución fija de referencia: puede ser de **800x600 píxeles** o superior, a criterio del equipo.  
+- El escenario incluye:
+  - Un tablero de base
+  - Zona de Cartas de Clima (afectan a ambos jugadores)
+  - Una sección para cada Jugador, que contendrá:
+    - Pila de cartas (Mazo)
+    - Pila de descarte
+    - Cartas en Mano
+    - Zonas de Cartas en Juego, con sus 3 secciones:
+      - Ataque Cuerpo a Cuerpo
+      - Ataque a Distancia
+      - Asedio
+    - Zona de Puntaje de Ronda (valor numérico de Fuerza acumulada, se actualizará según estado del tablero en cada Turno)
+    - Indicador de Vidas (3 inicialmente para cada jugador)
+
+
+### Mazo de Cartas
+- Las cartas deberán tener un mínimo de 3 faccinoes distintas diferenciables.
+- Al iniciar un juego, se sorteará una facción distinta para cada jugador.
+- Las facciones se diferenciarán por color de cartas. 
+- Estética y  odrán tener otras diferencias, a criterio del equipo, en términos de atributos, fortalezas y debilidades, etc.
+- Cada facción tendrá un mínimo de 30 cartas diferentes.
+- Cada facción deberá tener al menos **3 cartas de clima**, **2 cartas de efectos** y **2 cartas de criatura con habilidades especiales** y **23 criaturas comunes**.
+- Deberá haber por facción:
+  - 9 Criaturas de Ataque Cuerpo a Cuerpo (espaderos, lanceros, etc.)
+  - 7 Criaturas de Ataque a Distancia (arqueros, magos, etc.)
+  - 7 criaturas de Asedio (catapultas, máquinas, magos de asedio, etc.)
+- Los "Efectos" de cartas pueden ser de criaturas con habilidades especiales, de clima y cartas de Efectos. Se recomienda tomar inspiración en elementos del juego original. A modo de sugerencia:
+  - La criatura objetivo duplica Fuerza de Ataque
+  - Elimina del tablero a la criatura objetivo (se mueve a "Descarte")
+  - Tomar determinadas cartas de el "Mazo"
+  - Resucitar carta del "Descarte"
+  - Toda la Fila de Ataque objetivo (Cuerpo a Cuerpo/Distancia/Asedio) duplica Fuerza de Ataque
+- Las cartas de clima afectan a todo el tablero, mientras que las de efectos a un grupo de cartas objetivo (por ejemplo, toda una fila de cartas, propia o enemiga, o a una carta específica).
+- Las cartas de habilidades pueden afectar a otras cartas de habilidades.
+- Los efectos de las cartas de habilidades y de clima son de aplicación inmediata. Pueden modificar el estado del tablero, así como el efecto de las cartas ya jugadas (en cuyo caso el impacto deberá reflejarse en el tablero de estado de juego).
+
+
+### Enemigos
+
+- El adversario será siempre la computadora. 
+- El adversario elegirá alguna de las cartas de su mano para continuar jugando o podrá decidir terminar la mano actual también si tiene esa posibilidad.
+- La IA es de libre interpretación por parte del equipo. La partida debe resultar razonablemente jubable
 
 ---
 
@@ -43,67 +130,10 @@ Implementar una versión propia del estilo del juego de cartas **Gwent** (marca 
 
 El juego debe estar dividido en al menos dos capas de abstracción:
 
-- **Modelo**: enemigos, torretas, lógica de juego, niveles.  
+- **Modelo**: cartas, jugadores, rondas, turnos, etc.  
 - **Vista/Presentación**: renderizado gráfico, sonidos, interacción con el usuario.  
 
 Las clases del modelo **no deben depender** de JavaFX ni de clases de la vista.
-
----
-
-## Reglas del Juego
-
-### Escenario
-
-- Resolución fija de referencia: **800x600 píxeles**.  
-- El escenario incluye:
-  - Un tablero de base
-  - Zona de Cartas de Clima (afectan a ambos jugadores)
-  - Una sección para cada Jugador, que contendrá:
-    - Pila de cartas (Mazo)
-    - Pila de descarte
-    - Cartas en Mano
-    - Zonas de Cartas en Juego, con sus 3 secciones:
-      - Ataque Cuerpo a Cuerpo
-      - Ataque a Distancia
-      - Asedio
-    - Zona de Puntaje de Ronda (se actualizará según estado del tablero)
-    - Indicador de Vidas (3 inicialmente para cada jugador)
-
-
-### Mazo de Cartas
-- Las cartas deberán tener un mínimo de 3 faccinoes distintas diferenciables.
-- Las facciones se diferenciarán por color de cartas. 
-- Estética y lógicamente, las facciones podrán tener otras diferencias, a criterio del equipo, en términos de atributos, fortalezas y debilidades, etc.
-- Cada facción tendrá un mínimo de 30 cartas diferentes.
-- No se crearán cartas de "Rey"
-- Cada facción deberá tener al menos **3 cartas de clima**, **2 cartas de efectos** y **2 cartas de criatura con habilidades especiales**.
-- Los detalles de efecto de cartas de clima, efectos y habilidades precedentes quedan a definirse por el equipo. Se recomienda tomar inspiración en elementos del juego original.
-- Las cartas de clima afectan a todo el tablero, mientras que las de efectos a un grupo de cartas objetivo (por ejemplo, toda una fila de cartas, propia o enemiga).
-- Las cartas de habilidades pueden afectar a otras cartas de habilidades.
-- Los efectos de las cartas de habilidades y de clima son de aplicación inmediata. Pueden modificar el estado del tablero, así como el efecto de las cartas ya jugadas (en cuyo caso el impacto deberá reflejarse en el tablero de estado de juego).
-- Las demás cartas serán "criaturas de combate". 
-- Podrán no se modelarse "héroes", pero si el equipo lo desea queda abierta la posibilidad para extender la experiencia de juego.
-
-### Enemigos
-
-- El adversario será siempre la computadora. 
-- El adversario elegirá alguna de las cartas de su mano para continuar jugando o podrá decidir terminar la mano actual también si tiene esa posibilidad.
-- La IA es de libre interpretación por parte del equipo. La partida debe resultar razonablemente jubable
-
-### Dinámica de juego
-
-- Ambos jugadores inician con 10 cartas en la "Mano".
-- El resto de las cartas quedan en el "Mazo"
-- Las cartas que por dinámica y efecto de otras cartas son eliminadas, pasarán al "Descarte".
-- El juego consiste en Rondas, divididas en Turnos.
-- Cada Ronda se limpian todas la cartas del tablero de la Ronda anterior y van al "Descarte". 
-- No hay reposición de Cartas de "Mano": la Mano dura toda la partida (hay que administrar las cartas que se juegan en cada Ronda).
-- Se sortea qué jugador tiene primero su Turno. Por cada Turno se puede jugar una sola carta.
-- Los jugadores juegan turnos de forma alternada durante una Ronda. A cada Turno se actualiza el Estado del tablero (factores de Fuerza).
-- En cualquier momento un jugador puede decidir "Pasar" (no jugando ninguna carta).
-- Un jugador que ya "pasó" en una Ronda no vuelve a tener turnos. Mientras tanto, el otro puede jugar tantos turnos como desee, sea para dar vuelta el resultado si estaba perdiendo jugando cartas o rindiéndose si ya no quiere invertir más.
-- Cuando ambos jugadores "Pasan", se evalúa la Fuerza de cada jugador en el tablero. Gana la Ronda el que más "Fuerza" haya podido agrupar. A este efecto, se computa la fuerza de todas las cartas, considerando los modificadores de cartas de Clima y cartas de Efecto que se encuentren activas en el tablero.
-- Gana el primer jugador que pueda ganar dos Rondas (el juego es al mejor de tres).
 
 ---
 
@@ -123,7 +153,7 @@ El juego tiene un único nivel. No obstante, el Juego deberá tener un menú de 
 - Flujos:
   - Menú de Inicio -> Partida -> Victoria → cartel de victoria → Menú de Inicio.  
   - Menú de Inicio -> Partida -> Derrota → cartel de derrota → Menú de Inicio.
-- Interactividad:
+- Interactividad (Mouse, Teclado o Ambas):
   - Se podrá seleccionar la carta mediante desplazamiento con teclas de flecha y confirmando con ENTER. Para este caso, deberá ser accesible una opción de "Pasar" y además "Rendirse", a fin de dar acceso a todas las acciones posibles al jugador a partir del teclado. El grupo podrá definir el uso de teclas a este fin.
   - Alternativamente se podrá utilizar el Mouse. Para esto se jugarán cartas haciendo click en las mismas y habrá botones de acción en el tablero para las distintas acciones posibles.
   - Los grupos pueden implementar una o ambas formas de interacción.
@@ -144,6 +174,7 @@ El juego tiene un único nivel. No obstante, el Juego deberá tener un menú de 
   - sonidos de Clima
   - victoria
   - derrota
+- Respecto de las cartas, se puede utilizar un diseño sencillo
 
   Otros sonidos quedan a criterio de diseño del equipo, eventualmente a acordar con el tutor/corrector.
 
@@ -160,11 +191,11 @@ El juego tiene un único nivel. No obstante, el Juego deberá tener un menú de 
 
 ### Assets provistos por la catedra (Opcionales)
 
-Para este trabajo la cátedra no provee assets de referencia, salvo la portada. Se puede utilizar la portada para el menú de inicio, si se desea.
+Para este trabajo la cátedra no provee assets de referencia, salvo la portada. Se puede utilizar la portada para el menú de inicio, si se desea. Las cartas podrán llevar o no un sprite ilustrativo.
 
 ### Observación
 
-Se debe verificar siempre la **licencia específica** de cada recurso descargado, ya que algunos requieren atribución explícita al autor. El uso de material con licencias abiertas es obligatorio para evitar problemas legales o de derechos de autor.
+Se debe verificar siempre la **licencia específica** de cada recurso descargado (imagen/sonido), ya que algunos requieren atribución explícita al autor. El uso de material con licencias abiertas es obligatorio para evitar problemas legales o de derechos de autor.
 Si algún recurso requiere atribución, se debe mencionarlo en el archivo **README.md** del proyecto.
 
 ---
@@ -177,7 +208,7 @@ Si algún recurso requiere atribución, se debe mencionarlo en el archivo **READ
 - La IA debe presentar un comportamiento "razonable" para mantener una jugabilidad mínima.
 
 Extras opcionales para mejor nota:
-- Animaciones en sprites, desplazamiento de cartas, efectos visuales, efectos de sonido adicionales, etc.  
+- Animaciones en sprites, desplazamiento de cartas, efectos visuales, efectos de sonido adicionales, diseño con criterio estético, etc. Se evalúa primariamente la aplicación de conceptos de la materia y no tanto cuestiones de diseño artístico. Se puede alcanzar la nota más alta con excelente código y un diseño sencillo.
 
 ---
 
@@ -187,7 +218,8 @@ Extras opcionales para mejor nota:
 - Interfaz: **JavaFX**.
 - Dependencias: **Maven**.
 - Repositorio: **GitHub**.
-- Separación clara entre modelo y vista.  
+- Separación clara entre modelo y vista.
+- Definición de mazos de cartas en archivos JSON / XML (Resources).
 
 ---
 
@@ -247,9 +279,9 @@ La entrega se realiza mediante **GitHub**, en equipos de **2 integrantes**.
 ### Pasos para vinculación:
 
 1. Crear un repositorio en GitHub con archivo .gitignore estándar para maven/IntelliJ/Java.
-2. Configurar proyecto maven y subir un proyecto maven/javafx compilable y ejecutable ("Hola Mundo").
+2. Configurar proyecto maven con javafx compilable y ejecutable ("Hola Mundo con JavaFX").
 3. Crear archivo README.md con los datos de los integrantes del grupo y la información general.
-4. Enviar el enlace una sola vez por el grupo del repo por mensaje privado a Santiago Maraggi, indicando integrantes por apellido y padrón.
+4. Enviar el enlace una sola vez por el grupo del repo por mensaje privado a Santiago Maraggi (JTP), indicando integrantes por apellido y padrón.
 5. Dar permiso de acceso a los Docentes Diego Essaya (dessaya) y Santiago Maraggi (smaraggi-fiuba).
 6. Se dará acceso al Tutor/Corrector adicionalmente una vez asignado.
 
@@ -257,10 +289,10 @@ La entrega se realiza mediante **GitHub**, en equipos de **2 integrantes**.
 
 - GitHub permite dar acceso por usuarios
 - Entrega oficial: mediante **Pull Request**
-  - Indicar rama de entrega
+  - Indicar rama de entrega; el pull request apuntará a la rama principal (main)
   - Estado del proyecto
   - Condiciones de ejecución
-- Se recomienda clonar el repositorio en limpio para verificar funcionamiento
+- Se recomienda clonar el repositorio en limpio para verificar funcionamiento antes de entregar
 - Al aprobarse, los cambios deben quedar todos integrados a la **rama principal** (main)
 
 >  *El archivo `readme.md` debe ser el primer archivo incluido en el repositorio, INMEDIATAMENTE AL INICIARSE EL TP CON LOS DATOS DE LOS INTEGRANTES DEL GRUPO.*
