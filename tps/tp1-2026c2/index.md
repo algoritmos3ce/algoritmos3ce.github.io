@@ -2,7 +2,7 @@
 title: "TP1"
 layout: default
 nav_order: 1
-nav_exclude: true
+nav_exclude: false
 ---
 
 <img src="./portada.png" style="width: 50%">
