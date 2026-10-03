@@ -294,6 +294,8 @@
   que muestra el proceso de resolución de Prolog.
 
   #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
+    #set text(size: textsize - 2pt)
+
     Base de datos:
 
     ```prolog
@@ -310,6 +312,12 @@
     ```prolog
     ?- k(Y).
     ```
+
+    Resultado:
+
+    ```
+    Y = b.
+    ```
   ][][
     // https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%223HUzLkMqPp62n1jcsH72%22%3E5Vldc6IwFP01zHQfdICg2MdWq33odrrb2V3tW5QA2SJxQqzaX78BwmcA3dWKne1DJzlJLsm995x8qIDhcjuhcOV%2BJRbyFF21tgoYKbpuaCr%2FHwK7GNAHAnAotmJIy4Bn%2FI4EmHRbYwsFhY6MEI%2FhVRFcEN9HC1bAIKVkU%2BxmE6%2F41RV0kAQ8L6Ano7%2BwxdwYHfTUDL9H2HGTL2uqaFnCpLMAAhdaZJODwJ0ChpQQFpeW2yHyQt8lfonHjWta04lR5LODBty82uTehv3J08sPYL9M%2BuZLxxBzY7tkwcji6xdVQplLHOJD7y5DbylZ%2BxYKraq8lvV5IGTFQY2DvxFjOxFMuGaEQy5beqIVbTGbhsO7PVGb5VpGW2E5quySis%2FoLjcorM7ybdmwqJaMk70kHBeQNV2gBtck2Qapg1hDPz3uF%2Fot9wERgwkiS8TnwztQ5EGG34p5BUV6Omm%2FLIK8IIJYkx%2BPjvbNMLzvtzYbP45Uc%2FLzvqP1Y8Nv0FuLT814NSqp08poP8A552whQtDDjs%2FLC%2B41RDnwhijDnBU3omGJLStOBhTgdziP7IX%2BXhHss2hRvVulN0ojEBpA2yrKisEZUQrBqk1a2cHCekftateGSGyhOkkwD46BsP4UriYzXR5BbDvguVGOWTqng8LYlHy5KCpg3OHI69XsS1cKY5GSGxcz9LyCUXpvuCwXg2sTn43hEnuhc4acBpiHmGcT2jTxRQpgbQBAIoG7VBPj%2BiYnoAJyc9oJ1OM5UelMc4%2B%2FjpIw%2FZI1TD9Qw%2FptaVjlbAZS8k9TCYPtSdheXTL%2FUuqaJMzQ%2BmaBRfpJFKzTK1odnEvQ9DpBs6%2BmXxR9GB710pLLSxcucrpRFDldlUUuxc6ichr4SJm7ZJXrH6hyWmtHtaZpy5RwrmBKBHjpRNAGJSIMZCJo%2BlmJUKs1n9CdoH9Gd1beKCrStOxBfrVdhcUFJUGw34eUME4vEm7CRigRNva85MoZEC%2BcTYQNiUdo9AV%2BpAz%2FOB7EUqV2gQ40wzSvr1WVi%2FEANN00pIjUyzoout%2BolHXZ%2B%2FpHeV8%2BC6UiMU9FYn6GrD7KraBNkai%2BJ6t7PPYpdsvSTlbcA6vXfXjsjjxqGqUTEtBKsYz3dTHqqBNn40qrtoFPR5j2t4FkV%2F3vCANaI8z1mQkD9u%2F0F0USo7xZGy1v1pr8nH5CjpitkeRET0%2F1B5yTc6n8Bple1%2FdwSX7y7ZUMlUkZL%2FDjSNmTSJk9hs2ldLv09%2FwG2rTwGlb6lUAziwb%2B5TWMV7Of9OLu2e%2Bi4O4P%3C%2Fdiagram%3E%3C%2Fmxfile%3E
 
@@ -324,6 +332,8 @@
   = Árbol de búsqueda (cont.)
 
   #grid(columns: (1fr, auto, 1fr, auto, 1fr))[][
+    #set text(size: textsize - 2pt)
+
     Base de datos:
 
     ```prolog
@@ -336,6 +346,15 @@
 
     ```prolog
     ?- celoso(X, Y).
+    ```
+
+    Resultado:
+
+    ```
+    X = vincent, Y = vincent ;
+    X = vincent, Y = marcellus ;
+    X = marcellus, Y = vincent ;
+    X = marcellus, Y = marcellus.
     ```
   ][][
     // https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#R%3Cmxfile%3E%3Cdiagram%20name%3D%22Page-1%22%20id%3D%223HUzLkMqPp62n1jcsH72%22%3E5VrLctowFP0azyQLGFuyDVkCScgi7WQm02lgp2Bhq7UtRohXvr4ylvwSEFoeMXQV6%2BpKsu695%2BjIwYC9aNlnaBJ8ox4ODWB6SwPeGwBYAJriT2JZpZa2LQ0%2BI550yg2v5ANLo3KbEQ9PS46c0pCTSdk4onGMR7xkQ4zRRdltTMPyqhPkY83wOkKhbv1JPB7IXThmbn%2FCxA%2FUypYpeyKknKVhGiCPLgom%2BGDAHqOUp0%2FRsofDJHgqLum4xy292YsxHPO9BnR%2Bj%2BnTGLn9l%2BEPOB723dawYct34yu1YeyJ%2FcsmZTygPo1R%2BJBbu4zOYg8ns5qilfs8UzoRRksYf2HOVzKZaMapMAU8CmUvXhL%2BlgxvOrI1KPTcL%2BXM68ZKNWLOVoVBSXNQ7MuHrVtqnB4lGbgpnbER3hEaVW2I%2BZjv8AOpXxK3wgIyB31MIyzeRzgwHCJO5uW6QrI8%2Fcwvz6B4kEn8i4Q66bxzFM7kSm%2BiuX4yOwZwQ7GV7jsTT37yNMg6uxsr4Rm9C0CXsodC4sfieSQiipkwzDHjRCCmIzsi4nlpoeAp%2BUDv6%2FmSXEwoifl6w07XcO43Z2dHlSYL4aWxAfZykRKySsGX7CNztXcq5EQvyYsLF7k2aJdH0PF4Kkqkmrps%2BX%2FPpqVl04CPjWTfOKRTeiNyKyY2B7dNLXtllC4CwvHrBK0rfiGoupzTMY35I4pImMSpJ5BBRGaB%2BR0vdkFIy4cedxWxliTBVUaTaXuRc6qlToagwKfq%2BDg6TlqfBOwgWgN15jWwJ6%2B5teK1toaETkZdcxInZKSzWy9ziQiqMb%2B1DuY3OaphNm3LbZWwdhzOa7SsMoLts3GgqWXuiFBtXQNU72oFVUs%2FtXKsRkhsOQxn08tFqyrIw%2BFqNk1HAelAfDrwXHgE2zQJitBNJxUkvdv0b2LqKlPdNYpd1ijA1DVKZjuLRrHgfytS3D2Zz6rX7cu608DR1WVKfZkNHsxsh8oMqwKm0%2FGYu4vHJGmJg6jutGW5Fdpqb7hagXPSlo6BiwysbdYtsIrsipGtdQirtQndTUeqHkFwsgjaFxZBULsIOqfUJLW%2Bje2tSexja5ItnyErBAWrSU93JEed4CKg7kGbxE7hnldfuaM%2Blh%2Fju4sJbTndgWk9nwLKKv%2Fq7hef%2F9MGngejNqxgtJrdU2NUlwyXdCHZemBe44VE1eTFiJOqQv5ycQIuTd45tYvg1cq7z4%2BEM8k2%2B%2B6LjwT9w8dlyTZwtbJNNPPfA6Xu%2Ba%2Bq4MMf%3C%2Fdiagram%3E%3C%2Fmxfile%3E
@@ -476,26 +495,37 @@
 #slide[
   = Aritmética
 
-  El operador `is`
-  #linklet("https://www.swi-prolog.org/pldoc/doc_for?object=(is)/2")
-  permite escribir predicados que involucran expresiones
-  aritméticas, pero tiene algunas limitaciones. En su lugar, se recomienda
-  usar la biblioteca `clp(fd)`
-  #linklet("https://www.swi-prolog.org/pldoc/man?section=clpfd-predicate-index"):
-
-  ```prolog
-  :- use_module(library(clpfd)).
-  ```
-
-  / Comparaciones: `A #= B`, `A #< B`, `A #> B`, etc.
-  / Operaciones: `A + B`, `A - B`, etc.
-
-  Ejemplo:
-
-  ```prolog
-  R = 2 + 3.   % R se unifica con el término +(2, 3)
-  R #= 2 + 3.  % R se unifica con el número 5
-  ```
+  #grid(columns: (1fr, auto), gutter: 0.5cm)[
+    El operador `=` *no* evalúa expresiones aritméticas:
+  ][
+    ```
+    ?- Y = 2 + 3.
+    Y = +(2, 3).
+    ```
+  ][
+    El operador `is`
+    #linklet("https://www.swi-prolog.org/pldoc/doc_for?object=(is)/2") permite
+    escribir predicados que involucran expresiones aritméticas, pero tiene
+    algunas limitaciones.
+  ][
+    ```
+    ?- Y is 2 + 3.
+    Y = 5.
+    ?- 5 is X + 3.
+    ERROR: is/2: Arguments are not sufficiently instantiated
+    ```
+  ][
+    En su lugar, se recomienda usar la biblioteca `clp(fd)`
+    #linklet("https://www.swi-prolog.org/pldoc/man?section=clpfd-predicate-index") y los operadores `#=`, `#\=`, `#<`, `#>`, etc.
+  ][
+    ```
+    ?- use_module(library(clpfd)).
+    ?- Y #= 2 + 3.
+    Y = 5.
+    ?- 5 #= X + 3.
+    X = 2.
+    ```
+  ]
 ]
 
 #slide[
