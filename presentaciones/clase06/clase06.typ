@@ -551,6 +551,65 @@
   #fuente("https://www.swi-prolog.org/pldoc/man?section=lists")
 ]
 
+#bonustrack[
+  #set text(size: textsize - 2pt)
+
+  #grid(columns: (1fr, 1fr), gutter: 0.5cm)[
+    === Programación Lógica
+
+    Los lenguajes del paradigma *lógico* como Prolog y Datalog están diseñados
+    para explorar soluciones a problemas expresados con reglas; resultan
+    especialmente útiles cuando se necesita razonamiento simbólico,
+    restricciones complejas o relaciones recursivas.
+
+    Base de datos:
+
+    ```prolog
+    escribio(george_orwell, 1984).
+    escribio(george_orwell, rebelion_en_la_granja).
+    escribio(jane_austen, orgullo_y_prejuicio).
+    escribio(jane_austen, emma).
+    ```
+
+    Consulta:
+
+    ```
+    ?- escribio(george_orwell, X).
+    ```
+  ][
+    === Lenguajes de consulta
+
+    Los lenguajes de *consulta* como *SQL* suelen ser más adecuados para
+    manipular y consultar *bases de datos*. Son más eficientes para operaciones
+    de filtrado, agregación y ordenamiento, pero menos expresivos para
+    razonamiento complejo y relaciones recursivas.
+
+    Base de datos:
+
+    #[
+      #set text(size: textsize - 4pt)
+      #table(
+        columns: (auto, auto),
+        table.header([*autor*], [*libro*]),
+        [George Orwell], [1984],
+        [George Orwell], [Rebelión en la granja],
+        [Jane Austen], [Orgullo y prejuicio],
+        [Jane Austen], [Emma]
+      )
+    ]
+
+    Consulta:
+
+    ```sql
+    SELECT libro
+        FROM escribio
+        WHERE autor = 'George Orwell';
+    ```
+  ]
+
+  #fuente("https://en.wikipedia.org/wiki/SQL")
+]
+
 #slide[
   = Links
 
