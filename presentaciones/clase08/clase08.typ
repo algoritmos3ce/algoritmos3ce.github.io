@@ -240,19 +240,38 @@
   Las funciones puras son referencialmente transparentes, lo que permite
   razonar acerca del código y modificarlo sin efectos inesperados.
 
-  Ejemplo: ¿El valor de `y` es el mismo en ambos casos?
+  Ejemplo: las siguientes expresiones ¿son equivalentes?
 
-  ```clj
-  (def y (+ (f 8) (f 8)))
-  ```
+  #table(
+    columns: (1fr, 1fr),
+    align: (center+horizon, center+horizon),
+    table.header([Clojure], [Python]),
+    stroke: none,
+    [
+      ```clj
+      (+ (f 8) (f 8))
+      ```
+    ],
+    [
+      ```python
+      f(8) + f(8)
+      ```
+    ],
+    [
+      ```clj
+      (let [x (f 8)]
+        (+ x x))
+      ```
+    ],
+    [
+      ```python
+      x = f(8)
+      x + x
+      ```
+    ],
+  )
 
-  ```clj
-  (def x (f 8))
-  (def y (+ x x))
-  ```
-
-  Si `f` es una función pura, entonces ambas expresiones son equivalentes
-  (salvando una posible diferencia en eficiencia).
+  Si `f` es una función *pura*, entonces ambas expresiones *producen el mismo resultado*.
 ]
 
 #slide[
@@ -287,11 +306,27 @@
     asignadas a variables, pasadas como argumentos y devueltas como resultados.
   ]
 
-  ```clj
-  (let [x 2
-        f (fn [y] (+ x y))]
-    (f 3))
-  ```
+  #table(
+    columns: (1fr, 1fr),
+    align: (center+horizon, center+horizon),
+    table.header([Clojure], [Python]),
+    stroke: none,
+    [
+      ```clj
+      (let [x 2
+            f (fn [y] (+ x y))]
+        (f 3))
+      ```
+    ],
+    [
+      ```python
+      x = 2
+      f = lambda y: x + y
+      f(3)
+      ```
+    ],
+  )
+
 
   En el ejemplo, la función anónima es una *clausura* (_closure_) que captura
   el valor de `x` del entorno donde fue definida. #linklet("https://en.wikipedia.org/wiki/Closure_(computer_programming)")
@@ -327,6 +362,25 @@
 ]
 
 #slide[
+  = ¿Ciclos?
+
+  En los lenguajes imperativos, la iteración se logra mediante ciclos (`for`, `while`, etc.).
+
+  ```python
+  def buscar(v, x):
+      i = 0
+      while i < len(v):
+          if v[i] == x:
+              return i
+          i += 1
+      return None
+  ```
+
+  Notar que la variable `i` es *mutable*: cambia su valor en cada iteración.
+  Por lo tanto, este código *no es funcionalmente puro*.
+]
+
+#slide[
   = Recursión
 
   #grid(columns: (1fr, auto), gutter: 1em)[
@@ -337,11 +391,10 @@
       #set text(size: textsize - 4pt)
       ```clj
       (defn _buscar [v x i]
-        (if (>= i (count v))
-          nil
-          (if (= (nth v i) x)
-            i
-            (_buscar v x (inc i)))))
+        (cond
+          (>= i (count v)) nil
+          (= (nth v i) x) i
+          :else (_buscar v x (inc i))))
 
       (defn buscar [v x]
         (_buscar v x 0))
@@ -359,11 +412,13 @@
       #set text(size: textsize - 4pt)
       ```clj
       (defn _buscar [v x i]
-        (if (>= i (count v))
-          nil
-          (if (= (nth v i) x)
-            i
-            (recur v x (inc i)))))
+        (cond
+          (>= i (count v)) nil
+          (= (nth v i) x) i
+          :else (recur v x (inc i))))
+
+      (defn buscar [v x]
+        (_buscar v x 0))
       ```
     ]
   ][
@@ -377,11 +432,10 @@
       ```clj
       (defn buscar [v x]
         (loop [i 0]
-          (if (>= i (count v))
-            nil
-            (if (= (nth v i) x)
-              i
-              (recur (inc i))))))
+          (cond
+            (>= i (count v)) nil
+            (= (nth v i) x) i
+            :else (recur (inc i)))))
       ```
     ]
   ]
@@ -461,6 +515,77 @@
 ]
 
 #slide[
+  = Ejemplos: de imperativo a funcional
+
+  #set text(size: textsize - 4pt)
+
+  #table(
+    columns: (1fr, 1fr),
+    align: (center+horizon, center+horizon),
+    stroke: none,
+    [
+      ```python
+      numeros = [1, 2, 3, 4, 5, 6]
+      resultado = []
+      for n in numeros:
+          if n % 2 == 0:
+              resultado.append(n * n)
+      ```
+    ],
+    [
+      ```clj
+      (->> [1 2 3 4 5 6]
+           (filter even?)
+           (map #(* % %)))
+      ```
+
+      ```clj
+      (for [n [1 2 3 4 5 6]
+            :when (even? n)]
+        (* n n))
+      ```
+    ],
+    [
+      ```python
+      def factorial(n):
+          resultado = 1
+          for i in range(1, n + 1):
+              resultado *= i
+          return resultado
+      ```
+    ],
+    [
+      ```clj
+      (defn factorial [n]
+        (reduce * (range 1 (inc n))))
+      ```
+    ],
+    [
+      ```python
+      estudiantes = [
+          {"nombre": "Ana", "materia": "Prog"},
+          {"nombre": "Luis", "materia": "BD"},
+          {"nombre": "Eva", "materia": "Prog"},
+      ]
+
+      grupos = {}
+      for e in estudiantes:
+          grupos.setdefault(e["materia"], []).append(e)
+      ```
+    ],
+    [
+      ```clj
+      (let [estudiantes
+              [{:nombre "Ana"  :materia :prog}
+               {:nombre "Luis" :materia :bd}
+               {:nombre "Eva"  :materia :prog}]]
+        (group-by :materia estudiantes))
+      ```
+    ],
+  )
+]
+
+#slide[
   = Ventajas de la Programación Funcional
 
   #grid(columns: (1fr, auto), gutter: 1em)[
@@ -486,6 +611,9 @@
   ][
     #image("meme-no-state.png", width: 8cm)
   ]
+
+  #linklet("https://docs.python.org/3/howto/functional.html")
+  #linklet("https://learn.microsoft.com/en-us/dotnet/standard/linq/functional-vs-imperative-programming")
 ]
 
 #bonustrack[
