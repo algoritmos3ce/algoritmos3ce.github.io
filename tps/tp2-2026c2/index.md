@@ -9,7 +9,7 @@ nav_exclude: true
 {: .no_toc }
 
 1. Índice
-   {:toc}
+{:toc}
 
 # Trabajo Práctico 2: Simulador de materiales ("falling sand")
 
@@ -119,9 +119,11 @@ experiencia equivalente:
 - **Limpiar**: reemplaza la grilla por una grilla vacía (todo aire).
 - **Indicadores**: número de paso y cantidad de partículas (celdas que no son
   aire).
-- **Velocidad**: la simulación debe apuntar a unos 60 pasos por segundo cuando
-  el cálculo lo permite. Pintar mientras la simulación corre no debe perder ni
-  lo pintado ni el avance de la simulación.
+- **Velocidad**: se toma como objetivo orientativo procesar unos 60 pasos por
+  segundo con la grilla por defecto. No se exige una cantidad mínima de pasos
+  por segundo ni una aceleración medida; si el cálculo no alcanza ese ritmo, la
+  simulación puede avanzar más despacio, pero sin saltear pasos. Pintar mientras
+  la simulación corre no debe perder ni lo pintado ni el avance de la simulación.
 
 ---
 
@@ -140,11 +142,12 @@ resultados que aquí se describen.
   de la anterior.
 - El comportamiento debe ser correcto para grillas de cualquier tamaño,
   incluyendo dimensiones impares y muy chicas.
-- Los materiales y las reacciones son **datos de la simulación**: las reglas de
-  las secciones 4.3 y 4.4 se definen en función de las propiedades de los
-  materiales (tipo, densidad, etc.), no de materiales específicos. Agregar un
-  material nuevo con las mismas propiedades que otro debería hacer que se
-  comporte igual, sin modificar las reglas.
+- Los tipos, densidades y períodos de movimiento determinan el comportamiento
+  general de movimiento; esas reglas no dependen de nombres de materiales.
+  Decaimientos y reacciones son excepciones explícitas, definidas como datos en
+  las secciones 5.2 y 5.3. Un material nuevo comparte el comportamiento general
+  de movimiento de otros con las mismas propiedades, pero solo decae o participa
+  en reacciones si se especifica para él.
 - No se puede usar ninguna fuente de azar (generadores de números aleatorios,
   reloj, etc.).
 
@@ -630,7 +633,8 @@ desplazamiento distinto) y por eso produce resultados distintos.
 **Grilla de ancho impar.** En una grilla de 5 x 4, las celdas que quedan fuera
 de todos los bloques no cambian. Con `ox = 0` la columna 4 queda afuera; con
 `oy = 1` la fila 0 queda afuera. Un grano en la esquina superior derecha no se
-mueve en los pasos 0, 1 y 2, y baja una fila en el paso 3:
+mueve durante los pasos 0 y 1; baja una fila durante el paso 2 y aparece en esa
+posición al terminarlo (`n = 3`):
 
 ```text
 n=0     n=1     n=2     n=3     n=4     n=5
@@ -709,8 +713,9 @@ claridad.
   escribir el código relacionado con la interfaz gráfica en Java.
 - Se debe usar **concurrencia**:
   - Aplicar alguna estrategia de paralelismo para aprovechar los núcleos del CPU
-    y mejorar el rendimiento de la simulación (ayuda: recordar que la simulación
-    de cada bloque es independiente de los demás).
+    y calcular bloques en paralelo (ayuda: recordar que la simulación de cada
+    bloque es independiente de los demás). No se exige una aceleración mínima
+    medida ni alcanzar una cantidad determinada de pasos por segundo.
   - La interfaz gráfica no debe quedar bloqueada mientras se calcula un paso de
     simulación.
 
@@ -741,13 +746,10 @@ Debe incluir un archivo `README.md` con:
 - Lista de los materiales adicionales que se hayan agregado, si los hay.
 
 {: .nota}
-El archivo `README.md` debe ser creado y completado al inicio del desarrollo
-del trabajo práctico para que se pueda asignar el docente corrector al grupo.
-Sin este archivo, la cátedra no podrá identificar al grupo y podrían perder la
-regularidad de no cumplir este requerimiento a tiempo. Se debe completar el
-README al crear el repositorio al menos con los datos básicos del proyecto y
-alumnos, para completar luego más adelante las instrucciones detalladas.
-Se REQUIEREN INMEDIATAMENTE los datos de los alumnos al comienzo del TP.
+El archivo `README.md` debe ser el primer archivo incluido en el repositorio,
+creado al inicio del trabajo práctico y con los datos básicos del proyecto y
+sus integrantes. El resto de la documentación puede completarse durante el
+desarrollo.
 
 ### Entrega y Gestión de Repositorio
 
@@ -780,10 +782,6 @@ La entrega se realiza mediante **GitHub**, en equipos de **2 integrantes**. Se m
 - Al aprobarse, los cambios deben quedar todos integrados a la **rama
   principal** (`main`).
 
-{: .nota}
-El archivo `README.md` debe ser el primer archivo incluido en el repositorio,
-inmediatamente al iniciarse el TP, con los datos de los integrantes del grupo.
-
 #### Observaciones
 
 - Cada equipo debe tener **un único repositorio compartido**.
@@ -802,4 +800,7 @@ inmediatamente al iniciarse el TP, con los datos de los integrantes del grupo.
 
 - Una vez recibido el trabajo, el corrector decidirá si está **aprobado o no**.
 - Si se aprueba, se asignará una **nota entre 4 y 10**.
-- Se contempla **una única instancia de reentrega**, dentro del plazo de la **"fecha límite de aprobación"**, tanto si el trabajo fue aprobado como si no.
+- Hay **una única instancia de reentrega** antes de la **"fecha límite
+  de aprobación"**, tanto si la primera entrega fue aprobada como si no. La
+  reentrega se vuelve a evaluar y su resultado reemplaza al de la evaluación
+  anterior.
