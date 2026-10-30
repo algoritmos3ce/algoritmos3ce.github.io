@@ -75,6 +75,8 @@
   componente del SO que asigna tiempo de CPU a cada proceso (y en el caso de
   sistemas multicore, asigna los diferentes cores).
 
+  De esta manera, dos o más procesos se ejecutan en forma *concurrente*, y si el hardware lo permite, en *paralelo*.
+
   #align(center)[ #image("scheduler.jpg", width: 80%) ]
 
   Para comunicarse entre sí, los procesos requieren mecanismos de IPC
@@ -118,9 +120,9 @@
 #slide[
   = Hilos
 
-  Son unidades de ejecución dentro de un proceso.
-
-  Comparten el mismo espacio de memoria.
+  Son unidades de ejecución dentro de un proceso, que comparten el mismo
+  espacio de memoria. Permiten que un proceso realice múltiples tareas en
+  forma *concurrente* (y en *paralelo* si el hardware lo permite).
 
   Pueden ser manejados por el sistema operativo o por la propia
   aplicación (dependiendo del lenguaje y la biblioteca de threads
@@ -150,6 +152,63 @@
 
   El proceso finaliza cuando no queda ningún hilo de tipo _non-daemon_ en
   ejecución. #linklet("https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/lang/Runtime.html#shutdown")
+
+]
+
+#slide[
+  = Hilos en Java (cont.)
+
+  #grid(columns: (1fr, auto), gutter: 1em)[
+    #set text(size: 12pt)
+    ```java
+    public class Main {
+        public static void main(String[] args) {
+            Thread t = new Thread(() -> {
+                System.out.println("Hola desde el hilo!");
+            });
+
+            t.start(); // Inicia el hilo
+            System.out.println("Hola desde el hilo principal!");
+            t.join(); // Espera a que el hilo termine
+            System.out.println("El hilo ha terminado.");
+        }
+    }
+    ```
+
+    La salida de este programa es *no determinista*, ya que depende del orden en que los hilos se ejecuten. Algunas salidas posibles:
+
+    #grid(columns: (1fr, 1fr), gutter: 1em)[
+      ```
+      Hola desde el hilo!
+      Hola desde el hilo principal!
+      El hilo ha terminado.
+      ```
+    ][
+      ```
+      Hola desde el hilo principal!
+      Hola desde el hilo!
+      El hilo ha terminado.
+      ```
+    ]
+  ][
+    // ---
+    // config:
+    //     theme: redux
+    // ---
+    // flowchart TD
+    //     A@{ shape: sm-circ } --> B["t = new Thread()"]
+    //     B --> C["t.start()"]
+    //     C --> F@{ shape: fork }
+    //
+    //     F --> M["Hola desde el hilo principal!"]
+    //     F --> W["Hola desde el hilo!"]
+    //
+    //     M --> J@{ shape: fork }
+    //     W --> J
+    //     J --> JJ["t.join()"]
+    //     JJ --> K@{ shape: framed-circle }
+    #image("threads-flowchart.png", height: 12cm)
+  ]
 
   #fuente("https://docs.oracle.com/javase/tutorial/essential/concurrency/threads.html")
 ]
@@ -509,6 +568,8 @@
 #slide[
   = Colecciones concurrentes
 
+  Las colecciones de Java *no son thread-safe* por defecto. Por ejemplo, `ArrayList` y `HashMap` no pueden ser accedidas por múltiples hilos sin sincronización.
+
   La biblioteca estándar de Java provee varias colecciones diseñadas
   para ser usadas en entornos concurrentes, evitando la necesidad de
   sincronización manual.
@@ -538,6 +599,44 @@
 ]
 
 #slide[
+  = Ejemplo: BlockingQueue
+
+  #grid(columns: (1fr, auto), gutter: 1em)[
+    #set text(size: 12pt)
+    ```java
+    public class Descargador {
+        static final String FIN = "";
+
+        public static void main(String[] args) {
+            var urls = new LinkedBlockingQueue<String>(10);
+            var http = HttpClient.newHttpClient();
+
+            new Thread(() -> {
+                try (var in = new Scanner(System.in)) {
+                    while (in.hasNextLine()) urls.put(in.nextLine());
+                    urls.put(FIN);
+                } catch (InterruptedException e) { }
+            }).start();
+
+            new Thread(() -> {
+                try {
+                    String url;
+                    while (!(url = urls.take()).equals(FIN)) {
+                        var req = HttpRequest.newBuilder(URI.create(url)).build();
+                        var res = http.send(req, HttpResponse.BodyHandlers.ofString());
+                        System.out.println(res.body());
+                    }
+                } catch (Exception e) { e.printStackTrace(); }
+            }).start();
+        }
+    }
+    ```
+  ][
+    #image("blockingqueue.png", width: 7cm)
+  ]
+]
+
+#slide[
   = Variables atómicas
 
   // An atomic transaction is an indivisible and irreducible series of database operations such that either all occur, or none occur.
@@ -562,6 +661,38 @@
   ```
 
   #fuente("https://docs.oracle.com/javase/tutorial/essential/concurrency/atomicvars.html")
+]
+
+#slide[
+  = Ejemplo: AtomicInteger
+
+  #set text(size: 12pt)
+  ```java
+  public class Main {
+      static final AtomicInteger proximoId = new AtomicInteger();
+
+      record Pedido(int id, String cliente) {}
+
+      static Pedido crear(String cliente) {
+          // garantiza que cada pedido tenga un id único, incluso si varios hilos
+          // invocan a este método en forma concurrente
+          return new Pedido(proximoId.incrementAndGet(), cliente);
+      }
+
+      public static void main(String[] args) throws InterruptedException {
+          var hilos = new Thread[3];
+          for (int i = 0; i < hilos.length; i++) {
+              var cliente = "cliente" + i;
+              hilos[i] = new Thread(() -> {
+                  for (int j = 0; j < 3; j++)
+                      System.out.println(crear(cliente));
+              });
+              hilos[i].start();
+          }
+          for (var h : hilos) h.join();
+      }
+  }
+  ```
 ]
 
 #slide[
