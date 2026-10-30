@@ -2,7 +2,8 @@
 title: "TP2"
 layout: default
 nav_order: 2
-nav_exclude: true
+parent: Trabajos prácticos
+nav_exclude: false
 ---
 
 # TP2
