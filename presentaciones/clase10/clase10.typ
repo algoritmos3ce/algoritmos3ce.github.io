@@ -124,6 +124,40 @@
 ]
 
 #slide[
+  = Delay
+
+  #grid(columns: (1fr, auto), gutter: 2em)[
+    - `(delay expr)` crea un objeto de tipo `Delay`, que asegura que la expresión
+      se evalúa una única vez la primera vez que es desreferenciada.
+    - `(deref d)` o `@d` obtiene el resultado de la evaluación de la expresión,
+      bloqueando si aun no se ha terminado de evaluar.
+
+    La diferencia con `future` es que `delay` no lanza un hilo para evaluar la
+    expresión, sino que lo hace en el hilo que la desreferencia.
+  ][
+    ```clj
+    (defn tarea-muy-costosa [n]
+      (locking *out* (println "evaluando!"))
+      (Thread/sleep 3000)
+      (+ n 10))
+
+    (def d (delay (tarea-muy-costosa 1)))
+    (println "Delay creado")
+
+    (dotimes [_ 10]
+      (future
+        (locking *out* (println "(deref d)"))
+        (let [v @d]
+          (locking *out* (println v)))))
+
+    (shutdown-agents)
+    ```
+  ]
+
+  #fuente("https://clojuredocs.org/clojure.core/delay")
+]
+
+#slide[
   = pcalls, pvalues y pmap
 
   - `(pcalls f1 f2 f3)`: Ejecuta las funciones en hilos separados.
@@ -147,37 +181,6 @@
   ```
 
   #fuente("https://clojuredocs.org/clojure.core/pmap")
-]
-
-#slide[
-  = Delay
-
-  - `(delay expr)` crea un objeto de tipo `Delay`, que asegura que la expresión
-    se evalúa una única vez la primera vez que es desreferenciada.
-  - `(deref d)` o `@d` obtiene el resultado de la evaluación de la expresión,
-    bloqueando si aun no se ha terminado de evaluar.
-
-  #set text(size: textsize - 1pt)
-
-  ```clj
-  (defn tarea-muy-costosa [n]
-    (locking *out* (println "evaluando!"))
-    (Thread/sleep 3000)
-    (+ n 10))
-
-  (def d (delay (tarea-muy-costosa 1)))
-  (println "Delay creado")
-
-  (dotimes [_ 10]
-    (future
-      (locking *out* (println "(deref d)"))
-      (let [v @d]
-        (locking *out* (println v)))))
-
-  (shutdown-agents)
-  ```
-
-  #fuente("https://clojuredocs.org/clojure.core/delay")
 ]
 
 #slide[
@@ -247,35 +250,41 @@
   = Agents
 
   #set text(size: 12pt)
-  - `(agent valor-inicial)` crea un agente con el valor inicial.
-  - `(deref a)` o `@a` devuelve el valor actual del agente.
-  - `(send a f)` envía una función `f` para actualizar el valor del agente en otro hilo.
-  - `(add-watch a k f)` ejecutará f cada vez que el valor del agente cambie.
 
-  #set text(size: 12pt)
-  ```clj
-  (require '[clojure.pprint :as p])
+  #grid(columns: (1fr, auto), gutter: 1em)[
+    - `(agent valor-inicial)` crea un agente con el valor inicial.
+    - `(deref a)` o `@a` devuelve el valor actual del agente.
+    - `(send a f)` envía una función `f` para actualizar el valor del agente en otro hilo.
+    - `(await a)` bloquea hasta que el agente haya procesado todas las funciones enviadas.
+    - `(add-watch a k f)` ejecutará f cada vez que el valor del agente cambie.
 
-  (def rifa (agent {:proximo-numero-libre 0
-                    :reservas []}))
+    Las funciones enviadas a un agente se ejecutan *secuencialmente* en un hilo separado.
+  ][
+    ```clj
+    (require '[clojure.pprint :as p])
 
-  (defn reservar-numero [persona precio]
-    (send rifa (fn [estado]
-                 (let [n (:proximo-numero-libre estado)
-                       nueva-reserva {:persona persona
-                                      :numero n
-                                      :precio precio}]
-                   (-> estado
-                       (update :proximo-numero-libre inc)
-                       (update :reservas conj nueva-reserva))))))
+    (def rifa (agent {:proximo-numero-libre 0
+                      :reservas []}))
 
-  (dorun (pmap #(reservar-numero % (rand-int 5000))
-               ["Ana" "Beto" "Carla" "Diego" "Eva" "Fabián" "Gisela" "Hugo"]))
+    (defn reservar-numero [persona precio]
+      (send rifa (fn [estado]
+                   (let [n (:proximo-numero-libre estado)
+                         nueva-reserva {:persona persona
+                                        :numero n
+                                        :precio precio}]
+                     (-> estado
+                         (update :proximo-numero-libre inc)
+                         (update :reservas conj nueva-reserva))))))
 
-  (await rifa)
-  (p/pprint @rifa)
-  (shutdown-agents)
-  ```
+    (dorun (pmap #(reservar-numero % (rand-int 5000))
+                 ["Ana" "Beto" "Carla" "Diego" "Eva" "Fabián" "Gisela" "Hugo"]))
+
+    (await rifa)
+    (p/pprint @rifa)
+    (shutdown-agents)
+    ```
+
+  ]
 
   #fuente("https://clojure.org/reference/agents")
 ]
@@ -291,6 +300,7 @@
 
   (def numeros (vec (range 100000)))
 
+  ;; suma de los números impares:
   (println (r/fold 512 ;; tamaño de la partición
                    +   ;; función para combinar el resultado de dos particiones
                    +   ;; función para reducir una partición
