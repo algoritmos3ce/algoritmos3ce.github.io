@@ -8,13 +8,13 @@ nav_order: 3
 
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQhesbxSV8zpjqzfsy3eZbOAOQTSlwDuoFqAhpe_Rapz4dXHvbkeg7v0lsbl_ez3bI5xKzvYUwLnY8v/pubhtml?gid=861207281&single=true" style="width: 100%; height: 1150px"></iframe>
 
-# Fechas de final 2026c1 (junio - agosto 2026)
+# Fechas de final 2027c2 (diciembre 2026 - febrero/marzo 2027)
 
-*  Lunes 13 de julio 18hs (aula a definir)
-*  Lunes 20 de julio 18hs (aula a definir)
-*  Lunes 27 de julio 18hs (aula a definir)
-*  Lunes 03 de agosto 18hs (aula a definir)
-*  Miércoles 12 agosto 18hs (aula a definir)
+* Lunes 7/12/2026 14 a 17 hs
+* Lunes 14/12/2026 14 a 17 hs
+* Lunes 15/2/2027 14 a 17 hs
+* Lunes 22/2/2027 14 a 17 hs
+* Lunes 1/3/2027 14 a 17 hs
 
 {: .importante }
 > Recordá inscribirte en el SIU Guaraní. Te podés inscribir hasta 72 hs hábiles antes de la fecha del final.
