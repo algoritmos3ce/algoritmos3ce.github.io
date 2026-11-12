@@ -10,7 +10,7 @@ nav_order: 3
 
 # Fechas de final 2027c2 (diciembre 2026 - febrero/marzo 2027)
 
-* Lunes 7/12/2026 14 a 17 hs
+* Viernes 11/12/2026 14 a 17 hs
 * Lunes 14/12/2026 14 a 17 hs
 * Lunes 15/2/2027 14 a 17 hs
 * Lunes 22/2/2027 14 a 17 hs
